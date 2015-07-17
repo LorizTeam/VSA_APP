@@ -39,7 +39,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				        <span class="icon-bar"></span>
 				        <span class="icon-bar"></span>
 				      </button>
-				      <a class="navbar-brand" href="index.html">SMICT..</a>
+				      <a class="navbar-brand" href="index.html">SMICT</a>
 				    </div>
 				  	<div class="collapse navbar-collapse navbar-right" id="navbar-collapse-01">
 					    <ul class="nav navbar-nav">
