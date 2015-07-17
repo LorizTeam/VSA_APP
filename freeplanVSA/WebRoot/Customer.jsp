@@ -7,7 +7,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-    
+    <meta charset"UTF-8">
     
     <title>My JSP 'Customer.jsp' starting page</title>
     
@@ -20,79 +20,202 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 
-	<link rel="stylesheet" href="flat-ui/dist/css/vendor/bootstrap.css">
-	<link rel="stylesheet" href="flat-ui/dist/css/flat-ui.css">
-	<link rel="stylesheet" href="bootstrap/css/dashboard.css">
-	
-    <script type="text/javascript" src="flat-ui/dist/js/vendor/jquery.min.js"></script>	
-	<script type="text/javascript" src="flat-ui/dist/js/flat-ui.js"></script>
-	
-  </head>
-  
-  <body>
-    <nav class="navbar navbar-default navbar-fixed-top">
-				  <div class="container">
-				    <div class="navbar-header">
-				      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-01">
-				        <span class="sr-only">Toggle navigation</span>
-				        <span class="icon-bar"></span>
-				        <span class="icon-bar"></span>
-				        <span class="icon-bar"></span>
-				      </button>
-				      <a class="navbar-brand" href="index.html">SMICT</a>
-				    </div>
-				  	<div class="collapse navbar-collapse navbar-right" id="navbar-collapse-01">
-					    <ul class="nav navbar-nav">
-					      <li><a href="gallery.html">Gallery</a></li>
-					      <li><a href="#blueprint">Blueprint</a></li>
-					      <li><a href="#about">About</a></li>
-					      <li><a href="#contact">Contact Us</a></li>
-					      <li><a href="#" data-toggle="modal" data-target="#modalregis">Register</a></li>
-					      <li><a href="#" data-toggle="modal" data-target="#modalsignin">Sign in</a></li>
-					    </ul>
-				    </div>				    
-				  </div>
+	<!--Loading CSS Core-->
+		<link rel="stylesheet" href="metro-ui/build/css/metro.css" />
+		<link rel="stylesheet" href="metro-ui/build/css/metro-icons.css" />
+		
+		
+		<!--Loading JS-->
+		
+		<script src="metro-ui/js/jquery-2.1.4.min.js"></script>
+		<script src="metro-ui/js/jquery.dataTables.min.js"></script>
+		<script src="metro-ui/build/js/metro.js"></script>
+		
+		<!--Use Custom Style-->
+		<style>
+        html, body {
+            height: 100%;
+        }
+        .page-content {
+            padding-top: 0;
+            min-height: 100%;
+            height: 100%;
+        }
+        .table .input-control.checkbox {
+            line-height: 1;
+            min-height: 0;
+            height: auto;
+        }
 
-				</nav>
-				<aside class="container-fluid">
-					<div class="row">
-						<div class="col-sm-3 col-md-2 sidebar">
-							<ul class="nav nav-sidebar">
-								<li><a href="#">โครงการ</a></li>
-					            <li><a href="#">Detail</a></li>
-								<li><a href="Customer.jsp">Customer</a></li>
-								<li><a href="#">Department</a></li>
-					            <li><a href="Employee.jsp">Employee</a></li>
-					            <li><a href="#">Material</a></li>
+        @media screen and (max-width: 800px){
+            #cell-sidebar {
+                flex-basis: 52px;
+            }
+        }
+    </style>
 
-					        </ul>
+    <script>
+        $(function(){
+            $(window).on('resize', function(){
+                if ($(this).width() <= 800) {
+                    $(".sidebar").addClass('compact');
+                } else {
+                    $(".sidebar").removeClass('compact');
+                }
+            });
+        });
 
-						</div>
-					</div>
-				</aside>
-						<div class="visible-lg hidden-md hidden-xs hidden-sm" style="margin-top: 0.5%;"></div>
-						<div class="visible-md hidden-xs hidden-lg hidden-sm" style="margin-top: 3%;"></div>
-						<div class="visible-sm hidden-md hidden-lg hidden-xs" style="margin-top: 3%;"></div>
-						<div class="visible-xm hidden-md hidden-lg hidden-sm" style="margin-top: 4%;"></div>
-						
-						
-						<div class="container-fuild">
-							<div class="row">
-								<div class="thumbnail col-lg-10" style="margin-left: 12em; padding-left: 2em;">
-								<center>
-								<div class="form-inline">
-								<form class="form-group" action="">
-									<label>ชื่อ</label> 
-									<input type="text" id="customerName" name="customerName" placeholder="name"/> 
-									<label>E-mail</label> 
-									<input type="email" id="customerEmail" name="customerEmail" placeholder="email"> 
-									<input class="btn btn-danger" type="submit" id="Search" name="search" value="Search" />
-								</form>
-								</div>
+        function pushMessage(t){
+            var mes = 'Info|Implement independently';
+            $.Notify({
+                caption: mes.split("|")[0],
+                content: mes.split("|")[1],
+                type: t
+            });
+        }
+
+        $(function(){
+            $('.sidebar').on('click', 'li', function(){
+                if (!$(this).hasClass('active')) {
+                    $('.sidebar li').removeClass('active');
+                    $(this).addClass('active');
+                }
+            })
+        })
+    </script>
+	</head>
+	<body class="bg-steel">
+	<div>
+		<ul class="m-menu fixed-top" >
+    <li><a href="#">หน้าแรก</a></li>
+    <li>
+        <a href="#" class="dropdown-toggle">ภาพรวม</a>
+        <div class="m-menu-container" data-role="dropdown" data-no-close="true">
+            <div class="grid no-margin">
+                <div class="row cells5">
+                    <div class="cell padding10">
+                        <img src="images/me.jpg">
+                    </div>
+                    <div class="cell colspan2">
+                        <h2 class="fg-white text-bold text-shadow">Metro UI CSS 3.0</h2>
+                        <p class="padding20 no-padding-top no-padding-left no-padding-bottom fg-white">
+                            Metro UI CSS a set of styles to create a site with an interface similar to Windows 8.
+                        </p>
+                        <p class="fg-white text-bold">
+                            Sergey Pimenov
+                        </p>
+                    </div>
+                    <div class="cell colspan2">
+                        <ul class="unstyled-list">
+                            <li><h3 class="text-shadow">Begin with Metro UI CSS</h3></li>
+                            <li><a class="fg-white" href="#">Requirements</a></li>
+                            <li><a class="fg-white" href="#">Doctype</a></li>
+                            <li><a class="fg-white" href="#">JavaScript</a></li>
+                            <li><a class="fg-white" href="#">Browsers support</a></li>
+                            <li><a class="fg-white" href="#">License</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <a href="#" class="dropdown-toggle">Download</a>
+        <div class="m-menu-container" data-role="dropdown" data-no-close="true">
+            <ul class="inline-list">
+                <li><a href="#">Windows</a></li>
+                <li><a href="#">Office</a></li>
+                <li><a href="#">Skype</a></li>
+                <li><a href="#">Internet Explorer</a></li>
+                <li><a href="#">Visio</a></li>
+            </ul>
+        </div>
+    </li>
+    <li>
+        <a href="#" class="dropdown-toggle">Devices</a>
+        <div class="m-menu-container" data-role="dropdown">
+            <ul class="inline-list">
+                <li><a href="#">Surface</a></li>
+                <li><a href="#">Xbox</a></li>
+                <li><a href="#">PC & Tables</a></li>
+                <li><a href="#">Phones</a></li>
+                <li><a href="#">Accessories</a></li>
+            </ul>
+        </div>
+    </li>
+    <li><a href="#">ขอความช่วยเหลือ</a></li>
+    <li><a href="#">Store</a></li>
+    
+
+    <li class="place-right">
+    	
+        <a href="#" class="dropdown-toggle"><span class="mif-cog"></span>User Name</a>
+        <div class="d-menu padding10 place-right no-margin-top block-shadow" data-role="dropdown">
+            <h2 class="text-light">Quick settings</h2>
+                <ul class="inline-list">
+                    <li><a href="" class="fg-black fg-hover-white">Profile</a></li>
+                    <li><a href="" class="fg-black fg-hover-white">Security</a></li>
+                    <li><a href="" class="fg-black fg-hover-white">Exit</a></li>
+                </ul>
+        
+        </div>
+    </li>
+    
+</ul>
+	</div>
+    
+		<!---------------------Menu-------------------------------------------->
+		
+		<!-----------------------------sidebar---------------------------------->
+		 <div class="page-content">
+        <div class="flex-grid no-responsive-future" style="height: 100%;">
+            <div class="row" style="height: 100%">
+                <div class="cell size-x200" id="cell-sidebar" style="background-color: #71b1d1; height: 100%">
+                    <ul class="sidebar">
+                        <li><a href="#">
+                            <span class="mif-apps icon"></span>
+                            <span class="title">all items</span>
+                            <span class="counter">0</span>
+                        </a></li>
+                        <li><a href="#">
+                            <span class="mif-vpn-publ icon"></span>
+                            <span class="title">websites</span>
+                            <span class="counter">0</span>
+                        </a></li>
+                        <li class="active"><a href="#">
+                            <span class="mif-drive-eta icon"></span>
+                            <span class="title">Virtual machines</span>
+                            <span class="counter">2</span>
+                        </a></li>
+                        <li><a href="#">
+                            <span class="mif-cloud icon"></span>
+                            <span class="title">Cloud services</span>
+                            <span class="counter">0</span>
+                        </a></li>
+                        <li><a href="#">
+                            <span class="mif-database icon"></span>
+                            <span class="title">SQL Databases</span>
+                            <span class="counter">0</span>
+                        </a></li>
+                        <li><a href="#">
+                            <span class="mif-cogs icon"></span>
+                            <span class="title">Automation</span>
+                            <span class="counter">0</span>
+                        </a></li>
+                        <li><a href="#">
+                            <span class="mif-apps icon"></span>
+                            <span class="title">all items</span>
+                            <span class="counter">0</span>
+                        </a></li>
+                    </ul>
+                </div>
+                
+                <!-----------------------------sidebar---------------------------------->
 								<hr>
-								
-								<div class="table-responsive">
-								<table class="table table-hover">
+								<div class="cell auto-size padding20 bg-white">
+                    
+                    			<div class="table-responsive">
+								<table class="table striped hovered cell-hovered">
 									<tr>
 										<th><center>ลำดับ</center></th>
 										<th><center>ชื่อ</center></th>
@@ -124,7 +247,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										<td id="CustomerPostCode"><center></center></td>
 									</tr>
 								</table>
-								</div>	
+								</div>				
+                				</div>
+									
 								</div>
 								</center>
 							</div>
