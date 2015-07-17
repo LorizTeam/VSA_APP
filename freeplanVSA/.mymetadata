@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="freeplanVSA"
+  id="myeclipse.1435823280117"
+  context-root="/freeplanVSA"
+  j2ee-spec="5.0"
+  archive="freeplanVSA.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
