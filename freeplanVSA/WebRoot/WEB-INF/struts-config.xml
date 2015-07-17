@@ -3,10 +3,45 @@
 
 <struts-config>
   <data-sources />
-  <form-beans />
+  <form-beans> 
+  	<form-bean name="loginForm" type="com.vsa.form.LoginForm" />
+  </form-beans>
   <global-exceptions />
   <global-forwards />
-  <action-mappings />
+  
+	<action-mappings>
+  
+  <!--################################     Login     #################################-->
+   <action
+      attribute="loginForm"
+      input="/Login.jsp"
+      name="loginForm"
+      path="/login"
+      scope="request"
+      type="com.vsa.action.LoginAction" >
+      
+      <forward name="error" path="/Login.jsp" />
+      <forward name="success_amd" path="/mainAdmin.jsp" />
+      <forward name="success_agt" path="/mainAgent1.jsp" />
+      <forward name="success_acc" path="/mainAccounting.jsp" />
+    </action>
+  <!--################################     Login     #################################-->
+  
+  <!--################################     Register     #################################-->
+   <action
+      attribute="loginForm"
+      input="/Login.jsp"
+      name="loginForm"
+      path="/register"
+      scope="request"
+      type="com.vsa.action.RegisterAction" >
+      
+      <forward name="success" path="/Login.jsp" />
+    </action>
+  <!--################################     Register     #################################-->
+  
+  </action-mappings>
+
   <message-resources parameter="com.yourcompany.struts.ApplicationResources" />
 </struts-config>
 

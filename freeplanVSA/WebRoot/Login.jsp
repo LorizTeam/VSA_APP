@@ -3,6 +3,15 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+<%	String lockScreen = "";
+
+	if(request.getAttribute("lockScreen")!=null) {
+		lockScreen = request.getAttribute("lockScreen").toString();
+	}else{
+		lockScreen = "login";
+	}
+
+ %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -38,10 +47,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="panel-heading">
 						<div class="row">
 							<div class="col-xs-6">
-								<a href="#" class="active" id="login-form-link">Login</a>
+								<a href="#" <%if(lockScreen.equals("login")){%> class="active" <%} else {%>
+									 <%} %> id="login-form-link">Login</a>
 							</div>
 							<div class="col-xs-6">
-								<a href="#" id="register-form-link">Register</a>
+								<a href="#" <%if(lockScreen.equals("login")){%>  <%} else {%>
+									 class="active" <% } %> id="register-form-link">Register</a>
 							</div>
 						</div>
 						<hr>
@@ -49,12 +60,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="panel-body">
 						<div class="row">
 							<div class="col-lg-12">
-								<form id="login-form" action="" method="post" role="form" style="display: block;">
+								<form id="login-form" action="login.do" method="post" role="form" 
+									<%if(lockScreen.equals("login")){%> style="display: block;" <%} else {%>
+									style="display: none;" <%} %>  >
 									<div class="form-group">
-										<input type="email" name="email" id="customerEmail" tabindex="1" class="form-control" placeholder="Email Address" value="">
+										<input type="text" name="userName" id="userName" tabindex="1" class="form-control" placeholder="Email Address" value="">
 									</div>
 									<div class="form-group">
-										<input type="password" name="password" id="customerPassword" tabindex="2" class="form-control" placeholder="Password">
+										<input type="password" name="passWord" id="passWord" tabindex="2" class="form-control" placeholder="Password">
 									</div>
 									<div class="form-group">
 										<div class="row">
@@ -64,24 +77,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										</div>
 									</div>
 								</form>
-								<form id="register-form" action="" method="post" role="form" style="display: none;">
+								<form id="register-form" action="register.do" method="post" role="form" 
+									<%if(lockScreen.equals("login")){%> style="display: none;" <%} else {%>
+									style="display: block;" <%} %>  >
 									<div class="form-group">
-										<input type="email" name="email" id="customerEmail" tabindex="1" class="form-control" placeholder="Email Address" value="">
+										<input type="text" name="userName" id="userName" tabindex="1" class="form-control" placeholder="Email Address" value="">
 									</div>
 									<div class="form-group">
-										<input type="password" name="password" id="customerPassword" tabindex="2" class="form-control" placeholder="Password">
+										<input type="password" name="passWord" id="passWord" tabindex="2" class="form-control" placeholder="Password">
 									</div>
 									<div class="form-group">
-										<input type="password" name="confirm-password" id="confirmPassword" tabindex="2" class="form-control" placeholder="Confirm Password">
+										<input type="password" name="conFirmPassword" id="conFirmPassword" tabindex="2" class="form-control" placeholder="Confirm Password">
 									</div>
 									<div class="form-group">
-										<input type="text" name="name" id="customerName" tabindex="1" class="form-control" placeholder="Name" value="">
+										<input type="text" name="name" id="name" tabindex="1" class="form-control" placeholder="Name">
 									</div>
 									<div class="form-group">
-										<input type="text" name="surname" id="customerSurName" tabindex="1" class="form-control" placeholder="Surname" value="">
+										<input type="text" name="surName" id="surName" tabindex="1" class="form-control" placeholder="Surname">
 									</div>
 									<div class="form-group">
-										<input type="text" name="tel" id="customerTel" tabindex="1" class="form-control" placeholder="Telephone number" value="">
+										<input type="text" name="tel" id="tel" tabindex="1" class="form-control" placeholder="Telephone number">
 									</div>
 									<div class="form-group">
 										<div class="row">
