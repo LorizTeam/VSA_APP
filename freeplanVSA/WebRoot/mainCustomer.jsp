@@ -1,15 +1,18 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+<%@ page language="java" import="java.util.*"  pageEncoding="UTF-8"%>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%> 
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+<%@ page import ="javax.servlet.http.HttpServletRequest.*"%>
+<%@ page import ="javax.servlet.http.HttpServletResponse.*"%>
+<%@ page import ="javax.servlet.http.HttpSession.*"%>
+<% 
+String path = request.getContextPath (); 
+String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":" + request.getServerPort () + path + "/"; 
 %>
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
+<html lang="en">
   <head>
     <meta charset"UTF-8">
-    
-    <title>My JSP 'Customer.jsp' starting page</title>
+     
+    <title>Customer</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -85,132 +88,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </script>
 	</head>
 	<body class="bg-steel">
-	<div>
-		<ul class="m-menu fixed-top" >
-    <li><a href="#">หน้าแรก</a></li>
-    <li>
-        <a href="#" class="dropdown-toggle">ภาพรวม</a>
-        <div class="m-menu-container" data-role="dropdown" data-no-close="true">
-            <div class="grid no-margin">
-                <div class="row cells5">
-                    <div class="cell padding10">
-                        <img src="images/me.jpg">
-                    </div>
-                    <div class="cell colspan2">
-                        <h2 class="fg-white text-bold text-shadow">Metro UI CSS 3.0</h2>
-                        <p class="padding20 no-padding-top no-padding-left no-padding-bottom fg-white">
-                            Metro UI CSS a set of styles to create a site with an interface similar to Windows 8.
-                        </p>
-                        <p class="fg-white text-bold">
-                            Sergey Pimenov
-                        </p>
-                    </div>
-                    <div class="cell colspan2">
-                        <ul class="unstyled-list">
-                            <li><h3 class="text-shadow">Begin with Metro UI CSS</h3></li>
-                            <li><a class="fg-white" href="#">Requirements</a></li>
-                            <li><a class="fg-white" href="#">Doctype</a></li>
-                            <li><a class="fg-white" href="#">JavaScript</a></li>
-                            <li><a class="fg-white" href="#">Browsers support</a></li>
-                            <li><a class="fg-white" href="#">License</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
-    <li>
-        <a href="#" class="dropdown-toggle">Download</a>
-        <div class="m-menu-container" data-role="dropdown" data-no-close="true">
-            <ul class="inline-list">
-                <li><a href="#">Windows</a></li>
-                <li><a href="#">Office</a></li>
-                <li><a href="#">Skype</a></li>
-                <li><a href="#">Internet Explorer</a></li>
-                <li><a href="#">Visio</a></li>
-            </ul>
-        </div>
-    </li>
-    <li>
-        <a href="#" class="dropdown-toggle">Devices</a>
-        <div class="m-menu-container" data-role="dropdown">
-            <ul class="inline-list">
-                <li><a href="#">Surface</a></li>
-                <li><a href="#">Xbox</a></li>
-                <li><a href="#">PC & Tables</a></li>
-                <li><a href="#">Phones</a></li>
-                <li><a href="#">Accessories</a></li>
-            </ul>
-        </div>
-    </li>
-    <li><a href="#">ขอความช่วยเหลือ</a></li>
-    <li><a href="#">Store</a></li>
-    
 
-    <li class="place-right">
-    	
-        <a href="#" class="dropdown-toggle"><span class="mif-cog"></span>User Name</a>
-        <div class="d-menu padding10 place-right no-margin-top block-shadow" data-role="dropdown">
-            <h2 class="text-light">Quick settings</h2>
-                <ul class="inline-list">
-                    <li><a href="" class="fg-black fg-hover-white">Profile</a></li>
-                    <li><a href="" class="fg-black fg-hover-white">Security</a></li>
-                    <li><a href="" class="fg-black fg-hover-white">Exit</a></li>
-                </ul>
-        
-        </div>
-    </li>
-    
-</ul>
-	</div>
-    
-		<!---------------------Menu-------------------------------------------->
-		
-		<!-----------------------------sidebar---------------------------------->
-		 <div class="page-content">
+					<!-- /.menu top -->	
+					<jsp:include page="/menu_top.jsp"></jsp:include>
+                    <!-- /.menu top --> 
+                    
+        <!-- /.page-content -->	            
+        <div class="page-content">
         <div class="flex-grid no-responsive-future" style="height: 100%;">
-            <div class="row" style="height: 100%">
-                <div class="cell size-x200" id="cell-sidebar" style="background-color: #71b1d1; height: 100%">
-                    <ul class="sidebar">
-                        <li><a href="#">
-                            <span class="mif-apps icon"></span>
-                            <span class="title">all items</span>
-                            <span class="counter">0</span>
-                        </a></li>
-                        <li><a href="#">
-                            <span class="mif-vpn-publ icon"></span>
-                            <span class="title">websites</span>
-                            <span class="counter">0</span>
-                        </a></li>
-                        <li class="active"><a href="#">
-                            <span class="mif-drive-eta icon"></span>
-                            <span class="title">Virtual machines</span>
-                            <span class="counter">2</span>
-                        </a></li>
-                        <li><a href="#">
-                            <span class="mif-cloud icon"></span>
-                            <span class="title">Cloud services</span>
-                            <span class="counter">0</span>
-                        </a></li>
-                        <li><a href="#">
-                            <span class="mif-database icon"></span>
-                            <span class="title">SQL Databases</span>
-                            <span class="counter">0</span>
-                        </a></li>
-                        <li><a href="#">
-                            <span class="mif-cogs icon"></span>
-                            <span class="title">Automation</span>
-                            <span class="counter">0</span>
-                        </a></li>
-                        <li><a href="#">
-                            <span class="mif-apps icon"></span>
-                            <span class="title">all items</span>
-                            <span class="counter">0</span>
-                        </a></li>
-                    </ul>
-                </div>
-                
-                <!-----------------------------sidebar---------------------------------->
+         <div class="row" style="height: 100%">     
+                   
+                    <!-- /.menu left -->	
+                    <jsp:include page="/menu_left.jsp"></jsp:include>
+                    <!-- /.menu left -->
+				 
+                	<!-----------------------------table---------------------------------->
 								<hr>
 								<div class="cell auto-size padding20 bg-white">
                     
@@ -249,19 +141,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</table>
 								</div>				
                 				</div>
-									
-								</div>
-								</center>
-							</div>
-						</div>
-						
-						
-						
-						
-						
-						
-						
-						
-						
+                		<!-----------------------------table---------------------------------->		
+	 					
+	 					</div>
+					</center>
+				</div>
+			</div>
+		 <!-- /.page-content -->	 				
   </body>
 </html>
