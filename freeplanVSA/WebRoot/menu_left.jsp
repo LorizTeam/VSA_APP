@@ -92,37 +92,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <ul class="sidebar">
                         <li><a href="#">
                             <span class="mif-apps icon"></span>
-                            <span class="title">all items</span>
+                            <span class="title">Project</span>
                             <span class="counter">0</span>
                         </a></li>
                         <li><a href="#">
                             <span class="mif-vpn-publ icon"></span>
-                            <span class="title">websites</span>
+                            <span class="title">Detail</span>
                             <span class="counter">0</span>
                         </a></li>
-                        <li class="active"><a href="#">
+                        <li class="active"><a href="/freeplanVSA/mainCustomer.jsp">
                             <span class="mif-drive-eta icon"></span>
-                            <span class="title">Virtual machines</span>
+                            <span class="title">Customer</span>
                             <span class="counter">2</span>
                         </a></li>
                         <li><a href="#">
                             <span class="mif-cloud icon"></span>
-                            <span class="title">Cloud services</span>
+                            <span class="title">Department</span>
                             <span class="counter">0</span>
                         </a></li>
                         <li><a href="#">
                             <span class="mif-database icon"></span>
-                            <span class="title">SQL Databases</span>
+                            <span class="title">Employee</span>
                             <span class="counter">0</span>
                         </a></li>
                         <li><a href="#">
                             <span class="mif-cogs icon"></span>
-                            <span class="title">Automation</span>
-                            <span class="counter">0</span>
-                        </a></li>
-                        <li><a href="#">
-                            <span class="mif-apps icon"></span>
-                            <span class="title">all items</span>
+                            <span class="title">Material</span>
                             <span class="counter">0</span>
                         </a></li>
                     </ul>
