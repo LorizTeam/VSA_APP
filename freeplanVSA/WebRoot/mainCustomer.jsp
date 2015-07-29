@@ -106,23 +106,18 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
                 	<!-----------------------------table---------------------------------->
 								<hr>
 								<div class="cell auto-size padding20 bg-white">
-                    		<div class="row">
-                    			<div class="table-responsive">
-								<table class="table striped hovered cell-hovered" id="dataTables-customer">
+							 
+                    			<div class="row">
+                    			<div class="col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 table-responsive">
+								<table class="table striped hovered bordered cell-hovered" id="dataTables-customer">
+									<thead>
 									<tr>
 										<th><center>ลำดับ</center></th>
 										<th><center>ชื่อ นามสกุล</center></th>
+										<th><center>อีเมล์</center></th>
 										<th><center>เบอร์โทรศัพท์</center></th>
-										<th><center>วันเดือนปีเกิด</center></th>
-										<th><center>บ้านเลขที่</center></th>
-										<th><center>หมู่</center></th>
-										<th><center>หมู่บ้าน</center></th>
-										<th><center>ถนน</center></th>
-										<th><center>ตำบล</center></th>
-										<th><center>อำเภอ</center></th>
-										<th><center>จังหวัด</center></th>
-										<th><center>รหัสไปรษณีย์</center></th>
 									</tr>
+									</thead>
 									<tbody>
                 					<%	if (request.getAttribute("customerList") != null) {
 									List customerList = (List)request.getAttribute("customerList");
@@ -133,68 +128,26 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 					
 									%>
                 					<tr>
-                						<td align="center"><%=x %></td>
+                						<td align="center"><%=x%></td>
                 						<td align="center"><a href="javascript:getSchedule('<%=cust.getCustomerID()%>','<%=cust.getCustomerName()%>',
                 						'<%=cust.getCustomerSurName()%>','<%=cust.getCustomerTel()%>',
-                						'<%=cust.getCustomerEmail()%>');"><%=cust.getCustomerName()%></a>
+                						'<%=cust.getCustomerEmail()%>');"><%=cust.getCustomerName()%> <%=cust.getCustomerSurName()%></a>
                 						</td>
                 						<td align="center"><%=cust.getCustomerEmail()%></td>
                 						<td align="center"><%=cust.getCustomerTel()%></td>
-                					 
-                						<td align="center">
-                						
-                							<input type="checkbox" id="chk1" name="chk1" value="<%=cust.getCustomerID()%>">
-                				
-                						</td>
                 					</tr>
                 					<% 	}
                 						} else {
                 					 %>
                 					<tr><td align="center" colspan="7">No Data Found</td></tr>
-                					<tr>
-										<td id="CustomerID"><center></center></td>
-										<td id="CustomerName"><center></center></td>
-										<td id="CustomerSurname"><center></center></td>
-										<td id="CustomerTel"><center></center></td>
-										<td id="CustomerDOB"><center></center></td>
-										<td id="CustomerHouseNo"><center></center></td>
-										<td id="CustomerVillageNo"><center></center></td>
-										<td id="CustomerVillage"><center></center></td>
-										<td id="CustomerLane"><center></center></td>
-										<td id="CustomerSubDistrict"><center></center></td>
-										<td id="CustomerDistrict"><center></center></td>
-										<td id="CustomerProvince"><center></center></td>
-										<td id="CustomerPostCode"><center></center></td>
-									</tr>
+                					
 									<%	} %>
                 				</tbody>
 								</table>
 								</div>				
                 				</div>
-                				</div>
                 				
-                			<br/>
-    				<div class="row">
-                		<div class="col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 table-responsive">
-                			<table class="table table-bordered table-striped table-hover" id="dataTables-type">
-                				<thead>
-                					<th>ลำดับ</th>
-                					<th>รายละเอียด</th>
-                				</thead>
-                				<tbody>
-                					
-									<tr>
-										<td align="center">test1</a></td>
-										<td align="center">test1</td>
-									</tr>
-									 <tr>
-										<td align="center">test2</a></td>
-										<td align="center">test2</td>
-									</tr>
-                				</tbody>
-                			</table>
-                		</div>
-                	</div>
+                				</div>
                 		</html:form>
                 		<!-----------------------------table---------------------------------->		
 	 					
@@ -204,13 +157,15 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 			</div>
 		 <!-- /.page-content -->	
  
-	<!-- DataTables JavaScript -->
+<!-- DataTables JavaScript -->
+ 	<!-- jQuery -->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
 	<script src="bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.js"></script>
-
+ <!-- DataTables JavaScript -->
 	<script>
     $(document).ready(function() {
-        $('#dataTables-type').DataTable({
+        $('#dataTables-customer').DataTable({
                 responsive: true
         });
     });
