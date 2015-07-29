@@ -5,6 +5,7 @@
   <data-sources />
   <form-beans> 
   	<form-bean name="loginForm" type="com.vsa.form.LoginForm" />
+  	<form-bean name="customerForm" type="com.vsa.form.CustomerForm" />
   </form-beans>
   <global-exceptions />
   <global-forwards />
@@ -39,6 +40,30 @@
       <forward name="success" path="/Login.jsp" />
     </action>
   <!--################################     Register     #################################-->
+  
+  <!--################################     Customer     #################################-->
+   <action
+      attribute="customerForm"
+      input="/mainCustomer.jsp"
+      name="customerForm"
+      path="/customerStart"
+      scope="request"
+      type="com.vsa.action.CustomerStartAction" >
+      
+      <forward name="success" path="/mainCustomer.jsp" />
+    </action>
+    
+    <action
+      attribute="customerForm"
+      input="/mainCustomer.jsp"
+      name="customerForm"
+      path="/customer"
+      scope="request"
+      type="com.vsa.action.CustomerAction" >
+      
+      <forward name="success" path="/mainCustomer.jsp" />
+    </action>
+  <!--################################     Customer     #################################-->
   
   </action-mappings>
 

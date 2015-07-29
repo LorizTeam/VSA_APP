@@ -100,7 +100,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <span class="title">Detail</span>
                             <span class="counter">0</span>
                         </a></li>
-                        <li class="active"><a href="/freeplanVSA/mainCustomer.jsp">
+                        <li class="active"><a href="customerStart.do">
                             <span class="mif-drive-eta icon"></span>
                             <span class="title">Customer</span>
                             <span class="counter">2</span>
