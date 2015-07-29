@@ -22,12 +22,69 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 
-	<link rel="stylesheet" href="flat-ui/dist/css/vendor/bootstrap.css">
-	<link rel="stylesheet" href="flat-ui/dist/css/flat-ui.css">
-	<link rel="stylesheet" href="bootstrap/css/dashboard.css">
-	
-    <script type="text/javascript" src="flat-ui/dist/js/vendor/jquery.min.js"></script>	
-	<script type="text/javascript" src="flat-ui/dist/js/flat-ui.js"></script>
+	<!--Loading CSS Core-->
+		<link rel="stylesheet" href="metro-ui/build/css/metro.css" />
+		<link rel="stylesheet" href="metro-ui/build/css/metro-icons.css" />
+		
+		
+		<!--Loading JS-->
+		
+		<script src="metro-ui/js/jquery-2.1.4.min.js"></script>
+		<script src="metro-ui/js/jquery.dataTables.min.js"></script>
+		<script src="metro-ui/build/js/metro.js"></script>
+		
+		<!--Use Custom Style-->
+		<style>
+        html, body {
+            height: 100%;
+        }
+        .page-content {
+            padding-top: 0;
+            min-height: 100%;
+            height: 100%;
+        }
+        .table .input-control.checkbox {
+            line-height: 1;
+            min-height: 0;
+            height: auto;
+        }
+
+        @media screen and (max-width: 800px){
+            #cell-sidebar {
+                flex-basis: 52px;
+            }
+        }
+    </style>
+
+    <script>
+        $(function(){
+            $(window).on('resize', function(){
+                if ($(this).width() <= 800) {
+                    $(".sidebar").addClass('compact');
+                } else {
+                    $(".sidebar").removeClass('compact');
+                }
+            });
+        });
+
+        function pushMessage(t){
+            var mes = 'Info|Implement independently';
+            $.Notify({
+                caption: mes.split("|")[0],
+                content: mes.split("|")[1],
+                type: t
+            });
+        }
+
+        $(function(){
+            $('.sidebar').on('click', 'li', function(){
+                if (!$(this).hasClass('active')) {
+                    $('.sidebar li').removeClass('active');
+                    $(this).addClass('active');
+                }
+            })
+        })
+    </script>
 	
   </head>
   
