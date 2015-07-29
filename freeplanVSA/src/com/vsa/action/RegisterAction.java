@@ -57,7 +57,7 @@ public class RegisterAction extends Action {
 					request.setAttribute("alertMessage", "Password ซ้ำ");
 					request.setAttribute("lockScreen", "register");
 				}else{
-					loginDB.registerNew(userName, passWord, name, "amd", date, tel);
+					loginDB.registerNew(userName, passWord, name, "adm", date, tel);
 					request.setAttribute("lockScreen", "login");
 				}
 			}else{
