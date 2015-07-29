@@ -21,7 +21,7 @@
       type="com.vsa.action.LoginAction" >
       
       <forward name="error" path="/Login.jsp" />
-      <forward name="success_amd" path="/mainAdmin.jsp" />
+      <forward name="success_adm" path="/mainAdmin.jsp" />
       <forward name="success_agt" path="/mainAgent1.jsp" />
       <forward name="success_acc" path="/mainAccounting.jsp" />
     </action>

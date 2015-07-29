@@ -56,7 +56,7 @@ public class LoginAction extends Action {
 					String type = loginForm.getType();
 					
 					if(type.equals("adm")){
-						forwardText = "success_amd";
+						forwardText = "success_adm";
 					}else if(type.equals("acc")){
 						forwardText = "success_acc";
 					}else if(type.equals("agt")){
