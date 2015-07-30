@@ -5,10 +5,19 @@
 <%@ page import ="javax.servlet.http.HttpServletResponse.*"%>
 <%@ page import ="javax.servlet.http.HttpSession.*"%>
 <%@ page import="com.vsa.form.CustomerForm" %>
+<%@ page import="com.vsa.data.CustomerDB" %>
 <% 
 String path = request.getContextPath (); 
 String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":" + request.getServerPort () + path + "/"; 
 %>
+<% 	List customerList1 = null;
+	if (request.getAttribute("customerList") == null) {
+	CustomerDB customerDB = new CustomerDB();
+	customerList1 = customerDB.GetCustomerList("", "");
+	}
+ %>
+
+
 <html lang="en">
   <head>
     <meta charset"UTF-8">
@@ -26,16 +35,10 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 
 	<!--Loading CSS Core-->
 		<link rel="stylesheet" href="metro-ui/build/css/metro.css" />
-		<link rel="stylesheet" href="metro-ui/build/css/metro-icons.css" />
+		<link rel="stylesheet" href="metro-ui/build/css/metro-icons.css" /> 
+		<link rel="stylesheet" href="css/jquery.dataTables.css" /> 
+	<!--Loading JS-->
 		
-		
-		<!--Loading JS-->
-		
-		<script src="metro-ui/js/jquery-2.1.4.min.js"></script>
-		<script src="metro-ui/js/jquery.dataTables.min.js"></script>
-		<script src="metro-ui/build/js/metro.js"></script>
-		
-		<!--Use Custom Style-->
 		<style>
         html, body {
             height: 100%;
@@ -56,6 +59,20 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
                 flex-basis: 52px;
             }
         }
+        .widthform{
+        	width:100% !important;
+        }
+   
+    	th, td { white-space: nowrap; }
+    	div.dataTables_wrapper {
+        width: 800px;
+        margin: 0 auto;
+    }
+    .w{
+    	display:block;
+    	width:100%;
+    	padding:0px!important;
+    }
     </style>
 
     <script>
@@ -96,31 +113,36 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
                     
         <!-- /.page-content -->	            
         <div class="page-content">
-        <div class="flex-grid no-responsive-future" style="height: 100%;">
-         <div class="row" style="height: 100%">     
+        <div class="flex-grid " style="height: 100%;">
+         <div class="row" style="height: 100%;">     
                    
                     <!-- /.menu left -->	
                     <jsp:include page="/menu_left.jsp"></jsp:include>
                     <!-- /.menu left -->
-		<html:form action="/customer">		 
+		<html:form action="/customer" styleClass="bg-white w" >		 
                 	<!-----------------------------table---------------------------------->
-								<hr>
-								<div class="cell auto-size padding20 bg-white">
-							 
-                    			<div class="row">
-                    			<div class="col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 table-responsive">
-								<table class="table striped hovered bordered cell-hovered" id="dataTables-customer">
+					
+								<table class="display w" cellspacing="0" width="100%" id="customer">
 									<thead>
 									<tr>
 										<th><center>ลำดับ</center></th>
 										<th><center>ชื่อ นามสกุล</center></th>
-										<th><center>อีเมล์</center></th>
 										<th><center>เบอร์โทรศัพท์</center></th>
+										<th><center>อีเมล์</center></th>
+										<th><center>วันเกิด</center></th>
+										<th><center>บ้านเลขที่</center></th>
+										<th><center>ซอยที่</center></th>
+										<th><center>หมู่บ้าน</center></th>
+										<th><center>ถนน</center></th>
+										<th><center>ตำบล</center></th>
+										<th><center>อำเภอ</center></th>
+										<th><center>จังหวัด</center></th>
+										<th><center>รหัสไปษณีย์</center></th>
 									</tr>
 									</thead>
 									<tbody>
-                					<%	if (request.getAttribute("customerList") != null) {
-									List customerList = (List)request.getAttribute("customerList");
+									<%	if (customerList1 != null) {
+									List customerList = customerList1;
 									int x = 0;
 									for (Iterator iter = customerList.iterator(); iter.hasNext();) {
 							  			x++;
@@ -129,44 +151,60 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 									%>
                 					<tr>
                 						<td align="center"><%=x%></td>
-                						<td align="center"><a href="javascript:getSchedule('<%=cust.getCustomerID()%>','<%=cust.getCustomerName()%>',
-                						'<%=cust.getCustomerSurName()%>','<%=cust.getCustomerTel()%>',
-                						'<%=cust.getCustomerEmail()%>');"><%=cust.getCustomerName()%> <%=cust.getCustomerSurName()%></a>
-                						</td>
-                						<td align="center"><%=cust.getCustomerEmail()%></td>
+                						<td align="center"><%=cust.getCustomerName()%> <%=cust.getCustomerSurName()%></td>
                 						<td align="center"><%=cust.getCustomerTel()%></td>
+                						<td align="center"><%=cust.getCustomerEmail()%></td>
+                						<td align="center"><%=cust.getCustomerDOB()%></td>
+                						<td align="center"><%=cust.getCustomerHouseNo()%></td>
+                						<td align="center"><%=cust.getCustomerVillageNo()%></td>
+                						<td align="center"><%=cust.getCustomerVillage()%></td>
+                						<td align="center"><%=cust.getCustomerLane()%></td>
+                						<td align="center"><%=cust.getCustomerSubDistrict()%></td>
+                						<td align="center"><%=cust.getCustomerDistrict()%></td>
+                						<td align="center"><%=cust.getCustomerProvince()%></td>
+                						<td align="center"><%=cust.getCustomerPostCode()%></td>
                 					</tr>
                 					<% 	}
                 						} else {
                 					 %>
-                					<tr><td align="center" colspan="7">No Data Found</td></tr>
+                					<tr><td align="center" colspan="9">No Data Found</td></tr>
                 					
 									<%	} %>
-                				</tbody>
-								</table>
-								</div>				
-                				</div>
+                					</tbody>
+								</table>	
                 				
-                				</div>
                 		</html:form>
                 		<!-----------------------------table---------------------------------->		
 	 					
 	 					</div>
-					</center>
+					
 				</div>
 			</div>
 		 <!-- /.page-content -->	
- 
-<!-- DataTables JavaScript -->
- 	<!-- jQuery -->
-    <script src="bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
-	<script src="bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.js"></script>
- <!-- DataTables JavaScript -->
+ 	<!-- DataTables JavaScript -->
+	<script src="js/jquery-1.11.1.min.js"></script>
+   <script src="js/jquery.dataTables.min.js"></script>
+   <!--Use Custom Style-->
+   <script src="metro-ui/build/js/metro.js"></script>
+   <!-- DataTables JavaScript -->
 	<script>
     $(document).ready(function() {
-        $('#dataTables-customer').DataTable({
-                responsive: true
+    	$.extend( $.fn.dataTable.defaults, {
+		    "searching": true,
+		    "ordering": false
+		} );
+        $('#customer').DataTable({
+        	 "scrollX":true,
+        	 "scrollY":468,
+               "language": {
+            "lengthMenu": "Display _MENU_ records per page",
+            "zeroRecords": "Nothing found - sorry",
+            "info": "Showing page _PAGE_ of _PAGES_",
+            "infoEmpty": "No records available",
+            "infoFiltered": "(filtered from _MAX_ total records)"
+        },
+        "lengthMenu": [[10, 25, 50, 100,-1], [10, 25, 50, 100, "All"]]
+        
         });
     });
     

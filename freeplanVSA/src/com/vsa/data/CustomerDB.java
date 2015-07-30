@@ -32,8 +32,11 @@ public class CustomerDB {
 			
 			String sqlStmt = "SELECT customer_id, customer_name, customer_surname, customer_tel, customer_email, " +
 				"customer_dob, customer_houseno, customer_villageno, customer_village, customer_lane, customer_subdistrict, customer_district, " +
-				"customer_province, customer_postcode " +
-			"FROM customer_master " +
+				"customer_province, customer_postcode, b.DISTRICT_NAME, c.AMPHUR_NAME, d.PROVINCE_NAME " +
+			"FROM customer_master a " +
+			"Left JOIN district b on(b.DISTRICT_ID = a.customer_subdistrict) " +
+			"Left JOIN amphur c on(c.AMPHUR_ID = a.customer_district) " +
+			"Left JOIN province d on(d.PROVINCE_ID = a.customer_province) " +
 			"WHERE "; 
 			if(!customerID.equals("")) sqlStmt = sqlStmt+ "customer_id like '"+customerID+"%' AND ";
 			if(!customerName.equals("")) sqlStmt = sqlStmt+ "customer_name like '"+customerName+"%' AND ";
@@ -54,10 +57,12 @@ public class CustomerDB {
 				customerVillageNo 	= rs.getString("customer_villageno"); 
 				customerVillage 	= rs.getString("customer_village");
 				customerLane 		= rs.getString("customer_lane"); 
-				customerSubDistrict = rs.getString("customer_subdistrict"); 
-				customerDistrict 	= rs.getString("customer_district");
-				customerProvince 	= rs.getString("customer_province"); 
+				customerSubDistrict = rs.getString("DISTRICT_NAME"); 
+				customerDistrict 	= rs.getString("AMPHUR_NAME");
+				customerProvince 	= rs.getString("PROVINCE_NAME"); 
 				customerPostCode 	= rs.getString("customer_postcode");
+				
+				if(customerDOB!=null) customerDOB = dateUtil.CnvToDDMMYYYY(customerDOB);
 				
 				customerList.add(new CustomerForm(customerID, customerName, customerSurName, customerTel, 
 						customerEmail, customerDOB, customerHouseNo, customerVillageNo, customerVillage, 
