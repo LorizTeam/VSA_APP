@@ -1,9 +1,18 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ page import="com.vsa.form.CustomerForm" %>
+<%@ page import="com.vsa.data.CustomerDB" %>
+
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
+<% 	List customerList1 = null; int x = 0;
+	if (request.getAttribute("customerList") == null) {
+	CustomerDB customerDB = new CustomerDB();
+	customerList1 = customerDB.GetCustomerList("", "");
+	}
+ %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -103,7 +112,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <li class="active"><a href="mainCustomer.jsp">
                             <span class="mif-drive-eta icon"></span>
                             <span class="title">Customer</span>
-                            <span class="counter">2</span>
+                            <%	if (customerList1 != null) {
+									List customerList = customerList1;
+									
+									for (Iterator iter = customerList.iterator(); iter.hasNext();) {
+							  			x++;
+							  			CustomerForm cust = (CustomerForm) iter.next();
+					
+							%>
+							<% }
+                            } %>
+                            <span class="counter"><%=x %></span>
+                            
                         </a></li>
                         <li><a href="#">
                             <span class="mif-cloud icon"></span>

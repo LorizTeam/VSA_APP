@@ -42,11 +42,13 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 		<style>
         html, body {
             height: 100%;
+            overflow: hidden;
         }
         .page-content {
             padding-top: 0;
             min-height: 100%;
             height: 100%;
+            font-size: 70%;
         }
         .table .input-control.checkbox {
             line-height: 1;
@@ -65,7 +67,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
    
     	th, td { white-space: nowrap; }
     	div.dataTables_wrapper {
-        width: 800px;
+        width: 95%;
         margin: 0 auto;
     }
     .w{
@@ -114,15 +116,57 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
         <!-- /.page-content -->	            
         <div class="page-content">
         <div class="flex-grid " style="height: 100%;">
+        
          <div class="row" style="height: 100%;">     
                    
                     <!-- /.menu left -->	
                     <jsp:include page="/menu_left.jsp"></jsp:include>
                     <!-- /.menu left -->
-		<html:form action="/customer" styleClass="bg-white w" >		 
+        
+		<html:form action="/customer" styleClass="bg-white" >
+		<div class="row" style="padding-left: 2.5%; margin-top: 1%;">
+        <label style="font-size: 160%; font-weight: bold;"> ชื่อ</label>  &nbsp;
+        <input type="text" id="customerName" name="customerName" size="15" maxlength="50"/>&nbsp;
+        <label style="font-size: 160%; font-weight: bold;"> นามสกุล</label>  &nbsp;
+		<input type="text" id="customerSurName" name="customerSurName" size="15" maxlength="50"/>&nbsp;
+		<label style="font-size: 160%; font-weight: bold;"> เบอร์โทรศัพท์</label>  &nbsp;
+        <input type="text" id="customerTel" name="customerTel" size="8" maxlength="10"/>&nbsp;
+        <label style="font-size: 160%; font-weight: bold;"> อีเมลล์</label>  &nbsp;
+        <input type="text" id="customerEmail" name="customerEmail" size="30" maxlength="50"/>&nbsp;
+        <label style="font-size: 160%; font-weight: bold;"> วันเกิด</label>  &nbsp;
+        <input type="text" id="customerDOB" name="customerDOB" size="9" maxlength="10"/>&nbsp;
+        <label style="font-size: 160%; font-weight: bold;"> บ้านเลขที่</label>  &nbsp;
+        <input type="text" id="customerHouseNo" name="customerHouseNo" size="5" maxlength="9"/>&nbsp;
+        </div>
+        <div class="row" style="padding-left: 2.5%; margin-top: 1%;">
+        <label style="font-size: 160%; font-weight: bold;"> ซอย</label>  &nbsp;
+        <input type="text" id="customerVillageNo" name="customerVillageNo" size="15" maxlength="50"/>&nbsp;
+        <label style="font-size: 160%; font-weight: bold;"> หมู่บ้าน</label>  &nbsp;
+		<input type="text" id="customerVillage" name="customerVillage" size="15" maxlength="50"/>&nbsp;
+		<label style="font-size: 160%; font-weight: bold;"> ถนน</label>  &nbsp;
+        <input type="text" id="customerLane" name="customerLane" size="8" maxlength="10"/>&nbsp;
+        <label style="font-size: 160%; font-weight: bold;"> ตำบล</label>  &nbsp;
+        <select id="customerSubDistrict" name="customerSubDistrict">
+        	<option value="">1</option>
+        </select>&nbsp;
+        <label style="font-size: 160%; font-weight: bold;"> อำเภอ</label>  &nbsp;
+        <select id="customerDistrict" name="customerDistrict">
+        	<option value="">1</option>
+        </select>&nbsp;
+        <label style="font-size: 160%; font-weight: bold;"> จังหวัด</label>  &nbsp;
+        <select id="customerProvince" name="customerProvince">
+        	<option value="">1</option>
+        </select>&nbsp;
+        <label style="font-size: 160%; font-weight: bold;"> รหัสไปรษณีย์</label>  &nbsp;
+        <input type="text" id="customerPostCode" name="customerPostCode" size="5" maxlength="9"/>&nbsp;
+        </div>
+        <div class="row" style="padding-left: 2.5%; margin-top: 1%;">
+        <input class="button success block-shadow-success text-shadow" type="submit" id="" name="" value="เพิ่ม"/>
+        </div>
+        	 
                 	<!-----------------------------table---------------------------------->
-					
-								<table class="display w" cellspacing="0" width="100%" id="customer">
+					<div class="row">
+								<table class="display" cellspacing="0" width="100%" id="customer" style="font-size: 110%;">
 									<thead>
 									<tr>
 										<th><center>ลำดับ</center></th>
@@ -172,7 +216,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 									<%	} %>
                 					</tbody>
 								</table>	
-                				
+                		</div>			
                 		</html:form>
                 		<!-----------------------------table---------------------------------->		
 	 					
@@ -195,7 +239,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 		} );
         $('#customer').DataTable({
         	 "scrollX":true,
-        	 "scrollY":468,
+        	 "scrollY":400,
                "language": {
             "lengthMenu": "Display _MENU_ records per page",
             "zeroRecords": "Nothing found - sorry",
