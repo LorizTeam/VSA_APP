@@ -26,13 +26,14 @@ public class CustomerDB {
 		String customerSurName = "", customerTel = "", customerEmail = "";
 		String customerDOB = "", customerHouseNo = "", customerVillageNo = "", customerVillage = "", customerLane = ""; 
 		String customerSubDistrict = "", customerDistrict = "", customerProvince = "", customerPostCode = "";
+		String subDistrictID = "", districtID = "", provinceID = "";
 		try {
 		
 			conn = agent.getConnectMYSql();
 			
 			String sqlStmt = "SELECT customer_id, customer_name, customer_surname, customer_tel, customer_email, " +
 				"customer_dob, customer_houseno, customer_villageno, customer_village, customer_lane, customer_subdistrict, customer_district, " +
-				"customer_province, customer_postcode, b.DISTRICT_NAME, c.AMPHUR_NAME, d.PROVINCE_NAME " +
+				"customer_province, customer_postcode, b.DISTRICT_ID, b.DISTRICT_NAME, c.AMPHUR_ID, c.AMPHUR_NAME, d.PROVINCE_ID, d.PROVINCE_NAME " +
 			"FROM customer_master a " +
 			"Left JOIN district b on(b.DISTRICT_ID = a.customer_subdistrict) " +
 			"Left JOIN amphur c on(c.AMPHUR_ID = a.customer_district) " +
@@ -62,11 +63,15 @@ public class CustomerDB {
 				customerProvince 	= rs.getString("PROVINCE_NAME"); 
 				customerPostCode 	= rs.getString("customer_postcode");
 				
+				subDistrictID = rs.getString("DISTRICT_ID");
+				districtID 	= rs.getString("AMPHUR_ID");
+				provinceID 	= rs.getString("PROVINCE_ID");
+				
 				if(customerDOB!=null) customerDOB = dateUtil.CnvToDDMMYYYY(customerDOB);
 				
 				customerList.add(new CustomerForm(customerID, customerName, customerSurName, customerTel, 
 						customerEmail, customerDOB, customerHouseNo, customerVillageNo, customerVillage, 
-						customerLane, customerSubDistrict, customerDistrict, customerProvince, customerPostCode));
+						customerLane, customerSubDistrict, customerDistrict, customerProvince, customerPostCode, subDistrictID, districtID, provinceID));
 			}
 			rs.close();
 			pStmt.close();
@@ -77,15 +82,15 @@ public class CustomerDB {
 		return customerList;
 	 }
 
-	public void AddCustomer(String customerID, String customerName, String customerSurName, String customerTel, String customerEmail, 
+	public void AddCustomer(String customerName, String customerSurName, String customerTel, String customerEmail, 
 			String customerDOB, String customerHouseNo, String customerVillageNo, String customerVillage, String customerLane, 
 			String customerSubDistrict, String customerDistrict, String customerProvince, String customerPostCode)  throws Exception{
 		conn = agent.getConnectMYSql();
 		
-		String sqlStmt = "INSERT IGNORE INTO customer_master(customer_id, customer_name, customer_surname, customer_tel, customer_email, " +
+		String sqlStmt = "INSERT IGNORE INTO customer_master(customer_name, customer_surname, customer_tel, customer_email, " +
 				"customer_dob, customer_houseno, customer_villageno, customer_village, customer_lane, customer_subdistrict, customer_district, " +
 				"customer_province, customer_postcode) " +
-		"VALUES ('"+customerID+"', '"+customerName+"', '"+customerSurName+"', '"+customerTel+"', '"+customerEmail+"', '"+customerDOB+"', " +
+		"VALUES ('"+customerName+"', '"+customerSurName+"', '"+customerTel+"', '"+customerEmail+"', '"+customerDOB+"', " +
 				"'"+customerHouseNo+"', '"+customerVillageNo+"', '"+customerVillage+"', '"+customerLane+"', '"+customerSubDistrict+"', " +
 				"'"+customerDistrict+"', '"+customerProvince+"', '"+customerPostCode+"')";
 		//System.out.println(sqlStmt);
@@ -100,9 +105,9 @@ public class CustomerDB {
 		conn = agent.getConnectMYSql();
 		
 		String sqlStmt = "UPDATE customer_master set customer_name = '"+customerName+"', customer_surname = '"+customerSurName+"', " +
-				"customer_tel = '"+customerTel+"', customer_email = '"+customerEmail+"', customer_dob '"+customerDOB+"', customer_houseno '"+customerHouseNo+"', " +
-				"customer_villageno = '"+customerVillageNo+"', customer_village = '"+customerVillage+"', customer_lane '"+customerLane+"', customer_subdistrict '"+customerSubDistrict+"', " +
-				"customer_district = '"+customerDistrict+"', customer_province = '"+customerProvince+"', customer_postcode '"+customerPostCode+"' " +
+				"customer_tel = '"+customerTel+"', customer_email = '"+customerEmail+"', customer_dob = '"+customerDOB+"', customer_houseno = '"+customerHouseNo+"', " +
+				"customer_villageno = '"+customerVillageNo+"', customer_village = '"+customerVillage+"', customer_lane = '"+customerLane+"', customer_subdistrict = '"+customerSubDistrict+"', " +
+				"customer_district = '"+customerDistrict+"', customer_province = '"+customerProvince+"', customer_postcode = '"+customerPostCode+"' " +
 				"WHERE customer_id = '"+customerID+"'";
 		//System.out.println(sqlStmt);
 		pStmt = conn.createStatement();
@@ -113,7 +118,7 @@ public class CustomerDB {
 	public void DeleteCustomer(String customerID)  throws Exception{
 		conn = agent.getConnectMYSql();
 		
-		String sqlStmt = "DELETE customer_master "+
+		String sqlStmt = "DELETE FROM customer_master "+
 		"WHERE customer_id = '"+customerID+"'";
 		//System.out.println(sqlStmt);
 		pStmt = conn.createStatement();
@@ -141,4 +146,48 @@ public class CustomerDB {
 	
 	return chkCustomer;
 	}
+	// list province
+	public List GetProvinceList() 
+	throws Exception { //27-02-2014
+		List provinceList = new ArrayList();
+		String provinceID = "", provinceCode = "", provinceName = "", geoID = "";
+		try {
+			conn = agent.getConnectMYSql();
+			
+			String sqlStmt = "SELECT PROVINCE_ID, PROVINCE_CODE, PROVINCE_NAME, GEO_ID " +
+			"FROM province " +
+			"WHERE ";
+			 
+			sqlStmt = sqlStmt + "PROVINCE_ID <> '' Order By PROVINCE_NAME, PROVINCE_ID";
+			
+			//System.out.println(sqlStmt);				
+			pStmt = conn.createStatement();
+			rs = pStmt.executeQuery(sqlStmt);	
+			while (rs.next()) {
+				provinceID		= rs.getString("PROVINCE_ID");
+				provinceCode	= rs.getString("PROVINCE_CODE");
+				if (rs.getString("PROVINCE_NAME") != null) provinceName = rs.getString("PROVINCE_NAME"); else provinceName = "";
+				geoID			= rs.getString("GEO_ID"); 
+
+				provinceList.add(new CustomerForm(provinceID, provinceCode, provinceName, geoID));
+			}
+			rs.close();
+			pStmt.close();
+			conn.close();
+		} catch (SQLException e) {
+		    throw new Exception(e.getMessage());
+		} finally {
+			try {
+				if (rs != null) 	  rs.close();
+				if (pStmt != null) pStmt.close();
+				if (conn != null)  conn.close();
+			} catch (SQLException e) {
+				throw new Exception(e.getMessage());
+			}
+		}
+		return provinceList;
+	}
+	
+	
+	
 }

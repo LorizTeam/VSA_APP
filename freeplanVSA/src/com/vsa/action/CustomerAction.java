@@ -15,8 +15,8 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import com.vsa.data.LoginDB;
-import com.vsa.form.LoginForm;
+import com.vsa.data.CustomerDB;
+import com.vsa.form.CustomerForm;
 import com.vsa.util.DateUtil;
 
 /** 
@@ -30,62 +30,81 @@ public class CustomerAction extends Action {
 	
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
-		LoginForm loginForm = (LoginForm) form;// TODO Auto-generated method stub
-		LoginDB loginDB = new LoginDB();
-		HttpSession session = request.getSession();
-		String userName = loginForm.getUserName().toLowerCase();
-		String passWord = loginForm.getPassWord();
+		CustomerForm customerForm = (CustomerForm) form;// TODO Auto-generated method stub
+		CustomerDB customerDB = new CustomerDB();
+		String customerID 			= customerForm.getCustomerID();
+		String customerName 		= new String(customerForm.getCustomerName().getBytes("ISO8859_1"), "utf-8");
+		String customerSurName 		= new String(customerForm.getCustomerSurName().getBytes("ISO8859_1"), "utf-8");
+		String customerTel 			= customerForm.getCustomerTel();
+		String customerEmail 		= customerForm.getCustomerEmail();
+		String customerDOB 			= customerForm.getCustomerDOB();
+		String customerHouseNo 		= customerForm.getCustomerHouseNo();
+		String customerVillageNo 	= customerForm.getCustomerVillageNo();
+		String customerVillage 		= new String(customerForm.getCustomerVillage().getBytes("ISO8859_1"), "utf-8");
+		String customerLane 		= new String(customerForm.getCustomerLane().getBytes("ISO8859_1"), "utf-8");
+		String customerSubDistrict 	= customerForm.getCustomerSubDistrict();
+		String customerDistrict 	= customerForm.getCustomerDistrict();
+		String customerProvince 	= customerForm.getCustomerProvince();
+		String customerPostCode 	= customerForm.getCustomerPostCode();
+		String add 					= customerForm.getAdd();
+		String update 				= customerForm.getUpdate();
+		String delete 				= customerForm.getDelete();
+		String alertMassage			= "";
+		
+		DateUtil dateUtil = new DateUtil();
 		
 		String forwardText = null;
-	//	System.out.println("ipAddress : "+ipAddress);
-		
-		if(userName != "" || passWord != "") {
-			loginForm = loginDB.checkLogin(userName, passWord);
-			if(loginForm.isTrue()) {
-					
-					session.setAttribute("userName", userName);
-					session.setAttribute("passWord", passWord);
-					session.setAttribute("name", loginForm.getName());
-					session.setAttribute("type", loginForm.getType());
-					 
-					session.setAttribute("name", loginForm.getName());
-					String login = "1";
-					session.setAttribute("login", login);
-				//	session.setAttribute("actionDisabled", loginForm.isActionDisabled());
-				//	session.setAttribute("actionDisabled", "true");
-					String type = loginForm.getType();
-					
-					if(type.equals("adm")){
-						forwardText = "success_adm";
-					}else if(type.equals("acc")){
-						forwardText = "success_acc";
-					}else if(type.equals("agt")){
-						forwardText = "success_agt";
-					}
-					
-				//	genaratePeriod(request, userName);
-					
-					List memberList = loginDB.MemberList("", "", "");
-					request.setAttribute("memberList", memberList);
-					
-					DateUtil dateUtil = new DateUtil();
-					String date 	= dateUtil.curDate();
-					date = dateUtil.CnvToYYYYMMDD(date, '-');
-					
-					loginForm.reset();
+	  
+		if(add!=null){
 			
-			} else {
-				request.setAttribute("error", "Username หรือ Password ไม่ถู�?ต้อง ");
-				String login = "0";
-				session.setAttribute("login", login);
-				forwardText = "error";
-			}
-		} else {
-			request.setAttribute("error", "โปรดระบุ Username �?ละ Password");
-			String login = "0";
-			session.setAttribute("login", login);
-			forwardText = "error";
+		if(!customerName.equals("")&&!customerSurName.equals("")&&!customerSurName.equals("")&&!customerTel.equals("")&&!customerEmail.equals("")
+			&&!customerDOB.equals("")&&!customerHouseNo.equals("")&&!customerVillageNo.equals("")&&!customerVillage.equals("")&&!customerLane.equals("")
+			&&!customerSubDistrict.equals("")&&!customerDistrict.equals("")&&!customerProvince.equals("")&&!customerPostCode.equals("")){
+		
+			if(!customerDOB.equals("")) customerDOB	= dateUtil.CnvToYYYYMMDD(customerDOB, '-');	
+		
+		customerDB.AddCustomer(customerName, customerSurName, customerTel, customerEmail, customerDOB, 
+				customerHouseNo, customerVillageNo, customerVillage, customerLane, customerSubDistrict, customerDistrict, 
+				customerProvince, customerPostCode);
+		
+		List customerList = customerDB.GetCustomerList("", "");
+		request.setAttribute("customerList", customerList);
+		
+		forwardText = "success";
+		}else{
+			alertMassage = "กรุณา กรอก ข้อมูลให้ครบถ้วน";
+			forwardText = "success";
 		}
+		}
+		if(update!=null){
+			if(!customerName.equals("")&&!customerSurName.equals("")&&!customerSurName.equals("")&&!customerTel.equals("")&&!customerEmail.equals("")
+					&&!customerDOB.equals("")&&!customerHouseNo.equals("")&&!customerVillageNo.equals("")&&!customerVillage.equals("")&&!customerLane.equals("")
+					&&!customerSubDistrict.equals("")&&!customerDistrict.equals("")&&!customerProvince.equals("")&&!customerPostCode.equals("")){
+			
+			if(!customerDOB.equals("")) customerDOB	= dateUtil.CnvToYYYYMMDD(customerDOB, '-');
+			
+			customerDB.UpdateCustomer(customerID, customerName, customerSurName, customerTel, customerEmail, customerDOB, 
+					customerHouseNo, customerVillageNo, customerVillage, customerLane, customerSubDistrict, customerDistrict, 
+					customerProvince, customerPostCode);
+			
+			List customerList = customerDB.GetCustomerList("", "");
+			request.setAttribute("customerList", customerList);
+			
+			forwardText = "success";
+		}else{
+			alertMassage = "กรุณา กรอก ข้อมูลให้ครบถ้วน";
+			forwardText = "success";
+		}	
+		}
+		if(delete!=null){
+			customerDB.DeleteCustomer(customerID);
+			
+			List customerList = customerDB.GetCustomerList("", "");
+			request.setAttribute("customerList", customerList);
+			
+			forwardText = "success";
+		}
+		
 		return mapping.findForward(forwardText);
 	}
 }

@@ -27,11 +27,23 @@ public class CustomerForm extends ActionForm {
 	private String customerProvince;
 	private String customerPostCode;
 	
+	private String provinceID;
+	private String provinceCode;
+	private String provinceName;
+	private String geoID;
+	
+	private String subDistrictID;
+	private String districtID;
+	
+	private String add;
+	private String update;
+	private String delete;
+	
 	public CustomerForm(){};
 	public CustomerForm (String customerID, String customerName, String customerSurName, String customerTel,
 			String customerEmail, String customerDOB, String customerHouseNo, String customerVillageNo,
 			String customerVillage, String customerLane, String customerSubDistrict, String customerDistrict,
-			String customerProvince, String customerPostCode){
+			String customerProvince, String customerPostCode, String subDistrictID, String districtID, String provinceID){
 		super();
 		this.customerID 			= customerID;
 		this.customerName			= customerName;
@@ -47,6 +59,16 @@ public class CustomerForm extends ActionForm {
 		this.customerDistrict		= customerDistrict;
 		this.customerProvince		= customerProvince;
 		this.customerPostCode		= customerPostCode;
+		this.subDistrictID			= subDistrictID;
+		this.districtID				= districtID;
+		this.provinceID				= provinceID;
+}
+	public CustomerForm(String provinceID, String provinceCode, String provinceName, String geoID){
+		super();
+		this.provinceID 			= provinceID;
+		this.provinceCode			= provinceCode;
+		this.provinceName 			= provinceName;
+		this.geoID					= geoID;
 }
 	public void reset() {
 	
@@ -144,6 +166,60 @@ public class CustomerForm extends ActionForm {
 	}
 	public void setCustomerPostCode(String customerPostCode) {
 		this.customerPostCode = customerPostCode;
+	}
+	public String getProvinceID() {
+		return provinceID;
+	}
+	public void setProvinceID(String provinceID) {
+		this.provinceID = provinceID;
+	}
+	public String getProvinceCode() {
+		return provinceCode;
+	}
+	public void setProvinceCode(String provinceCode) {
+		this.provinceCode = provinceCode;
+	}
+	public String getProvinceName() {
+		return provinceName;
+	}
+	public void setProvinceName(String provinceName) {
+		this.provinceName = provinceName;
+	}
+	public String getGeoID() {
+		return geoID;
+	}
+	public void setGeoID(String geoID) {
+		this.geoID = geoID;
+	}
+	public String getSubDistrictID() {
+		return subDistrictID;
+	}
+	public void setSubDistrictID(String subDistrictID) {
+		this.subDistrictID = subDistrictID;
+	}
+	public String getDistrictID() {
+		return districtID;
+	}
+	public void setDistrictID(String districtID) {
+		this.districtID = districtID;
+	}
+	public String getAdd() {
+		return add;
+	}
+	public void setAdd(String add) {
+		this.add = add;
+	}
+	public String getUpdate() {
+		return update;
+	}
+	public void setUpdate(String update) {
+		this.update = update;
+	}
+	public String getDelete() {
+		return delete;
+	}
+	public void setDelete(String delete) {
+		this.delete = delete;
 	}
 	
 }

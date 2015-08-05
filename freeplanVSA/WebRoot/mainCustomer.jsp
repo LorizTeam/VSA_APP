@@ -6,16 +6,26 @@
 <%@ page import ="javax.servlet.http.HttpSession.*"%>
 <%@ page import="com.vsa.form.CustomerForm" %>
 <%@ page import="com.vsa.data.CustomerDB" %>
+<%@ page import="com.vsa.util.DBConnect" %>
+<%@ page import="java.sql.*" %>
 <% 
 String path = request.getContextPath (); 
 String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":" + request.getServerPort () + path + "/"; 
 %>
 <% 	List customerList1 = null;
+	 
+
 	if (request.getAttribute("customerList") == null) {
 	CustomerDB customerDB = new CustomerDB();
 	customerList1 = customerDB.GetCustomerList("", "");
+	}else{
+	customerList1 = (List) request.getAttribute("customerList");
 	}
- %>
+	 
+	CustomerDB customerDB = new CustomerDB();
+	List provinceList = customerDB.GetProvinceList(); 
+	 
+%>
 
 
 <html lang="en">
@@ -38,6 +48,8 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 		<link rel="stylesheet" href="metro-ui/build/css/metro-icons.css" /> 
 		<link rel="stylesheet" href="css/jquery.dataTables.css" /> 
 	<!--Loading JS-->
+	 <!-- date picker -->
+    <link rel="stylesheet" href="css/jquery-ui.css"/>
 		
 		<style>
         html, body {
@@ -77,7 +89,73 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
     }
     </style>
 
-    <script>
+    <script type="text/javascript">
+    
+function showAmphur(value, textbox){
+ 
+xmlHttp=GetXmlHttpObject()
+var url="dropDownAmphur.jsp";
+url=url+"?name="+value;
+xmlHttp.onreadystatechange=stateChanged 
+xmlHttp.open("GET",url,true)
+xmlHttp.send(null)
+} 
+function stateChanged() { 
+if(xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){ 
+      
+    var showdata = xmlHttp.responseText;
+    document.getElementById("customerDistrict").innerHTML= showdata;
+ //   alert(showdata);
+    } 
+}
+function GetXmlHttpObject(){
+var xmlHttp=null;
+try {
+  xmlHttp=new XMLHttpRequest();
+ }
+catch (e) {
+ try  {
+  xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");
+  }
+ catch (e)  {
+  xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+ }
+return xmlHttp;
+}
+function showDistrict(value, textbox){
+ 
+xmlHttp=GetXmlHttpObject1()
+var url="dropDownDistrict.jsp";
+url=url+"?id="+value;
+xmlHttp.onreadystatechange=stateChanged1 
+xmlHttp.open("GET",url,true)
+xmlHttp.send(null)
+} 
+function stateChanged1() { 
+if(xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){ 
+      
+    var showdata = xmlHttp.responseText;
+    document.getElementById("customerSubDistrict").innerHTML= showdata;
+ //   alert(showdata);
+    } 
+}
+function GetXmlHttpObject1(){
+var xmlHttp=null;
+try {
+  xmlHttp=new XMLHttpRequest();
+ }
+catch (e) {
+ try  {
+  xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");
+  }
+ catch (e)  {
+  xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+ }
+return xmlHttp;
+}
+    
         $(function(){
             $(window).on('resize', function(){
                 if ($(this).width() <= 800) {
@@ -105,6 +183,25 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
                 }
             })
         })
+        
+        function getCustomer(tcustID, tcustName, tcustSurName, tcustTel, tcustEmail, tcustDOB, tcustHouseNo, 
+        						tcustVillageNo, tcustVillage, tcustLane, tcustSubDistrict, tcustSubDistrictName, tcustDistrict, tcustDistrictName, tcustProvince, tcustPostCode) {
+				
+				document.customerForm.customerID.value 			= tcustID;
+				document.customerForm.customerName.value 		= tcustName;	
+				document.customerForm.customerSurName.value 	= tcustSurName;
+				document.customerForm.customerTel.value 		= tcustTel;
+				document.customerForm.customerEmail.value 		= tcustEmail;
+				document.customerForm.customerDOB.value 		= tcustDOB;
+				document.customerForm.customerHouseNo.value 	= tcustHouseNo;
+				document.customerForm.customerVillageNo.value 	= tcustVillageNo;
+				document.customerForm.customerVillage.value 	= tcustVillage;
+				document.customerForm.customerLane.value 		= tcustLane;
+				document.getElementById("customerSubDistrict").innerHTML = "<option value="+tcustSubDistrict+">"+tcustSubDistrictName+"</option>"; 
+				document.getElementById("customerDistrict").innerHTML= "<option value="+tcustDistrict+">"+tcustDistrictName+"</option>";
+				document.customerForm.customerProvince.value 	= tcustProvince;
+				document.customerForm.customerPostCode.value 	= tcustPostCode; 
+	}
     </script>
 	</head>
 	<body class="bg-steel">
@@ -124,7 +221,10 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
                     <!-- /.menu left -->
         
 		<html:form action="/customer" styleClass="bg-white" >
+		
 		<div class="row" style="padding-left: 2.5%; margin-top: 1%;">
+		<input type="hidden" id="customerID" name="customerID" />
+		
         <label style="font-size: 160%; font-weight: bold;"> ชื่อ</label>  &nbsp;
         <input type="text" id="customerName" name="customerName" size="15" maxlength="50"/>&nbsp;
         <label style="font-size: 160%; font-weight: bold;"> นามสกุล</label>  &nbsp;
@@ -138,7 +238,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
         <label style="font-size: 160%; font-weight: bold;"> บ้านเลขที่</label>  &nbsp;
         <input type="text" id="customerHouseNo" name="customerHouseNo" size="5" maxlength="9"/>&nbsp;
         </div>
-        <div class="row" style="padding-left: 2.5%; margin-top: 1%;">
+        <div class="row" style="padding-left: 2.5%; margin-top: 1%;" >
         <label style="font-size: 160%; font-weight: bold;"> ซอย</label>  &nbsp;
         <input type="text" id="customerVillageNo" name="customerVillageNo" size="15" maxlength="50"/>&nbsp;
         <label style="font-size: 160%; font-weight: bold;"> หมู่บ้าน</label>  &nbsp;
@@ -147,21 +247,32 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
         <input type="text" id="customerLane" name="customerLane" size="8" maxlength="10"/>&nbsp;
         <label style="font-size: 160%; font-weight: bold;"> ตำบล</label>  &nbsp;
         <select id="customerSubDistrict" name="customerSubDistrict">
-        	<option value="">1</option>
+        	 <option value="">-- ตำบล --</option>
         </select>&nbsp;
         <label style="font-size: 160%; font-weight: bold;"> อำเภอ</label>  &nbsp;
-        <select id="customerDistrict" name="customerDistrict">
-        	<option value="">1</option>
+        <select id="customerDistrict" name="customerDistrict" onclick="showDistrict(this.value, this);" onchange="showDistrict(this.value, this);">
+        	 <option value="">-- อำเภอ --</option>
         </select>&nbsp;
         <label style="font-size: 160%; font-weight: bold;"> จังหวัด</label>  &nbsp;
-        <select id="customerProvince" name="customerProvince">
-        	<option value="">1</option>
+        <select id="customerProvince" name="customerProvince" onclick="showAmphur(this.value, this);" onchange="showAmphur(this.value, this);" >
+        		 <option value="">-- จังหวัด --</option>
+        			<% for (Iterator iterItem = provinceList.iterator(); iterItem.hasNext();) {
+	   					CustomerForm provinceInfo = (CustomerForm) iterItem.next();
+	       			%>
+        			<option value="<%=provinceInfo.getProvinceID()%>">
+        				<%=provinceInfo.getProvinceName()%>
+        			</option>
+					<% 		} 
+						  
+					%>
         </select>&nbsp;
         <label style="font-size: 160%; font-weight: bold;"> รหัสไปรษณีย์</label>  &nbsp;
         <input type="text" id="customerPostCode" name="customerPostCode" size="5" maxlength="9"/>&nbsp;
         </div>
         <div class="row" style="padding-left: 2.5%; margin-top: 1%;">
-        <input class="button success block-shadow-success text-shadow" type="submit" id="" name="" value="เพิ่ม"/>
+        <input class="button mini-button" type="submit" id="add" name="add" value="เพิ่ม"/>
+        <input class="button mini-button" type="submit" id="update" name="update" value="แก้ไข"/>
+        <input class="button mini-button" type="submit" id="delete" name="delete" value="ลบ"/> 
         </div>
         	 
                 	<!-----------------------------table---------------------------------->
@@ -191,11 +302,16 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 									for (Iterator iter = customerList.iterator(); iter.hasNext();) {
 							  			x++;
 							  			CustomerForm cust = (CustomerForm) iter.next();
-					
 									%>
                 					<tr>
                 						<td align="center"><%=x%></td>
-                						<td align="center"><%=cust.getCustomerName()%> <%=cust.getCustomerSurName()%></td>
+                						<td align="center"><a href="javascript:getCustomer('<%=cust.getCustomerID()%>','<%=cust.getCustomerName()%>','<%=cust.getCustomerSurName()%>',
+                						'<%=cust.getCustomerTel()%>','<%=cust.getCustomerEmail()%>','<%=cust.getCustomerDOB()%>','<%=cust.getCustomerHouseNo()%>',
+                						'<%=cust.getCustomerVillageNo()%>','<%=cust.getCustomerVillage()%>','<%=cust.getCustomerLane()%>',
+                						'<%=cust.getSubDistrictID()%>','<%=cust.getCustomerSubDistrict()%>',
+                						'<%=cust.getDistrictID()%>','<%=cust.getCustomerDistrict()%>',
+                						'<%=cust.getProvinceID()%>','<%=cust.getCustomerPostCode()%>');">
+                						<%=cust.getCustomerName()%> <%=cust.getCustomerSurName()%></a></td>
                 						<td align="center"><%=cust.getCustomerTel()%></td>
                 						<td align="center"><%=cust.getCustomerEmail()%></td>
                 						<td align="center"><%=cust.getCustomerDOB()%></td>
@@ -231,6 +347,8 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
    <!--Use Custom Style-->
    <script src="metro-ui/build/js/metro.js"></script>
    <!-- DataTables JavaScript -->
+    <!-- datet -->
+	 <script src="js/jquery-ui.js"></script>
 	<script>
     $(document).ready(function() {
     	$.extend( $.fn.dataTable.defaults, {
@@ -239,7 +357,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 		} );
         $('#customer').DataTable({
         	 "scrollX":true,
-        	 "scrollY":400,
+        	 "scrollY":380,
                "language": {
             "lengthMenu": "Display _MENU_ records per page",
             "zeroRecords": "Nothing found - sorry",
@@ -252,6 +370,12 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
         });
     });
     
+    $(function() {
+		    $( "#customerDOB" ).datepicker({dateFormat: 'dd/mm/yy',
+		    yearRange: "1950:yyyy",changeMonth: true,changeYear: true
+		    });
+	});
+  
     </script>
     		
   </body>
