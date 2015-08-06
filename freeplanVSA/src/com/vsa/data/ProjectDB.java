@@ -55,7 +55,8 @@ public class ProjectDB {
 				projectStatus 		= rs.getString("project_status"); 
 				projectAddress 		= rs.getString("project_address");
 				
-				createDate = dateUtil.CnvToDDMMYYYY1(createDate);
+			//	createDate = dateUtil.CnvToDDMMYYYY1(createDate);
+				if(createDate!=null) createDate = dateUtil.CnvToDDMMYYYY(createDate);
 				
 				projectHDList.add(new ProjectForm(projectID, projectName, employeeID, employeeName, customerID, customerName, createDate, 
 						projectType, projectStatus, projectAddress));
@@ -167,7 +168,7 @@ public class ProjectDB {
 	public void DeleteProjectHD(String projectID)  throws Exception{
 		conn = agent.getConnectMYSql();
 		
-		String sqlStmt = "DELETE projecthd "+
+		String sqlStmt = "DELETE FROM projecthd "+
 		"WHERE projecthd = '"+projectID+"'";
 		//System.out.println(sqlStmt);
 		pStmt = conn.createStatement();
@@ -178,7 +179,7 @@ public class ProjectDB {
 	public void DeleteProjectDT(String projectID, String materialCode)  throws Exception{
 		conn = agent.getConnectMYSql();
 		
-		String sqlStmt = "DELETE projectdt "+
+		String sqlStmt = "DELETE FROM projectdt "+
 		"WHERE projecthd = '"+projectID+"' and material_code = '"+materialCode+"'";
 		//System.out.println(sqlStmt);
 		pStmt = conn.createStatement();

@@ -20,6 +20,9 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 	}else{
 	materialList1 = (List) request.getAttribute("materialList");
 	} 
+	
+	String menu = "material";
+	request.setAttribute("menu", menu);
 %>
 <html lang="en">
   <head>
@@ -110,7 +113,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
             })
         })
         
-        function getCustomer(tmatID, tmatName, tAmount, tUnit) {
+        function getMaterial(tmatID, tmatName, tAmount, tUnit) {
 				
 				document.materialForm.materialCode.value 			= tmatID;
 				document.materialForm.materialName.value 		= tmatName;	
@@ -174,7 +177,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 									%>
                 					<tr>
                 						<td align="center"><%=x%></td>
-                						<td align="center"><a href="javascript:getCustomer('<%=mat.getMaterialCode()%>','<%=mat.getMaterialName()%>',
+                						<td align="center"><a href="javascript:getMaterial('<%=mat.getMaterialCode()%>','<%=mat.getMaterialName()%>',
                 						'<%=mat.getAmount()%>','<%=mat.getUnit()%>');">
                 						<%=mat.getMaterialName()%></a></td>
                 						<td align="center"><%=mat.getAmount()%></td>

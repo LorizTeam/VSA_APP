@@ -29,6 +29,11 @@ public class ProjectForm extends ActionForm {
 	private String amountTotal;
 	private String unit;
 	
+	private String add;
+	private String update;
+	private String delete;
+	private String view;
+	
 	public ProjectForm(){};
 	public ProjectForm (String projectID, String projectName, String employeeID, String employeeName,
 			String customerID, String customerName, String createDate, String projectType, 
@@ -165,5 +170,29 @@ public class ProjectForm extends ActionForm {
 	}
 	public void setUnit(String unit) {
 		this.unit = unit;
+	}
+	public String getAdd() {
+		return add;
+	}
+	public void setAdd(String add) {
+		this.add = add;
+	}
+	public String getUpdate() {
+		return update;
+	}
+	public void setUpdate(String update) {
+		this.update = update;
+	}
+	public String getDelete() {
+		return delete;
+	}
+	public void setDelete(String delete) {
+		this.delete = delete;
+	}
+	public String getView() {
+		return view;
+	}
+	public void setView(String view) {
+		this.view = view;
 	}
 }

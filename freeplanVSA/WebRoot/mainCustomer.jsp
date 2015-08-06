@@ -14,7 +14,6 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 %>
 <% 	List customerList1 = null;
 	 
-
 	if (request.getAttribute("customerList") == null) {
 	CustomerDB customerDB = new CustomerDB();
 	customerList1 = customerDB.GetCustomerList("", "");
@@ -25,6 +24,8 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 	CustomerDB customerDB = new CustomerDB();
 	List provinceList = customerDB.GetProvinceList(); 
 	 
+	String menu = "customer";
+	request.setAttribute("menu", menu);
 %>
 
 

@@ -1,8 +1,9 @@
-#Thu Aug 06 10:41:22 ICT 2015
+#Thu Aug 06 12:19:42 ICT 2015
 eclipse.preferences.version=1
 encoding//src/com/vsa/action/CustomerAction.java=UTF-8
 encoding//src/com/vsa/action/CustomerStartAction.java=UTF-8
 encoding//src/com/vsa/action/LoginAction.java=UTF-8
 encoding//src/com/vsa/action/MaterialAction.java=UTF-8
+encoding//src/com/vsa/action/ProjectHDAction.java=UTF-8
 encoding//src/com/vsa/action/RegisterAction.java=UTF-8
 encoding//src/com/vsa/form/LoginForm.java=UTF-8

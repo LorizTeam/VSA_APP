@@ -12,47 +12,24 @@
   <StrutsActivity path="/supervisor.jsp" location="350,50" dimension="107,51" />
   <StrutsActivity path="/login.jsp" location="650,50" dimension="80,51" />
   <StrutsActivity path="/Customer.jsp" location="350,450" dimension="105,51" />
-  <StrutsActivity path="/materialStart.do" />
-  <StrutsActivity path="/material.do" />
-  <StrutsActivity path="/mainMaterial.jsp" />
-  <StrutsTransition id="/mainCustomer.jsp,null,/customer.do,2" routingType="0">
+  <StrutsActivity path="/material.do" location="350,650" dimension="200,96" />
+  <StrutsActivity path="/mainMaterial.jsp" location="650,650" dimension="123,51" />
+  <StrutsActivity path="/projectHD.do" location="50,650" dimension="200,96" />
+  <StrutsActivity path="/mainProject.jsp" location="950,650" dimension="117,51" />
+  <StrutsActivity path="/mainProjectHD.jsp" location="50,850" dimension="134,51" />
+  <StrutsActivity path="/mainProjectDT.jsp" location="350,850" dimension="132,51" />
+  <StrutsActivity path="/projectDT.do" location="650,850" dimension="209,96" />
+  <StrutsTransition id="/projectHD.do,success,/mainProjectDT.jsp,1" routingType="0">
     <AutomaticBendpoints>
-      <AbsolutePoint location="716,475" />
-      <AbsolutePoint location="0,0" />
+      <AbsolutePoint location="199,746" />
+      <AbsolutePoint location="199,875" />
+      <AbsolutePoint location="350,875" />
     </AutomaticBendpoints>
   </StrutsTransition>
-  <StrutsTransition id="/Login.jsp,null,/login.do,2" routingType="0">
+  <StrutsTransition id="/mainProjectHD.jsp,null,/projectHD.do,2" routingType="0">
     <AutomaticBendpoints>
-      <AbsolutePoint location="350,275" />
-      <AbsolutePoint location="207,275" />
-      <AbsolutePoint location="207,146" />
-    </AutomaticBendpoints>
-  </StrutsTransition>
-  <StrutsTransition id="/mainCustomer.jsp,null,/customerStart.do,2" routingType="0">
-    <AutomaticBendpoints>
-      <AbsolutePoint location="716,450" />
-      <AbsolutePoint location="716,391" />
-      <AbsolutePoint location="149,391" />
-      <AbsolutePoint location="149,450" />
-    </AutomaticBendpoints>
-  </StrutsTransition>
-  <StrutsTransition id="/material.do,success,/mainMaterial.jsp,1" routingType="0">
-    <AutomaticBendpoints>
-      <AbsolutePoint location="0,0" />
-      <AbsolutePoint location="0,0" />
-    </AutomaticBendpoints>
-  </StrutsTransition>
-  <StrutsTransition id="/register.do,success,/Login.jsp,1" routingType="0">
-    <AutomaticBendpoints>
-      <AbsolutePoint location="0,0" />
-      <AbsolutePoint location="391,275" />
-    </AutomaticBendpoints>
-  </StrutsTransition>
-  <StrutsTransition id="/customerStart.do,success,/mainCustomer.jsp,1" routingType="0">
-    <AutomaticBendpoints>
-      <AbsolutePoint location="249,516" />
-      <AbsolutePoint location="716,516" />
-      <AbsolutePoint location="716,501" />
+      <AbsolutePoint location="87,850" />
+      <AbsolutePoint location="87,746" />
     </AutomaticBendpoints>
   </StrutsTransition>
   <StrutsTransition id="/login.do,success_agt,/mainAgent1.jsp,1" routingType="0">
@@ -63,17 +40,114 @@
       <AbsolutePoint location="1009,50" />
     </AutomaticBendpoints>
   </StrutsTransition>
-  <StrutsTransition id="/materialStart.do,success,/mainMaterial.jsp,1" routingType="0">
-    <AutomaticBendpoints>
-      <AbsolutePoint location="0,0" />
-      <AbsolutePoint location="0,0" />
-    </AutomaticBendpoints>
-  </StrutsTransition>
   <StrutsTransition id="/login.do,error,/Login.jsp,1" routingType="0">
     <AutomaticBendpoints>
       <AbsolutePoint location="237,116" />
       <AbsolutePoint location="391,116" />
       <AbsolutePoint location="391,250" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/projectHD.do,success,/mainProject.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="150,650" />
+      <AbsolutePoint location="150,591" />
+      <AbsolutePoint location="1038,591" />
+      <AbsolutePoint location="1038,650" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/mainMaterial.jsp,null,/material.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="711,701" />
+      <AbsolutePoint location="711,716" />
+      <AbsolutePoint location="550,716" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/projectDT.do,cancle,/mainProjectHD.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="754,898" />
+      <AbsolutePoint location="117,875" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/mainProject.jsp,null,/projectHD.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1008,650" />
+      <AbsolutePoint location="1008,621" />
+      <AbsolutePoint location="180,621" />
+      <AbsolutePoint location="180,650" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/login.do,success_acc,/mainAccounting.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="91,146" />
+      <AbsolutePoint location="91,250" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/mainCustomer.jsp,null,/customer.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="716,475" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/mainCustomer.jsp,null,/customerStart.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="716,450" />
+      <AbsolutePoint location="716,391" />
+      <AbsolutePoint location="149,391" />
+      <AbsolutePoint location="149,450" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/Login.jsp,null,/login.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="350,275" />
+      <AbsolutePoint location="207,275" />
+      <AbsolutePoint location="207,146" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/customerStart.do,success,/mainCustomer.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="249,516" />
+      <AbsolutePoint location="716,516" />
+      <AbsolutePoint location="716,501" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/register.do,success,/Login.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="0,0" />
+      <AbsolutePoint location="391,275" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/material.do,success,/mainMaterial.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="550,675" />
+      <AbsolutePoint location="650,675" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/mainProjectDT.jsp,null,/projectDT.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="416,850" />
+      <AbsolutePoint location="416,791" />
+      <AbsolutePoint location="754,791" />
+      <AbsolutePoint location="754,850" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/materialStart.do,success,/mainMaterial.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="162,650" />
+      <AbsolutePoint location="162,591" />
+      <AbsolutePoint location="716,591" />
+      <AbsolutePoint location="716,650" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/projectDT.do,error,/mainProjectDT.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="650,875" />
+      <AbsolutePoint location="482,875" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/projectHD.do,error,/mainProjectHD.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="117,746" />
+      <AbsolutePoint location="117,850" />
     </AutomaticBendpoints>
   </StrutsTransition>
   <StrutsTransition id="/customer.do,success,/mainCustomer.jsp,1" routingType="0">
@@ -82,16 +156,29 @@
       <AbsolutePoint location="716,475" />
     </AutomaticBendpoints>
   </StrutsTransition>
-  <StrutsTransition id="/mainMaterial.jsp,null,/material.do,2" routingType="0">
+  <StrutsTransition id="/projectDT.do,success,/mainProjectDT.jsp,1" routingType="0">
     <AutomaticBendpoints>
-      <AbsolutePoint location="0,0" />
-      <AbsolutePoint location="0,0" />
+      <AbsolutePoint location="754,898" />
+      <AbsolutePoint location="416,875" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/projectDT.do,success,/mainProjectHD.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="650,916" />
+      <AbsolutePoint location="117,916" />
+      <AbsolutePoint location="117,901" />
     </AutomaticBendpoints>
   </StrutsTransition>
   <StrutsTransition id="/login.do,success_adm,/mainAdmin.jsp,1" routingType="0">
     <AutomaticBendpoints>
       <AbsolutePoint location="143,98" />
       <AbsolutePoint location="708,275" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/projectHD.do,success,/mainProjectHD.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="117,746" />
+      <AbsolutePoint location="117,850" />
     </AutomaticBendpoints>
   </StrutsTransition>
   <StrutsTransition id="/Login.jsp,null,/register.do,2" routingType="0">
@@ -102,14 +189,10 @@
   </StrutsTransition>
   <StrutsTransition id="/mainMaterial.jsp,null,/materialStart.do,2" routingType="0">
     <AutomaticBendpoints>
-      <AbsolutePoint location="0,0" />
-      <AbsolutePoint location="0,0" />
-    </AutomaticBendpoints>
-  </StrutsTransition>
-  <StrutsTransition id="/login.do,success_acc,/mainAccounting.jsp,1" routingType="0">
-    <AutomaticBendpoints>
-      <AbsolutePoint location="91,146" />
-      <AbsolutePoint location="91,250" />
+      <AbsolutePoint location="686,650" />
+      <AbsolutePoint location="686,621" />
+      <AbsolutePoint location="192,621" />
+      <AbsolutePoint location="192,650" />
     </AutomaticBendpoints>
   </StrutsTransition>
 </FlowViewLayout>

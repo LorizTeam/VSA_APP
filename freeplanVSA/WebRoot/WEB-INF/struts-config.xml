@@ -7,6 +7,7 @@
   	<form-bean name="loginForm" type="com.vsa.form.LoginForm" />
   	<form-bean name="customerForm" type="com.vsa.form.CustomerForm" />
   	<form-bean name="materialForm" type="com.vsa.form.MaterialForm" />
+  	<form-bean name="projectForm" type="com.vsa.form.ProjectForm" />
   </form-beans>
   <global-exceptions />
   <global-forwards />
@@ -67,17 +68,6 @@
   <!--################################     Customer     #################################-->
   
   <!--################################     Material     #################################-->
-   <action
-      attribute="materialForm"
-      input="/mainMaterial.jsp"
-      name="materialForm"
-      path="/materialStart"
-      scope="request"
-      type="com.vsa.action.MaterialStartAction" >
-      
-      <forward name="success" path="/mainMaterial.jsp" />
-    </action>
-    
     <action
       attribute="materialForm"
       input="/mainMaterial.jsp"
@@ -89,6 +79,32 @@
       <forward name="success" path="/mainMaterial.jsp" />
     </action>
   <!--################################     Material     #################################-->
+  
+  <!--################################     Project     #################################-->
+    <action
+      attribute="projectForm"
+      input="/mainProjectHD.jsp"
+      name="projectForm"
+      path="/projectHD"
+      scope="request"
+      type="com.vsa.action.ProjectHDAction" >
+      
+      <forward name="error" path="/mainProjectHD.jsp" />
+      <forward name="success" path="/mainProjectDT.jsp" />
+    </action>
+    
+    <action
+      attribute="projectForm"
+      input="/mainProjectDT.jsp"
+      name="projectForm"
+      path="/projectDT"
+      scope="request"
+      type="com.vsa.action.ProjectDTAction" >
+      
+      <forward name="success" path="/mainProjectDT.jsp" />
+      <forward name="cancle" path="/mainProjectHD.jsp" />
+    </action>
+  <!--################################     Project     #################################-->
   
   </action-mappings>
 
