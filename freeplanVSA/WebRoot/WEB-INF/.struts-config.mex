@@ -19,6 +19,12 @@
   <StrutsActivity path="/mainProjectHD.jsp" location="50,850" dimension="134,51" />
   <StrutsActivity path="/mainProjectDT.jsp" location="350,850" dimension="132,51" />
   <StrutsActivity path="/projectDT.do" location="650,850" dimension="209,96" />
+  <StrutsTransition id="/projectHD.do,view,/mainProjectHD.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="150,698" />
+      <AbsolutePoint location="117,875" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
   <StrutsTransition id="/projectHD.do,success,/mainProjectDT.jsp,1" routingType="0">
     <AutomaticBendpoints>
       <AbsolutePoint location="199,746" />
@@ -64,8 +70,9 @@
   </StrutsTransition>
   <StrutsTransition id="/projectDT.do,cancle,/mainProjectHD.jsp,1" routingType="0">
     <AutomaticBendpoints>
-      <AbsolutePoint location="754,898" />
-      <AbsolutePoint location="117,875" />
+      <AbsolutePoint location="650,916" />
+      <AbsolutePoint location="117,916" />
+      <AbsolutePoint location="117,901" />
     </AutomaticBendpoints>
   </StrutsTransition>
   <StrutsTransition id="/mainProject.jsp,null,/projectHD.do,2" routingType="0">
@@ -158,8 +165,8 @@
   </StrutsTransition>
   <StrutsTransition id="/projectDT.do,success,/mainProjectDT.jsp,1" routingType="0">
     <AutomaticBendpoints>
-      <AbsolutePoint location="754,898" />
-      <AbsolutePoint location="416,875" />
+      <AbsolutePoint location="650,875" />
+      <AbsolutePoint location="482,875" />
     </AutomaticBendpoints>
   </StrutsTransition>
   <StrutsTransition id="/projectDT.do,success,/mainProjectHD.jsp,1" routingType="0">

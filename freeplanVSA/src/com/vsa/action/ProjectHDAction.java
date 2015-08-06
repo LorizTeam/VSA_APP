@@ -62,10 +62,10 @@ public class ProjectHDAction extends Action {
 		List projectHDList = projectDB.GetProjectHDList("", "");
 		request.setAttribute("projectHDList", projectHDList);
 		
-		forwardText = "success";
+		forwardText = "view";
 		}else{
 			alertMassage = "กรุณา กรอก ข้อมูลให้ครบถ้วน";
-			forwardText = "success";
+			forwardText = "view";
 		}
 		}
 		if(update!=null){
@@ -78,10 +78,10 @@ public class ProjectHDAction extends Action {
 				List projectHDList = projectDB.GetProjectHDList("", "");
 				request.setAttribute("projectHDList", projectHDList);
 			
-			forwardText = "success";
+			forwardText = "view";
 		}else{
 			alertMassage = "กรุณา กรอก ข้อมูลให้ครบถ้วน";
-			forwardText = "success";
+			forwardText = "view";
 		}	
 		}
 		if(delete!=null){
@@ -90,7 +90,7 @@ public class ProjectHDAction extends Action {
 			List projectHDList = projectDB.GetProjectHDList("", "");
 			request.setAttribute("projectHDList", projectHDList);
 			
-			forwardText = "success";
+			forwardText = "view";
 		}
 		
 		return mapping.findForward(forwardText);

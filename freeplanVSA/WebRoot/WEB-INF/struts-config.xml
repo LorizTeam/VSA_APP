@@ -89,7 +89,7 @@
       scope="request"
       type="com.vsa.action.ProjectHDAction" >
       
-      <forward name="error" path="/mainProjectHD.jsp" />
+      <forward name="view" path="/mainProjectHD.jsp" />
       <forward name="success" path="/mainProjectDT.jsp" />
     </action>
     

@@ -120,11 +120,22 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 				document.materialForm.amount.value 			= tAmount;
 				document.materialForm.unit.value 		= tUnit;
 	}
+	function returnVender(test, tVendCode, tVendName) {
+		
+		if (opener && !opener.closed){
+			if (venderForm.formName.value == 'material') {
+			 	window.opener.document.projectForm.materialCode.value = tVendCode;
+			 	window.opener.document.projectForm.materialName.value = tVendName;
+			} else alert('no form set');
+		 	opener.focus();
+		} 
+		window.close();
+		return;			
+	}
     </script>
 	</head>
 	<body class="bg-steel">
 
-		
         <!-- /.page-content -->	            
         <div class="page-content">
         <div class="flex-grid " style="height: 100%;">

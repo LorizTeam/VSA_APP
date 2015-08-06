@@ -117,7 +117,6 @@ public class ProjectDB {
 		}
 		return projectDTList;
 	 }
-
 	public void AddProjectHD(String projectID, String projectName, String employeeID, String customerID, String createDate, String projectType, String projectStatus, String projectAddress)  throws Exception{
 		conn = agent.getConnectMYSql();
 		
@@ -188,4 +187,43 @@ public class ProjectDB {
 		pStmt.close();
 		conn.close();
 	}
+	public String SelectDocno(String doctypecode, String docyear) throws Exception {
+		String docno = "";
+	try {
+		conn = agent.getConnectMYSql();
+		
+		String sqlStmt = "SELECT doctype, docyear, docno FROM runingsale "+
+				"WHERE doctype = '"+doctypecode+"' AND docyear = '"+docyear+"'";
+		pStmt = conn.createStatement();
+		rs = pStmt.executeQuery(sqlStmt);		
+		while (rs.next()) {
+			docno	= rs.getString("docno");
+			docno 	= String.valueOf(Integer.parseInt(docno) + 1);
+			 
+			if (docno.length() == 1) {
+				    docno = "00000" + docno; 
+			} else if (docno.length() == 2) {
+					docno = "0000" + docno; 
+			} else if (docno.length() == 3) {
+					docno = "000" + docno; 
+			} else if (docno.length() == 4) {
+					docno = "00" + docno; 
+			} else if (docno.length() == 5) {
+					docno = "0" + docno; 
+			}
+		}
+		pStmt.close();
+		conn.close();
+		} catch (Exception e) {
+		throw new Exception(e.getMessage());
+	} finally {
+		try {
+			if (pStmt != null) pStmt.close();
+			if (conn != null)  conn.close();
+		} catch (SQLException e) {
+			throw new Exception(e.getMessage());
+		}
+	}
+	return docno;
+}
 }
