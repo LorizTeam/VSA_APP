@@ -17,6 +17,10 @@ public class MaterialForm extends ActionForm {
 	private String amount;
 	private String unit;
 	
+	private String add;
+	private String update;
+	private String delete;
+	
 	public MaterialForm(){};
 	public MaterialForm (String materialCode, String materialName, String amount, String unit){
 		super();
@@ -61,5 +65,23 @@ public class MaterialForm extends ActionForm {
 	}
 	public void setUnit(String unit) {
 		this.unit = unit;
+	}
+	public String getAdd() {
+		return add;
+	}
+	public void setAdd(String add) {
+		this.add = add;
+	}
+	public String getUpdate() {
+		return update;
+	}
+	public void setUpdate(String update) {
+		this.update = update;
+	}
+	public String getDelete() {
+		return delete;
+	}
+	public void setDelete(String delete) {
+		this.delete = delete;
 	}
 }

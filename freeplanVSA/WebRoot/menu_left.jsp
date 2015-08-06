@@ -1,16 +1,20 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@ page import="com.vsa.form.CustomerForm" %>
-<%@ page import="com.vsa.data.CustomerDB" %>
+<%@ page import="com.vsa.form.*" %>
+<%@ page import="com.vsa.data.*" %>
 
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
-<% 	List customerList1 = null; int x = 0;
+<% 	List customerList1 = null, materialList1 = null; int x = 0, f = 0;
 	if (request.getAttribute("customerList") == null) {
 	CustomerDB customerDB = new CustomerDB();
 	customerList1 = customerDB.GetCustomerList("", "");
+	}
+	if (request.getAttribute("materialList") == null) {
+	MaterialDB materialDB = new MaterialDB();
+	materialList1 = materialDB.GetMaterialList("","");
 	}
  %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -135,10 +139,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <span class="title">Employee</span>
                             <span class="counter">0</span>
                         </a></li>
-                        <li><a href="#">
+                        <li class="active"><a href="mainMaterial.jsp">
                             <span class="mif-cogs icon"></span>
                             <span class="title">Material</span>
-                            <span class="counter">0</span>
+                            <%	if (materialList1 != null) {
+									List materialList = materialList1;
+									
+									for (Iterator iter = materialList.iterator(); iter.hasNext();) {
+							  			f++;
+							  			MaterialForm mat = (MaterialForm) iter.next();
+					
+							%>
+							<% }
+                            } %>
+                            <span class="counter"><%=f %></span>
                         </a></li>
                     </ul>
                 </div>

@@ -6,6 +6,7 @@
   <form-beans> 
   	<form-bean name="loginForm" type="com.vsa.form.LoginForm" />
   	<form-bean name="customerForm" type="com.vsa.form.CustomerForm" />
+  	<form-bean name="materialForm" type="com.vsa.form.MaterialForm" />
   </form-beans>
   <global-exceptions />
   <global-forwards />
@@ -64,6 +65,30 @@
       <forward name="success" path="/mainCustomer.jsp" />
     </action>
   <!--################################     Customer     #################################-->
+  
+  <!--################################     Material     #################################-->
+   <action
+      attribute="materialForm"
+      input="/mainMaterial.jsp"
+      name="materialForm"
+      path="/materialStart"
+      scope="request"
+      type="com.vsa.action.MaterialStartAction" >
+      
+      <forward name="success" path="/mainMaterial.jsp" />
+    </action>
+    
+    <action
+      attribute="materialForm"
+      input="/mainMaterial.jsp"
+      name="materialForm"
+      path="/material"
+      scope="request"
+      type="com.vsa.action.MaterialAction" >
+      
+      <forward name="success" path="/mainMaterial.jsp" />
+    </action>
+  <!--################################     Material     #################################-->
   
   </action-mappings>
 

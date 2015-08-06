@@ -60,11 +60,11 @@ public class MaterialDB {
 		return materialList;
 	 }
 
-	public void AddMaterial(String materialCode, String materialName, String amount, String unit)  throws Exception{
+	public void AddMaterial(String materialName, String amount, String unit)  throws Exception{
 		conn = agent.getConnectMYSql();
 		
-		String sqlStmt = "INSERT IGNORE INTO material_master(material_code, material_name, amount, unit) " +
-		"VALUES ('"+materialCode+"', '"+materialName+"', '"+amount+"', '"+unit+"')";
+		String sqlStmt = "INSERT IGNORE INTO material_master(material_name, amount, unit) " +
+		"VALUES ('"+materialName+"', '"+amount+"', '"+unit+"')";
 		//System.out.println(sqlStmt);
 		pStmt = conn.createStatement();
 		pStmt.executeUpdate(sqlStmt);
@@ -86,7 +86,7 @@ public class MaterialDB {
 	public void DeleteMaterial(String materialCode)  throws Exception{
 		conn = agent.getConnectMYSql();
 		
-		String sqlStmt = "DELETE material_master "+
+		String sqlStmt = "DELETE From material_master "+
 		"WHERE material_code = '"+materialCode+"'";
 		//System.out.println(sqlStmt);
 		pStmt = conn.createStatement();
