@@ -79,15 +79,16 @@ public class ProjectDB {
 		
 			conn = agent.getConnectMYSql();
 			
-			String sqlStmt = "SELECT a.project_id, a.project_name, a.weight, a.amounttotal, " +
+			String sqlStmt = "SELECT a.project_id, c.project_name, a.weight, a.amounttotal, " +
 					"b.material_code, b.material_name, a.amount, b.unit " +
 			"FROM projectdt a " +
-			"INNER JOIN material_master b on(b.projectid = a.projectid) " +
+			"INNER JOIN material_master b on(b.material_code = a.material_code) " +
+			"INNER JOIN projecthd c on(c.project_id = a.project_id) " +
 			"WHERE "; 
-			if(!projectID.equals("")) sqlStmt = sqlStmt+ "project_id like '"+projectID+"%' AND ";
-			if(!materialCode.equals("")) sqlStmt = sqlStmt+ "material_code like '"+materialCode+"%' AND ";
+			if(!projectID.equals("")) sqlStmt = sqlStmt+ "b.project_id = '"+projectID+"' AND ";
+			if(!materialCode.equals("")) sqlStmt = sqlStmt+ "b.material_code like '"+materialCode+"%' AND ";
 			
-			sqlStmt = sqlStmt + "material_code <> '' group by material_code order by material_code";
+			sqlStmt = sqlStmt + "a.material_code <> '' group by a.material_code order by a.material_code";
 			
 			//System.out.println(sqlStmt);				
 			pStmt = conn.createStatement();
@@ -96,7 +97,7 @@ public class ProjectDB {
 				projectID 		= rs.getString("project_id");
 				if (rs.getString("project_name") != null) 	projectName = rs.getString("project_name"); else projectName = "";
 				materialCode 	= rs.getString("material_code");
-				if (rs.getString("employee_name") != null) 	materialName = rs.getString("employee_name"); else materialName = "";
+				if (rs.getString("material_name") != null) 	materialName = rs.getString("material_name"); else materialName = "";
 				amount			= rs.getString("amount");
 				weight 			= rs.getString("weight"); 
 				unit 			= rs.getString("unit"); 

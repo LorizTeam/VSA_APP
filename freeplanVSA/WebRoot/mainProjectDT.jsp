@@ -11,13 +11,16 @@
 String path = request.getContextPath (); 
 String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":" + request.getServerPort () + path + "/"; 
 %>
-<% 	List projectHDList1 = null;
+<% 	List projectDTList1 = null;
 
-	if (request.getAttribute("projectHDList") == null) {
+	String projectID = "";
+	if(request.getAttribute("projectID") != null) projectID = (String) request.getAttribute("projectID");
+
+	if (request.getAttribute("projectDTList") == null) {
 	ProjectDB projectDB = new ProjectDB();
-	projectHDList1 = projectDB.GetProjectHDList("", "");
+	projectDTList1 = projectDB.GetProjectDTList(projectID, "");
 	}else{
-	projectHDList1 = (List) request.getAttribute("projectHDList");
+	projectDTList1 = (List) request.getAttribute("projectDTList");
 	} 
 	
 	String menu = "project";
@@ -43,8 +46,6 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 		<link rel="stylesheet" href="metro-ui/build/css/metro-icons.css" /> 
 		<link rel="stylesheet" href="css/jquery.dataTables.css" /> 
 	<!--Loading JS-->
-	<!-- date picker -->
-    <link rel="stylesheet" href="css/jquery-ui.css"/>
     
 		<style>
         html, body {
@@ -83,7 +84,6 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
     	padding:0px!important;
     }
     </style>
-
     <script type="text/javascript">
  
         $(function(){
@@ -127,9 +127,10 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 				document.projectForm.projectAddress.value 		= tprojAddr;
 	}
 	function submitView(projectID) {        
-        document.projectForm.action="/freeplanVSA/mainProjectDT.jsp?projectID="+projectID+" ";
+        document.projectForm.action="/freeplanVSA/projectDT.jsp?projectID="+projectID+" ";
         document.projectForm.submit();         
     } 
+    
     </script>
 	</head>
 	<body class="bg-steel">
@@ -148,35 +149,19 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
                     <jsp:include page="/menu_left.jsp"></jsp:include>
                     <!-- /.menu left -->
         
-		<html:form action="/projectHD" styleClass="bg-white" >
+		<html:form action="/projectDT" styleClass="bg-white" >
 		
 		<div class="row" style="padding-left: 2.5%; margin-top: 1%;">
-		<label style="font-size: 160%; font-weight: bold;"> รหัสโครงการ</label>  &nbsp;
-        <input type="text" id="projectID" name="projectID" size="5" maxlength="6" readonly="readonly" />&nbsp;
-        <label style="font-size: 160%; font-weight: bold;"> ชื่อโครงการ</label>  &nbsp;
-		<input type="text" id="projectName" name="projectName" size="15" maxlength="35"/>&nbsp;
-		<label style="font-size: 160%; font-weight: bold;"> รหัสพนักงาน</label>  &nbsp;
-        <input type="text" id="employeeID" name="employeeID" size="8" maxlength="10"/>&nbsp;
-        <label style="font-size: 160%; font-weight: bold;"> ชื่อลูกค้า</label>  &nbsp;
-        <input type="text" id="customerName" name="customerName" size="10" maxlength="50"/>
-        <input type="hidden" id="customerID" name="customerID" />
-        </div>
-        <div class="row" style="padding-left: 2.5%; margin-top: 1%;">
-		<label style="font-size: 160%; font-weight: bold;"> วันที่เริ่มโครงการ</label>  &nbsp;
-        <input type="text" id="createDate" name="createDate" size="8" maxlength="10"/>&nbsp;
-        <label style="font-size: 160%; font-weight: bold;"> ชนิดโครงการ</label>  &nbsp;
-        <select id="projectType" name="projectType"> 
-        	 <option value="01">บ้านเดี่ยว </option>
-        	 <option value="02">ทาวน์เฮ้าส์ </option>
-        	 <option value="02">อาคารพาณิชย์ </option>
-        </select>&nbsp;
-		<label style="font-size: 160%; font-weight: bold;"> สถานะโครงการ</label>  &nbsp;
-		<select id="projectStatus" name="projectStatus"> 
-        	 <option value="01">Active</option>
-        	 <option value="02">Non Active</option>
-        </select>&nbsp;
-        <label style="font-size: 160%; font-weight: bold;"> ที่อยู่โครงการ</label>  &nbsp;
-        <input type="text" id="projectAddress" name="projectAddress" size="20" maxlength="50"/>
+		<input type="hidden" id="projectID" name="projectID" />
+		<input type="hidden" id="materialCode" name="materialCode" />
+		<label style="font-size: 160%; font-weight: bold;"> ชื่อวัสดุ</label>  &nbsp;
+        <input type="text" id="materialName" name="materialName" size="10" maxlength="6" />&nbsp;
+        <label style="font-size: 160%; font-weight: bold;"> น้ำหนัก</label>  &nbsp;
+		<input type="text" id="weight" name="weight" size="15" maxlength="35"/>&nbsp;
+		<label style="font-size: 160%; font-weight: bold;"> ราคา</label>  &nbsp;
+        <input type="text" id="amount" name="amount" size="8" maxlength="10"/>&nbsp;
+        <label style="font-size: 160%; font-weight: bold;"> ราคารวม</label>  &nbsp;
+        <input type="text" id="amountTotal" name="amountTotal" size="10" maxlength="50" readonly="readonly" />
         </div>
         <div class="row" style="padding-left: 2.5%; margin-top: 1%;">
         <input class="button mini-button" type="submit" id="add" name="add" value="เพิ่ม"/>
@@ -190,46 +175,28 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 									<thead>
 									<tr>
 										<th><center>ลำดับ</center></th>
-										<th><center>รหัส ชื่อ (โครงการ)</center></th>
-										<th><center>รหัสพนักงาน</center></th>
-										<th><center>ชื่อลูกค้า</center></th>
-										<th><center>วันที่เริ่มโครงการ</center></th>
-										<th><center>ชนิดโครงการ</center></th>
-										<th><center>สถานะโครงการ</center></th>
-										<th><center>ที่อยู่โครงการ</center></th>
+										<th><center>ชื่อ วัสดุ</center></th>
+										<th><center>น้ำหนัก</center></th>
+										<th><center>ราคา</center></th>
+										<th><center>ราคารวม</center></th>
 									</tr>
 									</thead>
 									<tbody>
-									<%	if (projectHDList1 != null) {
-									List projectHDList = projectHDList1;
+									<%	if (projectDTList1 != null) {
+									List projectDTList = projectDTList1;
 									int x = 0;
-									for (Iterator iter = projectHDList.iterator(); iter.hasNext();) {
+									for (Iterator iter = projectDTList.iterator(); iter.hasNext();) {
 							  			x++;
 							  			ProjectForm proj = (ProjectForm) iter.next();
 									%>
                 					<tr>
-                						<td align="center"><input type="radio" id="view" name="view" value="view" 
-                						onclick="submitView(<%=proj.getProjectID()%>);"/> <%=x%></td>
-                						<td align="center"><a href="javascript:getProject('<%=proj.getProjectID()%>','<%=proj.getProjectName()%>',
-                						'<%=proj.getEmployeeID()%>','<%=proj.getCustomerID()%>','<%=proj.getCustomerName()%>',
-                						'<%=proj.getCreateDate()%>','<%=proj.getProjectType()%>','<%=proj.getProjectStatus()%>','<%=proj.getProjectAddress()%>');">
-                						<%=proj.getProjectID()%> <%=proj.getProjectName()%></a></td>
-                						<td align="center"><%=proj.getEmployeeID()%></td>
-                						<td align="center"><%=proj.getCustomerName()%></td>
-                						<td align="center"><%=proj.getCreateDate()%></td>
-                						<%if(proj.getProjectType().equals("01")){ %>
-                							<td align="center">บ้านเดียว</td>
-                						<%}else if(proj.getProjectType().equals("02")) {%>
-                							<td align="center">ทาวน์เฮ้าส์</td>
-                						<%}else if(proj.getProjectType().equals("03")) {%>
-                							<td align="center">อาคารพาณิชย์</td>
-                						<%} %>
-                						<%if(proj.getProjectStatus().equals("01")){ %>
-                							<td align="center">Active</td>
-                						<%}else if(proj.getProjectStatus().equals("02")) {%>
-                							<td align="center">Non Active</td>
-                						<%}%>
-                						<td align="center"><%=proj.getProjectAddress()%></td>
+                						<td align="center"><%=x%></td>
+                						<td align="center"><a href="javascript:getProject('<%=proj.getProjectID()%>','<%=proj.getMaterialCode()%>',
+                						'<%=proj.getMaterialName()%>','<%=proj.getWeight()%>','<%=proj.getAmount()%>','<%=proj.getAmountTotal()%>');">
+                						<%=proj.getMaterialName()%></a></td>
+                						<td align="center"><%=proj.getWeight()%></td>
+                						<td align="center"><%=proj.getAmount()%></td>
+                						<td align="center"><%=proj.getAmountTotal()%></td>
                 					</tr>
                 					<% 	}
                 						} else {
@@ -276,12 +243,6 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
         
         });
     });
-    
-    $(function() {
-		    $( "#createDate" ).datepicker({dateFormat: 'dd/mm/yy'
-		    });
-	});
-    
     </script>
     		
   </body>
