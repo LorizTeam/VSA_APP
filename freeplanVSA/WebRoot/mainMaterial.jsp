@@ -19,11 +19,8 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 	materialList1 = materialDB.GetMaterialList("","");
 	}else{
 	materialList1 = (List) request.getAttribute("materialList");
-	}
-	 
+	} 
 %>
-
-
 <html lang="en">
   <head>
     <meta charset"UTF-8">
