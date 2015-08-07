@@ -35,7 +35,7 @@ public class MaterialAction extends Action {
 		String materialCode 	= materialForm.getMaterialCode();
 		String materialName 	= new String(materialForm.getMaterialName().getBytes("ISO8859_1"), "utf-8");
 		String amount 			= materialForm.getAmount();
-		String unit 			= new String(materialForm.getUnit().getBytes("ISO8859_1"), "utf-8");
+		String unit 			= new String(materialForm.getUnit().toUpperCase().getBytes("ISO8859_1"), "utf-8");
 	 
 		String add 					= materialForm.getAdd();
 		String update 				= materialForm.getUpdate();
@@ -46,7 +46,7 @@ public class MaterialAction extends Action {
 	  
 		if(add!=null){
 			
-		if(!materialCode.equals("")&&!materialName.equals("")&&!amount.equals("")&&!unit.equals("")){
+		if(!materialName.equals("")&&!amount.equals("")&&!unit.equals("")){
 		
 			materialDB.AddMaterial(materialName, amount, unit);
 		

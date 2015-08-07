@@ -11,14 +11,25 @@
 String path = request.getContextPath (); 
 String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":" + request.getServerPort () + path + "/"; 
 %>
-<% 	List projectHDList1 = null;
-
-	if (request.getAttribute("projectHDList") == null) {
+<% 	List projectHDList1 = null, customerList1 = null; String docNo = "";
 	ProjectDB projectDB = new ProjectDB();
+	
+	String name = session.getAttribute("name").toString();
+	
+	if (request.getAttribute("projectHDList") == null) {
 	projectHDList1 = projectDB.GetProjectHDList("", "");
 	}else{
 	projectHDList1 = (List) request.getAttribute("projectHDList");
 	} 
+	
+	if (request.getAttribute("customerList") == null) {
+	CustomerDB customerDB = new CustomerDB();
+	customerList1 = customerDB.GetCustomerList("", "");
+	}else{
+	customerList1 = (List) request.getAttribute("customerList");
+	}
+	
+	docNo = projectDB.SelectDocno(name);
 	
 	String menu = "project";
 	request.setAttribute("menu", menu);
@@ -27,7 +38,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
   <head>
     <meta charset"UTF-8">
      
-    <title>Customer</title>
+    <title>Project</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -42,9 +53,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 		<link rel="stylesheet" href="metro-ui/build/css/metro.css" />
 		<link rel="stylesheet" href="metro-ui/build/css/metro-icons.css" /> 
 		<link rel="stylesheet" href="css/jquery.dataTables.css" /> 
-	<!--Loading JS-->
-	<!-- date picker -->
-    <link rel="stylesheet" href="css/jquery-ui.css"/>
+	<!--Loading JS--> 
     
 		<style>
         html, body {
@@ -129,7 +138,12 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 	function submitView(projectID) {        
         document.projectForm.action="/freeplanVSA/mainProjectDT.jsp?projectID="+projectID+" ";
         document.projectForm.submit();         
-    } 
+    }  
+    function getCustomer(tcusID, tcusName) {
+				 
+				document.projectForm.customerID.value 			= tcusID;
+				document.projectForm.customerName.value 		= tcusName;	
+	}
     </script>
 	</head>
 	<body class="bg-steel">
@@ -152,26 +166,30 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 		
 		<div class="row" style="padding-left: 2.5%; margin-top: 1%;">
 		<label style="font-size: 160%; font-weight: bold;"> รหัสโครงการ</label>  &nbsp;
-        <input type="text" id="projectID" name="projectID" size="5" maxlength="6" readonly="readonly" />&nbsp;
+        <input type="text" id="projectID" name="projectID" size="5" maxlength="6" readonly="readonly" value="<%=docNo%>" />&nbsp;
         <label style="font-size: 160%; font-weight: bold;"> ชื่อโครงการ</label>  &nbsp;
 		<input type="text" id="projectName" name="projectName" size="15" maxlength="35"/>&nbsp;
 		<label style="font-size: 160%; font-weight: bold;"> รหัสพนักงาน</label>  &nbsp;
-        <input type="text" id="employeeID" name="employeeID" size="8" maxlength="10"/>&nbsp;
+        <input type="text" id="employeeID" name="employeeID" size="8" maxlength="10" value="<%=name%>" />&nbsp;
         <label style="font-size: 160%; font-weight: bold;"> ชื่อลูกค้า</label>  &nbsp;
-        <input type="text" id="customerName" name="customerName" size="10" maxlength="50"/>
+        <input type="text" id="customerName" name="customerName" size="10" maxlength="50"/>&nbsp;
+        <button type="button" class="button mini-button rounded" onclick="showDialog('#dialog')">Get</button> &nbsp;
         <input type="hidden" id="customerID" name="customerID" />
         </div>
-        <div class="row" style="padding-left: 2.5%; margin-top: 1%;">
+        <div class="row " style="padding-left: 2.5%; margin-top: 1%;" >
 		<label style="font-size: 160%; font-weight: bold;"> วันที่เริ่มโครงการ</label>  &nbsp;
-        <input type="text" id="createDate" name="createDate" size="8" maxlength="10"/>&nbsp;
+        <div class="input-control text" id="createDate" >
+		   <input type="text" id="createDate" name="createDate" size="8" maxlength="10"/>&nbsp;
+		    <button class="button"><span class="mif-calendar"></span></button>
+		</div>
         <label style="font-size: 160%; font-weight: bold;"> ชนิดโครงการ</label>  &nbsp;
         <select id="projectType" name="projectType"> 
         	 <option value="01">บ้านเดี่ยว </option>
         	 <option value="02">ทาวน์เฮ้าส์ </option>
-        	 <option value="02">อาคารพาณิชย์ </option>
+        	 <option value="03">อาคารพาณิชย์ </option>
         </select>&nbsp;
 		<label style="font-size: 160%; font-weight: bold;"> สถานะโครงการ</label>  &nbsp;
-		<select id="projectStatus" name="projectStatus"> 
+		<select id="projectStatus" name="projectStatus" class="input-control text small-input"> 
         	 <option value="01">Active</option>
         	 <option value="02">Non Active</option>
         </select>&nbsp;
@@ -179,14 +197,14 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
         <input type="text" id="projectAddress" name="projectAddress" size="20" maxlength="50"/>
         </div>
         <div class="row" style="padding-left: 2.5%; margin-top: 1%;">
-        <input class="button mini-button" type="submit" id="add" name="add" value="เพิ่ม"/>
+        <input class="button mini-button rounded" type="submit" id="add" name="add" value="เพิ่ม" />
         <input class="button mini-button" type="submit" id="update" name="update" value="แก้ไข"/>
         <input class="button mini-button" type="submit" id="delete" name="delete" value="ลบ"/> 
         </div>
         	 
                 	<!-----------------------------table---------------------------------->
 					<div class="row">
-								<table class="display" cellspacing="0" width="100%" id="customer" style="font-size: 110%;">
+								<table class="display" cellspacing="0" width="100%" id="project" style="font-size: 110%;">
 									<thead>
 									<tr>
 										<th><center>ลำดับ</center></th>
@@ -239,7 +257,46 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 									<%	} %>
                 					</tbody>
 								</table>	
-                		</div>			
+                		</div>
+                		<!-----------------------------dialog---------------------------------->
+                				<div data-role="dialog" id="dialog" data-close-button="true" 
+                				data-overlay="true" data-overlay-color="ob-dark" data-width="47%" align="center">
+							    <h1>List Customer</h1>
+							    <p>
+							    <div>
+								<table class="display" cellspacing="0" width="522px" id="customer" style="font-size: 110%;">
+									<thead>
+									<tr>
+										<th><center>ลำดับ</center></th>
+										<th><center>ชื่อ นามสกุล</center></th>
+									</tr>
+									</thead>
+									<tbody >
+									<%	if (customerList1 != null) {
+									List customerList = customerList1;
+									int x = 0;
+									for (Iterator iter = customerList.iterator(); iter.hasNext();) {
+							  			x++;
+							  			CustomerForm cust = (CustomerForm) iter.next();
+									%>
+                					<tr >
+                						<td align="center" width="291px"><%=x%></td>
+                						<td align="center" width="291px"><a href="javascript:getCustomer('<%=cust.getCustomerID()%>','<%=cust.getCustomerName()%>',
+                						'<%=cust.getCustomerSurName()%>');" onclick="dialogClose('#dialog')">
+                						<%=cust.getCustomerName()%> <%=cust.getCustomerSurName()%></a></td>
+                					</tr>
+                					<% 	}
+                						} else {
+                					 %>
+                					<tr><td align="center" colspan="2">No Data Found</td></tr>
+                					
+									<%	} %>
+                					</tbody>
+								</table>
+								</div>
+							    </p>
+								</div>
+								<!-----------------------------dialog----------------------------------> 			
                 		</html:form>
                 		<!-----------------------------table---------------------------------->		
 	 					
@@ -249,14 +306,44 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 			</div>
 		 <!-- /.page-content -->	
  	<!-- DataTables JavaScript -->
-	<script src="js/jquery-1.11.1.min.js"></script>
+	<script src="metro-ui/js/jquery-2.1.4.min.js"></script>
    <script src="js/jquery.dataTables.min.js"></script>
-   <!--Use Custom Style-->
-   <script src="metro-ui/build/js/metro.js"></script>
+   
    <!-- DataTables JavaScript -->
-   <!-- datet -->
-	 <script src="js/jquery-ui.js"></script>
+  	<!--Loading Dialog-->
+	<script src="metro-ui/build/js/metro.js"></script>
+	<script src="metro-ui/js/widgets/dialog.js"></script>
+    <!--Loading Dialog-->
 	<script>
+	function showDialog(id){
+    	var dialog = $(id).data('dialog');
+    	dialog.open();
+     }
+     function dialogClose(id){
+     	var dialog = $(id).data('dialog');
+    	dialog.close();
+     }
+	
+    $(document).ready(function() {
+    	$.extend( $.fn.dataTable.defaults, {
+		    "searching": true,
+		    "ordering": false
+		} );
+        $('#project').DataTable({
+        	 "scrollX":true,
+        	 "scrollY":190,
+               "language": {
+            "lengthMenu": "Display _MENU_ records per page",
+            "zeroRecords": "Nothing found - sorry",
+            "info": "Showing page _PAGE_ of _PAGES_",
+            "infoEmpty": "No records available",
+            "infoFiltered": "(filtered from _MAX_ total records)"
+        },
+        "lengthMenu": [[5, 10, 25, 50, 100,-1], [5, 10, 25, 50, 100, "All"]]
+        
+        });
+    });
+    
     $(document).ready(function() {
     	$.extend( $.fn.dataTable.defaults, {
 		    "searching": true,
@@ -278,11 +365,11 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
     });
     
     $(function() {
-		    $( "#createDate" ).datepicker({dateFormat: 'dd/mm/yy'
+		    $( "#createDate" ).datepicker({ format: "dd/mm/yyyy"
 		    });
 	});
     
     </script>
-    		
+      
   </body>
 </html>

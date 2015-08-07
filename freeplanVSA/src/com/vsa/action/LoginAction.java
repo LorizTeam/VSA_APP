@@ -48,7 +48,7 @@ public class LoginAction extends Action {
 					session.setAttribute("name", loginForm.getName());
 					session.setAttribute("type", loginForm.getType());
 					 
-					session.setAttribute("name", loginForm.getName());
+				//	session.setAttribute("name", loginForm.getName());
 					String login = "1";
 					session.setAttribute("login", login);
 				//	session.setAttribute("actionDisabled", loginForm.isActionDisabled());

@@ -11,16 +11,23 @@
 String path = request.getContextPath (); 
 String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":" + request.getServerPort () + path + "/"; 
 %>
-<% 	List projectDTList1 = null;
+<% 	List projectDTList1 = null, materialList1 = null;
 
 	String projectID = "";
-	if(request.getAttribute("projectID") != null) projectID = (String) request.getAttribute("projectID");
+	if(request.getParameter("projectID") != null) projectID = (String) request.getParameter("projectID");
 
 	if (request.getAttribute("projectDTList") == null) {
 	ProjectDB projectDB = new ProjectDB();
 	projectDTList1 = projectDB.GetProjectDTList(projectID, "");
 	}else{
 	projectDTList1 = (List) request.getAttribute("projectDTList");
+	} 
+	
+	if (request.getAttribute("materialList") == null) {
+	MaterialDB materialDB = new MaterialDB();
+	materialList1 = materialDB.GetMaterialList("","");
+	}else{
+	materialList1 = (List) request.getAttribute("materialList");
 	} 
 	
 	String menu = "project";
@@ -46,7 +53,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 		<link rel="stylesheet" href="metro-ui/build/css/metro-icons.css" /> 
 		<link rel="stylesheet" href="css/jquery.dataTables.css" /> 
 	<!--Loading JS-->
-    
+	
 		<style>
         html, body {
             height: 100%;
@@ -126,12 +133,22 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 				document.projectForm.projectStatus.value 		= tprojStatus;
 				document.projectForm.projectAddress.value 		= tprojAddr;
 	}
-	function submitView(projectID) {        
-        document.projectForm.action="/freeplanVSA/projectDT.jsp?projectID="+projectID+" ";
+	function getMaterial(tmatID, tmatName, tAmount, tUnit) {
+				 
+				document.projectForm.materialCode.value 			= tmatID;
+				document.projectForm.materialName.value 		= tmatName;	
+				document.projectForm.amount.value 			= tAmount;
+				document.projectForm.unit.value 		= tUnit;
+	}
+	function cal(){
+		document.projectForm.amountTotal.value = parseFloat(document.projectForm.amount.value)*parseFloat(document.projectForm.weight.value)
+	}
+	function add() {        
+        document.projectForm.action="/freeplanVSA/projectDT.do ";
         document.projectForm.submit();         
-    } 
-    
+    }
     </script>
+    
 	</head>
 	<body class="bg-steel">
 
@@ -156,15 +173,19 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 		<input type="hidden" id="materialCode" name="materialCode" />
 		<label style="font-size: 160%; font-weight: bold;"> ชื่อวัสดุ</label>  &nbsp;
         <input type="text" id="materialName" name="materialName" size="10" maxlength="6" />&nbsp;
+        <button type="button" class="button mini-button rounded" onclick="showDialog('#dialog')">Get</button> &nbsp;
         <label style="font-size: 160%; font-weight: bold;"> น้ำหนัก</label>  &nbsp;
-		<input type="text" id="weight" name="weight" size="15" maxlength="35"/>&nbsp;
+		<input type="text" id="weight" name="weight" size="15" maxlength="35" onkeyup="cal()" />&nbsp;
 		<label style="font-size: 160%; font-weight: bold;"> ราคา</label>  &nbsp;
         <input type="text" id="amount" name="amount" size="8" maxlength="10"/>&nbsp;
         <label style="font-size: 160%; font-weight: bold;"> ราคารวม</label>  &nbsp;
-        <input type="text" id="amountTotal" name="amountTotal" size="10" maxlength="50" readonly="readonly" />
+        <input type="text" id="amountTotal" name="amountTotal" size="10" maxlength="50" readonly="readonly" /> &nbsp;
+        <label style="font-size: 160%; font-weight: bold;"> หน่วย</label>  &nbsp;
+        <input type="text" id="unit" name="unit" size="8" maxlength="10"/>&nbsp;
         </div>
         <div class="row" style="padding-left: 2.5%; margin-top: 1%;">
-        <input class="button mini-button" type="submit" id="add" name="add" value="เพิ่ม"/>
+     <!--    <button type="button" class="button mini-button rounded" id="add" name="add" value="add" onclick="add()">เพิ่ม</button>  -->
+        <input class="button mini-button" type="submit" id="add" name="add" value="add" value="เพิ่ม"/>
         <input class="button mini-button" type="submit" id="update" name="update" value="แก้ไข"/>
         <input class="button mini-button" type="submit" id="delete" name="delete" value="ลบ"/> 
         </div>
@@ -179,6 +200,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 										<th><center>น้ำหนัก</center></th>
 										<th><center>ราคา</center></th>
 										<th><center>ราคารวม</center></th>
+										<th><center>หน่วย</center></th>
 									</tr>
 									</thead>
 									<tbody>
@@ -192,11 +214,12 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
                 					<tr>
                 						<td align="center"><%=x%></td>
                 						<td align="center"><a href="javascript:getProject('<%=proj.getProjectID()%>','<%=proj.getMaterialCode()%>',
-                						'<%=proj.getMaterialName()%>','<%=proj.getWeight()%>','<%=proj.getAmount()%>','<%=proj.getAmountTotal()%>');">
+                						'<%=proj.getMaterialName()%>','<%=proj.getWeight()%>','<%=proj.getAmount()%>','<%=proj.getAmountTotal()%>','<%=proj.getUnit()%>');">
                 						<%=proj.getMaterialName()%></a></td>
                 						<td align="center"><%=proj.getWeight()%></td>
                 						<td align="center"><%=proj.getAmount()%></td>
                 						<td align="center"><%=proj.getAmountTotal()%></td>
+                						<td align="center"><%=proj.getUnit()%></td>
                 					</tr>
                 					<% 	}
                 						} else {
@@ -206,30 +229,102 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 									<%	} %>
                 					</tbody>
 								</table>	
-                		</div>			
+                		</div>	
+                		<!-----------------------------dialog---------------------------------->
+                				<div data-role="dialog" id="dialog" data-close-button="true" 
+                				data-overlay="true" data-overlay-color="ob-dark" data-width="50%" data-type="danger">
+							    <h1>Simple dialog</h1>
+							    <p>
+							    <div>
+								<table class="display" cellspacing="0" width="647px" id="material" style="font-size: 110%;">
+									<thead>
+									<tr>
+										<th><center>ลำดับ</center></th>
+										<th><center>ชื่อ วัสดุ</center></th>
+										<th><center>ราคา</center></th>
+										<th><center>หน่วย</center></th>
+									</tr>
+									</thead>
+									<tbody>
+									<%	if (materialList1 != null) {
+									List materialList = materialList1;
+									int x = 0;
+									for (Iterator iter = materialList.iterator(); iter.hasNext();) {
+							  			x++;
+							  			MaterialForm mat = (MaterialForm) iter.next();
+									%>
+                					<tr>
+                						<td align="center"><%=x%></td>
+                						<td align="center"><a href="javascript:getMaterial('<%=mat.getMaterialCode()%>','<%=mat.getMaterialName()%>',
+                						'<%=mat.getAmount()%>','<%=mat.getUnit()%>');" onclick="dialogClose('#dialog')" >
+                						<%=mat.getMaterialName()%></a></td>
+                						<td align="center"><%=mat.getAmount()%></td>
+                						<td align="center"><%=mat.getUnit()%></td>
+                					</tr>
+                					<% 	}
+                						} else {
+                					 %>
+                					<tr><td align="center" colspan="9">No Data Found</td></tr>
+                					
+									<%	} %>
+                					</tbody>
+								</table>
+								</div>
+							    </p>
+								</div>
+								<!-----------------------------dialog----------------------------------> 
+								
                 		</html:form>
                 		<!-----------------------------table---------------------------------->		
 	 					
 	 					</div>
-					
 				</div>
 			</div>
-		 <!-- /.page-content -->	
+		 <!-- /.page-content -->
+		 	
  	<!-- DataTables JavaScript -->
-	<script src="js/jquery-1.11.1.min.js"></script>
+ 	<script src="metro-ui/js/jquery-2.1.4.min.js"></script>
    <script src="js/jquery.dataTables.min.js"></script>
-   <!--Use Custom Style-->
-   <script src="metro-ui/build/js/metro.js"></script>
    <!-- DataTables JavaScript -->
-   <!-- datet -->
-	 <script src="js/jquery-ui.js"></script>
+   <!--Loading Dialog-->
+	<script src="metro-ui/build/js/metro.js"></script>
+	<script src="metro-ui/js/widgets/dialog.js"></script>
+    <!--Loading Dialog-->
+   
 	<script>
+	function showDialog(id){
+    	var dialog = $(id).data('dialog');
+    	dialog.open();
+     }
+     function dialogClose(id){
+     	var dialog = $(id).data('dialog');
+    	dialog.close();
+     }
     $(document).ready(function() {
     	$.extend( $.fn.dataTable.defaults, {
 		    "searching": true,
 		    "ordering": false
 		} );
         $('#customer').DataTable({
+        	 "scrollX":true,
+        	 "scrollY":380,
+               "language": {
+            "lengthMenu": "Display _MENU_ records per page",
+            "zeroRecords": "Nothing found - sorry",
+            "info": "Showing page _PAGE_ of _PAGES_",
+            "infoEmpty": "No records available",
+            "infoFiltered": "(filtered from _MAX_ total records)"
+        },
+        "lengthMenu": [[10, 25, 50, 100,-1], [10, 25, 50, 100, "All"]]
+        
+        });
+    });
+    $(document).ready(function() {
+    	$.extend( $.fn.dataTable.defaults, {
+		    "searching": true,
+		    "ordering": false
+		} );
+        $('#material').DataTable({
         	 "scrollX":true,
         	 "scrollY":380,
                "language": {

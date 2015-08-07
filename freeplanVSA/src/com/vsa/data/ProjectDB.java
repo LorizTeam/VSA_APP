@@ -85,7 +85,7 @@ public class ProjectDB {
 			"INNER JOIN material_master b on(b.material_code = a.material_code) " +
 			"INNER JOIN projecthd c on(c.project_id = a.project_id) " +
 			"WHERE "; 
-			if(!projectID.equals("")) sqlStmt = sqlStmt+ "b.project_id = '"+projectID+"' AND ";
+			if(!projectID.equals("")) sqlStmt = sqlStmt+ "a.project_id = '"+projectID+"' AND ";
 			if(!materialCode.equals("")) sqlStmt = sqlStmt+ "b.material_code like '"+materialCode+"%' AND ";
 			
 			sqlStmt = sqlStmt + "a.material_code <> '' group by a.material_code order by a.material_code";
@@ -187,17 +187,16 @@ public class ProjectDB {
 		pStmt.close();
 		conn.close();
 	}
-	public String SelectDocno(String doctypecode, String docyear) throws Exception {
+	public String SelectDocno(String name) throws Exception {
 		String docno = "";
 	try {
 		conn = agent.getConnectMYSql();
 		
-		String sqlStmt = "SELECT doctype, docyear, docno FROM runingsale "+
-				"WHERE doctype = '"+doctypecode+"' AND docyear = '"+docyear+"'";
+		String sqlStmt = "SELECT project_id FROM projecthd where employee_id = '"+name+"' ";
 		pStmt = conn.createStatement();
 		rs = pStmt.executeQuery(sqlStmt);		
 		while (rs.next()) {
-			docno	= rs.getString("docno");
+			docno	= rs.getString("project_id");
 			docno 	= String.valueOf(Integer.parseInt(docno) + 1);
 			 
 			if (docno.length() == 1) {

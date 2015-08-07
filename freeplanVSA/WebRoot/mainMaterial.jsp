@@ -158,7 +158,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
         	 
                 	<!-----------------------------table---------------------------------->
 					<div class="row">
-								<table class="display" cellspacing="0" width="100%" id="customer" style="font-size: 110%;">
+								<table class="display" cellspacing="0" width="100%" id="material" style="font-size: 110%;">
 									<thead>
 									<tr>
 										<th><center>ลำดับ</center></th>
@@ -212,7 +212,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 		    "searching": true,
 		    "ordering": false
 		} );
-        $('#customer').DataTable({
+        $('#material').DataTable({
         	 "scrollX":true,
         	 "scrollY":380,
                "language": {

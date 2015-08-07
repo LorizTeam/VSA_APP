@@ -37,8 +37,8 @@ public class LoginDB {
 		ResultSet rs = null;
 		LoginForm loginForm = new LoginForm();
 		
-		String sql = "SELECT username, password, name, type " +
-				     "FROM login_master " +
+		String sql = "SELECT a.username, a.password, a.name, a.type, b.employee_id " +
+				     "FROM login_master a inner join employee_master b on(b.employee_email = a.username) " +
 				     "WHERE username = '"+userName+"' " +
 				     "AND password ='"+encrypPass+"' " ;
 		PreparedStatement pstmt = connDB.prepareStatement(sql);
@@ -48,7 +48,7 @@ public class LoginDB {
 			loginForm.setTrue(true);
 			loginForm.setUserName(rs.getString("username"));
 			loginForm.setPassWord(rs.getString("password"));
-			loginForm.setName(rs.getString("name"));
+			loginForm.setName(rs.getString("employee_id"));
 			loginForm.setType(rs.getString("type"));
 		}
 		
