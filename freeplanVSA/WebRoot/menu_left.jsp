@@ -126,10 +126,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             } %>
                             <span class="counter"><%=d %></span>
                         </a></li>
-                        <li><a href="#">
+                        <li <%if(menu == "importexcel"){ %> class="active" <%}%> ><a href="importExcel.jsp">
                             <span class="mif-vpn-publ icon"></span>
-                            <span class="title">Detail</span>
-                            <span class="counter">0</span>
+                            <span class="title">Excel Upload File</span>
+                            <span class="counter">-</span>
                         </a></li>
                         <li <%if(menu == "customer"){ %> class="active" <%}%> ><a href="mainCustomer.jsp">
                             <span class="mif-drive-eta icon"></span>

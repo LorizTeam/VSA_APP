@@ -47,7 +47,7 @@ public class MaterialDB {
 				amount 			= rs.getString("amount"); 
 				unit 			= rs.getString("unit"); 
 				
-				amount 			= df2.format(Float.parseFloat(amount));
+			//	amount 			= df2.format(Float.parseFloat(amount));
 				
 				materialList.add(new MaterialForm(materialCode, materialName, amount, unit));
 			}
@@ -59,7 +59,102 @@ public class MaterialDB {
 		}
 		return materialList;
 	 }
-
+	public List GetMaterialList_A(String grp) 
+	throws Exception { //30-05-2014
+		List materialList = new ArrayList();
+		String materialCode = "", materialName = "", amount = "", unit = "";
+		DecimalFormat df1 = new DecimalFormat("#,###,##0.##");
+		DecimalFormat df2 = new DecimalFormat("#,###,##0.00");
+		try {
+		
+			conn = agent.getConnectMYSql();
+			
+			String sqlStmt = "SELECT material_code, material_name, amount, unit " +
+			"FROM material_master " +
+			"WHERE "; 
+			if(!grp.equals("")) sqlStmt = sqlStmt+ "grp = '"+grp+"' AND ";
+			 
+			sqlStmt = sqlStmt + "material_code <> '' group by material_code order by material_code";
+			
+			//System.out.println(sqlStmt);				
+			pStmt = conn.createStatement();
+			rs = pStmt.executeQuery(sqlStmt);	
+			while (rs.next()) {
+				materialCode 	= rs.getString("material_code");
+				if (rs.getString("material_name") != null) 		materialName = rs.getString("material_name"); else materialName = "";
+				amount 			= rs.getString("amount"); 
+				unit 			= rs.getString("unit"); 
+				
+			//	amount 			= df2.format(Float.parseFloat(amount));
+				
+				materialList.add(new MaterialForm(materialCode, materialName, amount, unit));
+			}
+			rs.close();
+			pStmt.close();
+			conn.close();
+		} catch (SQLException e) {
+		    throw new Exception(e.getMessage());
+		}
+		return materialList;
+	 }
+	public String[] GetGrpList(int count) 
+	throws Exception { //30-05-2014
+		String getList[] = new String[count];
+		try {
+		
+			conn = agent.getConnectMYSql();
+			
+			String sqlStmt = "SELECT grp " +
+			"FROM material_master " +
+			"WHERE ";  
+			 
+			sqlStmt = sqlStmt + "material_code <> '' group by grp";
+			
+			//System.out.println(sqlStmt);				
+			pStmt = conn.createStatement();
+			rs = pStmt.executeQuery(sqlStmt);	
+			int i=0;
+			while (rs.next()) { 	 
+				getList[i] = rs.getString("grp");
+			i++;
+			}
+			rs.close();
+			pStmt.close();
+			conn.close();
+		} catch (SQLException e) {
+		    throw new Exception(e.getMessage());
+		}
+		return getList;
+	 }
+	public int GetGrp() 
+	throws Exception { //30-05-2014
+		int count = 0;
+		 
+		try {
+		
+			conn = agent.getConnectMYSql();
+			
+			String sqlStmt = "SELECT count(grp) as coustgrp " +
+			"FROM material_master " +
+			"WHERE ";  
+			 
+			sqlStmt = sqlStmt + "material_code <> '' group by grp";
+			
+			//System.out.println(sqlStmt);				
+			pStmt = conn.createStatement();
+			rs = pStmt.executeQuery(sqlStmt);	
+			while (rs.next()) {
+				count = Integer.parseInt(rs.getString("coustgrp"));
+			}
+			rs.close();
+			pStmt.close();
+			conn.close();
+		} catch (SQLException e) {
+		    throw new Exception(e.getMessage());
+		}
+		return count;
+	 }
+	
 	public void AddMaterial(String materialName, String amount, String unit)  throws Exception{
 		conn = agent.getConnectMYSql();
 		

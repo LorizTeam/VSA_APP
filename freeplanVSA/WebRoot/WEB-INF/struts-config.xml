@@ -8,6 +8,7 @@
   	<form-bean name="customerForm" type="com.vsa.form.CustomerForm" />
   	<form-bean name="materialForm" type="com.vsa.form.MaterialForm" />
   	<form-bean name="projectForm" type="com.vsa.form.ProjectForm" />
+  	<form-bean name="importExcelForm" type="com.vsa.form.ImportExcelForm" />
   </form-beans>
   <global-exceptions />
   <global-forwards />
@@ -105,6 +106,19 @@
       <forward name="cancle" path="/mainProjectHD.jsp" />
     </action>
   <!--################################     Project     #################################-->
+  
+  <!--################################     Import Excel     #################################-->
+    <action
+      attribute="importExcelForm"
+      input="/importExcel.jsp"
+      name="importExcelForm"
+      path="/importExcel"
+      scope="request"
+      type="com.vsa.action.ImportExcelAction" >
+      
+      <forward name="success" path="/importExcel.jsp" />
+    </action>
+  <!--################################     Import Excel    #################################-->
   
   </action-mappings>
 

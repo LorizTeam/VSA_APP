@@ -72,14 +72,14 @@ public class ProjectDB {
 	public List GetProjectDTList(String projectID, String materialCode) 
 	throws Exception { //30-05-2014
 		List projectDTList = new ArrayList();
-		String projectName = "", materialName = "", amount = "", weight = "", unit = "", amountTotal = "";
+		String structure = "", projectName = "", materialName = "", amount = "", weight = "", unit = "", amountTotal = "";
 		DecimalFormat df1 = new DecimalFormat("#,###,##0.##");
 		DecimalFormat df2 = new DecimalFormat("#,###,##0.00");
 		try {
 		
 			conn = agent.getConnectMYSql();
 			
-			String sqlStmt = "SELECT a.project_id, c.project_name, a.weight, a.amounttotal, " +
+			String sqlStmt = "SELECT a.project_id, c.project_name, a.weight, a.amounttotal, a.structure, " +
 					"b.material_code, b.material_name, a.amount, b.unit " +
 			"FROM projectdt a " +
 			"INNER JOIN material_master b on(b.material_code = a.material_code) " +
@@ -88,7 +88,7 @@ public class ProjectDB {
 			if(!projectID.equals("")) sqlStmt = sqlStmt+ "a.project_id = '"+projectID+"' AND ";
 			if(!materialCode.equals("")) sqlStmt = sqlStmt+ "b.material_code like '"+materialCode+"%' AND ";
 			
-			sqlStmt = sqlStmt + "a.material_code <> '' group by a.material_code order by a.material_code";
+			sqlStmt = sqlStmt + "a.material_code <> '' group by a.structure, a.material_code order by a.structure, a.material_code";
 			
 			//System.out.println(sqlStmt);				
 			pStmt = conn.createStatement();
@@ -96,6 +96,7 @@ public class ProjectDB {
 			while (rs.next()) {
 				projectID 		= rs.getString("project_id");
 				if (rs.getString("project_name") != null) 	projectName = rs.getString("project_name"); else projectName = "";
+				structure		= rs.getString("structure");
 				materialCode 	= rs.getString("material_code");
 				if (rs.getString("material_name") != null) 	materialName = rs.getString("material_name"); else materialName = "";
 				amount			= rs.getString("amount");
@@ -107,7 +108,7 @@ public class ProjectDB {
 				amount 			= df2.format(Float.parseFloat(amount));
 				amountTotal 	= df2.format(Float.parseFloat(amountTotal));
 				
-				projectDTList.add(new ProjectForm(projectID, projectName, materialCode, materialName, weight, amount, amountTotal, unit));
+				projectDTList.add(new ProjectForm(projectID, projectName, structure, materialCode, materialName, weight, amount, amountTotal, unit));
 			}
 			rs.close();
 			pStmt.close();
@@ -128,11 +129,11 @@ public class ProjectDB {
 		pStmt.close();
 		conn.close();
 	}
-	public void AddProjectDT(String projectID, String materialCode, String weight, String amount, String amountTotal)  throws Exception{
+	public void AddProjectDT(String projectID, String structure, String materialCode, String weight, String amount, String amountTotal)  throws Exception{
 		conn = agent.getConnectMYSql();
 		
-		String sqlStmt = "INSERT IGNORE INTO projectdt(project_id, material_code, weight, amount, amounttotal) " +
-		"VALUES ('"+projectID+"', '"+materialCode+"', '"+weight+"', '"+amount+"', '"+amountTotal+"')";
+		String sqlStmt = "INSERT IGNORE INTO projectdt(project_id, structure, material_code, weight, amount, amounttotal) " +
+		"VALUES ('"+projectID+"', '"+structure+"', '"+materialCode+"', '"+weight+"', '"+amount+"', '"+amountTotal+"')";
 		//System.out.println(sqlStmt);
 		pStmt = conn.createStatement();
 		pStmt.executeUpdate(sqlStmt);
@@ -154,11 +155,11 @@ public class ProjectDB {
 		pStmt.close();
 		conn.close();
 	}
-	public void UpdateProjectDT(String projectID, String materialCode, String weight, String amount, String amountTotal)  throws Exception{
+	public void UpdateProjectDT(String projectID, String structure, String materialCode, String weight, String amount, String amountTotal)  throws Exception{
 		conn = agent.getConnectMYSql();
 		
-		String sqlStmt = "UPDATE projecthd set weight = '"+weight+"', amount = '"+amount+"', amounttotal = '"+amountTotal+"' " +
-				"WHERE project_id = '"+projectID+"' and material_code = '"+materialCode+"'";
+		String sqlStmt = "UPDATE projectdt set weight = '"+weight+"', amount = '"+amount+"', amounttotal = '"+amountTotal+"' " +
+				"WHERE project_id = '"+projectID+"' and structure = '"+structure+"' and material_code = '"+materialCode+"'";
 		//System.out.println(sqlStmt);
 		pStmt = conn.createStatement();
 		pStmt.executeUpdate(sqlStmt);
@@ -169,18 +170,25 @@ public class ProjectDB {
 		conn = agent.getConnectMYSql();
 		
 		String sqlStmt = "DELETE FROM projecthd "+
-		"WHERE projecthd = '"+projectID+"'";
+		"WHERE project_id = '"+projectID+"'";
 		//System.out.println(sqlStmt);
 		pStmt = conn.createStatement();
 		pStmt.executeUpdate(sqlStmt);
 		pStmt.close();
+		
+		sqlStmt = "DELETE FROM projectdt "+
+		"WHERE project_id = '"+projectID+"'";
+		//System.out.println(sqlStmt);
+		pStmt = conn.createStatement();
+		pStmt.executeUpdate(sqlStmt);
+		
 		conn.close();
 	}
-	public void DeleteProjectDT(String projectID, String materialCode)  throws Exception{
+	public void DeleteProjectDT(String projectID, String structure, String materialCode)  throws Exception{
 		conn = agent.getConnectMYSql();
 		
 		String sqlStmt = "DELETE FROM projectdt "+
-		"WHERE projecthd = '"+projectID+"' and material_code = '"+materialCode+"'";
+		"WHERE project_id = '"+projectID+"' and structure = '"+structure+"' and material_code = '"+materialCode+"'";
 		//System.out.println(sqlStmt);
 		pStmt = conn.createStatement();
 		pStmt.executeUpdate(sqlStmt);

@@ -28,6 +28,7 @@ public class ProjectForm extends ActionForm {
 	private String amount;
 	private String amountTotal;
 	private String unit;
+	private String structure;
 	
 	private String add;
 	private String update;
@@ -50,11 +51,12 @@ public class ProjectForm extends ActionForm {
 		this.projectStatus 			= projectStatus;
 		this.projectAddress			= projectAddress;
 }
-	public ProjectForm(String projectID, String projectName, String materialCode, String materialName,
+	public ProjectForm(String projectID, String projectName, String structure, String materialCode, String materialName,
 			String weight, String amount, String amountTotal, String unit){
 		super();
 		this.projectID 				= projectID;
 		this.projectName			= projectName;
+		this.structure				= structure;
 		this.materialCode 			= materialCode;
 		this.materialName			= materialName;
 		this.weight 				= weight;
@@ -194,5 +196,11 @@ public class ProjectForm extends ActionForm {
 	}
 	public void setView(String view) {
 		this.view = view;
+	}
+	public String getStructure() {
+		return structure;
+	}
+	public void setStructure(String structure) {
+		this.structure = structure;
 	}
 }

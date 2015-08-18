@@ -58,6 +58,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 		<style>
         html, body {
             height: 100%;
+            width:100%;
             overflow: hidden;
         }
         .page-content {
@@ -143,6 +144,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 				 
 				document.projectForm.customerID.value 			= tcusID;
 				document.projectForm.customerName.value 		= tcusName;	
+				 
 	}
     </script>
 	</head>
@@ -227,7 +229,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 									%>
                 					<tr>
                 						<td align="center"><input type="radio" id="view" name="view" value="view" 
-                						onclick="submitView(<%=proj.getProjectID()%>);"/> <%=x%></td>
+                						onclick="submitView('<%=proj.getProjectID()%>');" /> <%=x%></td>
                 						<td align="center"><a href="javascript:getProject('<%=proj.getProjectID()%>','<%=proj.getProjectName()%>',
                 						'<%=proj.getEmployeeID()%>','<%=proj.getCustomerID()%>','<%=proj.getCustomerName()%>',
                 						'<%=proj.getCreateDate()%>','<%=proj.getProjectType()%>','<%=proj.getProjectStatus()%>','<%=proj.getProjectAddress()%>');">

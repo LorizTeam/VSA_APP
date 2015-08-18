@@ -13,8 +13,21 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 %>
 <% 	List projectDTList1 = null, materialList1 = null;
 
-	String projectID = "";
-	if(request.getParameter("projectID") != null) projectID = (String) request.getParameter("projectID");
+	String projectID = "", projectName = "";
+	if(request.getParameter("projectID") != null){ projectID = (String) request.getParameter("projectID");
+
+	if (projectID.length() == 1) {
+		projectID = "00000" + projectID; 
+	} else if (projectID.length() == 2) {
+		projectID = "0000" + projectID; 
+	} else if (projectID.length() == 3) {
+		projectID = "000" + projectID; 
+	} else if (projectID.length() == 4) {
+		projectID = "00" + projectID; 
+	} else if (projectID.length() == 5) {
+		projectID = "0" + projectID; 
+	}
+	}
 
 	if (request.getAttribute("projectDTList") == null) {
 	ProjectDB projectDB = new ProjectDB();
@@ -121,24 +134,25 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
             })
         })
         
-        function getProject(tprojID, tprojName, tprojEmpID, tprojCusID, tprojCusName, tprojCreateDate, tprojType, tprojStatus, tprojAddr) {
+        function getProjectDT(tprojID, tmatID, tStructure, tmatName, tWeight, tAmount, tAmountTotal, tUnit) {
 				
-				document.projectForm.projectID.value 			= tprojID;
-				document.projectForm.projectName.value 			= tprojName;	
-				document.projectForm.employeeID.value 			= tprojEmpID;
-				document.projectForm.customerID.value 			= tprojCusID;
-				document.projectForm.customerName.value 		= tprojCusName;
-				document.projectForm.createDate.value 			= tprojCreateDate;	
-				document.projectForm.projectType.value 			= tprojType;
-				document.projectForm.projectStatus.value 		= tprojStatus;
-				document.projectForm.projectAddress.value 		= tprojAddr;
-	}
+				document.projectForm.projectID.value 			= tprojID;	
+				document.projectForm.structure.value 			= tStructure;	
+				document.projectForm.materialCode.value 		= tmatID;
+				document.projectForm.materialName.value 		= tmatName;
+				document.projectForm.weight.value 				= tWeight;
+				document.projectForm.amount.value 				= tAmount;	
+				document.projectForm.amountTotal.value 			= tAmountTotal;
+				document.projectForm.unit.value 				= tUnit;
+	}			
 	function getMaterial(tmatID, tmatName, tAmount, tUnit) {
 				 
 				document.projectForm.materialCode.value 			= tmatID;
 				document.projectForm.materialName.value 		= tmatName;	
 				document.projectForm.amount.value 			= tAmount;
 				document.projectForm.unit.value 		= tUnit;
+				
+				document.getElementById('weight').focus()
 	}
 	function cal(){
 		document.projectForm.amountTotal.value = parseFloat(document.projectForm.amount.value)*parseFloat(document.projectForm.weight.value)
@@ -169,7 +183,13 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 		<html:form action="/projectDT" styleClass="bg-white" >
 		
 		<div class="row" style="padding-left: 2.5%; margin-top: 1%;">
-		<input type="hidden" id="projectID" name="projectID" />
+		<label style="font-size: 160%; font-weight: bold;"> โครงสร้าง</label>  &nbsp;
+		<select name="structure" id="structure">
+			<option value="A">ฐานบ้าน</option>
+			<option value="B">ตัวบ้าน</option>
+			<option value="C">หลังคา</option>
+		</select>&nbsp;
+		<input type="hidden" id="projectID" name="projectID" value="<%=projectID%>" />
 		<input type="hidden" id="materialCode" name="materialCode" />
 		<label style="font-size: 160%; font-weight: bold;"> ชื่อวัสดุ</label>  &nbsp;
         <input type="text" id="materialName" name="materialName" size="10" maxlength="6" />&nbsp;
@@ -185,7 +205,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
         </div>
         <div class="row" style="padding-left: 2.5%; margin-top: 1%;">
      <!--    <button type="button" class="button mini-button rounded" id="add" name="add" value="add" onclick="add()">เพิ่ม</button>  -->
-        <input class="button mini-button" type="submit" id="add" name="add" value="add" value="เพิ่ม"/>
+        <input class="button mini-button" type="submit" id="add" name="add" value="เพิ่ม"/>
         <input class="button mini-button" type="submit" id="update" name="update" value="แก้ไข"/>
         <input class="button mini-button" type="submit" id="delete" name="delete" value="ลบ"/> 
         </div>
@@ -196,11 +216,12 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 									<thead>
 									<tr>
 										<th><center>ลำดับ</center></th>
+										<th><center>โครงสร้าง</center></th>
 										<th><center>ชื่อ วัสดุ</center></th>
 										<th><center>น้ำหนัก</center></th>
+										<th><center>หน่วย</center></th>
 										<th><center>ราคา</center></th>
 										<th><center>ราคารวม</center></th>
-										<th><center>หน่วย</center></th>
 									</tr>
 									</thead>
 									<tbody>
@@ -213,13 +234,20 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 									%>
                 					<tr>
                 						<td align="center"><%=x%></td>
-                						<td align="center"><a href="javascript:getProject('<%=proj.getProjectID()%>','<%=proj.getMaterialCode()%>',
+                						<%if(proj.getStructure().equals("A")){  %>
+                						<td align="center">ฐานบ้าน</td>
+                						<%}else if(proj.getStructure().equals("B")){ %>
+                						<td align="center">ตัวบ้าน</td>
+                						<%}else if(proj.getStructure().equals("C")){ %>
+                						<td align="center">หลังคา</td>
+                						<%} %>
+                						<td align="center"><a href="javascript:getProjectDT('<%=proj.getProjectID()%>','<%=proj.getMaterialCode()%>','<%=proj.getStructure()%>',
                 						'<%=proj.getMaterialName()%>','<%=proj.getWeight()%>','<%=proj.getAmount()%>','<%=proj.getAmountTotal()%>','<%=proj.getUnit()%>');">
                 						<%=proj.getMaterialName()%></a></td>
                 						<td align="center"><%=proj.getWeight()%></td>
+                						<td align="center"><%=proj.getUnit()%></td>
                 						<td align="center"><%=proj.getAmount()%></td>
                 						<td align="center"><%=proj.getAmountTotal()%></td>
-                						<td align="center"><%=proj.getUnit()%></td>
                 					</tr>
                 					<% 	}
                 						} else {
