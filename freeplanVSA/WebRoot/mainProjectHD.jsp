@@ -168,15 +168,27 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 		<html:form action="/projectHD" styleClass="bg-white" >
 		
 		<div class="row" style="padding-left: 2.5%; margin-top: 1%;">
-		<label style="font-size: 105%; font-weight: bold;"> รหัสโครงการ</label>  &nbsp;
-        <input type="text" id="projectID" name="projectID" size="5" maxlength="6" readonly="readonly" value="<%=docNo%>" />&nbsp;
-        <label style="font-size: 105%; font-weight: bold;"> ชื่อโครงการ</label>  &nbsp;
-		<input type="text" id="projectName" name="projectName" size="15" maxlength="35"/>&nbsp;
-		<label style="font-size: 105%; font-weight: bold;"> รหัสพนักงาน</label>  &nbsp;
-        <input type="text" id="employeeID" name="employeeID" size="8" maxlength="10" value="<%=name%>" />&nbsp;
-        <label style="font-size: 105%; font-weight: bold;"> ชื่อลูกค้า</label>  &nbsp;
-        <input type="text" id="customerName" name="customerName" size="10" maxlength="50"/>&nbsp;
-        <button type="button" class="button mini-button rounded" onclick="showDialog('#dialog')">Get</button> &nbsp;
+        <div class="input-control modern text">
+		    <input type="text" id="projectID" name="projectID" size="5" maxlength="6" readonly="readonly" value="<%=docNo%>" style="height: 2em;"/>
+		    <span class="label">รหัสโครงการ</span>
+		    <span class="placeholder"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; รหัสโครงการ</span>
+		</div> &nbsp;
+		<div class="input-control modern text">
+		    <input type="text" id="projectName" name="projectName" size="15" maxlength="35" style="height: 2em;"/>
+		    <span class="label">ชื่อโครงการ</span>
+		    <span class="placeholder"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ชื่อโครงการ</span>
+		</div> &nbsp;
+        <div class="input-control modern text">
+		    <input type="text" id="employeeID" name="employeeID" size="8" maxlength="10" value="<%=name%>" style="height: 2em;"/>
+		    <span class="label">รหัสพนักงาน</span>
+		    <span class="placeholder"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; รหัสพนักงาน</span>
+		</div> &nbsp;
+		<div class="input-control modern text">
+		    <input type="text" id="customerName" name="customerName" size="10" maxlength="50" style="height: 2em;"/>
+		    <span class="label">ชื่อลูกค้า</span>
+		    <span class="placeholder"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ชื่อลูกค้า</span>
+		</div> &nbsp;
+		<button type="button" class="button mini-button rounded" onclick="showDialog('#dialog')">Get</button> &nbsp;
         <input type="hidden" id="customerID" name="customerID" />
         </div>
         <div class="row " style="padding-left: 2.5%; margin-top: 1%;" >

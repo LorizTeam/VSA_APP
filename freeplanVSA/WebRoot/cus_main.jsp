@@ -27,6 +27,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 		
 		list.add(matList); 
 	}
+	String update = (String)request.getAttribute("update");
 	
 %>
 <!--
@@ -64,6 +65,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <script src="bootstrap/js/rickshaw.js"></script>
 <script> 
 $(document).ready(function(){
+	$(window).scrollTo("#flip3");
     $("#flip").click(function(){
         $("#panel").slideToggle("slow");
         $("#panel2").slideUp("slow");
@@ -79,12 +81,18 @@ $(document).ready(function(){
         $("#panel2").slideUp("slow");
         $("#panel3").slideToggle("slow");
     });
+	if ($("#up").val() == 'Update A') {
+	$(window).scrollTo("#flip3");
+        document.location.hash = "#flip3";
+    }
 });
+
 </script>
 
 </head>
 <body>
 <div id="wrapper">
+<input type="hidden" id="up" value="Update A">
      <!-- Navigation -->
         <nav class="top1 navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
@@ -322,7 +330,7 @@ $(document).ready(function(){
      		<div class="col-md-12 span_3">
      			<div class="panel panel-default">
      				<div class="row" style="padding-left: 2.5%; margin-top: 1%;">
-       				 <input class="button mini-button" type="submit" id="update" name="update" value="Update"/>
+       				 <input class="button mini-button" type="submit" id="update" name="update" value="Update <%=grpName%>" />
         			</div>
 					<div class="panel-heading" style="background: #fff;">
 						<h4 class="panel-title">
@@ -341,7 +349,9 @@ $(document).ready(function(){
 						</a>
 						</h4>
 					</div>
-					<div id="panel" class="panel-collapse collapse in">
+					<div <% if(grpName.equals("A")){%> id="panel" <%} %>
+						<% if(grpName.equals("B")){%> id="panel2" <%} %> 
+						<% if(grpName.equals("C")){%> id="panel3" <%} %> class="panel-collapse collapse in">
 						<div class="panel-body">
 							<div class="panel-body">
 							<div class="table-responsive col-md-8 col-md-offset-4">
@@ -409,5 +419,9 @@ $(document).ready(function(){
     <!-- /#wrapper -->
     <!-- Bootstrap Core JavaScript -->
     <script src="bootstrap/js/bootstrap.js"></script>
+    <script>
+
+
+</script>
 </body>
 </html>

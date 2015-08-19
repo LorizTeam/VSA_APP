@@ -52,7 +52,7 @@ public class CustomerProjectAction extends Action {
 			}
 		}
 	}
- 
+  request.setAttribute("update", update);
 		return mapping.findForward(forwardText);
 	}
 }
