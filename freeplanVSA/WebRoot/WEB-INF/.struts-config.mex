@@ -4,30 +4,41 @@
   <StrutsActivity path="/register.do" location="950,250" dimension="199,96" />
   <StrutsActivity path="/customerStart.do" location="50,450" dimension="199,96" />
   <StrutsActivity path="/customer.do" location="950,450" dimension="209,96" />
+  <StrutsActivity path="/material.do" location="350,650" dimension="200,96" />
   <StrutsActivity path="/projectHD.do" location="50,650" dimension="200,96" />
   <StrutsActivity path="/projectDT.do" location="650,850" dimension="209,96" />
+  <StrutsActivity path="/importExcel.do" location="50,1050" dimension="200,96" />
   <StrutsActivity path="/mainAdmin.jsp" location="650,250" dimension="116,51" />
   <StrutsActivity path="/Login.jsp" location="350,250" dimension="83,51" />
   <StrutsActivity path="/mainAgent1.jsp" location="950,50" dimension="118,51" />
   <StrutsActivity path="/mainAccounting.jsp" location="50,250" dimension="142,51" />
   <StrutsActivity path="/mainCustomer.jsp" location="650,450" dimension="132,51" />
-  <StrutsActivity path="/a_mainMaterial.jsp" location="950,850" dimension="134,51" />
+  <StrutsActivity path="/mainMaterial.jsp" location="650,650" dimension="123,51" />
   <StrutsActivity path="/mainProjectHD.jsp" location="50,850" dimension="134,51" />
   <StrutsActivity path="/mainProjectDT.jsp" location="350,850" dimension="132,51" />
-  <StrutsActivity path="/mainMaterial.jsp" location="650,650" dimension="123,51" />
+  <StrutsActivity path="/importExcel.jsp" location="350,1050" dimension="115,51" />
+  <StrutsActivity path="/a_mainMaterial.jsp" location="950,850" dimension="134,51" />
   <StrutsActivity path="/supervisor.jsp" location="350,50" dimension="107,51" />
   <StrutsActivity path="/login.jsp" location="650,50" dimension="80,51" />
   <StrutsActivity path="/Customer.jsp" location="350,450" dimension="105,51" />
   <StrutsActivity path="/mainProject.jsp" location="950,650" dimension="117,51" />
-  <StrutsActivity path="/importExcel.do" location="50,1050" dimension="200,96" />
-  <StrutsActivity path="/importExcel.jsp" location="350,1050" dimension="115,51" />
   <StrutsActivity path="/materialList.jsp" location="650,1050" dimension="114,51" />
-  <StrutsActivity path="/material.do" location="350,650" dimension="200,96" />
   <StrutsActivity path="/material.jsp" location="950,1050" dimension="96,51" />
+  <StrutsActivity path="/custMain.do" location="1250,450" dimension="219,96" />
+  <StrutsActivity path="/cust_main.jsp" location="1250,650" dimension="107,51" />
+  <StrutsActivity path="/cus_main.jsp" location="1250,850" dimension="103,51" />
   <StrutsTransition id="/projectHD.do,view,/mainProjectHD.jsp,1" routingType="0">
     <AutomaticBendpoints>
       <AbsolutePoint location="117,746" />
       <AbsolutePoint location="117,850" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/custMain.do,success,/cus_main.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1250,498" />
+      <AbsolutePoint location="1204,498" />
+      <AbsolutePoint location="1204,875" />
+      <AbsolutePoint location="1250,875" />
     </AutomaticBendpoints>
   </StrutsTransition>
   <StrutsTransition id="/projectHD.do,success,/mainProjectDT.jsp,1" routingType="0">
@@ -35,6 +46,13 @@
       <AbsolutePoint location="199,746" />
       <AbsolutePoint location="199,875" />
       <AbsolutePoint location="350,875" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/cus_main.jsp,null,/custMain.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1353,875" />
+      <AbsolutePoint location="1359,875" />
+      <AbsolutePoint location="1359,546" />
     </AutomaticBendpoints>
   </StrutsTransition>
   <StrutsTransition id="/mainProjectHD.jsp,null,/projectHD.do,2" routingType="0">
@@ -71,14 +89,6 @@
       <AbsolutePoint location="450,698" />
     </AutomaticBendpoints>
   </StrutsTransition>
-  <StrutsTransition id="/material.jsp,null,/material.do,2" routingType="0">
-    <AutomaticBendpoints>
-      <AbsolutePoint location="998,1050" />
-      <AbsolutePoint location="998,991" />
-      <AbsolutePoint location="497,991" />
-      <AbsolutePoint location="497,746" />
-    </AutomaticBendpoints>
-  </StrutsTransition>
   <StrutsTransition id="/projectDT.do,cancle,/mainProjectHD.jsp,1" routingType="0">
     <AutomaticBendpoints>
       <AbsolutePoint location="650,916" />
@@ -86,26 +96,18 @@
       <AbsolutePoint location="117,901" />
     </AutomaticBendpoints>
   </StrutsTransition>
-  <StrutsTransition id="/a_mainMaterial.jsp,null,/material.do,2" routingType="0">
+  <StrutsTransition id="/custMain.do,success,/importExcel.jsp,1" routingType="0">
     <AutomaticBendpoints>
-      <AbsolutePoint location="987,850" />
-      <AbsolutePoint location="987,821" />
-      <AbsolutePoint location="450,821" />
-      <AbsolutePoint location="450,746" />
+      <AbsolutePoint location="1389,546" />
+      <AbsolutePoint location="1389,991" />
+      <AbsolutePoint location="407,991" />
+      <AbsolutePoint location="407,1050" />
     </AutomaticBendpoints>
   </StrutsTransition>
   <StrutsTransition id="/login.do,success_acc,/mainAccounting.jsp,1" routingType="0">
     <AutomaticBendpoints>
       <AbsolutePoint location="121,146" />
       <AbsolutePoint location="121,250" />
-    </AutomaticBendpoints>
-  </StrutsTransition>
-  <StrutsTransition id="/materialList.jsp,null,/material.do,2" routingType="0">
-    <AutomaticBendpoints>
-      <AbsolutePoint location="707,1050" />
-      <AbsolutePoint location="707,991" />
-      <AbsolutePoint location="527,991" />
-      <AbsolutePoint location="527,746" />
     </AutomaticBendpoints>
   </StrutsTransition>
   <StrutsTransition id="/mainCustomer.jsp,null,/customer.do,2" routingType="0">
@@ -165,32 +167,24 @@
       <AbsolutePoint location="754,850" />
     </AutomaticBendpoints>
   </StrutsTransition>
-  <StrutsTransition id="/material.do,success,/materialList.jsp,1" routingType="0">
+  <StrutsTransition id="/importExcel.jsp,null,/custMain.do,2" routingType="0">
     <AutomaticBendpoints>
-      <AbsolutePoint location="497,746" />
-      <AbsolutePoint location="497,1075" />
-      <AbsolutePoint location="650,1075" />
-    </AutomaticBendpoints>
-  </StrutsTransition>
-  <StrutsTransition id="/material.do,success,/a_mainMaterial.jsp,1" routingType="0">
-    <AutomaticBendpoints>
-      <AbsolutePoint location="550,716" />
-      <AbsolutePoint location="1017,716" />
-      <AbsolutePoint location="1017,850" />
-    </AutomaticBendpoints>
-  </StrutsTransition>
-  <StrutsTransition id="/materialList.jsp,null,/materialList.do,2" routingType="0">
-    <AutomaticBendpoints>
-      <AbsolutePoint location="707,1050" />
-      <AbsolutePoint location="707,991" />
-      <AbsolutePoint location="527,991" />
-      <AbsolutePoint location="527,746" />
+      <AbsolutePoint location="437,1101" />
+      <AbsolutePoint location="437,1221" />
+      <AbsolutePoint location="1389,1221" />
+      <AbsolutePoint location="1389,546" />
     </AutomaticBendpoints>
   </StrutsTransition>
   <StrutsTransition id="/customer.do,success,/mainCustomer.jsp,1" routingType="0">
     <AutomaticBendpoints>
       <AbsolutePoint location="950,475" />
       <AbsolutePoint location="782,475" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/cust_main.jsp,null,/custMain.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1303,650" />
+      <AbsolutePoint location="1303,546" />
     </AutomaticBendpoints>
   </StrutsTransition>
   <StrutsTransition id="/projectDT.do,success,/mainProjectDT.jsp,1" routingType="0">
@@ -212,13 +206,6 @@
       <AbsolutePoint location="421,221" />
       <AbsolutePoint location="1049,221" />
       <AbsolutePoint location="1049,250" />
-    </AutomaticBendpoints>
-  </StrutsTransition>
-  <StrutsTransition id="/materialList.do,success,/materialList.jsp,1" routingType="0">
-    <AutomaticBendpoints>
-      <AbsolutePoint location="497,746" />
-      <AbsolutePoint location="497,1075" />
-      <AbsolutePoint location="650,1075" />
     </AutomaticBendpoints>
   </StrutsTransition>
 </FlowViewLayout>

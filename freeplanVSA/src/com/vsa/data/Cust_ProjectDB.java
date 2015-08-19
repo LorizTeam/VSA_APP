@@ -8,11 +8,11 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.vsa.form.MaterialForm;
+import com.vsa.form.CustomerProjectForm;
 import com.vsa.util.DBConnect;
 import com.vsa.util.DateUtil;
 
-public class MaterialDB {
+public class Cust_ProjectDB {
 	
 	DBConnect agent 	= new DBConnect();
 	Connection conn		= null;
@@ -20,36 +20,38 @@ public class MaterialDB {
 	ResultSet rs		= null;
 	DateUtil dateUtil = new DateUtil();
 	
-	public List GetMaterialList(String materialCode, String materialName) 
+	public List GetProjectList(String grp, String customerID) 
 	throws Exception { //30-05-2014
 		List materialList = new ArrayList();
-		String amount = "", unit = "";
+		String projectID = "", materialCode = "", structure = "", materialName = "", amountTotal = "", amountTotalCust = "";
 		DecimalFormat df1 = new DecimalFormat("#,###,##0.##");
 		DecimalFormat df2 = new DecimalFormat("#,###,##0.00");
 		try {
 		
 			conn = agent.getConnectMYSql();
 			
-			String sqlStmt = "SELECT material_code, material_name, amount, unit " +
-			"FROM material_master " +
+			String sqlStmt = "SELECT a.project_id, a.customer_id, b.material_code, b.structure, b.amounttotal, b.amounttotal_cust, c.material_name " +
+			"FROM projecthd a INNER JOIN projectdt b on(b.project_id = a.project_id) INNER JOIN material_master c on(c.material_code = b.material_code) " +
 			"WHERE "; 
-			if(!materialCode.equals("")) sqlStmt = sqlStmt+ "material_code like '"+materialCode+"%' AND ";
-			if(!materialName.equals("")) sqlStmt = sqlStmt+ "material_name like '"+materialName+"%' AND ";
-			
-			sqlStmt = sqlStmt + "material_code <> '' group by material_code order by material_code";
+			if(!grp.equals("")) sqlStmt = sqlStmt+ "b.structure = '"+grp+"' AND ";
+			if(!customerID.equals("")) sqlStmt = sqlStmt+ "a.customer_id = '"+customerID+"' AND "; 
+			sqlStmt = sqlStmt + "b.material_code <> '' group by b.material_code, b.structure order by b.structure";
 			
 			//System.out.println(sqlStmt);				
 			pStmt = conn.createStatement();
 			rs = pStmt.executeQuery(sqlStmt);	
-			while (rs.next()) {
-				materialCode 	= rs.getString("material_code");
+			while (rs.next()) { 
+				projectID 		= rs.getString("project_id"); 
+				materialCode	= rs.getString("material_code"); 
 				if (rs.getString("material_name") != null) 		materialName = rs.getString("material_name"); else materialName = "";
-				amount 			= rs.getString("amount"); 
-				unit 			= rs.getString("unit"); 
+				structure		= rs.getString("structure"); 
+				amountTotal 	= rs.getString("amounttotal"); 
+				amountTotalCust = rs.getString("amounttotal_cust"); 
 				
-			//	amount 			= df2.format(Float.parseFloat(amount));
+				amountTotal 		= df2.format(Float.parseFloat(amountTotal));
+				amountTotalCust 	= df2.format(Float.parseFloat(amountTotalCust));
 				
-				materialList.add(new MaterialForm(materialCode, materialName, amount, unit));
+				materialList.add(new CustomerProjectForm(projectID, materialCode, materialName, structure, amountTotal, amountTotalCust));
 			}
 			rs.close();
 			pStmt.close();
@@ -59,63 +61,25 @@ public class MaterialDB {
 		}
 		return materialList;
 	 }
-	public List GetMaterialList_A(String grp) 
-	throws Exception { //30-05-2014
-		List materialList = new ArrayList();
-		String materialCode = "", materialName = "", amount = "", unit = "";
-		DecimalFormat df1 = new DecimalFormat("#,###,##0.##");
-		DecimalFormat df2 = new DecimalFormat("#,###,##0.00");
-		try {
-		
-			conn = agent.getConnectMYSql();
-			
-			String sqlStmt = "SELECT material_code, material_name, amount, unit " +
-			"FROM material_master " +
-			"WHERE "; 
-			if(!grp.equals("")) sqlStmt = sqlStmt+ "grp = '"+grp+"' AND ";
-			 
-			sqlStmt = sqlStmt + "material_code <> '' group by material_code order by material_code";
-			
-			//System.out.println(sqlStmt);				
-			pStmt = conn.createStatement();
-			rs = pStmt.executeQuery(sqlStmt);	
-			while (rs.next()) {
-				materialCode 	= rs.getString("material_code");
-				if (rs.getString("material_name") != null) 		materialName = rs.getString("material_name"); else materialName = "";
-				amount 			= rs.getString("amount"); 
-				unit 			= rs.getString("unit"); 
-				
-			//	amount 			= df2.format(Float.parseFloat(amount));
-				
-				materialList.add(new MaterialForm(materialCode, materialName, amount, unit));
-			}
-			rs.close();
-			pStmt.close();
-			conn.close();
-		} catch (SQLException e) {
-		    throw new Exception(e.getMessage());
-		}
-		return materialList;
-	 }
-	public String[] GetGrpList(int count) 
+	public String[] GetGrpList(int count, String customerID) 
 	throws Exception { //30-05-2014
 		String getList[] = new String[count];
 		try {
 		
 			conn = agent.getConnectMYSql();
 			
-			String sqlStmt = "SELECT grp " +
-			"FROM material_master " +
+			String sqlStmt = "SELECT b.structure, a.customer_id " +
+			"FROM projecthd a INNER JOIN projectdt b on(b.project_id = a.project_id) " +
 			"WHERE ";  
-			 
-			sqlStmt = sqlStmt + "material_code <> '' and  grp <> '' group by grp";
+			if(!customerID.equals("")) sqlStmt = sqlStmt+ "a.customer_id = '"+customerID+"' AND "; 
+			sqlStmt = sqlStmt + "material_code <> '' and  structure <> '' group by structure";
 			
 			//System.out.println(sqlStmt);				
 			pStmt = conn.createStatement();
 			rs = pStmt.executeQuery(sqlStmt);	
 			int i=0;
 			while (rs.next()) { 	 
-				getList[i] = rs.getString("grp");
+				getList[i] = rs.getString("structure");
 			i++;
 			}
 			rs.close();
@@ -126,7 +90,7 @@ public class MaterialDB {
 		}
 		return getList;
 	 }
-	public int GetGrp() 
+	public int GetGrp(String customerID) 
 	throws Exception { //30-05-2014
 		int count = 0;
 		 
@@ -134,11 +98,12 @@ public class MaterialDB {
 		
 			conn = agent.getConnectMYSql();
 			
-			String sqlStmt = "SELECT count(grp) as coustgrp " +
-			"FROM material_master " +
+			String sqlStmt = "SELECT count(DISTINCT b.structure) as coustgrp " +
+			"FROM projecthd a INNER JOIN projectdt b on(b.project_id = a.project_id) " +
 			"WHERE ";  
-			 
-			sqlStmt = sqlStmt + "material_code <> '' group by grp";
+			if(!customerID.equals("")) sqlStmt = sqlStmt+ "a.customer_id = '"+customerID+"' AND "; 
+			
+			sqlStmt = sqlStmt + "a.project_id <> ''";
 			
 			//System.out.println(sqlStmt);				
 			pStmt = conn.createStatement();
@@ -154,7 +119,35 @@ public class MaterialDB {
 		}
 		return count;
 	 }
-	
+	public String GetGrpName(String grpName) 
+	throws Exception { //30-05-2014
+		 
+		try {
+		
+			conn = agent.getConnectMYSql();
+			
+			String sqlStmt = "SELECT DISTINCT(b.structure) as coustgrp " +
+			"FROM projecthd a INNER JOIN projectdt b on(b.project_id = a.project_id) " +
+			"WHERE ";  
+			if(!grpName.equals("")) sqlStmt = sqlStmt+ "b.structure = '"+grpName+"' AND "; 
+			
+			sqlStmt = sqlStmt + "a.project_id <> ''";
+			
+			//System.out.println(sqlStmt);				
+			pStmt = conn.createStatement();
+			rs = pStmt.executeQuery(sqlStmt);	
+			while (rs.next()) {
+				grpName = rs.getString("coustgrp");
+			} 
+			
+			rs.close();
+			pStmt.close();
+			conn.close();
+		} catch (SQLException e) {
+		    throw new Exception(e.getMessage());
+		}
+		return grpName;
+	 }
 	public void AddMaterial(String materialName, String amount, String unit)  throws Exception{
 		conn = agent.getConnectMYSql();
 		
@@ -209,4 +202,31 @@ public class MaterialDB {
 	
 	return chkCustomer;
 	}
+	public void UpdateAR(String projectID, String structure, String materialCode, String amountTotalCust) 
+		throws Exception { //01-12-2011
+			try {
+				conn = agent.getConnectMYSql();
+				
+				amountTotalCust = amountTotalCust.replace(",", "");
+				
+				String sqlStmt = "UPDATE projectdt SET " +
+					"amounttotal_cust = '"+amountTotalCust+"' " +
+					"WHERE project_id = '"+projectID+"' and structure = '"+structure+"' and material_code = '"+materialCode+"'";
+								
+				//System.out.println(sqlStmt);
+			    pStmt = conn.createStatement();
+				pStmt.executeUpdate(sqlStmt);			
+				pStmt.close();
+				conn.close();
+			} catch (Exception e) {
+				throw new Exception(e.getMessage());
+			} finally {
+				try {
+					if (pStmt != null) pStmt.close();
+					if (conn != null)  conn.close();
+				} catch (SQLException e) {
+					throw new Exception(e.getMessage());
+				}
+			}
+		}
 }

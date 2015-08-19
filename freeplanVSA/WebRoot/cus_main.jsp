@@ -1,3 +1,34 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%> 
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+<%@ page import ="javax.servlet.http.HttpServletRequest.*"%>
+<%@ page import ="javax.servlet.http.HttpServletResponse.*"%>
+<%@ page import ="javax.servlet.http.HttpSession.*"%>
+<%@ page import="com.vsa.form.CustomerProjectForm" %>
+<%@ page import="com.vsa.data.Cust_ProjectDB" %>
+<%@ page import="com.vsa.util.DBConnect" %>
+<%@ page import="java.sql.*" %>
+<% 
+String path = request.getContextPath (); 
+String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":" + request.getServerPort () + path + "/"; 
+%>
+<% 	List matList = null;
+	int count = 0; String grp[] = null;  String grpName = "";
+	List list = new ArrayList();
+	
+	Cust_ProjectDB cust_projectDB = new Cust_ProjectDB();
+	
+	count = cust_projectDB.GetGrp("1");
+	grp = cust_projectDB.GetGrpList(count, "1");
+	
+	for(int f=0; f<count; f++){
+	
+		matList = cust_projectDB.GetProjectList(grp[f], "1");
+		
+		list.add(matList); 
+	}
+	
+%>
 <!--
 Author: W3layouts
 Author URL: http://w3layouts.com
@@ -190,7 +221,7 @@ $(document).ready(function(){
                     <i class="pull-left fa fa-thumbs-up icon-rounded"></i>
                     <div class="stats">
                       <h5><strong>600,000</strong></h5>
-                      <span>จำนวน Like</span>
+                      <span>จำนวน  Like</span>
                     </div>
                 </div>
         	 </div>
@@ -201,7 +232,7 @@ $(document).ready(function(){
 		   <div class="bs-example1">
 		    <img class="img-responsive" src="images/1-1.jpg" />
 		    <br />
-		    <h3>Project ปัจจุบัน : บ้านเดี่ยว 3 ห้องนอน 2 ห้องน้ำ 2 ชั้น</h3>
+		    <h3>Project ปัจจุบัน : บ้านเดี่ยว 3 ห้องนอน 2 ห้องน้ำ 2 ชั้น</h3>
 		   </div>
 	    </div>
 	    <div class="col-md-4 span_3 widget1" style="width: 35%">
@@ -225,7 +256,7 @@ $(document).ready(function(){
 		          <td>TON</td>
 		          <td>600,000</td>
 		        </tr>
-		        <tr>
+		        <tr class="danger">
 		          <th scope="row">ปูน</th>
 		          <td>70</td>
 		          <td>42</td>
@@ -281,14 +312,30 @@ $(document).ready(function(){
 	   </div>
 		<div class="clearfix"> </div>
 	    </div>
+	    <html:form action="/custMain">
+	    <%   
+         for(int a=0; a<count; a++){
+         List materialList = (List)list.get(a);
+         grpName = cust_projectDB.GetGrpName(grp[a]);
+         %>
 	     <div class="content_bottom">
      		<div class="col-md-12 span_3">
      			<div class="panel panel-default">
+     				<div class="row" style="padding-left: 2.5%; margin-top: 1%;">
+       				 <input class="button mini-button" type="submit" id="update" name="update" value="Update"/>
+        			</div>
 					<div class="panel-heading" style="background: #fff;">
 						<h4 class="panel-title">
-						<a id="flip" data-toggle="collapse" data-parent="#accordion" href="#panel" style="color:#000;">
+						<a <% if(grpName.equals("A")){%> id="flip" <%} %>
+						<%if(grpName.equals("B")){%> id="flip2" <%} %> 
+						<% if(grpName.equals("C")){%> id="flip3" <%} %>
+						data-toggle="collapse" data-parent="#accordion" 
+						<% if(grpName.equals("A")){%> href="#panel" <%} %>
+						<% if(grpName.equals("B")){%> href="#panel2" <%} %> 
+						<% if(grpName.equals("C")){%> href="#panel3" <%} %>
+						style="color:#000;">
 							<div class="container">
-							หลังคา
+							<% if(grpName.equals("A")){%>หลังคา<%} if(grpName.equals("B")){%>ตัวบ้าน<%} if(grpName.equals("C")){%>ฐานบ้าน<%} %>
 							<span class="pull-right" style="margin-right: -10%;"><i class="fa fa-plus"></i></span>
 							</div>	
 						</a>
@@ -299,151 +346,59 @@ $(document).ready(function(){
 							<div class="panel-body">
 							<div class="table-responsive col-md-8 col-md-offset-4">
 								<table class="table table-hover">
+								 <thead>
 									<tr>
-										<th id="">ชื่อวัสดุ</th>
-										<th id="">จำนวน</th>
-										<th id="">ระดับของวัสดุ</th>
+										<th id=""><center>วัสดุ</center></th>
+										<th id=""><center>ราคาจาก VSA</center></th>
+										<th id="">ราคา</th>
+										<th id="">ราคาเทียบ</th>
 									</tr>
+									</thead>
+									<tbody>
+									<%	
+				                		int x = 0, j=0; String[] calAmount = new String[count]; String calAmotxt = "0";
+				                		String[] calAmountCust = new String[count]; String calCustAmotxt = "0";
+										for (Iterator iter = materialList.iterator(); iter.hasNext();) {
+										x++;
+										CustomerProjectForm custp = (CustomerProjectForm) iter.next();
+				                	 	String cal = custp.getAmountTotal(); String calCus = custp.getAmountTotalCust();
+				                	 	cal = cal.replace(",", ""); calCus = calCus.replace(",", ""); 
+				                	 //	String progress = Float.toString(Float.parseFloat(cal)-30000);
+				                	 	String progress = Float.toString((Float.parseFloat(calCus)*100)/Float.parseFloat(cal));
+				                	 	calAmount[j] = custp.getAmountTotal();  calAmountCust[j] = custp.getAmountTotalCust();
+				                	 	calAmount[j] = calAmount[j].replace(",", ""); calAmountCust[j] = calAmountCust[j].replace(",", "");
+				                	 	calAmotxt = Float.toString(Float.parseFloat(calAmount[j])+Float.parseFloat(calAmotxt));
+				                	 	calCustAmotxt = Float.toString(Float.parseFloat(calAmountCust[j])+Float.parseFloat(calCustAmotxt));
+				                	%>
 									<tr>
-										<td id="">หิน</td>
-										<td id=""><input type="text" id="" value="30,000" size="10"/></td>
-										<td id="" width="50%"><div class="progress"><div class="progress-bar progress-bar-success" style="width: 35%"><span class="sr-only">35% Complete (success)</span><label>35%</label></div></div></td>
+										<td align="center"><%=custp.getMaterialName()%><input type="hidden" id="projectID" name="projectID" value="<%=custp.getProjectID()%>" /></td>
+										<td align="center"><%=custp.getAmountTotal()%><input type="hidden" id="structure" name="structure" value="<%=custp.getStructure()%>" /><input type="hidden" id="materialCode" name="materialCode" value="<%=custp.getMaterialCode()%>" /></td>
+										<td><input type="text" id="amountTotalCust" name="amountTotalCust" value="<%=custp.getAmountTotalCust()%>" size="10"/></td>
+										<td id="" width="50%"><div class="progress"><div class="progress-bar progress-bar-success" style="width: <%=progress%>%"><span class="sr-only"><%=progress%>% Complete (success)</span><label><%=progress%>%</label></div></div></td>
 									</tr>
-									<tr>
-										<td id="">หิน</td>
-										<td id=""><input type="text" id="" value="30,000" size="10"/></td>
-										<td id="" width="50%"><div class="progress"><div class="progress-bar progress-bar-warning" style="width: 85%"><span class="sr-only">85% Complete (success)</span><label>85%</label></div></div></td>
-									</tr>
-									<tr>
-										<td id="">หิน</td>
-										<td id=""><input type="text" id="" value="30,000" size="10"/></td>
-										<td id="" width="50%"><div class="progress"><div class="progress-bar progress-bar-danger" style="width: 100%"><span class="sr-only">100% Complete (success)</span><label>120%</label></div></div></td>
-									</tr>
+									 
+									</tbody>
+									<%} j++; calAmotxt = Float.toString((Float.parseFloat(calCustAmotxt)*100)/Float.parseFloat(calAmotxt)); %>
 								</table>
 
 							</div>
-	                    	
-     						
+
      			<br />
-	     						<div class="col-md-8 col-md-offset-4">
-		                    	<div class="progress-bar progress-bar-danger" style="width: 100%"><span class="sr-only">50% Complete (success)</span><label>130%</label></div>
-		                  		</div>
+    					<div class="col-md-8 col-md-offset-4">
+		                <div class="progress-bar progress-bar-danger" style="width: <%=calAmotxt%>%"><span class="sr-only"><%=calAmotxt%>% Complete (success)</span><label><%=calAmotxt%>%</label></div>
+		                </div>
 						</div>
 						</div>
 					</div>
+					
+                	 			
+                	 
 				</div>
      		</div>
      		<div class="clearfix"> </div>
      	</div>
-     	<div class="content_bottom">
-     		<div class="col-md-12 span_3">
-     			<div class="panel panel-default">
-					<div class="panel-heading" style="background: #fff;">
-						<h4 class="panel-title">
-							<a id="flip2" data-toggle="collapse" data-parent="#accordion" href="#panel2" style="color:#000;">
-								<div class="container">
-						  		
-								ชั้นที่สอง
-								<span class="pull-right" style="margin-right: -10%;"><i class="fa fa-plus"></i></span>
-								</div>
-							</a>
-						</h4>
-					</div>
-					<div id="panel2" class="panel-collapse collapse in">
-						<div class="panel-body">
-							<div class="panel-body">
-							<div class="table-responsive col-md-8 col-md-offset-4">
-								<table class="table table-hover">
-									<tr>
-										<th id="">ชื่อวัสดุ</th>
-										<th id="">จำนวน</th>
-										<th id="">ระดับของวัสดุ</th>
-									</tr>
-									<tr>
-										<td id="">หิน</td>
-										<td id=""><input type="text" id="" value="30,000" size="10"/></td>
-										<td id="" width="50%"><div class="progress"><div class="progress-bar progress-bar-success" style="width: 35%"><span class="sr-only">35% Complete (success)</span><label>35%</label></div></div></td>
-									</tr>
-									<tr>
-										<td id="">หิน</td>
-										<td id=""><input type="text" id="" value="30,000" size="10"/></td>
-										<td id="" width="50%"><div class="progress"><div class="progress-bar progress-bar-warning" style="width: 85%"><span class="sr-only">85% Complete (success)</span><label>85%</label></div></div></td>
-									</tr>
-									<tr>
-										<td id="">หิน</td>
-										<td id=""><input type="text" id="" value="30,000" size="10"/></td>
-										<td id="" width="50%"><div class="progress"><div class="progress-bar progress-bar-danger" style="width: 100%"><span class="sr-only">100% Complete (success)</span><label>120%</label></div></div></td>
-									</tr>
-								</table>
-
-							</div>
-	                    	
-     						
-     			<br />
-	     						<div class="col-md-8 col-md-offset-4">
-		                    	<div class="progress-bar progress-bar-danger" style="width: 100%"><span class="sr-only">50% Complete (success)</span><label>130%</label></div>
-		                  		</div>
-						</div>
-						</div>
-					</div>
-				</div>
-     		</div>
-     		<div class="clearfix"> </div>
-     	</div>
-     	<div class="content_bottom">
-     		<div class="col-md-12 span_3">
-     			<div class="panel panel-default">
-					<div class="panel-heading" style="background: #fff;">
-						<h4 class="panel-title">
-						<a id="flip3" data-toggle="collapse" data-parent="#accordion" href="#panel3" style="color:#000;">
-							<div class="container">
-						  		
-								ชั้นที่หนึ่ง
-								<span class="pull-right" style="margin-right: -10%;"><i class="fa fa-plus"></i></span>
-								
-							</div>
-						 </a> 
-						</h4>
-					</div>
-					<div id="panel3" class="panel-collapse collapse in">
-						<div class="panel-body">
-							<div class="table-responsive col-md-8 col-md-offset-4">
-								<table class="table table-hover">
-									<tr>
-										<th id="">ชื่อวัสดุ</th>
-										<th id="">จำนวน</th>
-										<th id="">ระดับของวัสดุ</th>
-									</tr>
-									<tr>
-										<td id="">หิน</td>
-										<td id=""><input type="text" id="" value="30,000" size="10"/></td>
-										<td id="" width="50%"><div class="progress"><div class="progress-bar progress-bar-success" style="width: 35%"><span class="sr-only">35% Complete (success)</span><label>35%</label></div></div></td>
-									</tr>
-									<tr>
-										<td id="">หิน</td>
-										<td id=""><input type="text" id="" value="30,000" size="10"/></td>
-										<td id="" width="50%"><div class="progress"><div class="progress-bar progress-bar-warning" style="width: 85%"><span class="sr-only">85% Complete (success)</span><label>85%</label></div></div></td>
-									</tr>
-									<tr>
-										<td id="">หิน</td>
-										<td id=""><input type="text" id="" value="30,000" size="10"/></td>
-										<td id="" width="50%"><div class="progress"><div class="progress-bar progress-bar-danger" style="width: 100%"><span class="sr-only">100% Complete (success)</span><label>120%</label></div></div></td>
-									</tr>
-								</table>
-
-							</div>
-	                    	
-     						
-     			<br />
-	     						<div class="col-md-8 col-md-offset-4">
-		                    	<div class="progress-bar progress-bar-danger" style="width: 100%"><span class="sr-only">50% Complete (success)</span><label>130%</label></div>
-		                  		</div>
-						</div>
-					</div>
-				</div>			
-     		</div> 		
-     	</div>
-     		<div class="clearfix"> </div>     		
+     	<% } %>
+     	 </html:form>   		
 		<div class="copy">
             <p>Copyright &copy; 2015 Modern. All Rights Reserved | Design by <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
 	    </div>
