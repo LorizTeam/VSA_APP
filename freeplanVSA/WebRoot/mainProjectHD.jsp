@@ -84,7 +84,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
    
     	th, td { white-space: nowrap; }
     	div.dataTables_wrapper {
-        width: 95%;
+        width: 100%;
         margin: 0 auto;
     }
     .w{
@@ -92,6 +92,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
     	width:100%;
     	padding:0px!important;
     }
+    
     </style>
 
     <script type="text/javascript">
@@ -155,7 +156,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
                     <!-- /.menu top --> 
                     
         <!-- /.page-content -->	            
-        <div class="page-content">
+        <div class="">
         <div class="flex-grid " style="height: 100%;">
         
          <div class="row" style="height: 100%;">     
@@ -167,35 +168,47 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 		<html:form action="/projectHD" styleClass="bg-white" >
 		
 		<div class="row" style="padding-left: 2.5%; margin-top: 1%;">
-		<label style="font-size: 160%; font-weight: bold;"> รหัสโครงการ</label>  &nbsp;
-        <input type="text" id="projectID" name="projectID" size="5" maxlength="6" readonly="readonly" value="<%=docNo%>" />&nbsp;
-        <label style="font-size: 160%; font-weight: bold;"> ชื่อโครงการ</label>  &nbsp;
-		<input type="text" id="projectName" name="projectName" size="15" maxlength="35"/>&nbsp;
-		<label style="font-size: 160%; font-weight: bold;"> รหัสพนักงาน</label>  &nbsp;
-        <input type="text" id="employeeID" name="employeeID" size="8" maxlength="10" value="<%=name%>" />&nbsp;
-        <label style="font-size: 160%; font-weight: bold;"> ชื่อลูกค้า</label>  &nbsp;
-        <input type="text" id="customerName" name="customerName" size="10" maxlength="50"/>&nbsp;
-        <button type="button" class="button mini-button rounded" onclick="showDialog('#dialog')">Get</button> &nbsp;
+        <div class="input-control modern text">
+		    <input type="text" id="projectID" name="projectID" size="5" maxlength="6" readonly="readonly" value="<%=docNo%>" style="height: 2em;"/>
+		    <span class="label">รหัสโครงการ</span>
+		    <span class="placeholder"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; รหัสโครงการ</span>
+		</div> &nbsp;
+		<div class="input-control modern text">
+		    <input type="text" id="projectName" name="projectName" size="15" maxlength="35" style="height: 2em;"/>
+		    <span class="label">ชื่อโครงการ</span>
+		    <span class="placeholder"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ชื่อโครงการ</span>
+		</div> &nbsp;
+        <div class="input-control modern text">
+		    <input type="text" id="employeeID" name="employeeID" size="8" maxlength="10" value="<%=name%>" style="height: 2em;"/>
+		    <span class="label">รหัสพนักงาน</span>
+		    <span class="placeholder"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; รหัสพนักงาน</span>
+		</div> &nbsp;
+		<div class="input-control modern text">
+		    <input type="text" id="customerName" name="customerName" size="10" maxlength="50" style="height: 2em;"/>
+		    <span class="label">ชื่อลูกค้า</span>
+		    <span class="placeholder"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ชื่อลูกค้า</span>
+		</div> &nbsp;
+		<button type="button" class="button mini-button rounded" onclick="showDialog('#dialog')">Get</button> &nbsp;
         <input type="hidden" id="customerID" name="customerID" />
         </div>
         <div class="row " style="padding-left: 2.5%; margin-top: 1%;" >
-		<label style="font-size: 160%; font-weight: bold;"> วันที่เริ่มโครงการ</label>  &nbsp;
+		<label style="font-size: 103%; font-weight: bold;"> วันที่เริ่มโครงการ</label>  &nbsp;
         <div class="input-control text" id="createDate" >
 		   <input type="text" id="createDate" name="createDate" size="8" maxlength="10"/>&nbsp;
 		    <button class="button"><span class="mif-calendar"></span></button>
 		</div>
-        <label style="font-size: 160%; font-weight: bold;"> ชนิดโครงการ</label>  &nbsp;
+        <label style="font-size: 105%; font-weight: bold;"> ชนิดโครงการ</label>  &nbsp;
         <select id="projectType" name="projectType"> 
         	 <option value="01">บ้านเดี่ยว </option>
         	 <option value="02">ทาวน์เฮ้าส์ </option>
         	 <option value="03">อาคารพาณิชย์ </option>
         </select>&nbsp;
-		<label style="font-size: 160%; font-weight: bold;"> สถานะโครงการ</label>  &nbsp;
+		<label style="font-size: 105%; font-weight: bold;"> สถานะโครงการ</label>  &nbsp;
 		<select id="projectStatus" name="projectStatus" class="input-control text small-input"> 
         	 <option value="01">Active</option>
         	 <option value="02">Non Active</option>
         </select>&nbsp;
-        <label style="font-size: 160%; font-weight: bold;"> ที่อยู่โครงการ</label>  &nbsp;
+        <label style="font-size: 105%; font-weight: bold;"> ที่อยู่โครงการ</label>  &nbsp;
         <input type="text" id="projectAddress" name="projectAddress" size="20" maxlength="50"/>
         </div>
         <div class="row" style="padding-left: 2.5%; margin-top: 1%;">
