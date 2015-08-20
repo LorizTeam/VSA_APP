@@ -145,9 +145,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <span class="counter"><%=x %></span>
                             
                         </a></li>
-                        <li><a href="#">
+                        <li <%if(menu == "upload"){ %> class="active" <%}%> ><a href="uploadImage.jsp">
                             <span class="mif-cloud icon"></span>
-                            <span class="title">Department</span>
+                            <span class="title">Upload Image</span>
                             <span class="counter">0</span>
                         </a></li>
                         <li><a href="#">

@@ -10,6 +10,8 @@
   	<form-bean name="projectForm" type="com.vsa.form.ProjectForm" />
   	<form-bean name="importExcelForm" type="com.vsa.form.ImportExcelForm" />
   	<form-bean name="custProjectForm" type="com.vsa.form.CustomerProjectForm" />
+  	<form-bean name="uploadImageForm" type="com.vsa.form.UploadImageForm" />
+  	<form-bean name="galleryForm" type="com.vsa.form.GalleryForm" />
   </form-beans>
   <global-exceptions />
   <global-forwards />
@@ -82,6 +84,19 @@
     </action>
   <!--################################     Material     #################################-->
   
+  <!--################################     Gallery     #################################-->
+    <action
+      attribute="galleryForm"
+      input="/mainGallery.jsp"
+      name="galleryForm"
+      path="/gallery"
+      scope="request"
+      type="com.vsa.action.GalleryAction" >
+      
+      <forward name="success" path="/mainGallery.jsp" />
+    </action>
+  <!--################################     Gallery     #################################-->
+  
   <!--################################     Project     #################################-->
     <action
       attribute="projectForm"
@@ -121,6 +136,19 @@
     </action>
   <!--################################     Import Excel    #################################-->
   
+  <!--################################     UPLOAD IMAGE    #################################-->
+  	<action
+      attribute="uploadImageForm"
+      input="/uploadImage.jsp"
+      name="uploadImageForm"
+      path="/uploadImage"
+      scope="request"
+      type="com.vsa.action.UploadImageAction" >
+      
+      <forward name="success" path="/uploadImage.jsp" />
+    </action>
+  
+  <!--################################     UPLOAD IMAGE    #################################-->
   
   <!--********************************     Customer    	********************************-->
   
