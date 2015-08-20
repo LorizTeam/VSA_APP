@@ -7,7 +7,7 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
-<% 	List customerList1 = null, materialList1 = null, projectHDList1 = null; 
+<% 	List customerList1 = null, materialList1 = null, galleryList1 = null, projectHDList1 = null; 
 	int x = 0, f = 0, d = 0;
 
 	if (request.getAttribute("customerList") == null) {
@@ -17,6 +17,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	if (request.getAttribute("materialList") == null) {
 	MaterialDB materialDB = new MaterialDB();
 	materialList1 = materialDB.GetMaterialList("","");
+	}
+	if (request.getAttribute("galleryList") == null) {
+	GalleryDB galleryDB = new GalleryDB();
+	galleryList1 = galleryDB.GetGallery();
 	}
 	if (request.getAttribute("projectHDList") == null) {
 	ProjectDB projectDB = new ProjectDB();
@@ -148,12 +152,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <li <%if(menu == "upload"){ %> class="active" <%}%> ><a href="uploadImage.jsp">
                             <span class="mif-cloud icon"></span>
                             <span class="title">Upload Image</span>
-                            <span class="counter">0</span>
+                            <span class="counter">-</span>
                         </a></li>
-                        <li><a href="#">
+                        <li <%if(menu == "gallery"){ %> class="active" <%}%> ><a href="mainGallery.jsp">
                             <span class="mif-database icon"></span>
-                            <span class="title">Employee</span>
-                            <span class="counter">0</span>
+                            <span class="title">Gallery</span>
+                            <%	if (galleryList1 != null) {
+									List galleryList = galleryList1;
+									for (Iterator iter = galleryList.iterator(); iter.hasNext();) {
+							  			f++;
+							  			GalleryForm gary = (GalleryForm) iter.next();
+							%>
+							<% }
+                            } %>
+                            <span class="counter"><%=f %></span>
                         </a></li>
                         <li <%if(menu == "material"){ %> class="active" <%}%> ><a href="mainMaterial.jsp">
                             <span class="mif-cogs icon"></span>
