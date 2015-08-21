@@ -52,6 +52,28 @@ public class GalleryDB {
 		}
 		return galleryList;
 	 }
+	public void AddImage(String imageName, String pathfile, String statusImage)  throws Exception{
+		conn = agent.getConnectMYSql();
+		
+		String galleryID = "";
+		String sqlStmt = "SELECT max(galleryid) as galleryid " +
+		"FROM gallery_master limit 1 ";
+		pStmt = conn.createStatement();
+		rs = pStmt.executeQuery(sqlStmt);
+		while (rs.next()) {
+			galleryID 	= rs.getString("galleryid");
+		}	
+		rs.close();
+		pStmt.close();
+		
+		sqlStmt = "INSERT IGNORE INTO fileimage(imagename, galleryid, pathfile, status) " +
+		"VALUES ('"+imageName+"', '"+galleryID+"', '"+pathfile+"', '"+statusImage+"')";
+		//System.out.println(sqlStmt);
+		pStmt = conn.createStatement();
+		pStmt.executeUpdate(sqlStmt);
+		pStmt.close();
+		conn.close();
+	}
 	public void AddGallery(String galleryName)  throws Exception{
 		conn = agent.getConnectMYSql();
 		
@@ -63,7 +85,7 @@ public class GalleryDB {
 		pStmt.close();
 		conn.close();
 	}
-	public void UpdateMaterial(String galleryCode, String galleryName)  throws Exception{
+	public void UpdateGallery(String galleryCode, String galleryName)  throws Exception{
 		conn = agent.getConnectMYSql();
 		
 		String sqlStmt = "UPDATE gallery_master set galleryname = '"+galleryName+"' "+
@@ -74,11 +96,11 @@ public class GalleryDB {
 		pStmt.close();
 		conn.close();
 	}
-	public void DeleteMaterial(String materialCode)  throws Exception{
+	public void DeleteGallery(String galleryCode)  throws Exception{
 		conn = agent.getConnectMYSql();
 		
-		String sqlStmt = "DELETE From material_master "+
-		"WHERE material_code = '"+materialCode+"'";
+		String sqlStmt = "DELETE From gallery_master "+
+		"WHERE galleryid = '"+galleryCode+"'";
 		//System.out.println(sqlStmt);
 		pStmt = conn.createStatement();
 		pStmt.executeUpdate(sqlStmt);

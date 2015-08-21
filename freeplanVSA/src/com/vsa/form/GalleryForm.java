@@ -8,16 +8,20 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
+import org.apache.struts.action.ActionMessage;
+import org.apache.struts.upload.FormFile;
 
 public class GalleryForm extends ActionForm {
 	
 	private static final long serialVersionUID = 1L;
 	private String galleryCode;
 	private String galleryName;
-	
+	 
 	private String add;
 	private String update;
 	private String delete;
+	
+	private FormFile file;
 	
 	public GalleryForm(){};
 	public GalleryForm (String galleryCode, String galleryName){
@@ -29,11 +33,23 @@ public class GalleryForm extends ActionForm {
 	
 	}
 	
-	public ActionErrors validate(ActionMapping mapping,
-			HttpServletRequest request) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+/*	@Override
+    public ActionErrors validate(ActionMapping mapping,
+    HttpServletRequest request) {
+        ActionErrors errors = new ActionErrors();
+       
+        if(file.getFileSize() == 0)
+             errors.add("uploadedFile", new ActionMessage("errors.file.notselected"));
+        if(errors.isEmpty()){
+            if(!file.getContentType().equalsIgnoreCase("image/jpeg") && !file.getContentType().equalsIgnoreCase("image/jpg")
+            && !file.getContentType().equalsIgnoreCase("image/pjpeg") && !file.getContentType().equalsIgnoreCase("image/png"))
+                errors.add("uploadedFile", new ActionMessage("errors.file.type", file.getFileName(),file.getContentType()));
+            if(file.getFileSize() > 50000)
+                errors.add("uploadedFile", new ActionMessage("errors.file.size",file.getFileName(),file.getFileSize()));
+        }
+
+        return errors;
+    }  */
 
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
 		// TODO Auto-generated method stub
@@ -67,6 +83,12 @@ public class GalleryForm extends ActionForm {
 	}
 	public void setGalleryCode(String galleryCode) {
 		this.galleryCode = galleryCode;
+	}
+	public FormFile getFile() {
+		return file;
+	}
+	public void setFile(FormFile file) {
+		this.file = file;
 	}
 	 
 }

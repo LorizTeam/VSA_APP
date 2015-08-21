@@ -306,11 +306,28 @@ public class DateUtil {
 		String hh = String.valueOf(curCalendar.get(Calendar.HOUR_OF_DAY));
 		String mm = String.valueOf(curCalendar.get(Calendar.MINUTE));
 		String ss = String.valueOf(curCalendar.get(Calendar.SECOND));
+		 
 		if (hh.length() == 1) hh = "0"+ hh;
 		if (mm.length() == 1) mm = "0"+ mm;
 		if (ss.length() == 1) ss = "0"+ ss;
 		//String today = hh+":"+mm+":"+ss;                   
 		return hh+":"+mm+":"+ss;
+	}
+	public  String curTime1(){
+		Calendar currentCalendar=new GregorianCalendar();
+		long nowMi=currentCalendar.getTimeInMillis();
+		Calendar curCalendar=new GregorianCalendar();
+		curCalendar.setTimeInMillis(nowMi);
+		String hh = String.valueOf(curCalendar.get(Calendar.HOUR_OF_DAY));
+		String mm = String.valueOf(curCalendar.get(Calendar.MINUTE));
+		String ss = String.valueOf(curCalendar.get(Calendar.SECOND));
+		String ms = String.valueOf(curCalendar.get(Calendar.MILLISECOND));
+		 
+		if (hh.length() == 1) hh = "0"+ hh;
+		if (mm.length() == 1) mm = "0"+ mm;
+		if (ss.length() == 1) ss = "0"+ ss;
+		//String today = hh+":"+mm+":"+ss;                   
+		return hh+":"+mm+":"+ss+":"+ms;
 	}
 	public String curDateTime() {
 		Calendar currentCalendar=new GregorianCalendar();

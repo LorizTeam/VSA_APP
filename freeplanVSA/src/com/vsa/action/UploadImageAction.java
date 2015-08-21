@@ -19,7 +19,6 @@ import com.vsa.util.DateUtil;
 
 public class UploadImageAction extends Action {
 	
-	@Override
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String forwardText = "success";
@@ -27,42 +26,157 @@ public class UploadImageAction extends Action {
 		DateUtil dateUtil = new DateUtil();
 		UploadImageForm uploadImageForm = (UploadImageForm) form;
 		ImportImageDB importImageDB = new ImportImageDB();
-		FormFile file = uploadImageForm.getFile();
 		
-		String filePath =  getServlet().getServletContext().getRealPath("/") +"upload";
+		String galleryID = uploadImageForm.getGalleryCode();
+		String grStatus = uploadImageForm.getGrStatus();
+		
+		String fileName = "", filePath = "", usePath = ""; FormFile file = null;
+		filePath =  getServlet().getServletContext().getRealPath("//") +"\\upload";
+		usePath = "upload/";
+		// ------------------------------------------------  file 1
+		if(uploadImageForm.getFile() != null){
+			file = uploadImageForm.getFile();
+			fileName = file.getFileName();
 		
 		File folder = new File(filePath);
 	    if(!folder.exists()){
 	    	folder.mkdir();
 	    }
 		
-	    String fileName = file.getFileName();
-	    String dateTime = dateUtil.curDateTime();
-	    
+	    fileName = file.getFileName();
+	    String date = dateUtil.CnvToYYYYMMDD(dateUtil.curDate(), '-');
+	    String time = dateUtil.curTime1();
+	    String dateTime = date+" "+time;
 	    if(!("").equals(fileName)){  
 	    	
 	    	String[] fname = fileName.split("\\.");
 	   // 	fileName = fname[0];
 	    //	dateTime = fname[1];
-	    	
+	    	dateTime = dateTime.replace(":", "-");
 	    	String imageName = dateTime+"."+fname[1];
 	    	
-	        System.out.println("Server path:" +filePath);
+	    	System.out.println("Server path: " +filePath+" - "+imageName);
 	        File newFile = new File(filePath, imageName);
               
 	        if(!newFile.exists()){
 	        	
-	          importImageDB.AddImage(imageName, "1", filePath);
+	          importImageDB.AddImage(imageName, galleryID, usePath+fileName, grStatus);
 	        	
 	          FileOutputStream fos = new FileOutputStream(newFile);
 	          fos.write(file.getFileData());
 	          fos.flush();
 	          fos.close();
 	        }  
-	        
-	        request.setAttribute("uploadedFilePath",newFile.getAbsoluteFile());
-	        request.setAttribute("uploadedFileName",newFile.getName());
+	     }   
+	  }
+		// ------------------------------------------------  file 2
+		if(uploadImageForm.getFile1() != null){
+			file = uploadImageForm.getFile1();
+			fileName = file.getFileName();
+		
+		File folder = new File(filePath);
+	    if(!folder.exists()){
+	    	folder.mkdir();
 	    }
+		
+	    fileName = file.getFileName();
+	    String date = dateUtil.CnvToYYYYMMDD(dateUtil.curDate(), '-');
+	    String time = dateUtil.curTime1();
+	    String dateTime = date+" "+time;
+	    if(!("").equals(fileName)){  
+	    	
+	    	String[] fname = fileName.split("\\.");
+	   // 	fileName = fname[0];
+	    //	dateTime = fname[1];
+	    	dateTime = dateTime.replace(":", "-");
+	    	String imageName = dateTime+"."+fname[1];
+	    	
+	        System.out.println("Server path: " +filePath+" - "+imageName);
+	        File newFile = new File(filePath, imageName);
+              
+	        if(!newFile.exists()){
+	        	
+	          importImageDB.AddImage(imageName, galleryID, usePath+fileName, grStatus);
+	        	
+	          FileOutputStream fos = new FileOutputStream(newFile);
+	          fos.write(file.getFileData());
+	          fos.flush();
+	          fos.close();
+	        }  
+	     }   
+	  }
+		// ------------------------------------------------  file 3
+		if(uploadImageForm.getFile2() != null){
+			file = uploadImageForm.getFile2();
+			fileName = file.getFileName();
+		
+		File folder = new File(filePath);
+	    if(!folder.exists()){
+	    	folder.mkdir();
+	    }
+		
+	    fileName = file.getFileName();
+	    String date = dateUtil.CnvToYYYYMMDD(dateUtil.curDate(), '-');
+	    String time = dateUtil.curTime1();
+	    String dateTime = date+" "+time;
+	    if(!("").equals(fileName)){  
+	    	
+	    	String[] fname = fileName.split("\\.");
+	   // 	fileName = fname[0];
+	    //	dateTime = fname[1];
+	    	dateTime = dateTime.replace(":", "-");
+	    	String imageName = dateTime+"."+fname[1];
+	    	
+	    	System.out.println("Server path: " +filePath+" - "+imageName);
+	        File newFile = new File(filePath, imageName);
+              
+	        if(!newFile.exists()){
+	        	
+	          importImageDB.AddImage(imageName, galleryID, usePath+fileName, grStatus);
+	        	
+	          FileOutputStream fos = new FileOutputStream(newFile);
+	          fos.write(file.getFileData());
+	          fos.flush();
+	          fos.close();
+	        }  
+	     }   
+	  }
+		// ------------------------------------------------  file 4
+		if(uploadImageForm.getFile3() != null){
+			file = uploadImageForm.getFile3();
+			fileName = file.getFileName();
+		
+		File folder = new File(filePath);
+	    if(!folder.exists()){
+	    	folder.mkdir();
+	    }
+		
+	    fileName = file.getFileName();
+	    String date = dateUtil.CnvToYYYYMMDD(dateUtil.curDate(), '-');
+	    String time = dateUtil.curTime1();
+	    String dateTime = date+" "+time;
+	    if(!("").equals(fileName)){  
+	    	
+	    	String[] fname = fileName.split("\\.");
+	   // 	fileName = fname[0];
+	    //	dateTime = fname[1];
+	    	dateTime = dateTime.replace(":", "-");
+	    	String imageName = dateTime+"."+fname[1];
+	    	
+	    	System.out.println("Server path: " +filePath+" - "+imageName);
+	        File newFile = new File(filePath, imageName);
+              
+	        if(!newFile.exists()){
+	        	
+	          importImageDB.AddImage(imageName, galleryID, usePath+fileName, grStatus);
+	        	
+	          FileOutputStream fos = new FileOutputStream(newFile);
+	          fos.write(file.getFileData());
+	          fos.flush();
+	          fos.close();
+	        }  
+	     }   
+	  }
 		
 		return mapping.findForward(forwardText);
 	}

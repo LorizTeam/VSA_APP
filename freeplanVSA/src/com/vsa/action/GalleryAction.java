@@ -4,6 +4,8 @@
  */
 package com.vsa.action;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,11 +16,11 @@ import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.apache.struts.upload.FormFile;
 
-import com.vsa.data.MaterialDB;
-import com.vsa.form.MaterialForm;
+import com.vsa.data.GalleryDB;
+import com.vsa.form.GalleryForm;
 import com.vsa.util.DateUtil;
-
 /** 
  * MyEclipse Struts
  * Creation date: 09-28-2009
@@ -30,28 +32,56 @@ public class GalleryAction extends Action {
 	
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
-		MaterialForm materialForm = (MaterialForm) form;// TODO Auto-generated method stub
-		MaterialDB materialDB = new MaterialDB();
-		String materialCode 	= materialForm.getMaterialCode();
-		String materialName 	= new String(materialForm.getMaterialName().getBytes("ISO8859_1"), "utf-8");
-		String amount 			= materialForm.getAmount();
-		String unit 			= new String(materialForm.getUnit().toUpperCase().getBytes("ISO8859_1"), "utf-8");
-	 
-		String add 					= materialForm.getAdd();
-		String update 				= materialForm.getUpdate();
-		String delete 				= materialForm.getDelete();
+		GalleryForm galleryForm = (GalleryForm) form;// TODO Auto-generated method stub
+		GalleryDB galleryDB = new GalleryDB();
+		String galleryCode 	= galleryForm.getGalleryCode();
+		String galleryName 	= new String(galleryForm.getGalleryName().getBytes("ISO8859_1"), "utf-8");
+		 
+		String fileName = "", filePath = "", usePath = ""; FormFile file = null;
+		
+		String add 					= galleryForm.getAdd();
+		String update 				= galleryForm.getUpdate();
+		String delete 				= galleryForm.getDelete();
 		String alertMassage			= "";
 		 
+		DateUtil dateUtil = new DateUtil();
+		
+		if(galleryForm.getFile() != null){
+		file = galleryForm.getFile();
+		filePath =  getServlet().getServletContext().getRealPath("//") +"\\upload";
+		usePath = "upload/";
+		 fileName = file.getFileName();
+		}
+		String date = dateUtil.CnvToYYYYMMDD(dateUtil.curDate(), '-');
+		String time = dateUtil.curTime();
+		String dateTime = date+" "+time;
 		String forwardText = null;
 	  
 		if(add!=null){
 			
-		if(!materialName.equals("")&&!amount.equals("")&&!unit.equals("")){
+		if(!galleryName.equals("")&&!("").equals(fileName)){
+			
+				String[] fname = fileName.split("\\.");
+			    	fileName = fname[0];
+			    //	dateTime = fname[1];
+			    	dateTime = dateTime.replace(":", "-");
+			    	String imageName = dateTime+"."+fname[1];
+			    	
+			        System.out.println("Server path:" +filePath);
+			        File newFile = new File(filePath, imageName);
+		              
+			        if(!newFile.exists()){
+			        	galleryDB.AddGallery(galleryName);
+			        	galleryDB.AddImage(imageName, usePath+fileName, "hd");
+			        	
+			          FileOutputStream fos = new FileOutputStream(newFile);
+			          fos.write(file.getFileData());
+			          fos.flush();
+			          fos.close();
+			        }  
 		
-			materialDB.AddMaterial(materialName, amount, unit);
-		
-		List materialList = materialDB.GetMaterialList("", "");
-		request.setAttribute("materialList", materialList);
+		List galleryList = galleryDB.GetGallery();
+		request.setAttribute("galleryList", galleryList);
 		
 		forwardText = "success";
 		}else{
@@ -60,12 +90,12 @@ public class GalleryAction extends Action {
 		}
 		}
 		if(update!=null){
-			if(!materialCode.equals("")&&!materialName.equals("")&&!amount.equals("")&&!unit.equals("")){
+			if(!galleryCode.equals("")&&!galleryName.equals("")){
 		 
-				materialDB.UpdateMaterial(materialCode, materialName, amount, unit);
+				galleryDB.UpdateGallery(galleryCode, galleryName);
 			
-				List materialList = materialDB.GetMaterialList("", "");
-				request.setAttribute("materialList", materialList);
+				List galleryList = galleryDB.GetGallery();
+				request.setAttribute("galleryList", galleryList);
 			
 			forwardText = "success";
 		}else{
@@ -74,14 +104,14 @@ public class GalleryAction extends Action {
 		}	
 		}
 		if(delete!=null){
-			materialDB.DeleteMaterial(materialCode);
+			galleryDB.DeleteGallery(galleryCode);
 			
-			List materialList = materialDB.GetMaterialList("", "");
-			request.setAttribute("materialList", materialList);
+			List galleryList = galleryDB.GetGallery();
+			request.setAttribute("galleryList", galleryList);
 			
 			forwardText = "success";
 		}
-		
+ 
 		return mapping.findForward(forwardText);
 	}
 }

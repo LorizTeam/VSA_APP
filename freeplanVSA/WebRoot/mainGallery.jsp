@@ -117,6 +117,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
         function getGallery(tgaCode, tgaName) {
 				document.galleryForm.galleryCode.value 	= tgaCode; 
 				document.galleryForm.galleryName.value 	= tgaName; 
+				document.galleryForm.chkUP.value 	= tgaCode;
 	}
     </script>
 	</head>
@@ -136,14 +137,19 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
                     <jsp:include page="/menu_left.jsp"></jsp:include>
                     <!-- /.menu left -->
         
-		<html:form action="/gallery" styleClass="bg-white" >
+		<html:form action="/gallery" styleClass="bg-white" method="post" enctype="multipart/form-data">
 		
 		<div class="row" style="padding-left: 2.5%; margin-top: 1%;">
 		<input type="hidden" id="materialCode" name="materialCode" />
 		
         <label style="font-size: 160%; font-weight: bold;"> ชื่อ Gallery</label>  &nbsp;
-        <input type="hidden" id="galleryCode" name="galleryCode" />
+        <input type="hidden" id="galleryCode" name="galleryCode" /> 
         <input type="text" id="galleryName" name="galleryName" size="25" maxlength="50"/>
+        <label style="font-size: 160%; font-weight: bold;">Upload&nbsp;Image</label>&nbsp;
+		<div class="input-control file" data-role="input">
+			<input type="file" id="file" name="file" >
+			<button class="button"><span class="mif-folder"></span></button>
+		</div>
         </div>
         <div class="row" style="padding-left: 2.5%; margin-top: 1%;">
         <input class="button mini-button" type="submit" id="add" name="add" value="เพิ่ม"/>

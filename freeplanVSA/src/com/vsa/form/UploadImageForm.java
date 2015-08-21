@@ -11,6 +11,15 @@ import org.apache.struts.upload.FormFile;
 public class UploadImageForm extends ActionForm{
 
 	private FormFile file;
+	private FormFile file1;
+	private FormFile file2;
+	private FormFile file3;
+	
+	private String galleryCode;
+	private String galleryName;
+	private String imageName;
+	private String pathfile;
+	private String grStatus;
 	
 	public FormFile getFile() {
 		return file;
@@ -20,7 +29,7 @@ public class UploadImageForm extends ActionForm{
 		this.file = file;
 	}
 	
-	 @Override
+/*	 @Override
 	    public ActionErrors validate(ActionMapping mapping,
 	    HttpServletRequest request) {
 	        ActionErrors errors = new ActionErrors();
@@ -35,5 +44,79 @@ public class UploadImageForm extends ActionForm{
 	        }
 	        return errors;
 	    }
+*/
+	public UploadImageForm(){};
+	public UploadImageForm(String galleryCode, String galleryName, String imageName, String pathfile, String grStatus){
+			super();
+			this.galleryCode 	= galleryCode;
+			this.galleryName 	= galleryName;
+			this.imageName 		= imageName;
+			this.pathfile 		= pathfile;
+			this.grStatus 		= grStatus;
+	} 
+	 
+	public String getGalleryCode() {
+		return galleryCode;
+	}
+
+	public void setGalleryCode(String galleryCode) {
+		this.galleryCode = galleryCode;
+	}
+
+	public String getGalleryName() {
+		return galleryName;
+	}
+
+	public void setGalleryName(String galleryName) {
+		this.galleryName = galleryName;
+	}
+
+	public String getImageName() {
+		return imageName;
+	}
+
+	public void setImageName(String imageName) {
+		this.imageName = imageName;
+	}
+
+	public String getPathfile() {
+		return pathfile;
+	}
+
+	public void setPathfile(String pathfile) {
+		this.pathfile = pathfile;
+	}
+
+	public String getGrStatus() {
+		return grStatus;
+	}
+
+	public void setGrStatus(String grStatus) {
+		this.grStatus = grStatus;
+	}
+
+	public FormFile getFile1() {
+		return file1;
+	}
+
+	public void setFile1(FormFile file1) {
+		this.file1 = file1;
+	}
+
+	public FormFile getFile2() {
+		return file2;
+	}
+
+	public void setFile2(FormFile file2) {
+		this.file2 = file2;
+	}
+
+	public FormFile getFile3() {
+		return file3;
+	}
+
+	public void setFile3(FormFile file3) {
+		this.file3 = file3;
+	}
 
 }
