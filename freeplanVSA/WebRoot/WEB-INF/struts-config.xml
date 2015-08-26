@@ -34,6 +34,17 @@
     </action>
   <!--################################     Login     #################################-->
   
+  <!--################################     Logout     #################################-->
+   <action  
+   	  attribute="loginForm"
+      input="/menu_top.jsp"
+      name="loginForm"
+   	  path="/logout" scope="request"
+      type="com.vsa.action.logoutAction" >
+      <forward name="success" path="/Login.jsp" /> 
+    </action>
+  <!--################################     Logout     #################################-->
+  
   <!--################################     Register     #################################-->
    <action
       attribute="loginForm"

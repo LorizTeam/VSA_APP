@@ -33,10 +33,19 @@ public class LoginAction extends Action {
 		LoginForm loginForm = (LoginForm) form;// TODO Auto-generated method stub
 		LoginDB loginDB = new LoginDB();
 		HttpSession session = request.getSession();
+		String forwardText = null;
+		String chkLogout = "";
+		if(session.getAttribute("userName") != null) chkLogout = (String) session.getAttribute("userName");
+		if(chkLogout.equals("logout")){
+			session.removeAttribute("userName");
+			session.invalidate();
+			forwardText = "error";
+		}else{
+			
 		String userName = loginForm.getUserName().toLowerCase();
 		String passWord = loginForm.getPassWord();
 		
-		String forwardText = null;
+		
 	//	System.out.println("ipAddress : "+ipAddress);
 		
 		if(userName != "" || passWord != "") {
@@ -86,6 +95,8 @@ public class LoginAction extends Action {
 			session.setAttribute("login", login);
 			forwardText = "error";
 		}
+	}
+
 		return mapping.findForward(forwardText);
 	}
 }

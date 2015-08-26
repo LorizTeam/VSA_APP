@@ -11,10 +11,13 @@
 String path = request.getContextPath (); 
 String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":" + request.getServerPort () + path + "/"; 
 %>
-<% 	List projectHDList1 = null, customerList1 = null; String docNo = "";
+<%  
+	List projectHDList1 = null, customerList1 = null; String docNo = "", name = "";
 	ProjectDB projectDB = new ProjectDB();
-	
-	String name = session.getAttribute("name").toString();
+	if(session.getAttribute("name") != null){
+	name = session.getAttribute("name").toString();
+	docNo = projectDB.SelectDocno(name);
+	}
 	
 	if (request.getAttribute("projectHDList") == null) {
 	projectHDList1 = projectDB.GetProjectHDList("", "");
@@ -29,10 +32,18 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 	customerList1 = (List) request.getAttribute("customerList");
 	}
 	
-	docNo = projectDB.SelectDocno(name);
-	
 	String menu = "project";
 	request.setAttribute("menu", menu);
+%>	
+<%
+	String userName = null;
+	if(session.getAttribute("userName") != null){
+    userName = session.getAttribute("userName").toString();
+    }
+  	if (userName == null)
+  	{
+    	%><jsp:forward page="Login.jsp" /><%
+  	}
 %>
 <html lang="en">
   <head>
@@ -95,8 +106,18 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
     
     </style>
 
-    <script type="text/javascript">
- 
+        <script type="text/javascript">
+ 		function noBack(){
+                window.history.forward()
+            }
+             
+            noBack();
+            window.onload = noBack;
+            window.onpageshow = function(evt) { if (evt.persisted) noBack() }
+            window.onunload = function() { void (0) }
+      </script>   
+       
+     <script type="text/javascript">     
         $(function(){
             $(window).on('resize', function(){
                 if ($(this).width() <= 800) {
@@ -150,7 +171,19 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
     </script>
 	</head>
 	<body class="bg-steel">
+ 	<%
+      // Set standard HTTP/1.1 no-cache headers.
+  /*    response.setHeader("Cache-Control", "no-store, no-cache, must-revalidate");
 
+     // Set IE extended HTTP/1.1 no-cache headers (use addHeader).
+     response.addHeader("Cache-Control", "post-check=0, pre-check=0");
+
+     // Set standard HTTP/1.0 no-cache header.
+     response.setHeader("Pragma", "no-cache");
+    
+     //prevents caching at the proxy server
+     response.setDateHeader ("Expires", 0);  */
+%>   
 					<!-- /.menu top -->	
 					<jsp:include page="/menu_top.jsp"></jsp:include>
                     <!-- /.menu top --> 

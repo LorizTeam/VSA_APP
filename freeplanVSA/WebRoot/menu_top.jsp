@@ -87,7 +87,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<body class="bg-steel">
 	<div>
 		<ul class="m-menu fixed-top" >
-    <li><a href="#">หน้าแรก</a></li>
+    <li><a href="#">fหน้าแรก</a></li>
     <li>
         <a href="#" class="dropdown-toggle">ภาพรวม</a>
         <div class="m-menu-container" data-role="dropdown" data-no-close="true">
@@ -105,6 +105,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             Sergey Pimenov
                         </p>
                     </div>
+                    
+                    <html:form action="/logout"  >
                     <div class="cell colspan2">
                         <ul class="unstyled-list">
                             <li><h3 class="text-shadow">Begin with Metro UI CSS</h3></li>
@@ -155,15 +157,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <ul class="inline-list">
                     <li><a href="" class="fg-black fg-hover-white">Profile</a></li>
                     <li><a href="" class="fg-black fg-hover-white">Security</a></li>
-                    <li><a href="" class="fg-black fg-hover-white">Exit</a></li>
+                    <li><a href="login.do" <%session.setAttribute("userName", "logout");%> class="fg-black fg-hover-white">Exit</a></li>
+                    
                 </ul>
-        
         </div>
     </li>
+  
     
 </ul>
 	</div>
-    
+    </html:form>
 		<!---------------------Menu-------------------------------------------->		
   </body>
 </html>

@@ -5,6 +5,14 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+<% String userName = null;
+   userName = session.getAttribute("userName").toString();
+  	if (userName == null)
+  	{
+    	%><jsp:forward page="Login.jsp" /><%
+  	}
+
+ %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
