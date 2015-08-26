@@ -28,7 +28,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
 <body id="login">
   <div class="login-logo">
-    <h1><a href="login.html">VSA</a></h1>
+    <h1><a href="cus_index.jsp">Home Me</a></h1>
   </div>
   <h2 class="form-heading">login</h2>
   <div class="app-cam">
@@ -37,16 +37,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
 		<div class="submit"><input type="submit" onclick="myFunction()" value="Login"></div>
 		<div class="login-social-link">
-          <a href="dashboard.html" class="facebook">
+          <a href="dashboard.jsp" class="facebook">
               Facebook
           </a>
-          <a href="dashboard.html" class="twitter">
+          <a href="dashboard.jsp" class="twitter">
               Twitter
           </a>
         </div>
 		<ul class="new">
 			<li class="new_left"><p><a href="#">Forgot Password ?</a></p></li>
-			<li class="new_right"><p class="sign">New here ?<a href="register.html"> Sign Up</a></p></li>
+			<li class="new_right"><p class="sign">New here ?<a href="register.jsp"> Sign Up</a></p></li>
 			<div class="clearfix"></div>
 		</ul>
 	</form>

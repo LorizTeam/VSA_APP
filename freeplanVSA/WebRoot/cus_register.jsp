@@ -1,3 +1,4 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <!--
 Author: W3layouts
 Author URL: http://w3layouts.com
@@ -28,10 +29,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
 <body id="login">
   <div class="login-logo">
-    <h1><a href="login.html">VSA</a></h1>
+    <h1><a href="cus_index.jsp">Home Me</a></h1>
   </div>
   <h2 class="form-heading">Register</h2>
-  <form class="form-signin app-cam" action="dashboard.html">
+  <form class="form-signin app-cam" action="dashboard.jsp">
       <p>Enter your personal details below</p>
       <input type="text" class="form-control1" placeholder="Full Name" autofocus="">
       <input type="text" class="form-control1" placeholder="Address" autofocus="">
@@ -55,7 +56,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
       <button class="btn btn-lg btn-success1 btn-block" type="submit">Submit</button>
       <div class="registration">
           Already Registered.
-          <a class="" href="login.html">
+          <a class="" href="cus_login.jsp">
               Login
           </a>
       </div>

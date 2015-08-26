@@ -1,3 +1,4 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <!--
 Au<!--
 Author: W3layouts
@@ -35,7 +36,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <div id="home" class="top-header">
 	 <div class="container">
 		 <div class="logo">
-				<h1><a href="index.html">VSA</a></h1>
+				<h1><a href="index.jsp">Home Me</a></h1>
 		 </div>
 		 <div class="top-menu">
 			 <span class="menu"><img src="home/images/nav-icon.png" alt=""/></span>
@@ -64,7 +65,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			 <div class="banner-info">
 				 <h2>สมัครได้แล้ววันนี้</h2>
 				 <p>สมัครวันนี้พบกับแบบบ้านหลากหลายแบบ และรับส่วนลดมากมายจาก Partner ต่างๆ  </p>
-				 <a href="login.html">Register</a> <a class="btn-login" href="login.html">เข้าสู่ระบบ</a> 
+				 <a href="cus_register.jsp">Register</a> <a class="btn-login" href="cus_login.jsp">เข้าสู่ระบบ</a> 
 			 </div>
 			 <div class="clearfix"></div>
 		</div>

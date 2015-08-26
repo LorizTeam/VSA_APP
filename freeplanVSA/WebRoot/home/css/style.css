@@ -50,7 +50,7 @@ body{
  .logo {
   position: absolute;
   left: 45%;
-  top: -96%;
+  top: -100%;
 }
 .logo h1 a {
 	display: inline-block;
@@ -65,7 +65,7 @@ body{
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
   border: 8px solid #fff;
-  padding: 52px 15px;
+  padding: 40px 15px;
   height: 160px;
   width: 160px;
 }
@@ -684,7 +684,7 @@ padding:2em 0 0.5em 0;
 @media (max-width: 800px){
 .logo h1 a {
   font-size: 0.8em;
-  padding: 39px 12px;
+  padding: 30px 12px;
   height: 126px;
   width: 126px;
 }
@@ -700,7 +700,7 @@ padding:2em 0 0.5em 0;
 }
 .logo h1 a {
   font-size: 0.8em;
-  padding: 39px 12px;
+  padding: 30px 12px;
   height: 126px;
   width: 126px;
 }
@@ -800,7 +800,7 @@ padding:2em 0 0.5em 0;
 }
 .logo h1 a {
   font-size: 0.7em;
-  padding: 31px 8px;
+  padding: 20px 8px;
   border: 6px solid #fff;
   height: 100px;
   width: 100px;
@@ -859,7 +859,7 @@ padding:2em 0 0.5em 0;
 }
 .logo h1 a {
   font-size: 0.7em;
-  padding: 31px 8px;
+  padding: 20px 8px;
   border: 6px solid #fff;
   height: 100px;
   width: 100px;
@@ -959,7 +959,7 @@ span.menu {
 }
 .logo h1 a {
   font-size: 0.6em;
-  padding: 27px 9px;
+  padding: 20px 9px;
   border: 5px solid #fff;
   height: 90px;
   width: 90px;
