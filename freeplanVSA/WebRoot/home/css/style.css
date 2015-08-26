@@ -138,6 +138,10 @@ span.menu {
 	background:transparent;
 	border:2px solid #fff;
 }
+.banner-info .btn-login {
+  background: #00CCA3;
+  border: 2px solid #00CCA3;
+}
 label{
 	 font-weight:normal;
 }
