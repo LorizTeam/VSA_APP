@@ -47,12 +47,14 @@ public class CustomerProjectAction extends Action {
 			String[] structure				= request.getParameterValues("structure");
 			String[] materialCode			= request.getParameterValues("materialCode");
 			String[] amountTotalCust		= request.getParameterValues("amountTotalCust");
+			String[] calCost				= request.getParameterValues("calCost");
 			for(int x=0; x<projectID.length; x++)	{
-				cust_ProjectDB.UpdateAR(projectID[x], structure[x], materialCode[x], amountTotalCust[x]);
+				cust_ProjectDB.UpdateAR(projectID[x], structure[x], materialCode[x], amountTotalCust[x], calCost[x]);
 			}
 		}
 	}
-  request.setAttribute("update", update);
+		customerProjectForm.setAmountTotalCust("");
+		request.setAttribute("update", update);
 		return mapping.findForward(forwardText);
 	}
 }

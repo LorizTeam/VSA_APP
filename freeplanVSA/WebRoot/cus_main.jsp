@@ -359,7 +359,8 @@ $(document).ready(function(){
 								 <thead>
 									<tr>
 										<th id=""><center>วัสดุ</center></th>
-										<th id=""><center>ราคาจาก VSA</center></th>
+										<th id=""><center>ราคาต้นทุน</center></th>
+										<th id=""><center>ราคารวม</center></th>
 										<th id="">ราคา</th>
 										<th id="">ราคาเทียบ</th>
 									</tr>
@@ -367,7 +368,7 @@ $(document).ready(function(){
 									<tbody>
 									<%	
 				                		int x = 0, j=0; String[] calAmount = new String[count]; String calAmotxt = "0";
-				                		String[] calAmountCust = new String[count]; String calCustAmotxt = "0";
+				                		String[] calAmountCust = new String[count]; String calCustAmotxt = "0"; 
 										for (Iterator iter = materialList.iterator(); iter.hasNext();) {
 										x++;
 										CustomerProjectForm custp = (CustomerProjectForm) iter.next();
@@ -379,11 +380,18 @@ $(document).ready(function(){
 				                	 	calAmount[j] = calAmount[j].replace(",", ""); calAmountCust[j] = calAmountCust[j].replace(",", "");
 				                	 	calAmotxt = Float.toString(Float.parseFloat(calAmount[j])+Float.parseFloat(calAmotxt));
 				                	 	calCustAmotxt = Float.toString(Float.parseFloat(calAmountCust[j])+Float.parseFloat(calCustAmotxt));
+				               
 				                	%>
-									<tr>
+									<tr <%if(Float.parseFloat(calAmount[j])>Float.parseFloat(calAmountCust[j])) { %>
+										class="success"
+									<% } else { %>
+										class="danger"
+									<%} %>
+									 >
 										<td align="center"><%=custp.getMaterialName()%><input type="hidden" id="projectID" name="projectID" value="<%=custp.getProjectID()%>" /></td>
 										<td align="center"><%=custp.getAmountTotal()%><input type="hidden" id="structure" name="structure" value="<%=custp.getStructure()%>" /><input type="hidden" id="materialCode" name="materialCode" value="<%=custp.getMaterialCode()%>" /></td>
-										<td><input type="text" id="amountTotalCust" name="amountTotalCust" value="<%=custp.getAmountTotalCust()%>" size="10"/></td>
+										<td><%=custp.getAmountTotalCust()%><input type="hidden" id="calCost" name="calCost" value="<%=custp.getAmountTotalCust()%>" /> </td>
+										<td><input type="text" id="amountTotalCust" name="amountTotalCust"  size="10"/></td>
 										<td id="" width="50%"><div class="progress"><div class="progress-bar progress-bar-success" style="width: <%=progress%>%"><span class="sr-only"><%=progress%>% Complete (success)</span><label><%=progress%>%</label></div></div></td>
 									</tr>
 									 

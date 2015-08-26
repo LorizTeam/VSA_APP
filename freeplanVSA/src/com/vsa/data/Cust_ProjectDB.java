@@ -202,12 +202,17 @@ public class Cust_ProjectDB {
 	
 	return chkCustomer;
 	}
-	public void UpdateAR(String projectID, String structure, String materialCode, String amountTotalCust) 
+	public void UpdateAR(String projectID, String structure, String materialCode, String amountTotalCust, String calCost) 
 		throws Exception { //01-12-2011
 			try {
 				conn = agent.getConnectMYSql();
 				
+				if(amountTotalCust.equals("")||amountTotalCust == null) amountTotalCust = "0";
+				
 				amountTotalCust = amountTotalCust.replace(",", "");
+				calCost = calCost.replace(",", "");
+				
+				amountTotalCust = Float.toString(Float.parseFloat(amountTotalCust)+Float.parseFloat(calCost));
 				
 				String sqlStmt = "UPDATE projectdt SET " +
 					"amounttotal_cust = '"+amountTotalCust+"' " +
