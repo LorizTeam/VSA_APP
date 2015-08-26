@@ -95,7 +95,8 @@ $(document).ready(function(){
 <input type="hidden" id="up" value="Update A">
      <!-- Navigation -->
         <nav class="top1 navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-            <div class="navbar-header">
+        	<div class=" container">
+            <div class="navbar-header ">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
@@ -192,11 +193,11 @@ $(document).ready(function(){
 			<form class="navbar-form navbar-right">
               <input type="text" class="form-control" value="Search..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search...';}">
             </form>
-            
+          </div>  
         </nav>
         <div id="">
-        <div class="graphs">
-     	<div class="col_3">
+        <div class="graphs ">
+     	<div class="col_3 container">
         	<div class="col-md-3 widget widget1">
                 <div class="r3_counter_box">
                     <i class="pull-left fa fa-dollar dollar1 icon-rounded"></i>
@@ -235,106 +236,30 @@ $(document).ready(function(){
         	 </div>
         	<div class="clearfix"> </div>
       </div>
-      <div class="content_bottom">
-     	<div class="col-md-3 span_3 widget1" style="width: 27%">
-		   <div class="bs-example1">
+      <div class=" container">
+     	<div class="col-md-3 thumbnail" >	   
 		    <img class="img-responsive" src="images/1-1.jpg" />
 		    <br />
-		    <h3>Project ปัจจุบัน : บ้านเดี่ยว 3 ห้องนอน 2 ห้องน้ำ 2 ชั้น</h3>
-		   </div>
+		    <h4>Project ปัจจุบัน : บ้านเดี่ยว 3 ห้องนอน 2 ห้องน้ำ 2 ชั้น</h4>		   
 	    </div>
-	    <div class="col-md-4 span_3 widget1" style="width: 35%">
-		   <div class="bs-example1">
-		   	
-		    <table class="table" style="margin-bottom:10%;">
-		      <thead>
-		        <tr>
-		          <th>วัสดุ</th>
-		          <th>ราคา/หน่วย</th>
-		          <th>น้ำหนัก</th>
-		          <th>หน่วย</th>
-		          <th>ราคารวม</th>
-		        </tr>
-		      </thead>
-		      <tbody>
-		        <tr class="">
-		          <th scope="row">ทราย</th>
-		          <td>100</td>
-		          <td>60</td>
-		          <td>TON</td>
-		          <td>600,000</td>
-		        </tr>
-		        <tr class="danger">
-		          <th scope="row">ปูน</th>
-		          <td>70</td>
-		          <td>42</td>
-		          <td>KG</td>
-		          <td>300,000</td>
-		        </tr>
-		        <tr class="">
-		          <th scope="row">เหล็ก</th>
-		          <td>50</td>
-		          <td>60</td>
-		          <td>KG</td>
-		          <td>300,000</td>
-		        </tr>
-		      </tbody>
-		    </table>
-		   </div>
-	    </div>
-	  </div>
-    <div class="content_bottom">
-     <div class="col-md-4 span_3" style="width: 35%">
-		  <div class="bs-example1" data-example-id="contextual-table">
-		    <table class="table">
-		      <thead>
-		        <tr>
-		          <th>ราคา</th>
-		          <th>น้ำหนัก</th>
-		          <th>สถานที่ซื้อ</th>
-		          <th>วันที่ซื้อ</th>
-		        </tr>
-		      </thead>
-		      <tbody>
-		        <tr class="">
-		          <th scope="row"><input type="text" value="10,000" size="7"/></th>
-		          <td><input type="text" value="10,000" size="7"/></td>
-		          <td><input type="text" value="10,000" size="7"/></td>
-		          <td><input type="text" value="10,000" size="7"/></td>
-		        </tr>
-		        <tr>
-		          <th scope="row"><input type="text" value="10,000" size="7"/></th>
-		          <td><input type="text" value="10,000" size="7"/></td>
-		          <td><input type="text" value="10,000" size="7"/></td>
-		          <td><input type="text" value="10,000" size="7"/></td>
-		        </tr>
-		        <tr class="">
-		          <th scope="row"><input type="text" value="10,000" size="7"/></th>
-		          <td><input type="text" value="10,000" size="7"/></td>
-		          <td><input type="text" value="10,000" size="7"/></td>
-		          <td><input type="text" value="10,000" size="7"/></td>
-		        </tr>
-		      </tbody>
-		    </table>
-		   </div>
-	   </div>
-		<div class="clearfix"> </div>
-	    </div>
+	  
+	  
+  
 	    <html:form action="/custMain">
 	    <%   
          for(int a=0; a<count; a++){
          List materialList = (List)list.get(a);
          grpName = cust_projectDB.GetGrpName(grp[a]);
          %>
-	     <div class="content_bottom">
-     		<div class="col-md-12 span_3">
+	     <div class="content_bottom row">
+     		<div class="col-md-12">
      			<div class="panel panel-default">
-     				<div class="row" style="padding-left: 2.5%; margin-top: 1%;">
-       				 <input class="button mini-button" type="submit" id="update" name="update" value="Update <%=grpName%>" />
-        			</div>
-					<div class="panel-heading" style="background: #fff;">
+     			
+       				
+        		
+					<div class="panel-heading wrapper" style="background: #fff;">
 						<h4 class="panel-title">
-						<a <% if(grpName.equals("A")){%> id="flip" <%} %>
+						<a class="wrapper" <% if(grpName.equals("A")){%> id="flip" <%} %>
 						<%if(grpName.equals("B")){%> id="flip2" <%} %> 
 						<% if(grpName.equals("C")){%> id="flip3" <%} %>
 						data-toggle="collapse" data-parent="#accordion" 
@@ -342,10 +267,9 @@ $(document).ready(function(){
 						<% if(grpName.equals("B")){%> href="#panel2" <%} %> 
 						<% if(grpName.equals("C")){%> href="#panel3" <%} %>
 						style="color:#000;">
-							<div class="container">
+							
 							<% if(grpName.equals("A")){%>หลังคา<%} if(grpName.equals("B")){%>ตัวบ้าน<%} if(grpName.equals("C")){%>ฐานบ้าน<%} %>
-							<span class="pull-right" style="margin-right: -10%;"><i class="fa fa-plus"></i></span>
-							</div>	
+							<span class="right-span" >ปิด</span>
 						</a>
 						</h4>
 					</div>
@@ -398,7 +322,7 @@ $(document).ready(function(){
 									</tbody>
 									<%} j++; calAmotxt = Float.toString((Float.parseFloat(calCustAmotxt)*100)/Float.parseFloat(calAmotxt)); %>
 								</table>
-
+									<input class="button mini-button" type="submit" id="update" name="update" value="Update <%=grpName%>" />
 							</div>
 
      			<br />
@@ -416,7 +340,8 @@ $(document).ready(function(){
      		<div class="clearfix"> </div>
      	</div>
      	<% } %>
-     	 </html:form>   		
+     	 </html:form> 
+     </div>  		
 		<div class="copy">
             <p>Copyright &copy; 2015 Modern. All Rights Reserved | Design by <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
 	    </div>
@@ -426,7 +351,7 @@ $(document).ready(function(){
    </div>
     <!-- /#wrapper -->
     <!-- Bootstrap Core JavaScript -->
-    <script src="bootstrap/js/bootstrap.js"></script>
+    <script src="bootstrap/js/bootstrap.js"> </script>
     <script>
 
 
