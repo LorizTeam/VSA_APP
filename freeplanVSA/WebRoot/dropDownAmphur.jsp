@@ -7,9 +7,9 @@
     String matcode =""; 
     try{
                Class.forName("com.mysql.jdbc.Driver");
-               Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vsadb", "root", "");
+               Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vsadb?useUnicode=true&characterEncoding=UTF-8", "root", "1234");
                Statement st=con.createStatement();
-               ResultSet rs=st.executeQuery("select distinct AMPHUR_ID, AMPHUR_NAME from amphur where PROVINCE_ID = '"+name+"' order by PROVINCE_ID ASC limit 20");
+               ResultSet rs=st.executeQuery("select distinct AMPHUR_ID, AMPHUR_NAME from amphur where PROVINCE_ID = '"+name+"' order by PROVINCE_ID ASC");
 
 		 while(rs.next()){
 		   buffer=buffer+"<option value='"+rs.getString("AMPHUR_ID")+"'>"+rs.getString("AMPHUR_NAME")+"</option>";

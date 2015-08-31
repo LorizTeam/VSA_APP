@@ -80,8 +80,11 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
    
     	th, td { white-space: nowrap; }
     	div.dataTables_wrapper {
-        width: 95%;
-        margin: 0 auto;
+        width: 92%;
+        margin-top: 0;
+        margin-left: 2%;
+        margin-right: auto;
+        margin-buttom: auto;
     }
     .w{
     	display:block;
@@ -226,37 +229,69 @@ return xmlHttp;
 		<div class="row" style="padding-left: 2.5%; margin-top: 1%;">
 		<input type="hidden" id="customerID" name="customerID" />
 		
-        <label style="font-size: 160%; font-weight: bold;"> ชื่อ</label>  &nbsp;
-        <input type="text" id="customerName" name="customerName" size="15" maxlength="50"/>&nbsp;
-        <label style="font-size: 160%; font-weight: bold;"> นามสกุล</label>  &nbsp;
-		<input type="text" id="customerSurName" name="customerSurName" size="15" maxlength="50"/>&nbsp;
-		<label style="font-size: 160%; font-weight: bold;"> เบอร์โทรศัพท์</label>  &nbsp;
-        <input type="text" id="customerTel" name="customerTel" size="8" maxlength="10"/>&nbsp;
-        <label style="font-size: 160%; font-weight: bold;"> อีเมลล์</label>  &nbsp;
-        <input type="text" id="customerEmail" name="customerEmail" size="30" maxlength="50"/>&nbsp;
-        <label style="font-size: 160%; font-weight: bold;"> วันเกิด</label>  &nbsp;
-        <input type="text" id="customerDOB" name="customerDOB" size="9" maxlength="10"/>&nbsp;
-        <label style="font-size: 160%; font-weight: bold;"> บ้านเลขที่</label>  &nbsp;
-        <input type="text" id="customerHouseNo" name="customerHouseNo" size="5" maxlength="9"/>&nbsp;
+		<div class="input-control modern text" style="width:12%;">
+		    <input type="text" id="customerName" name="customerName" size="15" maxlength="50" style="height: 2em;"/>
+		    <span class="label"> ชื่อ</span>
+		    <span class="placeholder"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ชื่อ</span>
+		</div> &nbsp;
+		<div class="input-control modern text" style="width:15%;">
+		    <input type="text" id="customerSurName" name="customerSurName" size="15" maxlength="50" style="height: 2em;"/>
+		    <span class="label"> นามสกุล</span>
+		    <span class="placeholder"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; นามสกุล</span>
+		</div> &nbsp;
+		<div class="input-control modern text" style="width:17%;">
+		    <input type="text" id="customerTel" name="customerTel" size="8" maxlength="10" style="height: 2em;"/>
+		    <span class="label"> เบอร์โทรศัพท์</span>
+		    <span class="placeholder"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; เบอร์โทรศัพท์</span>
+		</div> &nbsp;
+		<div class="input-control modern text" style="width:17%;">
+		    <input type="text" id="customerEmail" name="customerEmail" size="30" maxlength="50" style="height: 2em;"/>
+		    <span class="label"> อีเมลล์</span>
+		    <span class="placeholder"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; อีเมลล์</span>
+		</div> &nbsp;
+		<div class="input-control modern text" style="width:13%;">
+		    <input type="text" id="customerDOB" name="customerDOB" size="9" maxlength="10" style="height: 2em;"/>
+		    <span class="label"> วันเกิด</span> 
+		    <span class="placeholder"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; วันเกิด</span>
+		</div> &nbsp;
+		<div class="input-control modern text" style="margin-right : 2%;">
+		    <input type="text" id="customerHouseNo" name="customerHouseNo" size="5" maxlength="9" style="height: 2em;"/>
+		    <span class="label"> บ้านเลขที่</span>
+		    <span class="placeholder"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; บ้านเลขที่</span>
+		</div> &nbsp;		
         </div>
         <div class="row" style="padding-left: 2.5%; margin-top: 1%;" >
-        <label style="font-size: 160%; font-weight: bold;"> ซอย</label>  &nbsp;
-        <input type="text" id="customerVillageNo" name="customerVillageNo" size="15" maxlength="50"/>&nbsp;
-        <label style="font-size: 160%; font-weight: bold;"> หมู่บ้าน</label>  &nbsp;
-		<input type="text" id="customerVillage" name="customerVillage" size="15" maxlength="50"/>&nbsp;
-		<label style="font-size: 160%; font-weight: bold;"> ถนน</label>  &nbsp;
-        <input type="text" id="customerLane" name="customerLane" size="8" maxlength="10"/>&nbsp;
-        <label style="font-size: 160%; font-weight: bold;"> ตำบล</label>  &nbsp;
-        <select id="customerSubDistrict" name="customerSubDistrict">
+        <div class="input-control modern text" style="width:10%;">
+		    <input type="text" id="customerVillageNo" name="customerVillageNo" size="15" maxlength="50" style="height: 2em;"/>
+		    <span class="label"> ซอย</span> 
+		    <span class="placeholder"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ซอย</span>
+		</div> &nbsp;
+		<div class="input-control modern text" style="width:10%;">
+		    <input type="text" id="customerVillage" name="customerVillage" size="15" maxlength="50" style="height: 2em;"/>
+		    <span class="label"> หมู่บ้าน</span> 
+		    <span class="placeholder"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; หมู่บ้าน</span>
+		</div> &nbsp;
+		<div class="input-control modern text" style="width:10%;">
+		    <input type="text" id="customerLane" name="customerLane" size="" maxlength="" style="height: 2em;"/>
+		    <span class="label"> ถนน</span> 
+		    <span class="placeholder"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ถนน</span>
+		</div> &nbsp;
+		<label style="font-size: 150%; font-weight: bold; margin-top: 1.9em; margin-left:2%;"> ตำบล</label>  &nbsp;
+		<div class="input-control select" style="margin-top: 1.5em; width :10%;">
+		<select id="customerSubDistrict" name="customerSubDistrict" class="input-control text small-input" style="width:100%""> 
         	 <option value="">-- ตำบล --</option>
-        </select>&nbsp;
-        <label style="font-size: 160%; font-weight: bold;"> อำเภอ</label>  &nbsp;
-        <select id="customerDistrict" name="customerDistrict" onclick="showDistrict(this.value, this);" onchange="showDistrict(this.value, this);">
+        </select>
+        </div>&nbsp;
+		<label style="font-size: 150%; font-weight: bold; margin-top: 1.9em;"> อำเภอ</label>  &nbsp;
+		<div class="input-control select" style="margin-top: 1.5em; width :10%;">
+		<select id="customerDistrict" name="customerDistrict" class="input-control text small-input" style="width:100%"  onclick="showDistrict(this.value, this);" onchange="showDistrict(this.value, this);"> 
         	 <option value="">-- อำเภอ --</option>
-        </select>&nbsp;
-        <label style="font-size: 160%; font-weight: bold;"> จังหวัด</label>  &nbsp;
-        <select id="customerProvince" name="customerProvince" onclick="showAmphur(this.value, this);" onchange="showAmphur(this.value, this);" >
-        		 <option value="">-- จังหวัด --</option>
+        </select>
+        </div>&nbsp;
+        <label style="font-size: 150%; font-weight: bold; margin-top: 1.9em;"> จังหวัด</label>  &nbsp;
+		<div class="input-control select" style="margin-top: 1.5em; width :10%;">
+		<select id="customerProvince" name="customerProvince" class="input-control text small-input" style="width:100%" onclick="showAmphur(this.value, this);" onchange="showAmphur(this.value, this);"> 
+        	  <option value="">-- จังหวัด --</option>
         			<% for (Iterator iterItem = provinceList.iterator(); iterItem.hasNext();) {
 	   					CustomerForm provinceInfo = (CustomerForm) iterItem.next();
 	       			%>
@@ -266,9 +301,14 @@ return xmlHttp;
 					<% 		} 
 						  
 					%>
-        </select>&nbsp;
-        <label style="font-size: 160%; font-weight: bold;"> รหัสไปรษณีย์</label>  &nbsp;
-        <input type="text" id="customerPostCode" name="customerPostCode" size="5" maxlength="9"/>&nbsp;
+        </select>
+        </div>&nbsp;
+        
+        <div class="input-control modern text" style="width:15%; margin-left : 2%;">
+		    <input type="text" id="customerPostCode" name="customerPostCode" size="5" maxlength="5" style="height: 2em;"/>
+		    <span class="label"> รหัสไปรษณีย์</span> 
+		    <span class="placeholder"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; รหัสไปรษณีย์</span>
+		</div> &nbsp;
         </div>
         <div class="row" style="padding-left: 2.5%; margin-top: 1%;">
         <input class="button mini-button" type="submit" id="add" name="add" value="เพิ่ม"/>
@@ -277,8 +317,8 @@ return xmlHttp;
         </div>
         	 
                 	<!-----------------------------table---------------------------------->
-					<div class="row">
-								<table class="display" cellspacing="0" width="100%" id="customer" style="font-size: 110%;">
+					<div class="row ">
+								<table class="display" cellspacing="0"  width="80%" id="customer" style="font-size: 100%; ">
 									<thead>
 									<tr>
 										<th><center>ลำดับ</center></th>
@@ -358,7 +398,7 @@ return xmlHttp;
 		} );
         $('#customer').DataTable({
         	 "scrollX":true,
-        	 "scrollY":380,
+        	 "scrollY":250,
                "language": {
             "lengthMenu": "Display _MENU_ records per page",
             "zeroRecords": "Nothing found - sorry",

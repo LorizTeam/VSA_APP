@@ -95,7 +95,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
    
     	th, td { white-space: nowrap; }
     	div.dataTables_wrapper {
-        width: 100%;
+        width: 96%;
         margin: 0 auto;
     }
     .w{
@@ -198,9 +198,9 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
                     <jsp:include page="/menu_left.jsp"></jsp:include>
                     <!-- /.menu left -->
         
-		<html:form action="/projectHD" styleClass="bg-white" >
+		<html:form action="/projectHD" styleClass="bg-white" style="width:100%;">
 		
-		<div class="row" style="padding-left: 2.5%; margin-top: 1%;">
+		<div class="row" style="padding-left: 2.5%;">
         <div class="input-control modern text">
 		    <input type="text" id="projectID" name="projectID" size="5" maxlength="6" readonly="readonly" value="<%=docNo%>" style="height: 2em;"/>
 		    <span class="label">รหัสโครงการ</span>
@@ -221,38 +221,49 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 		    <span class="label">ชื่อลูกค้า</span>
 		    <span class="placeholder"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ชื่อลูกค้า</span>
 		</div> &nbsp;
-		<button type="button" class="button mini-button rounded" onclick="showDialog('#dialog')">Get</button> &nbsp;
+		<button type="button" class="button large-button rounded" style="margin-top: 1em;" onclick="showDialog('#dialog')">Get</button> &nbsp;
         <input type="hidden" id="customerID" name="customerID" />
         </div>
-        <div class="row " style="padding-left: 2.5%; margin-top: 1%;" >
-		<label style="font-size: 103%; font-weight: bold;"> วันที่เริ่มโครงการ</label>  &nbsp;
-        <div class="input-control text" id="createDate" >
-		   <input type="text" id="createDate" name="createDate" size="8" maxlength="10"/>&nbsp;
-		    <button class="button"><span class="mif-calendar"></span></button>
-		</div>
-        <label style="font-size: 105%; font-weight: bold;"> ชนิดโครงการ</label>  &nbsp;
-        <select id="projectType" name="projectType"> 
+        <div class="row " style="padding-left: 2.5%;" >
+        <div class="input-control modern text" id="createDate" >
+		    <input type="text" id="createDate" name="createDate" size="8" maxlength="10" style="height: 2em;"/>
+		    <span class="label">วันที่เริ่มโครงการ</span>
+		    <span class="placeholder"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; วันที่เริ่มโครงการ</span>
+		</div> &nbsp;
+
+		
+        <label style="font-size: 105%; font-weight: bold; margin-top: 1.7em;"> ชนิดโครงการ</label>  &nbsp;
+
+        <div class="input-control select" style="margin-top: 0.7em;">
+		<select id="projectStatus" name="projectStatus" class="input-control text small-input" > 
         	 <option value="01">บ้านเดี่ยว </option>
         	 <option value="02">ทาวน์เฮ้าส์ </option>
         	 <option value="03">อาคารพาณิชย์ </option>
-        </select>&nbsp;
-		<label style="font-size: 105%; font-weight: bold;"> สถานะโครงการ</label>  &nbsp;
+        </select>
+        </div>&nbsp;
+        <label style="font-size: 105%; font-weight: bold; margin-top: 1.7em;"> สถานะโครงการ</label>  &nbsp;
+        <div class="input-control select" style="margin-top: 0.7em;">
 		<select id="projectStatus" name="projectStatus" class="input-control text small-input"> 
         	 <option value="01">Active</option>
         	 <option value="02">Non Active</option>
-        </select>&nbsp;
-        <label style="font-size: 105%; font-weight: bold;"> ที่อยู่โครงการ</label>  &nbsp;
-        <input type="text" id="projectAddress" name="projectAddress" size="20" maxlength="50"/>
+        </select>
+        </div>&nbsp;
+		
+		
+        <label style="font-size: 105%; font-weight: bold; margin-top: 1.7em;"> ที่อยู่โครงการ</label>  &nbsp;
+        <div class="input-control textarea" id="projectAddress" name="projectAddress">
+	        <textarea id="projectAddress" name="projectAddress"></textarea>
+	    </div>
         </div>
         <div class="row" style="padding-left: 2.5%; margin-top: 1%;">
-        <input class="button mini-button rounded" type="submit" id="add" name="add" value="เพิ่ม" />
+        <input class="button mini-button" type="submit" id="add" name="add" value="เพิ่ม" />
         <input class="button mini-button" type="submit" id="update" name="update" value="แก้ไข"/>
         <input class="button mini-button" type="submit" id="delete" name="delete" value="ลบ"/> 
         </div>
         	 
                 	<!-----------------------------table---------------------------------->
-					<div class="row">
-								<table class="display" cellspacing="0" width="100%" id="project" style="font-size: 110%;">
+					<div class="row" style="width: 99.9%;">
+								<table class="display" cellspacing="0" width="100%" id="project" style="font-size: 80%;">
 									<thead>
 									<tr>
 										<th><center>ลำดับ</center></th>

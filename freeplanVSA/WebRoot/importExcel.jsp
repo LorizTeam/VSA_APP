@@ -143,23 +143,27 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
     				<!-- /.menu left -->	
                     <jsp:include page="/menu_left.jsp"></jsp:include>
                     <!-- /.menu left -->
-    					
+    	<div class="example" data-text="Upload" style="margin : 15% 20% 25%;">		
+    	<label style="font-size: 200%;">อัพโหลดไฟล์โครงการ</label>
+    	<div style="margin: 9%;">	
 		<html:form action="/importExcel" styleClass="bg-white frm-import" method="post" enctype="multipart/form-data" >
 		
 		<div class="row" style="padding-left: 2.5%; margin-top: 10%; width:100%;">
-		<label style="font-size: 160%; font-weight: bold;">Excel Upload File</label>  &nbsp;
+		
 		</div>
 		<div class="row">
-			<div class="input-control file" data-role="input">
+			<div class="input-control file" data-role="input" style="width:50em;">
     		<input type="file" id="theFile" name="theFile">
     		<button class="button"><span class="mif-folder"></span></button>
 			</div>
         </div>
-        <div class="row" style="padding-left: 2.5%; margin-top: 1%;">
+        <div class="row" style=" margin-top: 1%;">
         <input class="button mini-button" type="submit" id="importExcel" name="importExcel" value="IMPORT EXCEL"/>
         </div>
         	 
         </html:form>
+        </div>
+        </div>	
 	 	</div>
 					
 				</div>
