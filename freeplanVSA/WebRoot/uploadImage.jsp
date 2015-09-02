@@ -216,7 +216,8 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
                 						<td align="center"><%=x%></td>
                 						<td align="center"><a href="javascript:getImage('<%=ui.getGalleryCode()%>',
                 						'<%=ui.getGalleryName()%>','<%=ui.getImageName()%>');">
-                						<%=ui.getImageName()%></a></td> 
+                						<img alt="" src="<%="upload/"+ui.getImageName()%>" />
+                						</a></td> 
                 						<td align="center"><%=ui.getGalleryName()%></td>
                 						<%if(ui.getGrStatus().equals("hd")) {%>
                 						<td align="center">รูปหลัก Gallery</td>
