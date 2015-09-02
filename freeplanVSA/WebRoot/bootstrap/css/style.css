@@ -235,11 +235,12 @@ body a{
   font-family: 'Roboto', sans-serif;
 }
 nav.top1.navbar.navbar-default.navbar-static-top {
-  background-color:rgb(6, 217, 149);
+  height:70px;
+  padding:0.5em;
   font-family: 'Roboto', sans-serif;
 }
 .navbar-default .navbar-brand {
-  color: #fff !important;
+  color: #5CB8E6 !important;
   font-size: 30px;
   font-weight: 500;
 }
@@ -264,7 +265,7 @@ i.nav_icon {
   box-shadow: none !important;
 }
 .navbar-form.navbar-right input[type="text"] {
-  color: #fff;
+  color: #5CB8E6;
 }
 form.navbar-form.navbar-right {
   margin:9px 0 0 0;
@@ -2537,7 +2538,7 @@ ul.new {
   background-color: #fff;
 }
 .navbar-default .navbar-collapse, .navbar-default .navbar-form {
-  border-color: rgb(6, 217, 149);
+  border-color: #5CB8E6;
 }
 form.navbar-form.navbar-right {
   margin: 0;

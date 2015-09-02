@@ -32,21 +32,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
   </div>
   <h2 class="form-heading">login</h2>
   <div class="app-cam">
-	  <form>
+	  <form action="home/cus_index_login.jsp">
 		<input type="text" class="text" value="E-mail address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-mail address';}">
 		<input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
 		<div class="submit"><input type="submit" onclick="myFunction()" value="Login"></div>
 		<div class="login-social-link">
-          <a href="dashboard.jsp" class="facebook">
+          <a href="#" class="facebook">
               Facebook
           </a>
-          <a href="dashboard.jsp" class="twitter">
+          <a href="#" class="twitter">
               Twitter
           </a>
         </div>
 		<ul class="new">
 			<li class="new_left"><p><a href="#">Forgot Password ?</a></p></li>
-			<li class="new_right"><p class="sign">New here ?<a href="register.jsp"> Sign Up</a></p></li>
+			<li class="new_right"><p class="sign">New here ?<a href="cus_register.jsp"> Sign Up</a></p></li>
 			<div class="clearfix"></div>
 		</ul>
 	</form>

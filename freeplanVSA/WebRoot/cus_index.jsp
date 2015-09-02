@@ -316,7 +316,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<div class="clearfix"></div>
 		  </div>
 	 </div>
+	 
 </div>
+<div class="clearfix"></div>
 <div class="footer">
 	 <div class="container">
 		 <p>Copyrights © 2015 Seven All rights reserved | Template by <a href="http://w3layouts.com/">W3layouts</a></p>

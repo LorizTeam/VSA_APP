@@ -32,7 +32,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <h1><a href="cus_index.jsp">Home Me</a></h1>
   </div>
   <h2 class="form-heading">Register</h2>
-  <form class="form-signin app-cam" action="dashboard.jsp">
+  <form class="form-signin app-cam" >
       <p>Enter your personal details below</p>
       <input type="text" class="form-control1" placeholder="Full Name" autofocus="">
       <input type="text" class="form-control1" placeholder="Address" autofocus="">
