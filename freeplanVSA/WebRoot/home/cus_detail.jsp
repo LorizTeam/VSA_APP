@@ -108,43 +108,41 @@ $("span.menu").click(function() {
 		
 		<section class="container">
 			<article class="row ">
-				<div class="col-md-8 thumbnail">
-					
-				</div>
 				<div class="col-md-4">
-					
-					<!-- Detail project -->
 					<img alt="บ้านเดี่ยว 2 ชั้น" src="../images/1-1.jpg" class="img-responsive ">
+				</div>
+				<div class="col-md-8  thumbnail">
+					<!-- Detail project -->
+					
 					<h3>รายละเอียด</h3>					
 					<blockquote class="row">
-						<div class="col-md-12"><h4>ประเภท <small> บ้านเดี่ยว 2 ชั้น</small></h4></div>
-						<div class="col-md-12"><h4>ราคาก่อสร้าง โดยประมาณ<small> 1,200,000 บาท</small></h4></div>
-						<div class="col-md-12"><h4>เวลาก่อสร้างโดยประมาณ<small> 6 เดือน</small></h4></div>
+						<div class="col-md-4"><h4>ประเภท </h4><h4><small> บ้านเดี่ยว 2 ชั้น</small></h4></div>
+						<div class="col-md-4"><h4>ราคาก่อสร้าง โดยประมาณ</h4><h4><small> 1,200,000 บาท</small></h4></div>
+						<div class="col-md-4"><h4>เวลาก่อสร้างโดยประมาณ</h4><h4><small> 6 เดือน</small></h4></div>
 					</blockquote>
+					<!-- Accorion -->
+					<blockquote class="row ">
+					<h3>บันทึกค่าใช้จ่าย</h3>
+					</blockquote >
+						<div class="uk-accordion" data-uk-accordion="{showfirst:false}">
+						    <h3 class="uk-accordion-title">หลังคา 
+						    	<i class="close glyphicon glyphicon-align-justify"></i>
+						    </h3>
+						    <div class="uk-accordion-content">containt</div>
+						
+						    <h3 class="uk-accordion-title">ตัวบ้าน
+						    	<i class="close glyphicon glyphicon-align-justify"></i>
+						    </h3>
+						    <div class="uk-accordion-content">containt</div>
+						
+						    <h3 class="uk-accordion-title">รากฐาน
+						    	<i class="close glyphicon glyphicon-align-justify"></i>
+						    </h3>
+						    <div class="uk-accordion-content">containt</div>
+						</div>
+					<!-- /Accorion -->
 				</div>
 			</article>
-			<div class="row">
-				<div class="col-md-12">
-					<table>
-						<tr>
-							<th></th>
-							<th></th>
-							<th></th>
-							<th></th>
-							<th></th>
-							<th></th>
-						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-					</table>
-				</div>
-			</div>
 		</section>
 		
 		
