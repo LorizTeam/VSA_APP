@@ -180,7 +180,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
                     <jsp:include page="/menu_left.jsp"></jsp:include>
                     <!-- /.menu left -->
         
-		<html:form action="/projectDT" styleClass="bg-white" >
+		<html:form action="/projectDT" styleClass="bg-white" style="width:100%;">
 		
 		<div class="row" style="padding-left: 2.5%; margin-top: 1%;">
 		<label style="font-size: 160%; font-weight: bold;"> โครงสร้าง</label>  &nbsp;

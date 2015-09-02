@@ -284,9 +284,12 @@ return xmlHttp;
         </div>&nbsp;
 		<label style="font-size: 150%; font-weight: bold; margin-top: 1.9em;"> อำเภอ</label>  &nbsp;
 		<div class="input-control select" style="margin-top: 1.5em; width :10%;">
+		<div>
 		<select id="customerDistrict" name="customerDistrict" class="input-control text small-input" style="width:100%"  onclick="showDistrict(this.value, this);" onchange="showDistrict(this.value, this);"> 
         	 <option value="">-- อำเภอ --</option>
         </select>
+        <span class="mif-earth fg-green"></span>
+        </div>
         </div>&nbsp;
         <label style="font-size: 150%; font-weight: bold; margin-top: 1.9em;"> จังหวัด</label>  &nbsp;
 		<div class="input-control select" style="margin-top: 1.5em; width :10%;">

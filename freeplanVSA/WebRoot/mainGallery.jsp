@@ -74,7 +74,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
    
     	th, td { white-space: nowrap; }
     	div.dataTables_wrapper {
-        width: 95%;
+        width: 90%;
         margin: 0 auto;
     }
     .w{
@@ -137,7 +137,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
                     <jsp:include page="/menu_left.jsp"></jsp:include>
                     <!-- /.menu left -->
         
-		<html:form action="/gallery" styleClass="bg-white" method="post" enctype="multipart/form-data">
+		<html:form action="/gallery" styleClass="bg-white" method="post" enctype="multipart/form-data" style="width:100%;">
 		
 		<div class="row" style="padding-left: 2.5%; margin-top: 1%;">
 		<input type="hidden" id="materialCode" name="materialCode" />
@@ -210,7 +210,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 		} );
         $('#gallery').DataTable({
         	 "scrollX":true,
-        	 "scrollY":380,
+        	 "scrollY":350,
                "language": {
             "lengthMenu": "Display _MENU_ records per page",
             "zeroRecords": "Nothing found - sorry",
