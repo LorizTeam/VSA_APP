@@ -86,6 +86,14 @@ $("span.menu").click(function() {
 			      <input type="text" class="form-control1" placeholder="จังหวัด">
 			      <input type="email" class="form-control1" placeholder="อีเมลล์" >
 			      <input type="text" class="form-control1" placeholder="เบอร์โทรศัพท์" >
+			      <select class="form-control" style="background-color: rgb(34, 34, 36); color: rgb(153, 153, 153); height: 45px;">
+			      	<option>1</option>
+			      	<option>1</option>
+			      	<option>1</option>
+			      	<option>1</option>
+			      	<option>1</option>
+			      	<option>1</option>
+			      </select>
 				  <p>เปลี่ยนพาสเวิร์ด</p>
 			      <input type="password" class="form-control1" placeholder="รหัสผ่านเก่า">
 			      <input type="password" class="form-control1" placeholder="รหัสผ่านใหม่">

@@ -12,11 +12,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <html>
 	<head>
 		<title>VSA GROUP FREE PLAN :: HOME</title>
-		<link href="css/bootstrap.css" rel="stylesheet" type="text/css"
+		<link href="http://localhost:8080/freeplanVSA/home/css//bootstrap.css" rel="stylesheet" type="text/css"
 			media="all">
-		<link href="css/style.css" rel="stylesheet" type="text/css"
+		<link href="http://localhost:8080/freeplanVSA/home/css//style.css" rel="stylesheet" type="text/css"
 			media="all" />
-		<link rel="stylesheet" href="css/chocolat.css" type="text/css"
+		<link rel="stylesheet" href="http://localhost:8080/freeplanVSA/home/css//chocolat.css" type="text/css"
 			media="screen" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -26,10 +26,18 @@ addEventListener("load", function() {
 }, false);
 function hideURLbar() {
 	window.scrollTo(0, 1);
-}</script>
-		<script src="js/jquery-1.11.1.min.js">
+}
 </script>
-		<link rel="stylesheet" href="css/flexslider.css" type="text/css"
+<style>
+
+.header {
+    background: transparent url("http://localhost:8080/freeplanVSA/home/images/banner.jpg") no-repeat scroll 0px -157px / cover;
+}
+
+</style>
+		<script src="http://localhost:8080/freeplanVSA/home/js/jquery-1.11.1.min.js">
+</script>
+		<link rel="stylesheet" href="http://localhost:8080/freeplanVSA/home/css/flexslider.css" type="text/css"
 			media="screen" />
 
 	</head>
@@ -43,11 +51,11 @@ function hideURLbar() {
 					</h1>
 				</div>
 				<div class="top-menu">
-					<span class="menu"><img src="images/nav-icon.png" alt="" />
+					<span class="menu"><img src="http://localhost:8080/freeplanVSA/home/images/nav-icon.png" alt="" />
 					</span>
 					<ul>
 						<li>
-							<a class="scroll font-menu" href="../cus_index.jsp">หน้าแรก</a>
+							<a class="scroll font-menu" href="http://localhost:8080/freeplanVSA/cus_index.jsp">หน้าแรก</a>
 						</li>
 						<li>
 							<a class="scroll font-menu" href="#service">บริการ</a>
@@ -81,7 +89,7 @@ $("span.menu").click(function() {
 			<div class="cus_pro-in">
 				<div class="container">
 					<div class="banner-info ban_cus_pro">
-						<img src="../images/1.png" class="img-profile" />
+						<img src="http://localhost:8080/freeplanVSA/images/1.png" class="img-profile" />
 						<h2>
 							Name Customer
 						</h2>
@@ -90,8 +98,8 @@ $("span.menu").click(function() {
 							<small>บ้านเดี่ยว 2 ชั้น <a href="#">ดู</a>
 							</small>
 						</h3>
-						<a class="btn-login" href="cus_profile.jsp">แก้ไขข้อมูลสมาชิก</a>
-						<a class="btn-out" href="../cus_index.jsp">ออกจากระบบ</a>
+						<a class="btn-login" href="http://localhost:8080/freeplanVSA/home/cus_profile.jsp">แก้ไขข้อมูลสมาชิก</a>
+						<a class="btn-out" href="http://localhost:8080/freeplanVSA/cus_index.jsp">ออกจากระบบ</a>
 					</div>
 					<div class="clearfix"></div>
 				</div>
