@@ -216,7 +216,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
                 						<td align="center"><%=x%></td>
                 						<td align="center"><a href="javascript:getImage('<%=ui.getGalleryCode()%>',
                 						'<%=ui.getGalleryName()%>','<%=ui.getImageName()%>');">
-                						<img alt="" src="<%="upload/"+ui.getImageName()%>" />
+                						<img alt="" src="<%="upload/"+ui.getImageName()%>" width="30%" height="30%"/>
                 						</a></td> 
                 						<td align="center"><%=ui.getGalleryName()%></td>
                 						<%if(ui.getGrStatus().equals("hd")) {%>
@@ -308,7 +308,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 		} );
         $('#image').DataTable({
         	 "scrollX":true,
-        	 "scrollY":190,
+        	 "scrollY":280,
                "language": {
             "lengthMenu": "Display _MENU_ records per page",
             "zeroRecords": "Nothing found - sorry",

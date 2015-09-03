@@ -44,17 +44,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
  <!-- Bootstrap Core CSS -->
-<link href="bootstrap/css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+<link href="bootstrap/css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- Custom CSS -->
-<link href="bootstrap/css/style.css" rel='stylesheet' type='text/css' />
+<link href="bootstrap/css/style01.css" rel='stylesheet' type='text/css' />
 <!-- Graph CSS -->
 <link href="bootstrap/css/lines.css" rel='stylesheet' type='text/css' />
+<!-- Font awesome & bangna new fonts -->
+<link type="text/css" href="bootstrap/fonts/bangna-new/bangna-new_fonts.css" rel="stylesheet"> 
 <link href="bootstrap/css/font-awesome.css" rel="stylesheet"> 
 <!-- jQuery -->
-<script src="bootstrap/js/jquery.min.js"></script>
-<!----webfonts--->
-<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
-<!---//webfonts--->  
+<script src="bootstrap/js/jquery.min.js"></script> 
 <!-- Nav CSS -->
 <link href="bootstrap/css/custom.css" rel="stylesheet">
 <!-- Metis Menu Plugin JavaScript -->
@@ -65,7 +64,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <script src="bootstrap/js/rickshaw.js"></script>
 <script> 
 $(document).ready(function(){
-	$(window).scrollTo("#flip3");
     $("#flip").click(function(){
         $("#panel").slideToggle("slow");
         $("#panel2").slideUp("slow");
@@ -81,10 +79,6 @@ $(document).ready(function(){
         $("#panel2").slideUp("slow");
         $("#panel3").slideToggle("slow");
     });
-	if ($("#up").val() == 'Update A') {
-	$(window).scrollTo("#flip3");
-        document.location.hash = "#flip3";
-    }
 });
 
 </script>

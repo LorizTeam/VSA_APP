@@ -4,6 +4,7 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 */
+
 h4, h5, h6,
 h1, h2, h3 {margin-top: 0;}
 ul, ol {margin: 0;}
@@ -20,9 +21,15 @@ p {margin: 0;}
   box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.2);
 }
 
-
+@font-face {
+	font-family: 'bangna-new';
+	src: url('../fonts/bangna-new/bangna-new.eot');
+	src: url('../fonts/bangna-new/bangna-new.woff') format('woff'), url('../fonts/bangna-new/bangna-new.ttf') format('truetype'), url('../fonts/bangna-new/bangna-new.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
 html, body{
-  	font-family: 'Roboto', sans-serif;
+  	font-family: 'bangna-new', sans-serif;
     font-size: 100%;
   	background:#000;
   	overflow-x: hidden;
@@ -232,12 +239,12 @@ body a{
 }
 .navbar-default.sidebar {
   background-color: #000;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'bangna-new', sans-serif;
 }
 nav.top1.navbar.navbar-default.navbar-static-top {
   height:70px;
   padding:0.5em;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'bangna-new', sans-serif;
 }
 .navbar-default .navbar-brand {
   color: #5CB8E6 !important;
@@ -867,7 +874,7 @@ i.dollar1{
 .graphs{
   padding: 2em 1em;
   background: #f2f4f8;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'bangna-new', sans-serif;
 }
 canvas#doughnut, canvas#line, canvas#polarArea, #bar, #pie, #radar{
   background-color: rgb(255, 255, 255);
