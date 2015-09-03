@@ -1,3 +1,6 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%> 
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
 <!--
 Author: W3layouts
 Author URL: http://w3layouts.com
@@ -32,9 +35,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
   </div>
   <h2 class="form-heading">login</h2>
   <div class="app-cam">
-	  <form action="home/cus_index_login.jsp">
-		<input type="text" class="text" value="E-mail address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-mail address';}">
-		<input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
+	  <html:form action="/cusLogin">
+		<input type="text" id="userName" name="userName" class="text" value="E-mail address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-mail address';}">
+		<input type="password" id="passWord" name="passWord" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
 		<div class="submit"><input type="submit" onclick="myFunction()" value="Login"></div>
 		<div class="login-social-link">
           <a href="#" class="facebook">
@@ -49,7 +52,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<li class="new_right"><p class="sign">New here ?<a href="cus_register.jsp"> Sign Up</a></p></li>
 			<div class="clearfix"></div>
 		</ul>
-	</form>
+	</html:form>
   </div>
    <div class="copy_layout login">
       <p>Copyright &copy; 2015 Modern. All Rights Reserved | Design by <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>

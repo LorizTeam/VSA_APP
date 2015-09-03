@@ -12,6 +12,9 @@
   	<form-bean name="custProjectForm" type="com.vsa.form.CustomerProjectForm" />
   	<form-bean name="uploadImageForm" type="com.vsa.form.UploadImageForm" />
   	<form-bean name="galleryForm" type="com.vsa.form.GalleryForm" />
+  	<!-- customer begin -->
+  	<form-bean name="cusLoginForm" type="com.cus.vsa.form.CusLoginForm" />
+  	
   </form-beans>
   <global-exceptions />
   <global-forwards />
@@ -176,6 +179,21 @@
     </action>
   
   <!--################################     Main Customer    #################################-->
+  
+  <!--################################    Customer Login    #################################-->
+   <action
+      attribute="cusLoginForm"
+      input="/cus_login.jsp"
+      name="cusLoginForm"
+      path="/cusLogin"
+      scope="request"
+      type="com.cus.vsa.action.CusLoginAction" >
+      
+      <forward name="error" path="/cus_login.jsp" />
+      <forward name="success" path="/home/cus_index_login.jsp" /> 
+    </action>
+  <!--################################    Customer Login     #################################-->
+  
   
   <!--********************************     Customer    	********************************-->
   
