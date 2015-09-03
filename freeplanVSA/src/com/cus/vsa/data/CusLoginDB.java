@@ -36,8 +36,8 @@ public class CusLoginDB {
 		ResultSet rs = null;
 		CusLoginForm cusLoginForm = new CusLoginForm();
 		
-		String sql = "SELECT a.username, a.password, a.name, a.type, b.employee_id " +
-				     "FROM login_master a inner join employee_master b on(b.employee_email = a.username) " +
+		String sql = "SELECT a.username, a.password, a.name, a.type, b.customer_id " +
+				     "FROM login_master a inner join customer_master b on(b.customer_email = a.username) " +
 				     "WHERE username = '"+userName+"' " +
 				     "AND password ='"+encrypPass+"' " ;
 		PreparedStatement pstmt = connDB.prepareStatement(sql);
@@ -47,7 +47,7 @@ public class CusLoginDB {
 			cusLoginForm.setTrue(true);
 			cusLoginForm.setUserName(rs.getString("username"));
 			cusLoginForm.setPassWord(rs.getString("password"));
-			cusLoginForm.setName(rs.getString("employee_id"));
+			cusLoginForm.setName(rs.getString("customer_id"));
 			cusLoginForm.setType(rs.getString("type"));
 		}
 		
@@ -78,7 +78,26 @@ public class CusLoginDB {
 		if(connDB != null) {
 			connDB.close();
 		}
+	}
+	public void AddCustomer(String customerName, String customerSurName,  String customerTel, String customerEmail, 
+			String customerDOB, String customerHouseNo, String customerVillageNo, String customerVillage, String customerLane, 
+			String customerSubDistrict, String customerDistrict, String customerProvince, String customerPostCode)  throws Exception{
+		DBConnect agent = new DBConnect();
+		Connection conn = null;
+		Statement pStmt 	= null;
+	 	conn = agent.getConnectMYSql();
 		
+		String sqlStmt = "INSERT INTO customer_master(customer_name, customer_surname, customer_tel, customer_email, " +
+				"customer_dob, customer_houseno, customer_villageno, customer_village, customer_lane, customer_subdistrict, customer_district, " +
+				"customer_province, customer_postcode) " +
+		"VALUES ('"+customerName+"', '"+customerSurName+"', '"+customerTel+"', '"+customerEmail+"', '0000-00-00', " +
+				"'"+customerHouseNo+"', '"+customerVillageNo+"', '"+customerVillage+"', '"+customerLane+"', '"+customerSubDistrict+"', " +
+				"'"+customerDistrict+"', '"+customerProvince+"', '"+customerPostCode+"')";
+		//System.out.println(sqlStmt);
+		pStmt = conn.createStatement();
+		pStmt.executeUpdate(sqlStmt);
+		pStmt.close();
+		conn.close();
 	}
 	public void updateMember(String name, String userName, String passWord, String type, String hdUsername) throws Exception {
 		String encrypPass = encrypt(passWord);

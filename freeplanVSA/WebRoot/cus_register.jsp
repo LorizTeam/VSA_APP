@@ -1,4 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%> 
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
 <!--
 Author: W3layouts
 Author URL: http://w3layouts.com
@@ -32,24 +34,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <h1><a href="cus_index.jsp">Home Me</a></h1>
   </div>
   <h2 class="form-heading">Register</h2>
-  <form class="form-signin app-cam" >
+  
+   
+  <html:form action="/cusRegister" styleClass="form-signin app-cam">
       <p>Enter your personal details below</p>
-      <input type="text" class="form-control1" placeholder="Full Name" autofocus="">
-      <input type="text" class="form-control1" placeholder="Address" autofocus="">
-      <input type="text" class="form-control1" placeholder="Email" autofocus="">
-      <input type="text" class="form-control1" placeholder="City/Town" autofocus="">
+      <input type="text" id="name" name="name" class="form-control1" placeholder="Name" autofocus="">
+      <input type="text" id="surName" name="surName" class="form-control1" placeholder="Surname" autofocus="">
+      <input type="text" id="tel" name="tel" class="form-control1" placeholder="Telephone Number" autofocus=""> 
       <div class="radios">
         <label for="radio-01" class="label_radio">
-            <input type="radio" checked=""> Male
+            <input type="radio" id="sex" name="sex" value="m" checked> Male
         </label>
         <label for="radio-02" class="label_radio">
-            <input type="radio"> Female
+            <input type="radio" id="sex" name="sex" value="w"> Female
         </label>
 	  </div>
 	  <p> Enter your account details below</p>
-      <input type="text" class="form-control1" placeholder="User Name" autofocus="">
-      <input type="password" class="form-control1" placeholder="Password">
-      <input type="password" class="form-control1" placeholder="Re-type Password">
+      <input type="text" id="userName" name="userName" class="form-control1" placeholder="Email" autofocus="">
+      <input type="password" id="passWord" name="passWord" class="form-control1" placeholder="Password">
+      <input type="password" id="conFirmPassword" name="conFirmPassword" class="form-control1" placeholder="Re-type Password">
       <label class="checkbox-custom check-success">
           <input type="checkbox" value="agree this condition" id="checkbox1"> <label for="checkbox1">I agree to the Terms of Service and Privacy Policy</label>
       </label>
@@ -60,7 +63,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
               Login
           </a>
       </div>
-  </form>
+      </html:form>
+       
    <div class="copy_layout login register">
       <p>Copyright &copy; 2015 Modern. All Rights Reserved | Design by <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
    </div>

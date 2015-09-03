@@ -38,7 +38,9 @@
   <StrutsActivity path="/cusLogin.do" location="1550,550" dimension="187,96" />
   <StrutsActivity path="/cus_index_login.jsp" location="1550,750" dimension="136,51" />
   <StrutsActivity path="home/cus_index_login.jsp" location="1550,950" dimension="167,51" />
-  <StrutsActivity path="/home/cus_index_login.jsp" />
+  <StrutsActivity path="/home/cus_index_login.jsp" location="1550,1150" dimension="172,51" />
+  <StrutsActivity path="/cus_register.jsp" location="350,1450" dimension="115,51" />
+  <StrutsActivity path="/cusRegister.do" />
   <StrutsTransition id="/cusLogin.do,success_agt,/mainAgent1.jsp,1" routingType="0">
     <AutomaticBendpoints>
       <AbsolutePoint location="1673,550" />
@@ -117,6 +119,13 @@
       <AbsolutePoint location="350,275" />
     </AutomaticBendpoints>
   </StrutsTransition>
+  <StrutsTransition id="/cus_register.do,error,/cus_register.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1550,1398" />
+      <AbsolutePoint location="377,1398" />
+      <AbsolutePoint location="377,1450" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
   <StrutsTransition id="/cusLogin.do,success,home/cus_index_login.jsp,1" routingType="0">
     <AutomaticBendpoints>
       <AbsolutePoint location="1701,646" />
@@ -169,8 +178,8 @@
     <AutomaticBendpoints>
       <AbsolutePoint location="50,1475" />
       <AbsolutePoint location="-75,1475" />
-      <AbsolutePoint location="-75,598" />
-      <AbsolutePoint location="1550,598" />
+      <AbsolutePoint location="-75,568" />
+      <AbsolutePoint location="1550,568" />
     </AutomaticBendpoints>
   </StrutsTransition>
   <StrutsTransition id="/cusLogin.do,success,/mainAdmin.jsp,1" routingType="0">
@@ -193,10 +202,17 @@
       <AbsolutePoint location="121,250" />
     </AutomaticBendpoints>
   </StrutsTransition>
+  <StrutsTransition id="/cusRegister.do,error,/cus_register.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="0,0" />
+      <AbsolutePoint location="407,1475" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
   <StrutsTransition id="/cusLogin.do,error,/cus_login.jsp,1" routingType="0">
     <AutomaticBendpoints>
-      <AbsolutePoint location="1732,646" />
-      <AbsolutePoint location="1732,1475" />
+      <AbsolutePoint location="1550,598" />
+      <AbsolutePoint location="295,598" />
+      <AbsolutePoint location="295,1475" />
       <AbsolutePoint location="153,1475" />
     </AutomaticBendpoints>
   </StrutsTransition>
@@ -227,6 +243,13 @@
     <AutomaticBendpoints>
       <AbsolutePoint location="250,1075" />
       <AbsolutePoint location="350,1075" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/cus_register.jsp,null,/cus_register.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="407,1450" />
+      <AbsolutePoint location="407,1428" />
+      <AbsolutePoint location="1550,1428" />
     </AutomaticBendpoints>
   </StrutsTransition>
   <StrutsTransition id="/cusLogin.do,success,/cus_index_login.jsp,1" routingType="0">
@@ -271,16 +294,34 @@
       <AbsolutePoint location="50,98" />
     </AutomaticBendpoints>
   </StrutsTransition>
+  <StrutsTransition id="/cus_register.do,success,/Login.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1550,1368" />
+      <AbsolutePoint location="904,1368" />
+      <AbsolutePoint location="904,421" />
+      <AbsolutePoint location="391,421" />
+      <AbsolutePoint location="391,301" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
   <StrutsTransition id="/cusLogin.do,success,/home/cus_index_login.jsp,1" routingType="0">
     <AutomaticBendpoints>
-      <AbsolutePoint location="1643,598" />
-      <AbsolutePoint location="0,0" />
+      <AbsolutePoint location="1737,598" />
+      <AbsolutePoint location="1822,598" />
+      <AbsolutePoint location="1822,1175" />
+      <AbsolutePoint location="1722,1175" />
     </AutomaticBendpoints>
   </StrutsTransition>
   <StrutsTransition id="/customer.do,success,/mainCustomer.jsp,1" routingType="0">
     <AutomaticBendpoints>
       <AbsolutePoint location="950,475" />
       <AbsolutePoint location="782,475" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/cus_register.do,success,/cus_login.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1550,1368" />
+      <AbsolutePoint location="101,1368" />
+      <AbsolutePoint location="101,1450" />
     </AutomaticBendpoints>
   </StrutsTransition>
   <StrutsTransition id="/cusLogin.do,success_acc,/mainAccounting.jsp,1" routingType="0">
@@ -310,12 +351,24 @@
       <AbsolutePoint location="708,250" />
     </AutomaticBendpoints>
   </StrutsTransition>
+  <StrutsTransition id="/cusRegister.do,success,/cus_login.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="0,0" />
+      <AbsolutePoint location="101,1475" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
   <StrutsTransition id="/Login.jsp,null,/register.do,2" routingType="0">
     <AutomaticBendpoints>
       <AbsolutePoint location="421,250" />
       <AbsolutePoint location="421,221" />
       <AbsolutePoint location="1049,221" />
       <AbsolutePoint location="1049,250" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/cus_register.jsp,null,/cusRegister.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="407,1475" />
+      <AbsolutePoint location="0,0" />
     </AutomaticBendpoints>
   </StrutsTransition>
 </FlowViewLayout>

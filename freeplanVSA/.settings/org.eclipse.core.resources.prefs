@@ -1,7 +1,8 @@
-#Thu Sep 03 12:47:22 ICT 2015
+#Thu Sep 03 14:04:49 ICT 2015
 eclipse.preferences.version=1
 encoding//WebRoot/cus_main.jsp=UTF-8
 encoding//src/com/cus/vsa/action/CusLoginAction.java=UTF-8
+encoding//src/com/cus/vsa/action/CusRegisterAction.java=UTF-8
 encoding//src/com/cus/vsa/form/CusLoginForm.java=UTF-8
 encoding//src/com/vsa/action/CustomerAction.java=UTF-8
 encoding//src/com/vsa/action/CustomerProjectAction.java=UTF-8

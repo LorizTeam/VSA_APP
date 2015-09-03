@@ -26,6 +26,7 @@ public class CusLoginForm extends ActionForm {
 	private String name;
 	private String surName;
 	private String tel;
+	private String sex;
 	private String type;
 	private String lockScreen;
 	private boolean isTrue;
@@ -108,6 +109,12 @@ public class CusLoginForm extends ActionForm {
 	}
 	public void setLockScreen(String lockScreen) {
 		this.lockScreen = lockScreen;
+	}
+	public String getSex() {
+		return sex;
+	}
+	public void setSex(String sex) {
+		this.sex = sex;
 	}
 
 }

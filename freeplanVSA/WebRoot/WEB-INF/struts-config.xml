@@ -194,6 +194,19 @@
     </action>
   <!--################################    Customer Login     #################################-->
   
+  <!--################################    Customer Register     #################################-->
+   <action
+      attribute="cusLoginForm"
+      input="/cus_register.jsp"
+      name="cusLoginForm"
+      path="/cusRegister"
+      scope="request"
+      type="com.cus.vsa.action.CusRegisterAction" >
+      
+      <forward name="error" path="/cus_register.jsp" />
+      <forward name="success" path="/cus_login.jsp" />
+    </action>
+  <!--################################    Customer Register     #################################-->
   
   <!--********************************     Customer    	********************************-->
   
