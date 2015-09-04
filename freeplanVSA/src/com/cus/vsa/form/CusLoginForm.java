@@ -23,6 +23,7 @@ public class CusLoginForm extends ActionForm {
 	private String userName;
 	private String passWord;
 	private String conFirmPassword;
+	private String oldPassWord;
 	private String name;
 	private String surName;
 	private String tel;
@@ -30,6 +31,7 @@ public class CusLoginForm extends ActionForm {
 	private String type;
 	private String lockScreen;
 	private boolean isTrue;
+	private String hdUserName;
 	
 	public CusLoginForm(){};
 	public CusLoginForm (String userName, String passWord, String name, String type){
@@ -38,7 +40,16 @@ public class CusLoginForm extends ActionForm {
 		this.passWord	= passWord;
 		this.name 		= name;
 		this.type		= type;
-}
+	}
+	public CusLoginForm (String userName, String passWord, String name, String surName, String tel, String type){
+		super();
+		this.userName 	= userName;
+		this.passWord	= passWord;
+		this.name 		= name;
+		this.surName	= surName;
+		this.tel 		= tel;
+		this.type		= type;
+	}
 	public void reset() {
 		this.passWord = "";
 		this.userName = "";
@@ -115,6 +126,18 @@ public class CusLoginForm extends ActionForm {
 	}
 	public void setSex(String sex) {
 		this.sex = sex;
+	}
+	public String getOldPassWord() {
+		return oldPassWord;
+	}
+	public void setOldPassWord(String oldPassWord) {
+		this.oldPassWord = oldPassWord;
+	}
+	public String getHdUserName() {
+		return hdUserName;
+	}
+	public void setHdUserName(String hdUserName) {
+		this.hdUserName = hdUserName;
 	}
 
 }

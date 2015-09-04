@@ -141,6 +141,30 @@ public class CusLoginDB {
 		
 		return chkPass;
 	}
+	public String SelectPassword(String userName) throws Exception {
+		String passWord = "";
+		 
+		DBConnect agent = new DBConnect();
+		Connection connDB=null;
+		connDB = agent.getConnectMYSql();
+	 	Statement pStmt 	= null; 
+	 	ResultSet rs		= null;
+	 	
+	 	String sqlStmt = "SELECT password " +
+		"FROM login_master a inner join customer_master b on(b.customer_email = a.username) WHERE username = '"+userName+"' ";
+	 	
+	 	pStmt = connDB.createStatement();
+		rs = pStmt.executeQuery(sqlStmt);	
+		while (rs.next()) {
+			passWord = rs.getString("password");
+		}
+		
+		rs.close();
+		pStmt.close();
+		connDB.close();
+		
+		return passWord;
+	}
 	public boolean ChkPassword(String userName, String passWord) throws Exception {
 		boolean chkPass = false;
 		String encrypPass = encrypt(passWord);
@@ -261,5 +285,71 @@ public class CusLoginDB {
 		    throw new Exception(e.getMessage());
 		}
 		return memberList;
+	}
+	public List CustomerList(String userName) throws Exception { //27-02-2014
+		String passWord = "", name = "", surName = "", type = "", tel = "", custID = "";
+		List customerList = new ArrayList();
+		try {
+			DBConnect agent = new DBConnect();
+			Connection connDB=null;
+			connDB = agent.getConnectMYSql();
+		 
+			Statement pStmt 	= null;
+			ResultSet rs		= null;
+			
+			String sqlStmt = "SELECT a.username, a.password, a.type, a.tel, b.customer_id, b.customer_name, b.customer_surname " +
+			"FROM login_master a inner join customer_master b on(b.customer_email = a.username)  " +
+			"WHERE type = 'cus' and ";
+			if (!userName.equals("")) 	sqlStmt = sqlStmt + "username = '"+userName+"' AND ";
+			
+			sqlStmt = sqlStmt + "username <> '' order by username ";
+			//System.out.println(sqlStmt);				
+			pStmt = connDB.createStatement();
+			rs = pStmt.executeQuery(sqlStmt);	
+			while (rs.next()) {
+				if (rs.getString("username") != null) userName = rs.getString("username"); else userName = "";
+				if (rs.getString("password") != null) passWord = rs.getString("password"); else passWord = "";
+				if (rs.getString("customer_name") != null) name = rs.getString("customer_name"); else name = "";
+				if (rs.getString("customer_surname") != null) surName = rs.getString("customer_surname"); else surName = "";
+				if (rs.getString("tel") != null) tel = rs.getString("tel"); else tel = "";
+				if (rs.getString("type") != null) type = rs.getString("type"); else type = "";
+
+				customerList.add(new CusLoginForm(userName, passWord, name, surName, tel, type));
+			}
+			rs.close();
+			pStmt.close();
+			connDB.close();
+		} catch (SQLException e) {
+		    throw new Exception(e.getMessage());
+		}
+		return customerList;
+	}
+	public void updateCustomer(String name, String surName, String userName, String tel, String hdUserName) throws Exception {
+
+		DBConnect agent = new DBConnect();
+		Connection connDB=null;
+		connDB = agent.getConnectMYSql();
+	 	Statement pStmt 	= null; 
+	 	
+		String sqlStmt = "UPDATE customer_master set customer_name = '"+name+"', customer_surname = '"+surName+"', customer_email = '"+userName+"', " +
+		"customer_tel = '"+tel+"' "+
+		"WHERE customer_email= '"+hdUserName+"' ";
+		pStmt = connDB.createStatement();
+		pStmt.executeUpdate(sqlStmt);
+		
+		name = name+" "+surName;
+		
+		sqlStmt = "UPDATE login_master set name = '"+name+"', username = '"+userName+"', " +
+		"tel = '"+tel+"' "+
+		"WHERE username= '"+hdUserName+"' ";
+		pStmt = connDB.createStatement();
+		pStmt.executeUpdate(sqlStmt);
+		
+		pStmt.close();
+		
+		if(connDB != null) {
+			connDB.close();
+		}
+		
 	}
 }

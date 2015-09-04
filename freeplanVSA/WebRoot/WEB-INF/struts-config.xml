@@ -208,6 +208,21 @@
     </action>
   <!--################################    Customer Register     #################################-->
   
+  <!--################################    Customer Edit Profile     #################################-->
+   <action
+      attribute="cusLoginForm"
+      input="/home/cus_profile.jsp"
+      name="cusLoginForm"
+      path="/cusEditProfile"
+      scope="request"
+      type="com.cus.vsa.action.EditProfileAction" >
+      
+      <forward name="error" path="/home/cus_profile.jsp" />
+      <forward name="success" path="/home/cus_index_login.jsp" />
+      <forward name="login" path="/cus_login.jsp" />
+    </action>
+  <!--################################    Customer Edit Profile     #################################-->
+  
   <!--********************************     Customer    	********************************-->
   
   </action-mappings>
