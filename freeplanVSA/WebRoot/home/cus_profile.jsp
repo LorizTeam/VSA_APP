@@ -30,11 +30,11 @@
 <html>
 	<head>
 		<title>VSA GROUP FREE PLAN :: HOME</title>
-		<link href="css/bootstrap.css" rel="stylesheet" type="text/css"
+		<link href="http://localhost:8080/freeplanVSA/home/css/bootstrap.css" rel="stylesheet" type="text/css"
 			media="all">
-		<link href="css/style.css" rel="stylesheet" type="text/css"
+		<link href="http://localhost:8080/freeplanVSA/home/css/style.css" rel="stylesheet" type="text/css"
 			media="all" />
-		<link rel="stylesheet" href="css/chocolat.css" type="text/css"
+		<link rel="stylesheet" href="http://localhost:8080/freeplanVSA/home/css/chocolat.css" type="text/css"
 			media="screen" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -47,7 +47,7 @@ function hideURLbar() {
 }</script>
 		<script src="js/jquery-1.11.1.min.js">
 </script>
-		<link rel="stylesheet" href="css/flexslider.css" type="text/css"
+		<link rel="stylesheet" href="http://localhost:8080/freeplanVSA/home/css/flexslider.css" type="text/css"
 			media="screen" />
 
 	</head>
@@ -57,15 +57,15 @@ function hideURLbar() {
 			<div class="container">
 				<div class="logo">
 					<h1>
-						<a href="index.jsp">Home Me</a>
+						<a href="http://localhost:8080/freeplanVSA/home/cus_index_login.jsp">Home Me</a>
 					</h1>
 				</div>
 				<div class="top-menu">
-					<span class="menu"><img src="images/nav-icon.png" alt="" />
+					<span class="menu"><img src="http://localhost:8080/freeplanVSA/home/images/nav-icon.png" alt="" />
 					</span>
 					<ul>
 						<li>
-							<a class="scroll font-menu" href="../cus_index.jsp">หน้าแรก</a>
+							<a class="scroll font-menu" href="http://localhost:8080/freeplanVSA/cus_index.jsp">หน้าแรก</a>
 						</li>
 						<li>
 							<a class="scroll font-menu" href="#service">บริการ</a>
@@ -119,7 +119,7 @@ $("span.menu").click(function() {
 			   		 <button class="btn btn-lg btn-success1 btn-block" type="submit">Save</button>
 			   </div>
 			   <div class="col-md-6 col-sm-6 col-xs-6 ">
-			   		<a href="cus_index_login.jsp" class="btn btn-lg btn-warnning1 btn-block" type="submit">Cancel</a>
+			   		<a href="http://localhost:8080/freeplanVSA/home/cus_index_login.jsp" class="btn btn-lg btn-warnning1 btn-block" type="submit">Cancel</a>
 			   </div>      
 			  </html:form>			
 		</div>
@@ -135,7 +135,7 @@ $("span.menu").click(function() {
 				<a href="#"><i class="youtube"></i></a>	
 		 </div>
 		 <div class="arrow">
-			 <a class="scroll" href="#home"><img src="home/images/top.png" alt=""></a>
+			 <a class="scroll" href="#home"><img src="http://localhost:8080/freeplanVSA/home/images/top.png" alt=""></a>
 		 </div>
 	 </div>
 </div>
