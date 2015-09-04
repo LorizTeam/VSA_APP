@@ -110,7 +110,7 @@ $("span.menu").click(function() {
 			<nav class="cus_nav  blog-grids">
 			<div class=" row middleblog-grid">
 				
-				<a href="cus_overview.jsp"><div class="col-md-4 col-sm-4 thumbnail">
+				<a href="http://localhost:8080/freeplanVSA/home/cus_overview.jsp"><div class="col-md-4 col-sm-4 thumbnail">
 						<h4><i class="glyphicon glyphicon-th-large"></i>
 							ภาพรวม
 						</h4>
