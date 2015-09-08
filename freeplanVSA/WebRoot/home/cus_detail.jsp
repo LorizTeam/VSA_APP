@@ -141,7 +141,48 @@ $("span.menu").click(function() {
 						    <div class="uk-accordion-content">containt</div>
 						</div>
 					<!-- /Accorion -->
+					
 				</div>
+				<!-- History project -->
+		<h3>
+			รายการซื้อวัสดุล่าสุด
+			<small><a href="#"> - ดูทั้งหมด</a>
+			</small>
+		</h3>
+		<hr />
+		<div class="row">
+
+			<div class="col-md-12">
+				<table class="table table-bordered table-hover">
+					<tr>
+						<th>
+							ลำดับที่
+						</th>
+						<th>
+							รายการที่ซื้อ
+						</th>
+						<th>
+							จำนวน
+						</th>
+						<th>
+							ราคา
+						</th>
+						<th>
+							วันที่
+						</th>
+
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+
+					</tr>
+				</table>
+			</div>
+		</div>
 			</article>
 		</section>
 		
