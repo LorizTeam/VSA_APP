@@ -36,8 +36,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
   <h2 class="form-heading">login</h2>
   <div class="app-cam">
 	  <html:form action="/cusLogin">
-		<input type="text" id="userName" name="userName" class="text" value="E-mail address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-mail address';}">
-		<input type="password" id="passWord" name="passWord" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
+		<input style="padding:10px;" type="text" id="userName" name="userName" class="text" value="E-mail address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-mail address';}">
+		<input style="padding:10px;" type="password" id="passWord" name="passWord" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
 		<div class="submit"><input type="submit" onclick="myFunction()" value="Login"></div>
 		<div class="login-social-link">
           <a href="#" class="facebook">

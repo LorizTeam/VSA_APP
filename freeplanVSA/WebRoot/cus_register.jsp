@@ -38,8 +38,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
    
   <html:form action="/cusRegister" styleClass="form-signin app-cam">
       <p>Enter your personal details below</p>
-      <input type="text" id="name" name="name" class="form-control1" placeholder="Name" autofocus="">
-      <input type="text" id="surName" name="surName" class="form-control1" placeholder="Surname" autofocus="">
+      <input type="text" id="name" name="name" class="form-control1" placeholder="Name" autofocus="" required>
+      <input type="text" id="surName" name="surName" class="form-control1" placeholder="Surname" autofocus=""required>
       <input type="text" id="tel" name="tel" class="form-control1" placeholder="Telephone Number" autofocus=""> 
       <div class="radios">
         <label for="radio-01" class="label_radio">
@@ -50,9 +50,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </label>
 	  </div>
 	  <p> Enter your account details below</p>
-      <input type="text" id="userName" name="userName" class="form-control1" placeholder="Email" autofocus="">
-      <input type="password" id="passWord" name="passWord" class="form-control1" placeholder="Password">
-      <input type="password" id="conFirmPassword" name="conFirmPassword" class="form-control1" placeholder="Re-type Password">
+      <input type="text" id="userName" name="userName" class="form-control1" placeholder="Username" autofocus=""required>
+      <input type="password" id="passWord" name="passWord" class="form-control1" placeholder="Password"required>
+      <input type="password" id="conFirmPassword" name="conFirmPassword" class="form-control1" placeholder="Re-type Password"required>
       <label class="checkbox-custom check-success">
           <input type="checkbox" value="agree this condition" id="checkbox1"> <label for="checkbox1">I agree to the Terms of Service and Privacy Policy</label>
       </label>
