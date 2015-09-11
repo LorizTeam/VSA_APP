@@ -398,7 +398,7 @@ a.blogs:hover{
 }
 /*--contact--*/
 .contact{
-	padding:3em 0;
+
 }
 .touch-top{
 	margin-top:2.5em;
@@ -1295,4 +1295,16 @@ span.menu {
 }
 .edit-profile{
 	margin-top:8em;
+}
+.nav-bg{
+	background-color:white;
+	border-bottom:1px solid #CACAD4;
+	margin: 0 0 2em;
+	padding:0;
+}
+.bg-c{
+	background-color:#EEEEEE;	
+}
+.bg-table{
+	background-color:white;
 }

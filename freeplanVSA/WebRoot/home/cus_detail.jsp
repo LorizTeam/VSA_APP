@@ -38,10 +38,12 @@ function hideURLbar() {
 			media="screen" />
 
 	</head>
-	<body>
+	<body class="bg-c">
 		<%@include file="topnav.jsp"%>
-
-		<section class="container" >
+		<div id="contact" class="contact">
+			<h3 class="text-center">บันทึกค่าใช้จ่าย</h3>
+		</div>
+		<section class="container touch-top" >
 		<article class="row ">
 		<div class="col-md-4">
 			<img alt="บ้านเดี่ยว 2 ชั้น" src="../images/1-1.jpg"
@@ -87,7 +89,7 @@ function hideURLbar() {
 			</blockquote>
 			<div class="uk-accordion" data-uk-accordion="{showfirst:false}">
 				<!-- 1 Accordion -->
-				<h3 class="uk-accordion-title">
+				<h3 class="uk-accordion-title thumbnail">
 					หลังคา
 					<i class="close glyphicon glyphicon-align-justify"></i>
 				</h3>
@@ -208,7 +210,7 @@ function hideURLbar() {
 				<!-- 1 Accordion -->
 				
 				
-				<h3 class="uk-accordion-title">
+				<h3 class="uk-accordion-title thumbnail">
 					ตัวบ้าน
 					<i class="close glyphicon glyphicon-align-justify"></i>
 				</h3>
@@ -216,7 +218,7 @@ function hideURLbar() {
 					containt
 				</div>
 
-				<h3 class="uk-accordion-title">
+				<h3 class="uk-accordion-title thumbnail">
 					รากฐาน
 					<i class="close glyphicon glyphicon-align-justify"></i>
 				</h3>
@@ -233,10 +235,10 @@ function hideURLbar() {
 			<small><a href="#"> - ดูทั้งหมด</a> </small>
 		</h3>
 		<hr />
-		<div class="row">
+		<div class="row ">
 
 			<div class="col-md-12">
-				<table class="table table-bordered table-hover table-responsive">
+				<table class="table table-bordered table-hover table-responsive bg-table" >
 					<tr>
 						<th>
 							ลำดับที่
@@ -251,7 +253,8 @@ function hideURLbar() {
 							ราคา
 						</th>
 						<th> 
-							วันที่d</th>
+							วันที่
+						</th>
 
 					</tr>
 					<tr>

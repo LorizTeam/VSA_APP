@@ -39,10 +39,12 @@ function hideURLbar() {
 			media="screen" />
 
 	</head>
-	<body>
+	<body class="bg-c">
 		<%@include file="topnav.jsp" %>
-
-		<section class="container">
+		<div id="contact" class="contact">
+			<h3 class="text-center">ภาพรวม</h3>
+		</div>	
+		<section class="container touch-top">
 		<article class="row ">
 		<div class="col-md-8 thumbnail">
 
@@ -50,7 +52,7 @@ function hideURLbar() {
 
 			
 			<h4  class="text-right"><small>อัพเดทล่าสุด <span class="glyphicon glyphicon-time"></span> 20-11-2015</small></h4>
-			<h3>ภาพรวม</h3>
+			
 			<hr />
 			<h4>
 				<small>ประเภท</small> บ้านเดี่ยว 2 ชั้น
@@ -107,8 +109,8 @@ function hideURLbar() {
 
 
 		</div>
-		<div class="col-md-4">
-
+		<div class="col-md-4 ">
+			<div class="thumbnail">
 			<!-- Project info-->
 			<img alt="บ้านเดี่ยว 2 ชั้น" src="../images/1-1.jpg"
 				class="img-responsive ">
@@ -136,6 +138,7 @@ function hideURLbar() {
 					</h4>
 				</div>
 			</blockquote>
+			</div>
 		</div>
 		</article>
 		<!-- History project -->
@@ -148,7 +151,7 @@ function hideURLbar() {
 		<div class="row">
 
 			<div class="col-md-12">
-				<table class="table table-bordered table-hover">
+				<table class="table table-bordered table-hover bg-table">
 					<tr>
 						<th>
 							ลำดับที่

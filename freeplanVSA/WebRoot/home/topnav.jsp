@@ -1,5 +1,6 @@
-	<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-	<!--top-header-->
+
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<!--top-header
 		<div id="home" class="top-header">
 			<div class="container">
 				<div class="logo">
@@ -30,39 +31,45 @@
 							<a class="scroll font-menu" href="#contact">ติดต่อ</a>
 						</li>
 					</ul>
-					<!-- script-for-menu -->
+					
 					<script>
 					$("span.menu").click(function() {
 						$(".top-menu ul").slideToggle("slow", function() {
 						});
 					});
 					</script>
-					<!-- script-for-menu -->
+					
 				</div>
 			</div>
 		</div>
 		<!--header-->
-		<br />
-		<!--navigation customer-->
-		<div class="">
-			<nav class="cus_nav  blog-grids">
-			<div class=" row middleblog-grid">
 
-				<a href="cus_overview.jsp"><div class="col-md-4 col-sm-4 thumbnail">
-						<h4>
-							<i class="glyphicon glyphicon-th-large"></i> ภาพรวม
-						</h4>
-					</div> </a>
-				<a href="cus_detail.jsp"><div
-						class="col-md-4 col-sm-4 thumbnail ">
-						<h4>
-							<i class="glyphicon glyphicon-pencil"></i> บันทึกค่าใช้จ่าย
-						</h4>
-					</div> <a href="#"><div class="col-md-4 col-sm-4 thumbnail ">
-							<h4>
-								<i class=" glyphicon glyphicon-comment"></i> ติดต่อ
-							</h4>
-						</div> </a>
-			</div>
-			</nav>
-		</div>
+<!--navigation customer-->
+<div class="container-fluid nav-bg">
+	<nav class="cus_nav  blog-grids">
+	<a href="cus_index_login.jsp">
+			<div class="col-md-2 col-sm-2 thumbnail" style="padding: 20px; ">
+				<h4>
+					<i class=" glyphicon glyphicon-chevron-left"></i> กลับ
+				</h4>
+			</div> </a>
+	<div class=" row middleblog-grid">
+		
+		<a href="cus_overview.jsp">
+			<div class="col-md-4 col-sm-4 thumbnail">
+				<h4>
+					<i class="glyphicon glyphicon-th-large"></i> ภาพรวม
+				</h4>
+			</div> </a>
+		<a href="cus_detail.jsp"><div class="col-md-4 col-sm-4 thumbnail ">
+				<h4>
+					<i class="glyphicon glyphicon-pencil"></i> บันทึกค่าใช้จ่าย
+				</h4>
+			</div> <a href="contact.jsp"><div class="col-md-4 col-sm-4 thumbnail ">
+					<h4>
+						<i class=" glyphicon glyphicon-comment"></i> ติดต่อ
+					</h4>
+				</div> </a>
+	</div>
+	</nav>
+</div>
