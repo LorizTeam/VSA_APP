@@ -185,9 +185,9 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 		<div class="row" style="padding-left: 2.5%; margin-top: 1%;">
 		<label style="font-size: 160%; font-weight: bold;"> โครงสร้าง</label>  &nbsp;
 		<select name="structure" id="structure">
-			<option value="A">ฐานบ้าน</option>
+			<option value="C">ฐานบ้าน</option>
 			<option value="B">ตัวบ้าน</option>
-			<option value="C">หลังคา</option>
+			<option value="A">หลังคา</option>
 		</select>&nbsp;
 		<input type="hidden" id="projectID" name="projectID" value="<%=projectID%>" />
 		<input type="hidden" id="materialCode" name="materialCode" />

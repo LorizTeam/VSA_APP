@@ -169,13 +169,13 @@
   <!--################################     Main Customer    #################################-->
   	<action
       attribute="custProjectForm"
-      input="/cus_main.jsp"
+      input="/cus_detail.jsp"
       name="custProjectForm"
       path="/custMain"
       scope="request"
       type="com.vsa.action.CustomerProjectAction" >
       
-      <forward name="success" path="/cus_main.jsp" />
+      <forward name="success" path="/cus_detail.jsp" />
     </action>
   
   <!--################################     Main Customer    #################################-->

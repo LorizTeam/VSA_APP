@@ -1,4 +1,30 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%> 
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+<%@ page import ="javax.servlet.http.HttpServletRequest.*"%>
+<%@ page import ="javax.servlet.http.HttpServletResponse.*"%>
+<%@ page import ="javax.servlet.http.HttpSession.*"%>
+<%@ page import="com.vsa.form.CustomerProjectForm" %>
+<%@ page import="com.vsa.data.Cust_ProjectDB" %>
+<%@ page import="com.vsa.util.DBConnect" %>
+<%@ page import="java.sql.*" %>
+<% 	List matList = null;
+	int count = 0; String grp[] = null;  String grpName = "";
+	List list = new ArrayList();
+	
+	Cust_ProjectDB cust_projectDB = new Cust_ProjectDB();
+	
+	count = cust_projectDB.GetGrp("1");
+	grp = cust_projectDB.GetGrpList(count, "1");
+	
+	for(int f=0; f<count; f++){
+	
+		matList = cust_projectDB.GetProjectList(grp[f], "1");
+		
+		list.add(matList); 
+	} 
+	
+%>
 <!--
 Au<!--
 Author: W3layouts
@@ -10,16 +36,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <html>
 	<head>
 		<title>VSA GROUP FREE PLAN :: HOME</title>
-		<link href="css/bootstrap.css" rel="stylesheet" type="text/css"
+		<link href="home/css/bootstrap.css" rel="stylesheet" type="text/css"
 			media="all">
 
-		<link href="css/style.css" rel="stylesheet" type="text/css"
+		<link href="home/css/style.css" rel="stylesheet" type="text/css"
 			media="all" />
 		<link rel="stylesheet" href="css/chocolat.css" type="text/css"
 			media="screen" />
-		<link href="css/uikit-accordion/accordion.min.css" rel="stylesheet"
+		<link href="home/css/uikit-accordion/accordion.min.css" rel="stylesheet"
 			type="text/css">
-		<link href="css/uikit-accordion/progress.min.css" rel="stylesheet"
+		<link href="home/css/uikit-accordion/progress.min.css" rel="stylesheet"
 			type="text/css">
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -30,23 +56,23 @@ addEventListener("load", function() {
 function hideURLbar() {
 	window.scrollTo(0, 1);
 }</script>
-		<script src="js/jquery-1.11.1.min.js">
+		<script src="home/js/jquery-1.11.1.min.js">
 </script>
-		<script src="js/uikit.min.js">
+		<script src="home/js/uikit.min.js">
 </script>
-		<link rel="stylesheet" href="css/flexslider.css" type="text/css"
+		<link rel="stylesheet" href="home/css/flexslider.css" type="text/css"
 			media="screen" />
 
 	</head>
 	<body class="bg-c">
-		<%@include file="topnav.jsp"%>
+		<%@include file="home/topnav.jsp"%>
 		<div id="contact" class="contact">
 			<h3 class="text-center">บันทึกค่าใช้จ่าย</h3>
 		</div>
 		<section class="container touch-top" >
 		<article class="row ">
 		<div class="col-md-4">
-			<img alt="บ้านเดี่ยว 2 ชั้น" src="../images/1-1.jpg"
+			<img alt="บ้านเดี่ยว 2 ชั้น" src="images/1-1.jpg"
 				class="img-responsive ">
 		</div>
 		<div class="col-md-8  thumbnail">
@@ -87,10 +113,18 @@ function hideURLbar() {
 					บันทึกค่าใช้จ่าย
 				</h3>
 			</blockquote>
+			<html:form action="/custMain" >
 			<div class="uk-accordion" data-uk-accordion="{showfirst:false}">
+			
+				<%  for(int a=0; a<count; a++){
+				    List materialList = (List)list.get(a);
+				    grpName = cust_projectDB.GetGrpName(grp[a]);
+				%>
+				
 				<!-- 1 Accordion -->
 				<h3 class="uk-accordion-title thumbnail">
 					หลังคา
+					<% if(grpName.equals("A")){%>หลังคา<%} if(grpName.equals("B")){%>ตัวบ้าน<%} if(grpName.equals("C")){%>ฐานบ้าน<%} %>
 					<i class="close glyphicon glyphicon-align-justify"></i>
 				</h3>
 				<div class="uk-accordion-content ">
@@ -119,78 +153,46 @@ function hideURLbar() {
 					</div>
 					<!-- วัสดุในการสร้าง -->		
 					<hr />
-					<div class="row">
-						<div class="col-xs-3 col-sm-3 col-md-3">
-							เหล็ก
-						</div>
-						<div class="col-xs-3 col-sm-3 col-md-3">
-							30,000 บาท
-						</div>
-						<div class="col-xs-3 col-sm-3 col-md-3">
-							2,500 บาท
-						</div>
-						<div class="col-xs-3 col-sm-3 col-md-3">
-							<input class="form-control" type="text" />
-						</div>												
-					</div>
-					<!-- วัสดุในการสร้าง -->
-					<!-- วัสดุในการสร้าง -->		
-					<hr />
-					<div class="row">
-						<div class="col-xs-3 col-sm-3 col-md-3">
-							ทราย
-						</div>
-						<div class="col-xs-3 col-sm-3 col-md-3">
-							30,000 บาท
-						</div>
-						<div class="col-xs-3 col-sm-3 col-md-3">
-							2,500 บาท
-						</div>
-						<div class="col-xs-3 col-sm-3 col-md-3">
-							<input class="form-control" type="text" />
-						</div>												
-					</div>
-					<!-- วัสดุในการสร้าง -->
-					<!-- วัสดุในการสร้าง -->		
-					<hr />
-					<div class="row">
-						<div class="col-xs-3 col-sm-3 col-md-3">
-							หิน
-						</div>
-						<div class="col-xs-3 col-sm-3 col-md-3">
-							30,000 บาท
-						</div>
-						<div class="col-xs-3 col-sm-3 col-md-3">
-							2,500 บาท
-						</div>
-						<div class="col-xs-3 col-sm-3 col-md-3">
-							<input class="form-control" type="text" />
-						</div>												
-					</div>
-					<!-- วัสดุในการสร้าง -->
-					<!-- วัสดุในการสร้าง -->		
-					<hr />
-					<div class="row">
-						<div class="col-xs-3 col-sm-3 col-md-3">
-							กระเบื้อง
-						</div>
-						<div class="col-xs-3 col-sm-3 col-md-3">
-							30,000 บาท
-						</div>
-						<div class="col-xs-3 col-sm-3 col-md-3">
-							2,500 บาท
-						</div>
-						<div class="col-xs-3 col-sm-3 col-md-3">
-							<input class="form-control" type="text" />
-						</div>												
-					</div>
-					<!-- วัสดุในการสร้าง -->
+					<%	
+				       int x = 0, j=0; String[] calAmount = new String[count]; String calAmotxt = "0";
+				       String[] calAmountCust = new String[count]; String calCustAmotxt = "0"; 
+						for (Iterator iter = materialList.iterator(); iter.hasNext();) {
+						x++;
+						CustomerProjectForm custp = (CustomerProjectForm) iter.next();
+				        String cal = custp.getAmountTotal(); String calCus = custp.getAmountTotalCust();
+				        cal = cal.replace(",", ""); calCus = calCus.replace(",", ""); 
+				                	 //	String progress = Float.toString(Float.parseFloat(cal)-30000);
+				        String progress = Float.toString((Float.parseFloat(calCus)*100)/Float.parseFloat(cal));
+				        calAmount[j] = custp.getAmountTotal();  calAmountCust[j] = custp.getAmountTotalCust();
+				        calAmount[j] = calAmount[j].replace(",", ""); calAmountCust[j] = calAmountCust[j].replace(",", "");
+				        calAmotxt = Float.toString(Float.parseFloat(calAmount[j])+Float.parseFloat(calAmotxt));
+				        calCustAmotxt = Float.toString(Float.parseFloat(calAmountCust[j])+Float.parseFloat(calCustAmotxt));
+				    %>
 					
+					<div class="row">
+						<div class="col-xs-3 col-sm-3 col-md-3">
+							<%=custp.getMaterialName()%> <input type="hidden" id="projectID" name="projectID" value="<%=custp.getProjectID()%>" />
+						</div>
+						<div class="col-xs-3 col-sm-3 col-md-3">
+							<%=custp.getAmountTotal()%><input type="hidden" id="structure" name="structure" value="<%=custp.getStructure()%>" /><input type="hidden" id="materialCode" name="materialCode" value="<%=custp.getMaterialCode()%>" />
+						</div>
+						<div class="col-xs-3 col-sm-3 col-md-3">
+							<%=custp.getAmountTotalCust()%><input type="hidden" id="calCost" name="calCost" value="<%=custp.getAmountTotalCust()%>" />
+						</div>
+						<div class="col-xs-3 col-sm-3 col-md-3"> 
+							<input type="text" id="amountTotalCust" name="amountTotalCust"  size="10" class="form-control" />
+						</div>												
+					</div>
+					<%} j++; calAmotxt = Float.toString((Float.parseFloat(calCustAmotxt)*100)/Float.parseFloat(calAmotxt)); %>
 					
+					<!-- วัสดุในการสร้าง -->
+					<!-- วัสดุในการสร้าง -->		
+					<hr />
+				
 					<div class="row">
 					<hr/>
 						<div class="col-xs-3 col-sm-3 col-md-3 col-md-offset-9 col-sm-offset-9 ">
-								<button type="submit"class="btn btn-success form-control">
+								<button type="submit" class="btn btn-success form-control" id="update" name="update">
 									<i class="glyphicon glyphicon-floppy-disk"></i> บันทึก
 								</button>
 						</div>
@@ -200,32 +202,18 @@ function hideURLbar() {
 					
 					<h4>
 						<small>ความคืบหน้าของรากฐาน</small> <div class="uk-progress">
-							<div class="uk-progress-bar " style="width: 70%;">
-								70%
+							<div class="uk-progress-bar " style="width: <%=calAmotxt%>%;">
+								<%=calAmotxt%>%
 							</div>
 						</div>
 					</h4>
 					</div>
 				</div>
 				<!-- 1 Accordion -->
+				<% } %>	
 				
-				
-				<h3 class="uk-accordion-title thumbnail">
-					ตัวบ้าน
-					<i class="close glyphicon glyphicon-align-justify"></i>
-				</h3>
-				<div class="uk-accordion-content">
-					containt
-				</div>
-
-				<h3 class="uk-accordion-title thumbnail">
-					รากฐาน
-					<i class="close glyphicon glyphicon-align-justify"></i>
-				</h3>
-				<div class="uk-accordion-content">
-					containt
-				</div>
 			</div>
+			</html:form>
 			<!-- /Accorion -->
 
 		</div>
@@ -273,7 +261,7 @@ function hideURLbar() {
 
 
 
-		<script src="js/accordion.js">
+		<script src="home/js/accordion.js">
 </script>
 
 	</body>
