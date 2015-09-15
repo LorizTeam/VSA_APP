@@ -9075,6 +9075,7 @@ textarea.required {
   width: 100%;
   z-index: 2;
   height: 1.75rem;
+  
 }
 .input-control.modern input:focus {
   border-bottom-color: #1d1d1d;
@@ -9087,8 +9088,8 @@ textarea.required {
   color: #1d1d1d;
 }
 .input-control.modern .label {
-  opacity: 0;
-  top: 16px;
+  opacity: 1;
+  top: 5px;
   left: 0;
   transition: all 0.3s linear;
 }
@@ -9109,6 +9110,7 @@ textarea.required {
   opacity: 1;
   transition: all 0.3s linear;
 }
+
 .input-control.modern .helper-button {
   top: 8px;
 }
@@ -9136,19 +9138,20 @@ textarea.required {
 }
 .input-control.modern.iconic.full-size {
   width: calc(100% - 32px) !important;
-}
+}/*
 .input-control.modern input:focus ~ .label {
   opacity: 1;
   -webkit-transform: translateY(-18px);
           transform: translateY(-18px);
   transition: all 0.3s linear;
 }
+
 .input-control.modern input:focus ~ .placeholder {
   opacity: 0;
   -webkit-transform: translateX(200px);
           transform: translateX(200px);
   transition: all 0.3s linear;
-}
+}*/
 .input-control.modern input:focus ~ .informer {
   opacity: 1;
   color: #1d1d1d;

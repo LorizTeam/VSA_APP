@@ -231,50 +231,37 @@ return xmlHttp;
 		
 		<div class="input-control modern text" style="width:12%;">
 		    <input type="text" id="customerName" name="customerName" size="15" maxlength="50" style="height: 2em;"/>
-		    <span class="label"> ชื่อ</span>
-		    <span class="placeholder"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ชื่อ</span>
-		</div> &nbsp;
+		    <span class="label"> ชื่อ</span></div> &nbsp;
 		<div class="input-control modern text" style="width:15%;">
 		    <input type="text" id="customerSurName" name="customerSurName" size="15" maxlength="50" style="height: 2em;"/>
-		    <span class="label"> นามสกุล</span>
-		    <span class="placeholder"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; นามสกุล</span>
-		</div> &nbsp;
+		    <span class="label"> นามสกุล</span></div> &nbsp;
 		<div class="input-control modern text" style="width:17%;">
 		    <input type="text" id="customerTel" name="customerTel" size="8" maxlength="10" style="height: 2em;"/>
 		    <span class="label"> เบอร์โทรศัพท์</span>
-		    <span class="placeholder"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; เบอร์โทรศัพท์</span>
 		</div> &nbsp;
 		<div class="input-control modern text" style="width:17%;">
 		    <input type="text" id="customerEmail" name="customerEmail" size="30" maxlength="50" style="height: 2em;"/>
-		    <span class="label"> อีเมลล์</span>
-		    <span class="placeholder"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; อีเมลล์</span>
-		</div> &nbsp;
+		    <span class="label"> อีเมลล์</span></div> &nbsp;
 		<div class="input-control modern text" style="width:13%;">
 		    <input type="text" id="customerDOB" name="customerDOB" size="9" maxlength="10" style="height: 2em;"/>
-		    <span class="label"> วันเกิด</span> 
-		    <span class="placeholder"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; วันเกิด</span>
-		</div> &nbsp;
+		    <span class="label"> วันเกิด</span> </div> &nbsp;
 		<div class="input-control modern text" style="margin-right : 2%;">
 		    <input type="text" id="customerHouseNo" name="customerHouseNo" size="5" maxlength="9" style="height: 2em;"/>
 		    <span class="label"> บ้านเลขที่</span>
-		    <span class="placeholder"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; บ้านเลขที่</span>
 		</div> &nbsp;		
         </div>
         <div class="row" style="padding-left: 2.5%; margin-top: 1%;" >
         <div class="input-control modern text" style="width:10%;">
 		    <input type="text" id="customerVillageNo" name="customerVillageNo" size="15" maxlength="50" style="height: 2em;"/>
-		    <span class="label"> ซอย</span> 
-		    <span class="placeholder"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ซอย</span>
+		    <span class="label"> ซอย</span>
 		</div> &nbsp;
 		<div class="input-control modern text" style="width:10%;">
 		    <input type="text" id="customerVillage" name="customerVillage" size="15" maxlength="50" style="height: 2em;"/>
 		    <span class="label"> หมู่บ้าน</span> 
-		    <span class="placeholder"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; หมู่บ้าน</span>
 		</div> &nbsp;
 		<div class="input-control modern text" style="width:10%;">
 		    <input type="text" id="customerLane" name="customerLane" size="" maxlength="" style="height: 2em;"/>
-		    <span class="label"> ถนน</span> 
-		    <span class="placeholder"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ถนน</span>
+		    <span class="label"> ถนน</span>
 		</div> &nbsp;
 		<label style="font-size: 150%; font-weight: bold; margin-top: 1.9em; margin-left:2%;"> ตำบล</label>  &nbsp;
 		<div class="input-control select" style="margin-top: 1.5em; width :10%;">
@@ -307,9 +294,8 @@ return xmlHttp;
         <div class="input-control modern text" style="width:15%; margin-left : 2%;">
 		    <input type="text" id="customerPostCode" name="customerPostCode" size="5" maxlength="5" style="height: 2em;"/>
 		    <span class="label"> รหัสไปรษณีย์</span> 
-		    <span class="placeholder"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; รหัสไปรษณีย์</span>
-		</div> &nbsp;
-        </div>
+		</div>
+		</div>
         <div class="row" style="padding-left: 2.5%; margin-top: 1%;">
         <input class="button mini-button" type="submit" id="add" name="add" value="เพิ่ม"/>
         <input class="button mini-button" type="submit" id="update" name="update" value="แก้ไข"/>
