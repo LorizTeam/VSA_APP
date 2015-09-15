@@ -2410,6 +2410,9 @@ span.badge {
 }
 }
 @media (max-width:768px){	
+nav.top1.navbar.navbar-default.navbar-static-top {
+    height: 200px;
+}
 .navbar-right {
   margin-right:3px !important;
 }
@@ -2515,6 +2518,9 @@ ul.new {
 }
 }
 @media (max-width:736px){
+nav.top1.navbar.navbar-default.navbar-static-top {
+    height: 120px;
+}
 .navbar-right~.navbar-right {
   display: block;
 }

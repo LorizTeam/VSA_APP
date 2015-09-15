@@ -87,7 +87,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<body class="bg-steel">
 	<div>
 		<ul class="m-menu fixed-top" >
-    <li><a href="#">fหน้าแรก</a></li>
+    <li><a href="mainAdmin.jsp">หน้าแรก</a></li>
     <li>
         <a href="#" class="dropdown-toggle">ภาพรวม</a>
         <div class="m-menu-container" data-role="dropdown" data-no-close="true">

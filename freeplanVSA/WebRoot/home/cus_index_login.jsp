@@ -95,7 +95,7 @@ $("span.menu").click(function() {
 						</h2>
 						<h3>
 							แบบบ้าน :
-							<small>บ้านเดี่ยว 2 ชั้น <a href="home/cus_overview.jsp">ดู</a>
+							<small>บ้านเดี่ยว 2 ชั้น <a href="http://localhost:8080/freeplanVSA/home/cus_overview.jsp">ดู</a>
 							</small>
 						</h3>
 						<a class="btn-login" href="http://localhost:8080/freeplanVSA/home/cus_profile.jsp">แก้ไขข้อมูลสมาชิก</a>

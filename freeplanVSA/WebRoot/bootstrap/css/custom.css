@@ -115,6 +115,7 @@
         position: absolute;
         width: 250px;
         margin-top: 51px;
+        visibility:hidden;
     }
 
     .navbar-top-links .dropdown-messages,
