@@ -204,22 +204,22 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
         <div class="input-control modern text">
 		    <input type="text" id="projectID" name="projectID" size="5" maxlength="6" readonly="readonly" value="<%=docNo%>" style="height: 2em;"/>
 		    <span class="label">รหัสโครงการ</span>
-		    <span class="placeholder"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; รหัสโครงการ</span>
+		
 		</div> &nbsp;
 		<div class="input-control modern text">
 		    <input type="text" id="projectName" name="projectName" size="15" maxlength="35" style="height: 2em;"/>
 		    <span class="label">ชื่อโครงการ</span>
-		    <span class="placeholder"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ชื่อโครงการ</span>
+		
 		</div> &nbsp;
         <div class="input-control modern text">
 		    <input type="text" id="employeeID" name="employeeID" size="8" maxlength="10" value="<%=name%>" style="height: 2em;"/>
 		    <span class="label">รหัสพนักงาน</span>
-		    <span class="placeholder"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; รหัสพนักงาน</span>
+		
 		</div> &nbsp;
 		<div class="input-control modern text">
 		    <input type="text" id="customerName" name="customerName" size="10" maxlength="50" style="height: 2em;"/>
 		    <span class="label">ชื่อลูกค้า</span>
-		    <span class="placeholder"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ชื่อลูกค้า</span>
+		 
 		</div> &nbsp;
 		<button type="button" class="button large-button rounded" style="margin-top: 1em;" onclick="showDialog('#dialog')">Get</button> &nbsp;
         <input type="hidden" id="customerID" name="customerID" />
@@ -228,7 +228,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
         <div class="input-control modern text" id="createDate" >
 		    <input type="text" id="createDate" name="createDate" size="8" maxlength="10" style="height: 2em;"/>
 		    <span class="label">วันที่เริ่มโครงการ</span>
-		    <span class="placeholder"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; วันที่เริ่มโครงการ</span>
+	
 		</div> &nbsp;
 
 		
