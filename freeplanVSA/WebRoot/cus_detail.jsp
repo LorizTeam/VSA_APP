@@ -120,7 +120,7 @@ function hideURLbar() {
 				    List materialList = (List)list.get(a);
 				    grpName = cust_projectDB.GetGrpName(grp[a]);
 				%>
-				
+				 
 				<!-- 1 Accordion -->
 				<h3 class="uk-accordion-title thumbnail">
 					หลังคา
