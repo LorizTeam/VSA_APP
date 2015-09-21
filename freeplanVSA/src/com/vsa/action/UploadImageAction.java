@@ -60,7 +60,7 @@ public class UploadImageAction extends Action {
               
 	        if(!newFile.exists()){
 	        	
-	          importImageDB.AddImage(imageName, galleryID, usePath+fileName, grStatus);
+	          importImageDB.AddImage(imageName, galleryID, usePath+imageName, grStatus);
 	        	
 	          FileOutputStream fos = new FileOutputStream(newFile);
 	          fos.write(file.getFileData());
