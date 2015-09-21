@@ -126,19 +126,19 @@
 						UploadImageForm img = (UploadImageForm) iter1.next();
 						String imageHD = img.getPathfile(); 
 			          	%>
-				       		<img src="<%=imageHD%>" class="img-responsive" style="height:250px;overflow:hidden;width:100%;" alt="">
+				       		<img src="<%=imageHD%>" class="img-responsive" style="height:300px;overflow:hidden;width:100%;" alt="">
 				       	<% } %>
 						
-						<div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>	
+							
 					</a>
-					 			
+					 <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>			
 				</figure >	
 				
 				<!-- This is the modal -->
 				<div id="<%=galleryID%>" class="uk-modal">
 					<div class="uk-modal-dialog">
 				 	<a class="uk-modal-close uk-close"></a>
-				 	<div class="fotorama" data-allowfullscreen="true"data-loop="true"data-ratio="16/9">
+				 	<div class="fotorama" data-allowfullscreen="true"data-loop="true"data-ratio="16/9"data-nav="false">
 					<% 	String path = request.getContextPath (); 
 						String basePath = request.getScheme () + "://" + request.getServerName () + ":" + request.getServerPort () + path + "/"; 
 					
