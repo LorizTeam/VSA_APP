@@ -47,7 +47,7 @@
 <!--navigation customer-->
 <div class="container-fluid nav-bg">
 	<nav class="cus_nav  blog-grids">
-	<a href="http://localhost:8080/freeplanVSA/home/cus_index_login.jsp">
+	<a href="../cus_index_login.jsp">
 			<div class="col-md-2 col-sm-2 thumbnail" style="padding: 20px; ">
 				<h4>
 					<i class=" glyphicon glyphicon-chevron-left"></i> กลับ
