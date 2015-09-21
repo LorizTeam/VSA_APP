@@ -23,13 +23,80 @@ public class ImportImageDB {
 	ResultSet rs		= null;
 	DateUtil dateUtil = new DateUtil();
 	
+	public List GetImageHDList(String galleryCode) 
+	throws Exception { //30-05-2014
+		List imageList = new ArrayList();
+		String galleryName = "", imageName = "", pathfile = "", grStatus = "";
+	 
+		try {
+			conn = agent.getConnectMYSql();
+			
+			String sqlStmt = "SELECT a.galleryid, a.galleryname, b.imagename, b.pathfile, b.status " +
+			"FROM gallery_master a inner join fileimage b on(b.galleryid = a.galleryid) " +
+			"WHERE status = 'hd' and "; 
+			if (!galleryCode.equals("")) 	sqlStmt = sqlStmt + "a.galleryid = '"+galleryCode+"' AND "; 
+			sqlStmt = sqlStmt + "a.galleryid <> '' group by a.galleryid, b.imagename order by b.status desc, a.galleryid, b.imagename";
+			
+			//System.out.println(sqlStmt);				
+			pStmt = conn.createStatement();
+			rs = pStmt.executeQuery(sqlStmt);	
+			while (rs.next()) {
+				galleryCode 	= rs.getString("galleryid");
+				galleryName 	= rs.getString("galleryname"); 
+				imageName 		= rs.getString("imagename");
+				pathfile 		= rs.getString("pathfile"); 
+				grStatus		= rs.getString("status"); 
+				
+				imageList.add(new UploadImageForm(galleryCode, galleryName, imageName, pathfile, grStatus));
+			}
+			rs.close();
+			pStmt.close();
+			conn.close();
+		} catch (SQLException e) {
+		    throw new Exception(e.getMessage());
+		}
+		return imageList;
+	 }
+	public List GetImageDTList(String galleryCode) 
+	throws Exception { //30-05-2014
+		List imageList = new ArrayList();
+		String galleryName = "", imageName = "", pathfile = "", grStatus = "";
+	 
+		try {
+			conn = agent.getConnectMYSql();
+			
+			String sqlStmt = "SELECT a.galleryid, a.galleryname, b.imagename, b.pathfile, b.status " +
+			"FROM gallery_master a inner join fileimage b on(b.galleryid = a.galleryid) " +
+			"WHERE status = 'dt' and "; 
+			if (!galleryCode.equals("")) 	sqlStmt = sqlStmt + "a.galleryid = '"+galleryCode+"' AND "; 
+			sqlStmt = sqlStmt + "a.galleryid <> '' group by a.galleryid, b.imagename order by b.status desc, a.galleryid, b.imagename";
+			
+			//System.out.println(sqlStmt);				
+			pStmt = conn.createStatement();
+			rs = pStmt.executeQuery(sqlStmt);	
+			while (rs.next()) {
+				galleryCode 	= rs.getString("galleryid");
+				galleryName 	= rs.getString("galleryname"); 
+				imageName 		= rs.getString("imagename");
+				pathfile 		= rs.getString("pathfile"); 
+				grStatus		= rs.getString("status"); 
+				
+				imageList.add(new UploadImageForm(galleryCode, galleryName, imageName, pathfile, grStatus));
+			}
+			rs.close();
+			pStmt.close();
+			conn.close();
+		} catch (SQLException e) {
+		    throw new Exception(e.getMessage());
+		}
+		return imageList;
+	 }
 	public List GetImageList(String galleryCode) 
 	throws Exception { //30-05-2014
 		List imageList = new ArrayList();
 		String galleryName = "", imageName = "", pathfile = "", grStatus = "";
 	 
 		try {
-		
 			conn = agent.getConnectMYSql();
 			
 			String sqlStmt = "SELECT a.galleryid, a.galleryname, b.imagename, b.pathfile, b.status " +

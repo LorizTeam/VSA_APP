@@ -1,4 +1,13 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ page language="java" import="java.util.*"  pageEncoding="UTF-8"%>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%> 
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+<%@ page import="com.vsa.form.GalleryForm" %>
+<%@ page import="com.vsa.data.GalleryDB" %>
+<%@ page import="com.vsa.form.UploadImageForm" %>
+<%@ page import="com.vsa.data.ImportImageDB" %>
+<%@ page import="com.vsa.util.DBConnect" %>
+<%@ page import="java.sql.*" %>
+
 <!--Service-->
 <link rel="stylesheet" href="css/fotorama.css"/>
 <script src="css/fotorama.js"></script>
@@ -94,10 +103,31 @@
 		 <h3>แกลอรี่</h3>
          <div class="gallery-info">
          
+         <% List galleryList = null;
+         	GalleryDB galleryDB = new GalleryDB();
+            galleryList = galleryDB.GetGallery();
+         	int x = 0;
+			for (Iterator iter = galleryList.iterator(); iter.hasNext();) {
+			x++;
+			GalleryForm galry = (GalleryForm) iter.next();
+			String galleryID = galry.getGalleryCode();
+         	String galleryName = galry.getGalleryName();
+          %>
          		<!--gallery-->		
 				<div class="col-md-4">
-					<a href="#my-id" data-uk-modal>
-						<img src="home/images/img15.jpg" class="img-responsive" alt="">
+					<a href="#<%=galleryID%>" data-uk-modal>
+					<% List imageHDList = null;
+			         	ImportImageDB importImageDB = new ImportImageDB();
+			            imageHDList = importImageDB.GetImageHDList(galleryID);
+			         	int y = 0;
+						for (Iterator iter1 = imageHDList.iterator(); iter1.hasNext();) {
+						y++;
+						UploadImageForm img = (UploadImageForm) iter1.next();
+						String imageHD = img.getPathfile(); 
+			          	%>
+				       		<img src="<%=imageHD%>" class="img-responsive" alt="">
+				       	<% } %>
+						
 						<div class="b-wrapper">
 							<span class="b-animate b-from-left    b-delay03 ">
 								<img class="img-responsive" src="home/images/e.png" alt=""/>
@@ -105,26 +135,40 @@
 						</div>
 					</a>				
 				</div>	
+				
 				<!-- This is the modal -->
-				<div id="my-id" class="uk-modal">
-				    <div class="uk-modal-dialog">
-				        <a class="uk-modal-close uk-close"></a>
-				       <div class="fotorama" data-allowfullscreen="true"data-loop="true">
-				       		<img src="home/images/img16.jpg" >
-				       		<img src="home/images/img15.jpg" >
-				       		<img src="home/images/img15.jpg" >
-				       		<img src="home/images/img15.jpg" >
+				<div id="<%=galleryID%>" class="uk-modal">
+					<div class="uk-modal-dialog">
+				 	<a class="uk-modal-close uk-close"></a>
+				 	<div class="fotorama" data-allowfullscreen="true"data-loop="true">
+					<% 	String path = request.getContextPath (); 
+						String basePath = request.getScheme () + "://" + request.getServerName () + ":" + request.getServerPort () + path + "/"; 
+					
+						List imageList = null;
+			         	 
+			            imageList = importImageDB.GetImageDTList(galleryID);
+			         	int z = 0;
+						for (Iterator iter2 = imageList.iterator(); iter2.hasNext();) {
+						z++;
+						UploadImageForm img = (UploadImageForm) iter2.next();
+						String image = img.getPathfile();
+						String pathImage = basePath+image;
+			          	%>
+				       		<img src="<%=pathImage%>" > 
+				       	<% } %>	
 				       </div>
 				       <h4>รายละเอียด</h4>
-				       <p>fsaกหฟกหกฟหกหฟสาเ่ร้</p>
+				       <p><%=galleryName%></p>
 				       <hr/>
 				       <input class="btn btn-info" type="submit" value="แจ้งขอแบบบ้าน"/>
 				       <a class="uk-modal-close btn btn-danger" href="#" >ปิด</a>
+				       
 				    </div>
+				    	
 				</div>
+				
 				<!--gallery-->	
-				
-				
+			<% } %>	
 				<div class="clearfix"> </div>
 			</div>
 	 </div>
