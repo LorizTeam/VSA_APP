@@ -67,7 +67,7 @@ public class ImportImageDB {
 			
 			String sqlStmt = "SELECT a.galleryid, a.galleryname, b.imagename, b.pathfile, b.status " +
 			"FROM gallery_master a inner join fileimage b on(b.galleryid = a.galleryid) " +
-			"WHERE status = 'dt' and "; 
+			"WHERE "; 
 			if (!galleryCode.equals("")) 	sqlStmt = sqlStmt + "a.galleryid = '"+galleryCode+"' AND "; 
 			sqlStmt = sqlStmt + "a.galleryid <> '' group by a.galleryid, b.imagename order by b.status desc, a.galleryid, b.imagename";
 			

@@ -29,6 +29,51 @@ public class UploadImageAction extends Action {
 		
 		String galleryID = uploadImageForm.getGalleryCode();
 		String grStatus = uploadImageForm.getGrStatus();
+
+		String galleryIDHD = uploadImageForm.getGalleryCodeHD();
+		String grStatusHD = uploadImageForm.getGrStatusHD();
+		
+		if(!"".equals(galleryIDHD)){
+			String fileName = "", filePath = "", usePath = ""; FormFile fileHD = null;
+			filePath =  getServlet().getServletContext().getRealPath("//") +"\\upload";
+			usePath = "upload/";
+			// ------------------------------------------------  file hd
+			if(uploadImageForm.getFile() != null){
+				fileHD = uploadImageForm.getFileHD();
+				fileName = fileHD.getFileName();
+			
+			File folder = new File(filePath);
+		    if(!folder.exists()){
+		    	folder.mkdir();
+		    }
+			
+		    fileName = fileHD.getFileName();
+		    String date = dateUtil.CnvToYYYYMMDD(dateUtil.curDate(), '-');
+		    String time = dateUtil.curTime1();
+		    String dateTime = date+" "+time;
+		    if(!("").equals(fileName)){  
+		    	
+		    	String[] fname = fileName.split("\\.");
+		   // 	fileName = fname[0];
+		    //	dateTime = fname[1];
+		    	dateTime = dateTime.replace(":", "-");
+		    	String imageName = dateTime+"."+fname[1];
+		    	
+		    	System.out.println("Server path: " +filePath+" - "+imageName);
+		        File newFile = new File(filePath, imageName);
+	              
+		        if(!newFile.exists()){
+		        	
+		          importImageDB.AddImage(imageName, galleryID, usePath+imageName, grStatusHD);
+		        	
+		          FileOutputStream fos = new FileOutputStream(newFile);
+		          fos.write(fileHD.getFileData());
+		          fos.flush();
+		          fos.close();
+		        }  
+		     }   
+		  }
+		}
 		
 		if(!"".equals(galleryID)){
 		

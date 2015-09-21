@@ -9,7 +9,12 @@ import org.apache.struts.action.ActionMessage;
 import org.apache.struts.upload.FormFile;
 
 public class UploadImageForm extends ActionForm{
-
+	
+	private FormFile fileHD;
+	private String galleryCodeHD;
+	private String galleryNameHD;
+	private String grStatusHD;
+	
 	private FormFile file;
 	private FormFile file1;
 	private FormFile file2;
@@ -117,6 +122,30 @@ public class UploadImageForm extends ActionForm{
 
 	public void setFile3(FormFile file3) {
 		this.file3 = file3;
+	}
+
+	public FormFile getFileHD() {
+		return fileHD;
+	}
+
+	public void setFileHD(FormFile fileHD) {
+		this.fileHD = fileHD;
+	}
+
+	public String getGalleryCodeHD() {
+		return galleryCodeHD;
+	}
+
+	public void setGalleryCodeHD(String galleryCodeHD) {
+		this.galleryCodeHD = galleryCodeHD;
+	}
+
+	public String getGrStatusHD() {
+		return grStatusHD;
+	}
+
+	public void setGrStatusHD(String grStatusHD) {
+		this.grStatusHD = grStatusHD;
 	}
 
 }
