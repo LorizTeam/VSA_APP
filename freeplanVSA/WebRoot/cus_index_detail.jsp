@@ -9,7 +9,7 @@
 <%@ page import="java.sql.*" %>
 
 <!--Service-->
-<link rel="stylesheet" href="css/uikit.min.css"/>
+
 <link rel="stylesheet" href="css/fotorama.css"/>
 <script src="css/fotorama.js"></script>
 <script src="js/uikit.min.js"></script>
@@ -101,7 +101,7 @@
 <!--gallery js-->
 <div id="gallery" class="gallery">
 	 <div class="container">
-		 <h3>แกลอรี่</h3>
+		 <h3>แกลอรี่ <small>แบบบ้านฟรี</small></h3>
          <div class="gallery-info">
          
          <% List galleryList = null;
@@ -114,9 +114,10 @@
 			String galleryID = galry.getGalleryCode();
          	String galleryName = galry.getGalleryName();
           %>
-         		<!--gallery-->		
-				<figure  class="col-sm-6 col-md-4  uk-overlay uk-overlay-hover">
-					<a href="#<%=galleryID%>"data-uk-modal class="">
+         		<!--gallery-->	
+         		<a href="#<%=galleryID%>"data-uk-modal >	
+				<figure  class="col-sm-6 col-md-4  uk-overlay uk-overlay-hover" style="margin-bottom:30px;">
+					
 					<% List imageHDList = null;
 			         	ImportImageDB importImageDB = new ImportImageDB();
 			            imageHDList = importImageDB.GetImageHDList(galleryID);
@@ -130,10 +131,10 @@
 				       	<% } %>
 						
 							
-					</a>
+					
 					 <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>			
 				</figure >	
-				
+				</a>
 				<!-- This is the modal -->
 				<div id="<%=galleryID%>" class="uk-modal">
 					<div class="uk-modal-dialog">
