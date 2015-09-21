@@ -104,7 +104,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <!-- /.page-content -->	            
         <div class="page-content">
         <div class="flex-grid no-responsive-future" style="height: 100%;">
-         <div class="row" style="height: 100%">     
+        <div class="row" style="height: 100%">     
                    
                     <!-- /.menu left -->	
                     <jsp:include page="/menu_left.jsp"></jsp:include>
@@ -115,6 +115,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						
 		</div>
 					</center>
+					
+		
 				</div>
 			</div>
 		 <!-- /.page-content -->	
