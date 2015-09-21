@@ -30,6 +30,8 @@ public class UploadImageAction extends Action {
 		String galleryID = uploadImageForm.getGalleryCode();
 		String grStatus = uploadImageForm.getGrStatus();
 		
+		if(!"".equals(galleryID)){
+		
 		String fileName = "", filePath = "", usePath = ""; FormFile file = null;
 		filePath =  getServlet().getServletContext().getRealPath("//") +"\\upload";
 		usePath = "upload/";
@@ -177,7 +179,9 @@ public class UploadImageAction extends Action {
 	        }  
 	     }   
 	  }
-		
+	}else{
+		System.out.println("Select Gallery");
+	}
 		return mapping.findForward(forwardText);
 	}
 }
