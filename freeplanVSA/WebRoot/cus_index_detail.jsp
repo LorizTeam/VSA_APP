@@ -1,5 +1,8 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <!--Service-->
+
+<script src="js/uikit.min.js"></script>
+<script src="js/modal.min.js"></script>
 <div id="service" class="service">
 	 <div class="container">
 		 <h3>การบริการ</h3>	
@@ -89,8 +92,10 @@
 	 <div class="container">
 		 <h3>แกลอรี่</h3>
          <div class="gallery-info">
-				<div class="col-md-4 galry-grids moments-bottom">
-					<a class="b-link-stripe b-animate-go" href="home/images/img15.jpg">
+         
+         		<!--gallery-->		
+				<div class="col-md-4">
+					<a href="#my-id" data-uk-modal>
 						<img src="home/images/img15.jpg" class="img-responsive" alt="">
 						<div class="b-wrapper">
 							<span class="b-animate b-from-left    b-delay03 ">
@@ -98,87 +103,17 @@
 							</span>					
 						</div>
 					</a>				
+				</div>	
+				<!-- This is the modal -->
+				<div id="my-id" class="uk-modal">
+				    <div class="uk-modal-dialog">
+				        <a class="uk-modal-close uk-close"></a>
+				        ...
+				    </div>
 				</div>
-				<div class="col-md-4 galry-grids moments-bottom">
-					<a class="b-link-stripe b-animate-go" href="home/images/img10.jpg">
-						<img src="home/images/img10.jpg" class="img-responsive" alt="">
-						<div class="b-wrapper">
-							<span class="b-animate b-from-left b-delay03 ">
-								<img class="img-responsive" src="home/images/e.png" alt=""/>
-							</span>					
-						</div>
-					</a>				
-				</div>
-				<div class="col-md-4 galry-grids moments-bottom">
-					<a class="b-link-stripe b-animate-go" href="home/images/img11.jpg">
-						<img src="home/images/img11.jpg" class="img-responsive" alt="">
-						<div class="b-wrapper">
-							<span class="b-animate b-from-left    b-delay03 ">
-								<img class="img-responsive" src="home/images/e.png" alt=""/>
-							</span>					
-						</div>
-					</a>				
-				</div>				
-				<div class="col-md-4 galry-grids moments-bottom">
-					<a class="b-link-stripe b-animate-go" href="home/images/img12.jpg">
-						<img src="home/images/img12.jpg" class="img-responsive" alt="">
-						<div class="b-wrapper">
-							<span class="b-animate b-from-left    b-delay03 ">
-								<img class="img-responsive" src="home/images/e.png" alt=""/>
-							</span>					
-						</div>
-					</a>				
-				</div>
-				<div class="col-md-4 galry-grids moments-bottom">
-					<a class="b-link-stripe b-animate-go" href="home/images/img13.jpg">
-						<img src="home/images/img13.jpg" class="img-responsive" alt="">
-						<div class="b-wrapper">
-							<span class="b-animate b-from-left    b-delay03 ">
-								<img class="img-responsive" src="home/images/e.png" alt=""/>
-							</span>					
-						</div>
-					</a>				
-				</div>
-				<div class="col-md-4 galry-grids moments-bottom">
-					<a class="b-link-stripe b-animate-go" href="home/images/img14.jpg">
-						<img src="home/images/img14.jpg" class="img-responsive" alt="">
-						<div class="b-wrapper">
-							<span class="b-animate b-from-left    b-delay03 ">
-								<img class="img-responsive" src="home/images/e.png" alt=""/>
-							</span>					
-						</div>
-					</a>				
-				</div>
-				<div class="col-md-4 galry-grids moments-bottom">
-					<a class="b-link-stripe b-animate-go" href="home/images/img9.jpg">
-						<img src="home/images/img9.jpg" class="img-responsive" alt="">
-						<div class="b-wrapper">
-							<span class="b-animate b-from-left    b-delay03 ">
-								<img class="img-responsive" src="home/images/e.png" alt=""/>
-							</span>					
-						</div>
-					</a>				
-				</div>
-				<div class="col-md-4 galry-grids moments-bottom">
-					<a class="b-link-stripe b-animate-go" href="home/images/img16.jpg">
-						<img src="home/images/img16.jpg" class="img-responsive" alt="">
-						<div class="b-wrapper">
-							<span class="b-animate b-from-left    b-delay03 ">
-								<img class="img-responsive" src="home/images/e.png" alt=""/>
-							</span>					
-						</div>
-					</a>				
-				</div>
-				<div class="col-md-4 galry-grids moments-bottom">
-					<a class="b-link-stripe b-animate-go" href="home/images/img17.jpg" >
-						<img src="home/images/img17.jpg" class="img-responsive" alt="">
-						<div class="b-wrapper">
-							<span class="b-animate b-from-left    b-delay03 ">
-								<img class="img-responsive" src="home/images/e.png" alt=""/>
-							</span>					
-						</div>
-					</a>				
-				</div>
+				<!--gallery-->	
+				
+				
 				<div class="clearfix"> </div>
 			</div>
 	 </div>

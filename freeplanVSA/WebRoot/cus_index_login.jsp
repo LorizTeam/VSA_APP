@@ -12,11 +12,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <html>
 	<head>
 		<title>VSA GROUP FREE PLAN :: HOME</title>
-		<link href="http://localhost:8080/freeplanVSA/home/css/bootstrap.css" rel="stylesheet" type="text/css"
+		<link rel="stylesheet" href="css/uikit.min.css"/> 
+		<link href="home/css/bootstrap.css" rel="stylesheet" type="text/css"
 			media="all">
-		<link href="http://localhost:8080/freeplanVSA/home/css/style.css" rel="stylesheet" type="text/css"
+		<link href="home/css/style.css" rel="stylesheet" type="text/css"
 			media="all" />
-		<link rel="stylesheet" href="http://localhost:8080/freeplanVSA/home/css/chocolat.css" type="text/css"
+		<link rel="home/css/chocolat.css" type="text/css"
 			media="screen" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -31,13 +32,13 @@ function hideURLbar() {
 <style>
 
 .header {
-    background: transparent url("http://localhost:8080/freeplanVSA/home/images/banner.jpg") no-repeat scroll 0px -157px / cover;
+    background: transparent url("home/images/banner.jpg") no-repeat scroll 0px -157px / cover;
 }
 
 </style>
-		<script src="http://localhost:8080/freeplanVSA/home/js/jquery-1.11.1.min.js">
+		<script src="home/js/jquery-1.11.1.min.js">
 </script>
-		<link rel="stylesheet" href="http://localhost:8080/freeplanVSA/home/css/flexslider.css" type="text/css"
+		<link rel="stylesheet" href="home/css/flexslider.css" type="text/css"
 			media="screen" />
 
 	</head>
@@ -51,11 +52,11 @@ function hideURLbar() {
 					</h1>
 				</div>
 				<div class="top-menu">
-					<span class="menu"><img src="http://localhost:8080/freeplanVSA/home/images/nav-icon.png" alt="" />
+					<span class="menu"><img src="home/images/nav-icon.png" alt="" />
 					</span>
 					<ul>
 						<li>
-							<a class="scroll font-menu" href="http://localhost:8080/freeplanVSA/cus_index.jsp">หน้าแรก</a>
+							<a class="scroll font-menu" href="cus_index.jsp">หน้าแรก</a>
 						</li>
 						<li>
 							<a class="scroll font-menu" href="#service">บริการ</a>

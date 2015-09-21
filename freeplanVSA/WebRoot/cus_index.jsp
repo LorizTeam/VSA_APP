@@ -10,6 +10,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <html>
 <head>
 <title>VSA GROUP FREE PLAN :: HOME</title>
+<link rel="stylesheet" href="css/uikit.min.css"/> 
 <link href="home/css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
 <link href="home/css/style.css" rel="stylesheet" type="text/css" media="all" />
 <link rel="stylesheet" href="home/css/chocolat.css" type="text/css" media="screen" />
