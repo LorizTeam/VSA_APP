@@ -117,7 +117,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
                 <div class="cell size-x200" id="cell-sidebar" style="background-color: #71b1d1; height: 100%">
                     <ul class="sidebar" >
-                        <li <%if(menu == "customer"){ %> class="active" <%}%> ><a href="#">
+                        <li <%if(menu == "notification"){ %> class="active" <%}%> ><a href="mainNotification.jsp">
                             <span class="mif-notification icon"></span>
                             <span class="title">Notification</span>
 
