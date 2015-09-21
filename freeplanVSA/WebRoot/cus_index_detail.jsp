@@ -1,6 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <!--Service-->
-
+<link rel="stylesheet" href="css/fotorama.css"/>
+<script src="css/fotorama.js"></script>
 <script src="js/uikit.min.js"></script>
 <script src="js/modal.min.js"></script>
 <div id="service" class="service">
@@ -108,7 +109,17 @@
 				<div id="my-id" class="uk-modal">
 				    <div class="uk-modal-dialog">
 				        <a class="uk-modal-close uk-close"></a>
-				        ...
+				       <div class="fotorama" data-allowfullscreen="true"data-loop="true">
+				       		<img src="home/images/img16.jpg" >
+				       		<img src="home/images/img15.jpg" >
+				       		<img src="home/images/img15.jpg" >
+				       		<img src="home/images/img15.jpg" >
+				       </div>
+				       <h4>รายละเอียด</h4>
+				       <p>fsaกหฟกหกฟหกหฟสาเ่ร้</p>
+				       <hr/>
+				       <input class="btn btn-info" type="submit" value="แจ้งขอแบบบ้าน"/>
+				       <a class="uk-modal-close btn btn-danger" href="#" >ปิด</a>
 				    </div>
 				</div>
 				<!--gallery-->	
