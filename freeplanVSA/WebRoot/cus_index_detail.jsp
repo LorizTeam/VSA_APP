@@ -9,6 +9,7 @@
 <%@ page import="java.sql.*" %>
 
 <!--Service-->
+<link rel="stylesheet" href="css/uikit.min.css"/>
 <link rel="stylesheet" href="css/fotorama.css"/>
 <script src="css/fotorama.js"></script>
 <script src="js/uikit.min.js"></script>
@@ -114,8 +115,8 @@
          	String galleryName = galry.getGalleryName();
           %>
          		<!--gallery-->		
-				<div class="col-md-4">
-					<a href="#<%=galleryID%>" data-uk-modal>
+				<figure  class="col-sm-6 col-md-4  uk-overlay uk-overlay-hover">
+					<a href="#<%=galleryID%>"data-uk-modal class="">
 					<% List imageHDList = null;
 			         	ImportImageDB importImageDB = new ImportImageDB();
 			            imageHDList = importImageDB.GetImageHDList(galleryID);
@@ -125,22 +126,19 @@
 						UploadImageForm img = (UploadImageForm) iter1.next();
 						String imageHD = img.getPathfile(); 
 			          	%>
-				       		<img src="<%=imageHD%>" class="img-responsive" alt="">
+				       		<img src="<%=imageHD%>" class="img-responsive" style="height:250px;overflow:hidden;width:100%;" alt="">
 				       	<% } %>
 						
-						<div class="b-wrapper">
-							<span class="b-animate b-from-left    b-delay03 ">
-								<img class="img-responsive" src="home/images/e.png" alt=""/>
-							</span>					
-						</div>
-					</a>				
-				</div>	
+						<div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>	
+					</a>
+					 			
+				</figure >	
 				
 				<!-- This is the modal -->
 				<div id="<%=galleryID%>" class="uk-modal">
 					<div class="uk-modal-dialog">
 				 	<a class="uk-modal-close uk-close"></a>
-				 	<div class="fotorama" data-allowfullscreen="true"data-loop="true">
+				 	<div class="fotorama" data-allowfullscreen="true"data-loop="true"data-ratio="16/9">
 					<% 	String path = request.getContextPath (); 
 						String basePath = request.getScheme () + "://" + request.getServerName () + ":" + request.getServerPort () + path + "/"; 
 					
@@ -154,7 +152,7 @@
 						String image = img.getPathfile();
 						String pathImage = basePath+image;
 			          	%>
-				       		<img src="<%=pathImage%>" > 
+				       		<img src="<%=pathImage%>"  > 
 				       	<% } %>	
 				       </div>
 				       <h4>รายละเอียด</h4>
