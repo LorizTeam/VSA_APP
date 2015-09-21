@@ -190,7 +190,7 @@
       type="com.cus.vsa.action.CusLoginAction" >
       
       <forward name="error" path="/cus_login.jsp" />
-      <forward name="success" path="/home/cus_index_login.jsp" /> 
+      <forward name="success" path="/cus_index_login.jsp" /> 
     </action>
   <!--################################    Customer Login     #################################-->
   
@@ -218,7 +218,7 @@
       type="com.cus.vsa.action.EditProfileAction" >
       
       <forward name="error" path="/home/cus_profile.jsp" />
-      <forward name="success" path="/home/cus_index_login.jsp" />
+      <forward name="success" path="/cus_index_login.jsp" />
       <forward name="login" path="/cus_login.jsp" />
     </action>
   <!--################################    Customer Edit Profile     #################################-->

@@ -119,7 +119,7 @@ $("span.menu").click(function() {
 			   		 <button class="btn btn-lg btn-success1 btn-block" type="submit">Save</button>
 			   </div>
 			   <div class="col-md-6 col-sm-6 col-xs-6 ">
-			   		<a href="http://localhost:8080/freeplanVSA/home/cus_index_login.jsp" class="btn btn-lg btn-warnning1 btn-block" type="submit">Cancel</a>
+			   		<a href="http://localhost:8080/freeplanVSA/cus_index_login.jsp" class="btn btn-lg btn-warnning1 btn-block" type="submit">Cancel</a>
 			   </div>      
 			  </html:form>			
 		</div>
