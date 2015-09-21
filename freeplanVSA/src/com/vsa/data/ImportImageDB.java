@@ -126,6 +126,38 @@ public class ImportImageDB {
 		return imageList;
 	 }
 	
+	public void AddImageHD(String imageName, String galleryID, String pathfile, String statusImage)  throws Exception{
+		conn = agent.getConnectMYSql();
+		
+		String oldImage = "";
+		String sqlStmt = "SELECT a.galleryid, a.galleryname, b.imagename, b.pathfile, b.status " +
+		"FROM gallery_master a inner join fileimage b on(b.galleryid = a.galleryid) " +
+		"WHERE a.galleryid = '"+galleryID+"' and b.status = 'hd'";
+		pStmt = conn.createStatement();
+		rs = pStmt.executeQuery(sqlStmt);	
+		while (rs.next()) {
+			oldImage 	= rs.getString("imagename");
+		}
+		rs.close();
+		pStmt.close();
+		
+		if(!"".equals(oldImage)){
+		sqlStmt = "UPDATE fileimage set status = 'dt' " +
+		"WHERE galleryid = '"+galleryID+"' and imagename = '"+oldImage+"' and status = 'hd' ";
+		//System.out.println(sqlStmt);
+		pStmt = conn.createStatement();
+		pStmt.executeUpdate(sqlStmt);
+		pStmt.close();
+		}
+		
+		sqlStmt = "INSERT IGNORE INTO fileimage(imagename, galleryid, pathfile, status) " +
+		"VALUES ('"+imageName+"', '"+galleryID+"', '"+pathfile+"', '"+statusImage+"')";
+		//System.out.println(sqlStmt);
+		pStmt = conn.createStatement();
+		pStmt.executeUpdate(sqlStmt);
+		pStmt.close();
+		conn.close();
+	}
 	public void AddImage(String imageName, String galleryID, String pathfile, String statusImage)  throws Exception{
 		conn = agent.getConnectMYSql();
 		

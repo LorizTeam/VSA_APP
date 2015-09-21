@@ -131,10 +131,6 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 				document.uploadImageForm.galleryCode.value 	= tgaCode; 
 				document.uploadImageForm.galleryName.value 	= tgaName; 
 		}
-		function getGalleryDT(tgaCode, tgaName) { 
-				document.uploadImageForm.galleryCodeHD.value 	= tgaCode; 
-				document.uploadImageForm.galleryNameHD.value 	= tgaName; 
-		}
 		function getImage(tgaCode, tgaName, timage) {
 				document.uploadImageForm.galleryCode.value 	= tgaCode; 
 				document.uploadImageForm.galleryName.value 	= tgaName;
@@ -157,28 +153,19 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 	
 	<html:form action="/uploadImage" method="post" enctype="multipart/form-data">
 	<div class="row" style="padding-left: 2.5%; margin-top: 2%; width:100%;">
-		<label style="font-size: 160%; font-weight: bold;">Gallery&nbsp;Name</label>&nbsp;
-		 <input type="hidden" id="galleryCodeHD" name="galleryCodeHD" />
-        <input type="text" id="galleryNameHD" name="galleryNameHD" size="25" maxlength="50"/>&nbsp;
-        <button type="button" class="button mini-button rounded" onclick="showDialog1('#dialog1')">Get</button> &nbsp;
-		<select id="grStatus" name="grStatusHD" class="input-control text small-input">
-        	 <option value="hd">รูปหลัก</option>
-        </select>&nbsp;
-        <div class="input-control file" data-role="input">
-			<input type="file" id="fileHD" name="fileHD" >
-			<button class="button"><span class="mif-folder"></span></button>
-		</div>
-	</div>
-	 
-	<div class="row" style="padding-left: 2.5%; margin-top: 2%; width:100%;">
-		<label style="font-size: 160%; font-weight: bold;">Gallery&nbsp;Name</label>&nbsp;
+		<label style="font-size: 160%; font-weight: bold;">Gallery :</label>&nbsp;
 		 <input type="hidden" id="galleryCode" name="galleryCode" />
         <input type="text" id="galleryName" name="galleryName" size="25" maxlength="50"/>&nbsp;
         <button type="button" class="button mini-button rounded" onclick="showDialog('#dialog')">Get</button> &nbsp;
-		<select id="grStatus" name="grStatus" class="input-control text small-input"> 
-        	 <option value="dt">รูปกลุ่ม</option>
-        </select>&nbsp;
 		<input type="hidden" id="imageName" name="imageName" />
+	</div>
+	 
+	<div class="row" style="padding-left: 2.5%; margin-top: 2%; width:100%;">
+		<label style="font-size: 160%; font-weight: bold;">รูปปก :</label>&nbsp;
+		<div class="input-control file" data-role="input">
+			<input type="file" id="fileHD" name="fileHD" >
+			<button class="button"><span class="mif-folder"></span></button>
+		</div>
 	</div>
 	<br/>
 	<div class="row" style="padding-left: 2.5%; width:100%;">
@@ -291,46 +278,6 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 							    </p>
 								</div>
 								<!-----------------------------dialog----------------------------------> 
-								
-		<!-----------------------------dialog---------------------------------->
-                				<div data-role="dialog" id="dialog1" data-close-button="true" 
-                				data-overlay="true" data-overlay-color="ob-dark" data-width="47%" align="center">
-							    <h1>List Gallery</h1>
-							    <p>
-							    <div>
-								<table class="display" cellspacing="0" width="522px" id="gallerydt" style="font-size: 110%;">
-									<thead>
-									<tr>
-										<th><center>ลำดับ</center></th>
-										<th><center>ชื่อ Gallery</center></th>
-									</tr>
-									</thead>
-									<tbody >
-									<%	if (galleryList1 != null) {
-									List galleryList = galleryList1;
-									int x = 0;
-									for (Iterator iter = galleryList.iterator(); iter.hasNext();) {
-							  			x++;
-							  			GalleryForm gary = (GalleryForm) iter.next();
-									%>
-                					<tr>
-                						<td align="center"><%=x%></td>
-                						<td align="center"><a href="javascript:getGalleryDT('<%=gary.getGalleryCode()%>','<%=gary.getGalleryName()%>');" onclick="dialogClose1('#dialog1')">
-                						<%=gary.getGalleryName()%></a></td> 
-                					</tr>
-                					<% 	}
-                						} else {
-                					 %>
-                					<tr><td align="center" colspan="2">No Data Found</td></tr>
-                					
-									<%	} %>
-                					</tbody>
-								</table>
-								</div>
-							    </p>
-								</div>
-								<!-----------------------------dialog----------------------------------> 
-        	 
         </html:form>
 	 	</div>
 					
@@ -353,14 +300,6 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
     	dialog.open();
      }
      function dialogClose(id){
-     	var dialog = $(id).data('dialog');
-    	dialog.close();
-     }
-     function showDialog1(id){
-    	var dialog = $(id).data('dialog');
-    	dialog.open();
-     }
-     function dialogClose1(id){
      	var dialog = $(id).data('dialog');
     	dialog.close();
      }

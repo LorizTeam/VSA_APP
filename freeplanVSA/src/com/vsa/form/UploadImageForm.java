@@ -11,10 +11,6 @@ import org.apache.struts.upload.FormFile;
 public class UploadImageForm extends ActionForm{
 	
 	private FormFile fileHD;
-	private String galleryCodeHD;
-	private String galleryNameHD;
-	private String grStatusHD;
-	
 	private FormFile file;
 	private FormFile file1;
 	private FormFile file2;
@@ -130,22 +126,6 @@ public class UploadImageForm extends ActionForm{
 
 	public void setFileHD(FormFile fileHD) {
 		this.fileHD = fileHD;
-	}
-
-	public String getGalleryCodeHD() {
-		return galleryCodeHD;
-	}
-
-	public void setGalleryCodeHD(String galleryCodeHD) {
-		this.galleryCodeHD = galleryCodeHD;
-	}
-
-	public String getGrStatusHD() {
-		return grStatusHD;
-	}
-
-	public void setGrStatusHD(String grStatusHD) {
-		this.grStatusHD = grStatusHD;
 	}
 
 }

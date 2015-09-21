@@ -20,6 +20,38 @@ public class GalleryDB {
 	ResultSet rs		= null;
 	DateUtil dateUtil = new DateUtil();
 	
+	public List GetGalleryImage() 
+	throws Exception { //30-05-2014
+		List galleryList = new ArrayList();
+		String galleryName = "", galleryCode = "";
+	 
+		try {
+		
+			conn = agent.getConnectMYSql();
+			
+			String sqlStmt = "SELECT a.galleryid, a.galleryname " +
+			"FROM gallery_master a inner join fileimage b on(b.galleryid = a.galleryid) " +
+			"WHERE "; 
+			 
+			sqlStmt = sqlStmt + "a.galleryid <> '' group by a.galleryid order by a.galleryid";
+			
+			//System.out.println(sqlStmt);				
+			pStmt = conn.createStatement();
+			rs = pStmt.executeQuery(sqlStmt);	
+			while (rs.next()) {
+				galleryCode 	= rs.getString("galleryid");
+				galleryName 	= rs.getString("galleryname"); 
+				
+				galleryList.add(new GalleryForm(galleryCode, galleryName));
+			}
+			rs.close();
+			pStmt.close();
+			conn.close();
+		} catch (SQLException e) {
+		    throw new Exception(e.getMessage());
+		}
+		return galleryList;
+	 }
 	public List GetGallery() 
 	throws Exception { //30-05-2014
 		List galleryList = new ArrayList();

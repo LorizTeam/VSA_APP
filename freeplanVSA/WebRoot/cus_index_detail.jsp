@@ -106,7 +106,7 @@
          
          <% List galleryList = null;
          	GalleryDB galleryDB = new GalleryDB();
-            galleryList = galleryDB.GetGallery();
+            galleryList = galleryDB.GetGalleryImage();
          	int x = 0;
 			for (Iterator iter = galleryList.iterator(); iter.hasNext();) {
 			x++;
