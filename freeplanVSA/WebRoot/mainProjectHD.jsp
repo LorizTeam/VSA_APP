@@ -235,7 +235,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
         <label style="font-size: 105%; font-weight: bold; margin-top: 1.7em;"> ชนิดโครงการ</label>  &nbsp;
 
         <div class="input-control select" style="margin-top: 0.7em;">
-		<select id="projectStatus" name="projectStatus" class="input-control text small-input" > 
+		<select id="projectType" name="projectType" class="input-control text small-input" > 
         	 <option value="01">บ้านเดี่ยว </option>
         	 <option value="02">ทาวน์เฮ้าส์ </option>
         	 <option value="03">อาคารพาณิชย์ </option>

@@ -146,7 +146,7 @@ public class ProjectDB {
 		conn = agent.getConnectMYSql();
 		
 		String sqlStmt = "UPDATE projecthd set project_name = '"+projectName+"', employee_id = '"+employeeID+"', " +
-				"customer_id = '"+customerID+"', create_date = '"+createDate+"', project_type '"+projectType+"', " +
+				"customer_id = '"+customerID+"', create_date = '"+createDate+"', project_type = '"+projectType+"', " +
 				"project_status = '"+projectStatus+"', project_address = '"+projectAddress+"' " +
 				"WHERE project_id = '"+projectID+"'";
 		//System.out.println(sqlStmt);
