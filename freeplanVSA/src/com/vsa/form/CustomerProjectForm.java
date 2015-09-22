@@ -21,6 +21,12 @@ public class CustomerProjectForm extends ActionForm {
 	private String structure;
 	private String amountTotalCust;
 	
+	private String custID;
+	private String amount_old;
+	private String amount_new;
+	private String dateTime;
+	private String qtyUse;
+	
 	private String add;
 	private String update;
 	private String delete;
@@ -34,9 +40,33 @@ public class CustomerProjectForm extends ActionForm {
 		this.structure		= structure;
 		this.amountTotal 	= amountTotal;
 		this.amountTotalCust = amountTotalCust;
-}
+	}
+	public CustomerProjectForm (String custID, String projectID, String materialCode, String materialName, String structure, 
+			String amount_old, String amount_new, String amountTotal, String dateTime, String qtyUse){
+		super();
+		this.custID 		= custID;
+		this.projectID 		= projectID;
+		this.materialCode 	= materialCode;
+		this.materialName 	= materialName;
+		this.structure		= structure;
+		this.amount_old 	= amount_old;
+		this.amount_new 	= amount_new;
+		this.amountTotal 	= amountTotal;
+		this.dateTime		= dateTime;
+		this.qtyUse			= qtyUse;
+	}
 	public void reset() {
-	
+		this.custID = "";
+		this.custID = "";
+		this.materialCode = "";
+		this.materialName = "";
+		this.structure = "";
+		this.amount_old = "";
+		this.amount_new = "";
+		this.amountTotal = "";
+		this.dateTime = "";
+		this.qtyUse = "";
+		this.update = null;
 	}
 	
 	public ActionErrors validate(ActionMapping mapping,
@@ -113,6 +143,36 @@ public class CustomerProjectForm extends ActionForm {
 	}
 	public void setProjectID(String projectID) {
 		this.projectID = projectID;
+	}
+	public String getCustID() {
+		return custID;
+	}
+	public void setCustID(String custID) {
+		this.custID = custID;
+	}
+	public String getAmount_old() {
+		return amount_old;
+	}
+	public void setAmount_old(String amountOld) {
+		amount_old = amountOld;
+	}
+	public String getAmount_new() {
+		return amount_new;
+	}
+	public void setAmount_new(String amountNew) {
+		amount_new = amountNew;
+	}
+	public String getDateTime() {
+		return dateTime;
+	}
+	public void setDateTime(String dateTime) {
+		this.dateTime = dateTime;
+	}
+	public String getQtyUse() {
+		return qtyUse;
+	}
+	public void setQtyUse(String qtyUse) {
+		this.qtyUse = qtyUse;
 	}
 	 
 }

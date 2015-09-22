@@ -35,8 +35,12 @@ public class CustomerProjectAction extends Action {
 		
 		String update 				= customerProjectForm.getUpdate();   
 		
+		HttpSession session = request.getSession();
+		String custID = session.getAttribute("name").toString();
+		
 		String forwardText = "success";
 		
+		DateUtil dateUtil = new DateUtil();
 		Cust_ProjectDB cust_ProjectDB = new Cust_ProjectDB();
 		String alertMassage			= "";
 		
@@ -50,11 +54,22 @@ public class CustomerProjectAction extends Action {
 			String[] calCost				= request.getParameterValues("calCost");
 			for(int x=0; x<projectID.length; x++)	{
 				cust_ProjectDB.UpdateAR(projectID[x], structure[x], materialCode[x], amountTotalCust[x], calCost[x]);
+				
+				if(amountTotalCust[x].equals("")||amountTotalCust[x] == null) amountTotalCust[x] = "0";
+				if(Float.parseFloat(amountTotalCust[x])>0){
+					String dateTime = dateUtil.curDateTime();
+					String project_runno = cust_ProjectDB.ProjectRunno(custID);
+					cust_ProjectDB.AddProjectHistory(custID, projectID[x], project_runno, structure[x], materialCode[x], amountTotalCust[x], calCost[x], dateTime);
+				}
 			}
 		}
+		customerProjectForm.reset();
 	}
-		customerProjectForm.setAmountTotalCust("");
-		request.setAttribute("update", update);
+		
+		
+		List projectHistoryList = cust_ProjectDB.GetProjectHistoryList(custID);
+		request.setAttribute("projectHistoryList", projectHistoryList);
+		  
 		return mapping.findForward(forwardText);
 	}
 }

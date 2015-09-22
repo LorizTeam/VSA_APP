@@ -234,4 +234,121 @@ public class Cust_ProjectDB {
 				}
 			}
 		}
+	public void AddProjectHistory(String custID, String projectID, String project_runno, String structure, String materialCode, 
+			String amountTotalCust, String calCost, String dateTime)  throws Exception{
+		conn = agent.getConnectMYSql();
+		
+		project_runno = Integer.toString(Integer.parseInt(project_runno)+1);
+		if (project_runno.length() == 1) {
+			project_runno = "00000" + project_runno; 
+		} else if (project_runno.length() == 2) {
+			project_runno = "0000" + project_runno; 
+		} else if (project_runno.length() == 3) {
+			project_runno = "000" + project_runno; 
+		} else if (project_runno.length() == 4) {
+			project_runno = "00" + project_runno; 
+		} else if (project_runno.length() == 5) {
+			project_runno = "0" + project_runno; 
+		}
+		
+		amountTotalCust = amountTotalCust.replace(",", "");
+		calCost = calCost.replace(",", "");
+		String amountTotal = Float.toString(Float.parseFloat(amountTotalCust)+Float.parseFloat(calCost));
+		
+		String countNum = "0";
+		String sqlStmt = "SELECT count(material_code) as countnum " +
+		"FROM project_history " +
+		"WHERE customer_id = '"+custID+"' and structure = '"+structure+"' and material_code = '"+materialCode+"'";   
+		
+		//System.out.println(sqlStmt);				
+		pStmt = conn.createStatement();
+		rs = pStmt.executeQuery(sqlStmt);	
+		 
+		while (rs.next()) { 	 
+			countNum = rs.getString("countnum");
+		}
+		rs.close();
+		pStmt.close();
+		
+		countNum = Integer.toString(Integer.parseInt(countNum)+1);
+		
+		sqlStmt = "INSERT IGNORE INTO project_history(customer_id, project_id, project_runno, structure, material_code, datetime, qtyuse, amount_old, amount_new, amounttotal) " +
+		"VALUES ('"+custID+"', '"+projectID+"', '"+project_runno+"', '"+structure+"', '"+materialCode+"', '"+dateTime+"', '"+countNum+"', " +
+				"'"+calCost+"', '"+amountTotalCust+"', '"+amountTotal+"')";
+		//System.out.println(sqlStmt);
+		pStmt = conn.createStatement();
+		pStmt.executeUpdate(sqlStmt);
+		pStmt.close();
+		conn.close();
+	}
+	public String ProjectRunno(String custID) 
+	throws Exception { //22-09-2015 
+		String project_runno = "0";
+		try {
+			conn = agent.getConnectMYSql();
+			
+			String sqlStmt = "SELECT project_runno " +
+			"FROM project_history " +
+			"WHERE customer_id = '"+custID+"'";   
+			
+			//System.out.println(sqlStmt);				
+			pStmt = conn.createStatement();
+			rs = pStmt.executeQuery(sqlStmt);	
+			 
+			while (rs.next()) { 	 
+				project_runno = rs.getString("project_runno");
+			}
+			rs.close();
+			pStmt.close();
+			conn.close();
+		} catch (SQLException e) {
+		    throw new Exception(e.getMessage());
+		}
+		return project_runno; 
+	 }
+	public List GetProjectHistoryList(String custID) 
+	throws Exception { //30-05-2014
+		List projectHistoryList = new ArrayList();
+		String projectID = "", materialCode = "", structure = "", materialName = "", amount_old = "", amount_new = "", amountTotal = "", dateTime = "", qtyUse = "";
+		DecimalFormat df1 = new DecimalFormat("#,###,##0.##");
+		DecimalFormat df2 = new DecimalFormat("#,###,##0.00");
+		try {
+		
+			conn = agent.getConnectMYSql();
+			
+			String sqlStmt = "SELECT a.project_id, a.customer_id, a.material_code, a.structure, a.datetime, a.qtyuse, a.amount_old, a.amount_new, a.amounttotal, b.material_name, a.project_runno " +
+			"FROM project_history a Left JOIN material_master b on(b.material_code = a.material_code) " + 
+			"WHERE a.customer_id = '"+custID+"' group by a.project_id, a.customer_id, a.project_runno order by a.project_runno desc ";  
+			//System.out.println(sqlStmt);				
+			pStmt = conn.createStatement();
+			rs = pStmt.executeQuery(sqlStmt);	
+			while (rs.next()) { 
+				custID 			= rs.getString("customer_id"); 
+				projectID 		= rs.getString("project_id"); 
+				materialCode	= rs.getString("material_code"); 
+				if (rs.getString("material_name") != null) 		materialName = rs.getString("material_name"); else materialName = "";
+				structure		= rs.getString("structure"); 
+				dateTime		= rs.getString("datetime"); 
+				qtyUse		= rs.getString("qtyuse");
+				amount_old 		= rs.getString("amount_old");
+				amount_new 		= rs.getString("amount_new"); 
+				amountTotal 	= rs.getString("amounttotal"); 
+				
+				amount_old 		= df2.format(Float.parseFloat(amount_old));
+				amount_new 		= df2.format(Float.parseFloat(amount_new));
+				amountTotal 	= df2.format(Float.parseFloat(amountTotal));
+				
+				dateTime = dateTime.replace(".0", "");
+				
+				projectHistoryList.add(new CustomerProjectForm(custID, projectID, materialCode, materialName, structure, 
+						amount_old, amount_new, amountTotal, dateTime, qtyUse));
+			}
+			rs.close();
+			pStmt.close();
+			conn.close();
+		} catch (SQLException e) {
+		    throw new Exception(e.getMessage());
+		}
+		return projectHistoryList;
+	 }
 }

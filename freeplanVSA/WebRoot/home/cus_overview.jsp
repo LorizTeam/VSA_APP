@@ -1,4 +1,24 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%> 
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+<%@ page import ="javax.servlet.http.HttpServletRequest.*"%>
+<%@ page import ="javax.servlet.http.HttpServletResponse.*"%>
+<%@ page import ="javax.servlet.http.HttpSession.*"%>
+<%@ page import="com.vsa.form.CustomerProjectForm" %>
+<%@ page import="com.vsa.data.Cust_ProjectDB" %> 
+<%	
+	String name = "";
+	if(session.getAttribute("name") != null){
+	name = session.getAttribute("name").toString();
+	}
+	Cust_ProjectDB cust_projectDB = new Cust_ProjectDB();
+	List projectHistoryList1 = null;
+	if (request.getAttribute("projectHistoryList") == null) {
+	projectHistoryList1 = cust_projectDB.GetProjectHistoryList(name);
+	}else{
+	projectHistoryList1 = (List) request.getAttribute("projectHistoryList");
+	} 
+%> 
 <!--
 Au<!--
 Author: W3layouts
@@ -157,27 +177,50 @@ function hideURLbar() {
 							ลำดับที่
 						</th>
 						<th>
+							โครงสร้าง
+						</th>
+						<th>
 							รายการที่ซื้อ
 						</th>
 						<th>
-							จำนวน
+							จำนวนครั้งที่เพิ่ม
 						</th>
 						<th>
-							ราคา
+							ราคาเงินครั้งก่อน
 						</th>
 						<th>
+							จำนวนเงินที่ใช้
+						</th>
+						<th>
+							ยอดรวม
+						</th>
+						<th> 
 							วันที่
 						</th>
 
 					</tr>
+					<%	if (projectHistoryList1 != null) {
+						List projectHistoryList = projectHistoryList1;
+						int x = 0;
+						for (Iterator iter = projectHistoryList.iterator(); iter.hasNext();) {
+						x++; 
+						CustomerProjectForm projHis = (CustomerProjectForm) iter.next();
+					%>
 					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-
+						<td align="center"><%=x%></td>
+						<td align="center"><% if(projHis.getStructure().equals("A")){%>หลังคา<%} if(projHis.getStructure().equals("B")){%>ตัวบ้าน<%} if(projHis.getStructure().equals("C")){%>ฐานบ้าน<%} %></td>
+						<td align="center"><%=projHis.getMaterialName()%></td>
+						<td align="center">ครั้งที่ <%=projHis.getQtyUse()%></td>
+						<td align="center"><%=projHis.getAmount_old()%> บาท</td>
+						<td align="center"><%=projHis.getAmount_new()%> บาท</td>
+						<td align="center"><%=projHis.getAmountTotal()%> บาท</td>
+						<td align="center"><%=projHis.getDateTime()%></td>
 					</tr>
+					<% 	}
+                		} else {
+                	%>
+                		<tr><td align="center" colspan="8">No Data Found</td></tr>
+                	<%	} %>
 				</table>
 			</div>
 		</div>
