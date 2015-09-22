@@ -153,7 +153,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
         	<div class="col-md-4 email-list1 box padding10">
         		<table class="table hovered" width="100%">
         		<tr>
-        			<td class="collection-item avatar email-unread clickable-row" width="100%" data-href='http://www.google.co.th' target="email-detail">
+        			<td id="shownorti" class="collection-item avatar email-unread clickable-row" width="100%" data-href='http://www.google.co.th' target="email-detail">
         			  <hr/>
         				<i class="icon_4">G</i>
                       <div class="avatar_left">
