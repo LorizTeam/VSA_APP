@@ -40,6 +40,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 		<link rel="stylesheet" href="css/jquery.dataTables.css" /> 
 
 	<!-- Custom CSS -->
+	<link href="bootstrap/css/boot_grid.css" rel='stylesheet' type='text/css' />
 	<link href="css/style.css" rel='stylesheet' type='text/css' />
 	<link href="css/font-awesome.css" rel="stylesheet"> 
 	<!--Loading JS-->
@@ -49,7 +50,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 		<style>
         html, body {
             height: 100%;
-            overflow: hidden;
+            overflow: auto;
         }
         .page-content {
             padding-top: 0;
@@ -85,6 +86,20 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
     	width:100%;
     	padding:0px!important;
     }
+    .box {
+	  border: 1px solid #222;
+	  border-radius: 10px;
+	  height: 300px;
+	  overflow-y: auto;
+	  overflow-x: hidden;
+	}
+	.box-detail {
+	  border: 1px solid #222;
+	  border-radius: 10px;
+	  height: 500px;
+	  overflow-y: auto;
+	  overflow-x: hidden;
+	}
     </style>
 
     <script type="text/javascript">
@@ -126,176 +141,114 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
                     
         <!-- /.page-content -->	            
         <div class="page-content">
-        <div class="flex-grid " style="height: 100%;">
+        <div class="flex-grid" style="height: 100%;">
         
          <div class="row" style="height: 100%;">     
                    
                     <!-- /.menu left -->	
                     <jsp:include page="/menu_left.jsp"></jsp:include>
                     <!-- /.menu left -->
+			<div class="cell auto-size padding20 bg-white">
+			<h3 class="align-center">Notification</h3>
+        	<div class="col-md-4 email-list1 box padding10">
+        		<table class="table hovered" width="100%">
+        		<tr>
+        			<td class="collection-item avatar email-unread clickable-row" width="100%" data-href='http://www.google.co.th' target="email-detail">
+        			  <hr/>
+        				<i class="icon_4">G</i>
+                      <div class="avatar_left">
+                      	<span class="email-title">nontawatch@windowslive.com</span>
+                        <p class="truncate grey-text ultra-small">คำร้องขอแบบแปลนบ้าน(บ้านเดี่ยว)</p>
+                      </div>
+                      <a href="#" class="secondary-content"><span class="blue-text ultra-small">2:15 pm</span></a>
+                      
+                      <div class="clearfix"></div>
+                      <hr/>
+        			</td>
+        		</tr>
+        		<tr>
+        			<td class="collection-item avatar email-unread clickable-row" width="100%" data-href='#'>
+        			  <hr/>
+        				<i class="icon_4">G</i>
+                      <div class="avatar_left">
+                      	<span class="email-title">nontawatch@windowslive.com</span>
+                        <p class="truncate grey-text ultra-small">คำร้องขอแบบแปลนบ้าน(บ้านเดี่ยว)</p>
+                      </div>
+                      <a href="#" class="secondary-content"><span class="blue-text ultra-small">2:15 pm</span></a>
+                      <div class="clearfix"></div>
+                      <hr/>
+        			</td>
+        		</tr>
         		
-        		<div class="cell auto-size padding20 bg-white">
-        		<div class="xs">
-  	     <h3>Inbox</h3>
-  	        <div class="size4 email-list1">
-               <ul class="collection">
-                    <li class="collection-item avatar email-unread">
-                      <i class="fa fa-users icon_1"></i>
-                      <div class="avatar_left">
-                      	<span class="email-title">Social</span>
-                        <p class="truncate grey-text ultra-small">Lorem Ipsum is simply dummy text of.</p>
-                      </div>
-                      <a href="#!" class="secondary-content"><span class="new badge blue">4</span></a>
-                      <div class="clearfix"> </div>
-                    </li>
-                    <li class="collection-item avatar email-unread">
-                      <i class="fa fa-exclamation-circle icon_2"></i>
-                      <div class="avatar_left">
-                      	<span class="email-title">Updates</span>
-                        <p class="truncate grey-text ultra-small">It is a long established fact that a reader.</p>
-                      </div>
-                      <a href="#!" class="secondary-content"><span class="new badge red">4</span></a>
-                      <div class="clearfix"> </div>
-                    </li>
-                    <li class="collection-item avatar email-unread">
-                      <i class="fa fa-tag icon_3"></i>
-                      <div class="avatar_left">
-                      	<span class="email-title">Promotions</span>
-                        <p class="truncate grey-text ultra-small">There are many variations of passages.</p>
-                      </div>
-                      <a href="#!" class="secondary-content"><span class="new badge blue1">4</span></a>
-                      <div class="clearfix"> </div>
-                    </li>
+        		</table>
+               <!--  <ul class="collection">
+               		<hr/>
                     <li class="collection-item avatar email-unread">
                       <i class="icon_4">G</i>
                       <div class="avatar_left">
                       	<span class="email-title">Gmail</span>
-                        <p class="truncate grey-text ultra-small">Sed ut perspiciatis unde omnis iste.</p>
+                        <p class="truncate grey-text ultra-small">Sed ut perspiciatis</p>
                       </div>
                       <a href="#!" class="secondary-content"><span class="blue-text ultra-small">2:15 pm</span></a>
-                      <div class="clearfix"> </div>
+                      <div class="clearfix"></div>
                     </li>
+                    <hr/>
                     <li class="collection-item avatar email-unread">
-                      <i class="icon_4 icon_5">F</i>
+                      <i class="icon_4">G</i>
                       <div class="avatar_left">
-                      	<span class="email-title">Facebook</span>
-                        <p class="truncate grey-text ultra-small">But I must explain to you how.</p>
+                      	<span class="email-title">Gmail</span>
+                        <p class="truncate grey-text ultra-small">Sed ut perspiciatis</p>
                       </div>
                       <a href="#!" class="secondary-content"><span class="blue-text ultra-small">2:15 pm</span></a>
-                      <div class="clearfix"> </div>
+                      <div class="clearfix"></div>
                     </li>
-                    <li class="collection-item avatar email-unread email_last">
-                      <i class="icon_4 icon_6">T</i>
+                    <hr/>
+                    <li class="collection-item avatar email-unread">
+                      <i class="icon_4">G</i>
                       <div class="avatar_left">
-                      	<span class="email-title">Twitter</span>
-                        <p class="truncate grey-text ultra-small">At vero eos et accusamus et iusto odio.</p>
+                      	<span class="email-title">Gmail</span>
+                        <p class="truncate grey-text ultra-small">Sed ut perspiciatis</p>
                       </div>
                       <a href="#!" class="secondary-content"><span class="blue-text ultra-small">2:15 pm</span></a>
-                      <div class="clearfix"> </div>
+                      <div class="clearfix"></div>
                     </li>
-              </ul>
+                    <hr/>
+                    <li class="collection-item avatar email-unread">
+                      <i class="icon_4">G</i>
+                      <div class="avatar_left">
+                      	<span class="email-title">Gmail</span>
+                        <p class="truncate grey-text ultra-small">Sed ut perspiciatis</p>
+                      </div>
+                      <a href="#!" class="secondary-content"><span class="blue-text ultra-small">2:15 pm</span></a>
+                      <div class="clearfix"></div>
+                    </li>
+                    <hr/>
+                    <li class="collection-item avatar email-unread">
+                      <a><i class="icon_4">G</i>
+                      <div class="avatar_left">
+                      	<span class="email-title">Gmail</span>
+                        <p class="truncate grey-text ultra-small">Sed ut perspiciatis</p>
+                      </div>
+                      <a href="#!" class="secondary-content"><span class="blue-text ultra-small">2:15 pm</span></a>
+                      <div class="clearfix"></div></a>
+                    </li>
+                    <hr/>
+                    <li class="collection-item avatar email-unread">
+                      <i class="icon_4">G</i>
+                      <div class="avatar_left">
+                      	<span class="email-title">Gmail</span>
+                        <p class="truncate grey-text ultra-small">Sed ut perspiciatis</p>
+                      </div>
+                      <a href="#!" class="secondary-content"><span class="blue-text ultra-small">2:15 pm</span></a>
+                      <div class="clearfix"></div>
+                    </li>
+                    <hr/>
+              </ul>-->
         </div>
-        <div class="col-md-7 inbox_right">
-         	<form action="#" method="GET">
-                <div class="input-group">
-                    <input type="text" name="search" class="form-control1 input-search" placeholder="Search...">
-                    <span class="input-group-btn">
-                        <button class="btn btn-success" type="button"><i class="fa fa-search"></i></button>
-                    </span>
-                </div><!-- Input Group -->
-            </form>
-            <div class="mailbox-content">
-               <div class="mail-toolbar clearfix">
-			     <div class="float-left">
-			        <div class="btn btn_1 btn-default mrg5R">
-			           <i class="fa fa-refresh"> </i>
-			        </div>
-			        <div class="dropdown">
-			            <a href="#" title="" class="btn btn-default" data-toggle="dropdown" aria-expanded="false">
-			                <i class="fa fa-cog icon_8"></i>
-			                <i class="fa fa-chevron-down icon_8"></i>
-			            <div class="ripple-wrapper"></div></a>
-			            <ul class="dropdown-menu float-right">
-			                <li>
-			                    <a href="#" title="">
-			                        <i class="fa fa-pencil-square-o icon_9"></i>
-			                        Edit
-			                    </a>
-			                </li>
-			                <li>
-			                    <a href="#" title="">
-			                        <i class="fa fa-calendar icon_9"></i>
-			                        Schedule
-			                    </a>
-			                </li>
-			                <li>
-			                    <a href="#" title="">
-			                        <i class="fa fa-download icon_9"></i>
-			                        Download
-			                    </a>
-			                </li>
-			                <li class="divider"></li>
-			                <li>
-			                    <a href="#" class="font-red" title="">
-			                        <i class="fa fa-times" icon_9=""></i>
-			                        Delete
-			                    </a>
-			                </li>
-			            </ul>
-			        </div>
-			        <div class="clearfix"> </div>
-			    </div>
-			    <div class="float-right">
-			        
-			              
-                            <span class="text-muted m-r-sm">Showing 20 of 346 </span>
-                            <div class="btn-group m-r-sm mail-hidden-options" style="display: inline-block;">
-                                <div class="btn-group">
-                                    <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-folder"></i> <span class="caret"></span></a>
-                                    <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                                        <li><a href="#">Social</a></li>
-                                        <li><a href="#">Forums</a></li>
-                                        <li><a href="#">Updates</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="#">Spam</a></li>
-                                        <li><a href="#">Trash</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="#">New</a></li>
-                                    </ul>
-                                </div>
-                                <div class="btn-group">
-                                    <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-tags"></i> <span class="caret"></span></a>
-                                    <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                                        <li><a href="#">Work</a></li>
-                                        <li><a href="#">Family</a></li>
-                                        <li><a href="#">Social</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="#">Primary</a></li>
-                                        <li><a href="#">Promotions</a></li>
-                                        <li><a href="#">Forums</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="btn-group">
-                                <a class="btn btn-default"><i class="fa fa-angle-left"></i></a>
-                                <a class="btn btn-default"><i class="fa fa-angle-right"></i></a>
-                            </div>
-                        
-			        
-			    </div>
-               </div>
-               
-               </div>
+        <iframe name="email-detail" class="col-md-7 box-detail padding10" style="margin-left: 1%; width: 65%;" src="http://localhost:8080/freeplanVSA/cus_index.jsp"></iframe>
             </div>
-            <div class="clearfix"> </div>
-       </div>
-        		
-				</div>
-		
-	 					
-	 	</div>
-					
-				</div>
+       		</div>
+			</div>
 			</div>
 		 <!-- /.page-content -->	
  	<!-- DataTables JavaScript -->
@@ -307,6 +260,12 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
     <!-- datet -->
 	 <script src="js/jquery-ui.js"></script>
 	<script>
+	jQuery(document).ready(function($) {
+    $(".clickable-row").click(function() {
+        window.document.location = $(this).data("href");
+    });
+});
+	
     $(document).ready(function() {
     	$.extend( $.fn.dataTable.defaults, {
 		    "searching": true,
