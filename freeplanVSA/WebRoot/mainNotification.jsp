@@ -113,7 +113,9 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
                 }
             });
         });
-
+		function shownorti(message){
+			alert(message);			
+		}
         function pushMessage(t){
             var mes = 'Info|Implement independently';
             $.Notify({
@@ -153,7 +155,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
         	<div class="col-md-4 email-list1 box padding10">
         		<table class="table hovered" width="100%">
         		<tr>
-        			<td id="shownorti" class="collection-item avatar email-unread clickable-row" width="100%" data-href='http://www.google.co.th' target="email-detail">
+        			<td class="collection-item avatar email-unread clickable-row" width="100%" target="email-detail">
         			  <hr/>
         				<i class="icon_4">G</i>
                       <div class="avatar_left">
@@ -167,7 +169,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
         			</td>
         		</tr>
         		<tr>
-        			<td class="collection-item avatar email-unread clickable-row" width="100%" data-href='#'>
+        			<td onclick="shownorti(1234)" class="collection-item avatar email-unread clickable-row" width="100%" data-href='#'>
         			  <hr/>
         				<i class="icon_4">G</i>
                       <div class="avatar_left">
