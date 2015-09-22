@@ -247,7 +247,19 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
                     <hr/>
               </ul>-->
         </div>
-        <iframe name="email-detail" class="col-md-7 box-detail padding10" style="margin-left: 1%; width: 65%;" src="http://localhost:8080/freeplanVSA/cus_index.jsp"></iframe>
+        <div name="email-detail" class="container col-md-7 box-detail padding10" style="margin-left: 1%; width: 65%;">
+        	<div class="input-control text">
+    			<input type="text" placeholder="Input you text here...">
+			</div>
+			<br/>
+		    <div class="input-control textarea">
+		        <textarea></textarea>
+		    </div>
+
+
+        
+        
+        </div>
             </div>
        		</div>
 			</div>
