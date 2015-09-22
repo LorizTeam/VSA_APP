@@ -113,7 +113,40 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
                 }
             });
         });
-
+		function shownorti(message){
+			$('#showemail').val("");
+			$('#showtext').val("");
+			
+			showtextnorti(message);
+			showemailnorti(message);		
+		}
+		
+		function showemailnorti(message){
+			$.ajax({
+                    type: "post",
+                    url: "ajax_nortifications.jsp", //this is my servlet
+                    data: {noNorti:message},
+                    async:true,
+                    success: function(result){
+                    	$('#showemail').html(result);
+//                            $('#showemail').append(123456);
+//                            $('input[name="showemail1"]').val(123456);
+//								alert(result);
+                    }
+                });
+		}
+		function showtextnorti(message){
+			$.ajax({
+                    type: "post",
+                    url: "ajax_nortificationstext.jsp", //this is my servlet
+                    data: {noNorti:message},
+                    async:true,
+                    success: function(result){ 
+                    	$('#showtext').html(result);	
+//								alert(result);
+                    }
+                });			
+		}
         function pushMessage(t){
             var mes = 'Info|Implement independently';
             $.Notify({
@@ -153,7 +186,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
         	<div class="col-md-4 email-list1 box padding10">
         		<table class="table hovered" width="100%">
         		<tr>
-        			<td class="collection-item avatar email-unread clickable-row" width="100%" data-href='http://www.google.co.th' target="email-detail">
+        			<td onclick="shownorti(2)" class="collection-item avatar email-unread clickable-row" width="100%"  data-href='#'>
         			  <hr/>
         				<i class="icon_4">G</i>
                       <div class="avatar_left">
@@ -167,7 +200,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
         			</td>
         		</tr>
         		<tr>
-        			<td class="collection-item avatar email-unread clickable-row" width="100%" data-href='#'>
+        			<td onclick="shownorti(1)" class="collection-item avatar email-unread clickable-row" width="100%" data-href='#'>
         			  <hr/>
         				<i class="icon_4">G</i>
                       <div class="avatar_left">
@@ -177,6 +210,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
                       <a href="#" class="secondary-content"><span class="blue-text ultra-small">2:15 pm</span></a>
                       <div class="clearfix"></div>
                       <hr/>
+                      
         			</td>
         		</tr>
         		
@@ -247,17 +281,13 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
         </div>
         <div name="email-detail" class="container col-md-7 box-detail padding10" style="margin-left: 1%; width: 65%;">
         	<div class="input-control text">
-    			<input type="text" placeholder="Input you text here...">
+        		<span id="showemail"></span>
 			</div>
 			<br/>
-		    <div class="input-control textarea">
-		        <textarea></textarea>
+		    <div  class="input-control textarea">
+		        <span id="showtext"></span>
 		    </div>
-
-
-        
-        
-        </div>
+		</div>
             </div>
        		</div>
 			</div>
