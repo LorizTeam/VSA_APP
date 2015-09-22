@@ -128,7 +128,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
                     data: {noNorti:message},
                     async:true,
                     success: function(result){
-                          $('#showtext').val(result);
+                    	$('#showemail').html(result);
 //                            $('#showemail').append(123456);
 //                            $('input[name="showemail1"]').val(123456);
 //								alert(result);
@@ -142,8 +142,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
                     data: {noNorti:message},
                     async:true,
                     success: function(result){ 
-                    		$('#showemail').html(result);     
-                            
+                    	$('#showtext').html(result);	
 //								alert(result);
                     }
                 });			
@@ -286,7 +285,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 			</div>
 			<br/>
 		    <div  class="input-control textarea">
-		        <textarea id="showtext" ></textarea>
+		        <span id="showtext"></span>
 		    </div>
 		</div>
             </div>
