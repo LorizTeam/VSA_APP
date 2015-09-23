@@ -2048,7 +2048,7 @@ body#login{
   -moz-background-size:cover;
   -o-background-size:cover;
   -ms-background-size:cover;
-  min-height:850px;
+	overflow:hidden;
 }
 .app-cam {
   width:22%;
@@ -2700,5 +2700,4 @@ span.btn_6{
 }
 span.btn_7{
   font-size: 64%;
-}
 }
