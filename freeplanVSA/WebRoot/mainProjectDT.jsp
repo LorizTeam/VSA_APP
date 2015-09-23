@@ -192,16 +192,16 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 		<input type="hidden" id="projectID" name="projectID" value="<%=projectID%>" />
 		<input type="hidden" id="materialCode" name="materialCode" />
 		<label style="font-size: 160%; font-weight: bold;"> ชื่อวัสดุ</label>  &nbsp;
-        <input type="text" id="materialName" name="materialName" size="10" maxlength="6" />&nbsp;
+        <input type="text" id="materialName" name="materialName" size="10" maxlength="6" required readonly="readonly"/>&nbsp;
         <button type="button" class="button mini-button rounded" onclick="showDialog('#dialog')">Get</button> &nbsp;
         <label style="font-size: 160%; font-weight: bold;"> น้ำหนัก</label>  &nbsp;
-		<input type="text" id="weight" name="weight" size="15" maxlength="35" onkeyup="cal()" />&nbsp;
+		<input type="text" id="weight" name="weight" size="15" maxlength="35" onkeyup="cal()" required/>&nbsp;
 		<label style="font-size: 160%; font-weight: bold;"> ราคา</label>  &nbsp;
-        <input type="text" id="amount" name="amount" size="8" maxlength="10"/>&nbsp;
+        <input type="text" id="amount" name="amount" size="8" maxlength="10" required/>&nbsp;
         <label style="font-size: 160%; font-weight: bold;"> ราคารวม</label>  &nbsp;
         <input type="text" id="amountTotal" name="amountTotal" size="10" maxlength="50" readonly="readonly" /> &nbsp;
         <label style="font-size: 160%; font-weight: bold;"> หน่วย</label>  &nbsp;
-        <input type="text" id="unit" name="unit" size="8" maxlength="10"/>&nbsp;
+        <input type="text" id="unit" name="unit" size="8" maxlength="10" required/>&nbsp;
         </div>
         <div class="row" style="padding-left: 2.5%; margin-top: 1%;">
      <!--    <button type="button" class="button mini-button rounded" id="add" name="add" value="add" onclick="add()">เพิ่ม</button>  -->
@@ -234,11 +234,11 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 									%>
                 					<tr>
                 						<td align="center"><%=x%></td>
-                						<%if(proj.getStructure().equals("A")){  %>
+                						<%if(proj.getStructure().equals("C")){  %>
                 						<td align="center">ฐานบ้าน</td>
                 						<%}else if(proj.getStructure().equals("B")){ %>
                 						<td align="center">ตัวบ้าน</td>
-                						<%}else if(proj.getStructure().equals("C")){ %>
+                						<%}else if(proj.getStructure().equals("A")){ %>
                 						<td align="center">หลังคา</td>
                 						<%} %>
                 						<td align="center"><a href="javascript:getProjectDT('<%=proj.getProjectID()%>','<%=proj.getMaterialCode()%>','<%=proj.getStructure()%>',

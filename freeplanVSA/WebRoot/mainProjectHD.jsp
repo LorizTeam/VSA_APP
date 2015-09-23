@@ -16,8 +16,8 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 	ProjectDB projectDB = new ProjectDB();
 	if(session.getAttribute("name") != null){
 	name = session.getAttribute("name").toString();
-	docNo = projectDB.SelectDocno(name);
 	}
+	docNo = projectDB.SelectDocno();
 	
 	if (request.getAttribute("projectHDList") == null) {
 	projectHDList1 = projectDB.GetProjectHDList("", "");
@@ -207,7 +207,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 		
 		</div> &nbsp;
 		<div class="input-control modern text">
-		    <input type="text" id="projectName" name="projectName" size="15" maxlength="35" style="height: 2em;"/>
+		    <input type="text" id="projectName" name="projectName" size="15" maxlength="35" style="height: 2em;" required/>
 		    <span class="label">ชื่อโครงการ</span>
 		
 		</div> &nbsp;
@@ -217,7 +217,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 		
 		</div> &nbsp;
 		<div class="input-control modern text">
-		    <input type="text" id="customerName" name="customerName" size="10" maxlength="50" style="height: 2em;"/>
+		    <input type="text" id="customerName" name="customerName" size="10" maxlength="50" style="height: 2em;" readonly="readonly" required/>
 		    <span class="label">ชื่อลูกค้า</span>
 		 
 		</div> &nbsp;
@@ -252,7 +252,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 		
         <label style="font-size: 105%; font-weight: bold; margin-top: 1.7em;"> ที่อยู่โครงการ</label>  &nbsp;
         <div class="input-control textarea" id="projectAddress" name="projectAddress">
-	        <textarea id="projectAddress" name="projectAddress"></textarea>
+	        <textarea id="projectAddress" name="projectAddress" required></textarea>
 	    </div>
         </div>
         <div class="row" style="padding-left: 2.5%; margin-top: 1%;">

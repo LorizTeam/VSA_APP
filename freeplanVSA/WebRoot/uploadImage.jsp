@@ -155,7 +155,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 	<div class="row" style="padding-left: 2.5%; margin-top: 2%; width:100%;">
 		<label style="font-size: 160%; font-weight: bold;">Gallery :</label>&nbsp;
 		 <input type="hidden" id="galleryCode" name="galleryCode" />
-        <input type="text" id="galleryName" name="galleryName" size="25" maxlength="50"/>&nbsp;
+        <input type="text" id="galleryName" name="galleryName" size="25" maxlength="50" required/>&nbsp;
         <button type="button" class="button mini-button rounded" onclick="showDialog('#dialog')">Get</button> &nbsp;
 		<input type="hidden" id="imageName" name="imageName" />
 	</div>

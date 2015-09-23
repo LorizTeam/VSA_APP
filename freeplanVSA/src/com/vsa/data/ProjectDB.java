@@ -132,8 +132,8 @@ public class ProjectDB {
 	public void AddProjectDT(String projectID, String structure, String materialCode, String weight, String amount, String amountTotal)  throws Exception{
 		conn = agent.getConnectMYSql();
 		
-		String sqlStmt = "INSERT IGNORE INTO projectdt(project_id, structure, material_code, weight, amount, amounttotal) " +
-		"VALUES ('"+projectID+"', '"+structure+"', '"+materialCode+"', '"+weight+"', '"+amount+"', '"+amountTotal+"')";
+		String sqlStmt = "INSERT IGNORE INTO projectdt(project_id, structure, material_code, weight, amount, amounttotal, amounttotal_cust) " +
+		"VALUES ('"+projectID+"', '"+structure+"', '"+materialCode+"', '"+weight+"', '"+amount+"', '"+amountTotal+"', '0.00')";
 		//System.out.println(sqlStmt);
 		pStmt = conn.createStatement();
 		pStmt.executeUpdate(sqlStmt);
@@ -195,8 +195,8 @@ public class ProjectDB {
 		pStmt.close();
 		conn.close();
 	}
-	public String SelectDocno(String name) throws Exception {
-		String docno = "";
+	public String SelectDocno() throws Exception {
+		String docno = "0";
 	try {
 		conn = agent.getConnectMYSql();
 		

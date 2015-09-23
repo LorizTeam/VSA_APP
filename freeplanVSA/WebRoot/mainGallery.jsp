@@ -117,7 +117,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
         function getGallery(tgaCode, tgaName, tgadescription, tgaAmount, tgaTimeUse) {
 				document.galleryForm.galleryCode.value 	= tgaCode; 
 				document.galleryForm.galleryName.value 	= tgaName; 
-				document.galleryForm.chkUP.value 	= tgaCode;
+			//	document.galleryForm.chkUP.value 	= tgaCode;
 				document.galleryForm.description.value 	= tgadescription; 
 				document.galleryForm.amount.value 	= tgaAmount; 
 				document.galleryForm.timeUse.value 	= tgaTimeUse;
@@ -147,16 +147,16 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 		
         <label style="font-size: 160%; font-weight: bold;">ชื่อ Gallery&nbsp;:</label>&nbsp;
         <input type="hidden" id="galleryCode" name="galleryCode" /> 
-        <input type="text" id="galleryName" name="galleryName" size="25" maxlength="50"/>&nbsp;&nbsp;
+        <input type="text" id="galleryName" name="galleryName" size="25" maxlength="50" required/>&nbsp;&nbsp;
         <label style="font-size: 160%; font-weight: bold;">รายละเอียด&nbsp;:</label>&nbsp;
-        <input type="text" id="description" name="description" size="50" maxlength="100"/>
+        <input type="text" id="description" name="description" size="50" maxlength="100" required/>
         </div>
         <div class="row" style="padding-left: 2.5%; margin-top: 1%;">
         <label style="font-size: 160%; font-weight: bold;">จำนวนเงินที่ใช้ก่อสร้าง โดยประมาณ&nbsp;:</label>&nbsp;
-        <input type="text" id="amount" name="amount" size="10" maxlength="16"/>&nbsp;
+        <input type="text" id="amount" name="amount" size="10" maxlength="16" required/>&nbsp;
         <label style="font-size: 160%; font-weight: bold;">บาท</label>&nbsp;&nbsp;
         <label style="font-size: 160%; font-weight: bold;">เวลาในการก่อสร้าง โดยประมาณ&nbsp;:</label>&nbsp;
-        <input type="text" id="timeUse" name="timeUse" size="2" maxlength="4"/>&nbsp;
+        <input type="text" id="timeUse" name="timeUse" size="2" maxlength="4" required/>&nbsp;
         <label style="font-size: 160%; font-weight: bold;">เดือน</label>
         </div>
         <div class="row" style="padding-left: 2.5%; margin-top: 1%;">
