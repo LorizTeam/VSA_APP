@@ -25,11 +25,11 @@ public class NotificationDB {
 	public List Notification() 
 	throws Exception {
 		List notificationList = new ArrayList();
-		String no = "", name = "", email = "", massageHD = "", massageDT = "", dateTime = "";
+		String no = "", name = "", email = "", messageHD = "", messageDT = "", dateTime = "";
 		try {
 		conn = agent.getConnectMYSql();
 	 
-		 String sqlStmt = "SELECT no, name, email, massagehd, massagedt, datetime " +
+		 String sqlStmt = "SELECT no, name, email, messagehd, messagedt, datetime " +
 				     "FROM notifications " +
 				     "ORDER BY no desc ";
 		pStmt = conn.createStatement();
@@ -38,13 +38,13 @@ public class NotificationDB {
 			no	 = rs.getString("no");
 			name = rs.getString("name");
 			email = rs.getString("email");
-			massageHD = rs.getString("massagehd");
-			massageDT = rs.getString("massagedt");
+			messageHD = rs.getString("messagehd");
+			messageDT = rs.getString("messagedt");
 			dateTime = rs.getString("datetime");
 			
 			dateTime = dateTime.replace(".0", "");
 			
-			notificationList.add(new NotificationForm(no, name, email, massageHD, massageDT, dateTime));
+			notificationList.add(new NotificationForm(no, name, email, messageHD, messageDT, dateTime));
 		}
 		
 		} catch (SQLException e) {

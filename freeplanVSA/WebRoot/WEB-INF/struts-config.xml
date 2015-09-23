@@ -14,6 +14,7 @@
   	<form-bean name="galleryForm" type="com.vsa.form.GalleryForm" />
   	<!-- customer begin -->
   	<form-bean name="cusLoginForm" type="com.cus.vsa.form.CusLoginForm" />
+  	<form-bean name="notificationForm" type="com.cus.vsa.form.NotificationForm" />
   	
   </form-beans>
   <global-exceptions />
@@ -222,6 +223,20 @@
       <forward name="login" path="/cus_login.jsp" />
     </action>
   <!--################################    Customer Edit Profile     #################################-->
+  
+  <!--################################    Contact (Notification)    #################################-->
+   <action
+      attribute="notificationForm"
+      input="/cus_index_detail.jsp"
+      name="notificationForm"
+      path="/notification"
+      scope="request"
+      type="com.cus.vsa.action.NotificationAction" >
+      
+      <forward name="error" path="/cus_index_detail.jsp" />
+      <forward name="success" path="/cus_index_detail.jsp" /> 
+    </action>
+  <!--################################    Contact (Notification)    #################################-->
   
   <!--********************************     Customer    	********************************-->
   

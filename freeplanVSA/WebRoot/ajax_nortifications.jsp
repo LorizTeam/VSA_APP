@@ -6,13 +6,13 @@
 	String noNorti = request.getParameter("noNorti");
 	DBConnect dbcon = new DBConnect();
 	ResultSet rs = null;
-	String sql = "select massagehd from notifications where no = '"+noNorti+"'";
+	String sql = "select messagehd from notifications where no = '"+noNorti+"'";
 	Connection conn = dbcon.getConnectMYSql();
 	Statement stmt = conn.createStatement();
 	rs = stmt.executeQuery(sql);
 	while(rs.next()){
 %>
-<%=rs.getString("massagehd") %>
+<%=rs.getString("messagehd") %>
 <%
 	}
 %>

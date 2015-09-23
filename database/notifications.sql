@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50041
 File Encoding         : 65001
 
-Date: 2015-09-23 12:07:42
+Date: 2015-09-23 12:28:53
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -23,8 +23,8 @@ CREATE TABLE `notifications` (
   `no` int(11) NOT NULL auto_increment,
   `name` varchar(50) default NULL,
   `email` varchar(100) default NULL,
-  `massagehd` varchar(50) default NULL,
-  `massagedt` varchar(256) default NULL,
+  `messagehd` varchar(50) default NULL,
+  `messagedt` varchar(256) default NULL,
   `datetime` datetime default NULL,
   PRIMARY KEY  (`no`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

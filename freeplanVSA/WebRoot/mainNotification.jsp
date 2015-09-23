@@ -201,7 +201,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 					NotificationForm notification = (NotificationForm) iter.next(); 
 					String no 			= notification.getNo();
 					String email 		= notification.getEmail();
-					String massageHD 	= notification.getMassageHD();
+					String messageHD 	= notification.getMessageHD();
 					String dateTime 	= notification.getDateTime();
 				%>
         		<tr>
@@ -210,7 +210,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
         				<i class="icon_4">G</i>
                       <div class="avatar_left">
                       	<span class="email-title"><%=email%></span>
-                        <p class="truncate grey-text ultra-small"><%=massageHD%></p>
+                        <p class="truncate grey-text ultra-small"><%=messageHD%></p>
                       </div>
                       <a href="#" class="secondary-content"><span class="blue-text ultra-small"><%=dateTime%></span></a>
                       

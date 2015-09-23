@@ -24,17 +24,17 @@ public class NotificationForm extends ActionForm {
 	private String name; 
 	private String email;
 	private String dateTime;
-	private String massageHD;
-	private String massageDT;
+	private String messageHD;
+	private String messageDT;
 	 
 	public NotificationForm(){};
-	public NotificationForm(String no, String name, String email, String massageHD, String massageDT, String dateTime){
+	public NotificationForm(String no, String name, String email, String messageHD, String messageDT, String dateTime){
 		super();
 		this.no 			= no;
 		this.name 			= name;
 		this.email			= email;
-		this.massageHD 		= massageHD;
-		this.massageDT 		= massageDT;
+		this.messageHD 		= messageHD;
+		this.messageDT 		= messageDT;
 		this.dateTime		= dateTime;
 	}
 	 
@@ -75,26 +75,23 @@ public class NotificationForm extends ActionForm {
 		this.dateTime = dateTime;
 	}
 
-	public String getMassageHD() {
-		return massageHD;
-	}
-
-	public void setMassageHD(String massageHD) {
-		this.massageHD = massageHD;
-	}
-
-	public String getMassageDT() {
-		return massageDT;
-	}
-
-	public void setMassageDT(String massageDT) {
-		this.massageDT = massageDT;
-	}
 	public String getNo() {
 		return no;
 	}
 	public void setNo(String no) {
 		this.no = no;
+	}
+	public String getMessageHD() {
+		return messageHD;
+	}
+	public void setMessageHD(String messageHD) {
+		this.messageHD = messageHD;
+	}
+	public String getMessageDT() {
+		return messageDT;
+	}
+	public void setMessageDT(String messageDT) {
+		this.messageDT = messageDT;
 	}
 	
  
