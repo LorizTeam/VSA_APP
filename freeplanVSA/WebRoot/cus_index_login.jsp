@@ -22,13 +22,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<script type="application/x-javascript">
-addEventListener("load", function() {
-	setTimeout(hideURLbar, 0);
-}, false);
-function hideURLbar() {
-	window.scrollTo(0, 1);
-}
-</script>
+			addEventListener("load", function() {
+			setTimeout(hideURLbar, 0);
+			}, false);
+			function hideURLbar() {
+			window.scrollTo(0, 1);
+			}
+	</script>
 <style>
 
 .header {
@@ -40,7 +40,18 @@ function hideURLbar() {
 </script>
 		<link rel="stylesheet" href="home/css/flexslider.css" type="text/css"
 			media="screen" />
-
+	<!--scrolling-->
+<script type="text/javascript" src="home/js/move-top.js"></script>
+<script type="text/javascript" src="home/js/easing.js"></script>
+ <script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$(".scroll").click(function(event){		
+				event.preventDefault();
+				$('html,body').animate({scrollTop:$(this.hash).offset().top},1200);
+			});
+		});
+	</script>
+<!--scrolling-->
 	</head>
 	<body>
 		<!--top-header-->
@@ -68,7 +79,7 @@ function hideURLbar() {
 							<a class="scroll font-menu" href="#gallery">แกลอรี่</a>
 						</li>
 						<li>
-							<a class="scroll font-menu" href="#blog">ข่าวสาร</a>
+							<a class="scroll font-menu" href="#blog">ช่วยเหลือ</a>
 						</li>
 						<li>
 							<a class="scroll font-menu" href="#contact">ติดต่อ</a>
@@ -108,7 +119,7 @@ $("span.menu").click(function() {
 		</div>
 		
 
-		<%@include file="../cus_index_detail.jsp" %>
+		<%@include file="cus_index_detail.jsp" %>
 <div class="footer">
 	 <div class="container">
 		 <p>Copyrights © 2015 Seven All rights reserved | Template by <a href="http://w3layouts.com/">W3layouts</a></p>

@@ -96,7 +96,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<a id="link-term" class="ablue" href="#"> คลิกอ่านรายละเอียดเงื่อนไข </a>		
 			</label>
 			<br/>
-			<input type="submit" class="btn btn-info" value="ขอแบบบ้านนี้">
+			<input type="submit" class="btn btn-info" value="ขอแบบบ้านนี้"aria-hidden="true">
 			<a href="cus_index_login.jsp"class="btn btn-danger">ยกเลิก</a>
 		</form>
 		</div>
