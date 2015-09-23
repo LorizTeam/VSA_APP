@@ -4,8 +4,8 @@
 <%@ page import ="javax.servlet.http.HttpServletRequest.*"%>
 <%@ page import ="javax.servlet.http.HttpServletResponse.*"%>
 <%@ page import ="javax.servlet.http.HttpSession.*"%>
-<%@ page import="com.vsa.form.CustomerForm" %>
-<%@ page import="com.vsa.data.CustomerDB" %>
+<%@ page import="com.cus.vsa.form.NotificationForm" %>
+<%@ page import="com.cus.vsa.data.NotificationDB" %>
 <%@ page import="com.vsa.util.DBConnect" %>
 <%@ page import="java.sql.*" %>
 <% 
@@ -114,6 +114,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
             });
         });
 		function shownorti(message){
+		 
 			$('#showemail').val("");
 			$('#showtext').val("");
 			
@@ -185,99 +186,43 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 			<h3 class="align-center">Notification</h3>
         	<div class="col-md-4 email-list1 box padding10">
         		<table class="table hovered" width="100%">
+        		<% List notificationList1 = null;
+        		   if (request.getAttribute("notificationList") == null) {
+						NotificationDB notificationDB = new NotificationDB();
+						notificationList1 = notificationDB.Notification();
+						}else{
+						notificationList1 = (List) request.getAttribute("notificationList");
+						}
+	   			if (notificationList1 != null) {
+					List notificationList = notificationList1;
+					int x = 0;
+					for (Iterator iter = notificationList.iterator(); iter.hasNext();) {
+					x++;
+					NotificationForm notification = (NotificationForm) iter.next(); 
+					String no 			= notification.getNo();
+					String email 		= notification.getEmail();
+					String massageHD 	= notification.getMassageHD();
+					String dateTime 	= notification.getDateTime();
+				%>
         		<tr>
-        			<td onclick="shownorti(2)" class="collection-item avatar email-unread clickable-row" width="100%"  data-href='#'>
+        			<td onclick="shownorti('<%=no%>')" class="collection-item avatar email-unread clickable-row" width="100%"  data-href='#'>
         			  <hr/>
         				<i class="icon_4">G</i>
                       <div class="avatar_left">
-                      	<span class="email-title">nontawatch@windowslive.com</span>
-                        <p class="truncate grey-text ultra-small">คำร้องขอแบบแปลนบ้าน(บ้านเดี่ยว)</p>
+                      	<span class="email-title"><%=email%></span>
+                        <p class="truncate grey-text ultra-small"><%=massageHD%></p>
                       </div>
-                      <a href="#" class="secondary-content"><span class="blue-text ultra-small">2:15 pm</span></a>
+                      <a href="#" class="secondary-content"><span class="blue-text ultra-small"><%=dateTime%></span></a>
                       
                       <div class="clearfix"></div>
                       <hr/>
         			</td>
         		</tr>
-        		<tr>
-        			<td onclick="shownorti(1)" class="collection-item avatar email-unread clickable-row" width="100%" data-href='#'>
-        			  <hr/>
-        				<i class="icon_4">G</i>
-                      <div class="avatar_left">
-                      	<span class="email-title">nontawatch@windowslive.com</span>
-                        <p class="truncate grey-text ultra-small">คำร้องขอแบบแปลนบ้าน(บ้านเดี่ยว)</p>
-                      </div>
-                      <a href="#" class="secondary-content"><span class="blue-text ultra-small">2:15 pm</span></a>
-                      <div class="clearfix"></div>
-                      <hr/>
-                      
-        			</td>
-        		</tr>
+        		<% }
+        		
+        		} %>
         		
         		</table>
-               <!--  <ul class="collection">
-               		<hr/>
-                    <li class="collection-item avatar email-unread">
-                      <i class="icon_4">G</i>
-                      <div class="avatar_left">
-                      	<span class="email-title">Gmail</span>
-                        <p class="truncate grey-text ultra-small">Sed ut perspiciatis</p>
-                      </div>
-                      <a href="#!" class="secondary-content"><span class="blue-text ultra-small">2:15 pm</span></a>
-                      <div class="clearfix"></div>
-                    </li>
-                    <hr/>
-                    <li class="collection-item avatar email-unread">
-                      <i class="icon_4">G</i>
-                      <div class="avatar_left">
-                      	<span class="email-title">Gmail</span>
-                        <p class="truncate grey-text ultra-small">Sed ut perspiciatis</p>
-                      </div>
-                      <a href="#!" class="secondary-content"><span class="blue-text ultra-small">2:15 pm</span></a>
-                      <div class="clearfix"></div>
-                    </li>
-                    <hr/>
-                    <li class="collection-item avatar email-unread">
-                      <i class="icon_4">G</i>
-                      <div class="avatar_left">
-                      	<span class="email-title">Gmail</span>
-                        <p class="truncate grey-text ultra-small">Sed ut perspiciatis</p>
-                      </div>
-                      <a href="#!" class="secondary-content"><span class="blue-text ultra-small">2:15 pm</span></a>
-                      <div class="clearfix"></div>
-                    </li>
-                    <hr/>
-                    <li class="collection-item avatar email-unread">
-                      <i class="icon_4">G</i>
-                      <div class="avatar_left">
-                      	<span class="email-title">Gmail</span>
-                        <p class="truncate grey-text ultra-small">Sed ut perspiciatis</p>
-                      </div>
-                      <a href="#!" class="secondary-content"><span class="blue-text ultra-small">2:15 pm</span></a>
-                      <div class="clearfix"></div>
-                    </li>
-                    <hr/>
-                    <li class="collection-item avatar email-unread">
-                      <a><i class="icon_4">G</i>
-                      <div class="avatar_left">
-                      	<span class="email-title">Gmail</span>
-                        <p class="truncate grey-text ultra-small">Sed ut perspiciatis</p>
-                      </div>
-                      <a href="#!" class="secondary-content"><span class="blue-text ultra-small">2:15 pm</span></a>
-                      <div class="clearfix"></div></a>
-                    </li>
-                    <hr/>
-                    <li class="collection-item avatar email-unread">
-                      <i class="icon_4">G</i>
-                      <div class="avatar_left">
-                      	<span class="email-title">Gmail</span>
-                        <p class="truncate grey-text ultra-small">Sed ut perspiciatis</p>
-                      </div>
-                      <a href="#!" class="secondary-content"><span class="blue-text ultra-small">2:15 pm</span></a>
-                      <div class="clearfix"></div>
-                    </li>
-                    <hr/>
-              </ul>-->
         </div>
         <div name="email-detail" class="container col-md-7 box-detail padding10" style="margin-left: 1%; width: 65%;">
         	<div class="input-control text">
