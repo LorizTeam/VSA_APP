@@ -55,13 +55,13 @@ public class GalleryDB {
 	public List GetGallery() 
 	throws Exception { //30-05-2014
 		List galleryList = new ArrayList();
-		String galleryName = "", galleryCode = "";
+		String galleryName = "", galleryCode = "", description = "", amount = "", timeUse = "";
 	 
 		try {
 		
 			conn = agent.getConnectMYSql();
 			
-			String sqlStmt = "SELECT galleryid, galleryname " +
+			String sqlStmt = "SELECT galleryid, galleryname, description, amount, timeuse " +
 			"FROM gallery_master " +
 			"WHERE "; 
 			 
@@ -73,8 +73,11 @@ public class GalleryDB {
 			while (rs.next()) {
 				galleryCode 	= rs.getString("galleryid");
 				galleryName 	= rs.getString("galleryname"); 
+				description 	= rs.getString("description");
+				amount 			= rs.getString("amount"); 
+				timeUse		 	= rs.getString("timeuse"); 
 				
-				galleryList.add(new GalleryForm(galleryCode, galleryName));
+				galleryList.add(new GalleryForm(galleryCode, galleryName, description, amount, timeUse));
 			}
 			rs.close();
 			pStmt.close();
@@ -106,21 +109,22 @@ public class GalleryDB {
 		pStmt.close();
 		conn.close();
 	}
-	public void AddGallery(String galleryName)  throws Exception{
+	public void AddGallery(String galleryName, String description, String amount, String timeUse)  throws Exception{
 		conn = agent.getConnectMYSql();
 		
-		String sqlStmt = "INSERT IGNORE INTO gallery_master(galleryname) " +
-		"VALUES ('"+galleryName+"')";
+		String sqlStmt = "INSERT IGNORE INTO gallery_master(galleryname, description, amount, timeuse) " +
+		"VALUES ('"+galleryName+"', '"+description+"', '"+amount+"', '"+timeUse+"')";
 		//System.out.println(sqlStmt);
 		pStmt = conn.createStatement();
 		pStmt.executeUpdate(sqlStmt);
 		pStmt.close();
 		conn.close();
 	}
-	public void UpdateGallery(String galleryCode, String galleryName)  throws Exception{
+	public void UpdateGallery(String galleryCode, String galleryName, String description, String amount, String timeUse)  throws Exception{
 		conn = agent.getConnectMYSql();
 		
-		String sqlStmt = "UPDATE gallery_master set galleryname = '"+galleryName+"' "+
+		String sqlStmt = "UPDATE gallery_master set galleryname = '"+galleryName+"', description = '"+description+"', " +
+				"amount = '"+amount+"', timeuse = '"+timeUse+"' "+
 				"WHERE galleryid = '"+galleryCode+"'";
 		//System.out.println(sqlStmt);
 		pStmt = conn.createStatement();

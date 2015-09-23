@@ -114,36 +114,75 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
             });
         });
 		function shownorti(message){
-		 
+		 	$('#showehd').val("");
+			$('#showdt').val("");
 			$('#showemail').val("");
-			$('#showtext').val("");
 			
-			showtextnorti(message);
-			showemailnorti(message);		
+			showhdnorti(message);
+			showdtnorti(message);
+			shownamenorti(message);
+			showemailnorti(message);
+			showdatetimenorti(message);		
 		}
 		
-		function showemailnorti(message){
+		function showhdnorti(message){
 			$.ajax({
                     type: "post",
-                    url: "ajax_nortifications.jsp", //this is my servlet
+                    url: "ajax_nortificationshd.jsp", //this is my servlet
                     data: {noNorti:message},
                     async:true,
                     success: function(result){
-                    	$('#showemail').html(result);
+                    	$('#showhd').html(result);
 //                            $('#showemail').append(123456);
 //                            $('input[name="showemail1"]').val(123456);
 //								alert(result);
                     }
                 });
 		}
-		function showtextnorti(message){
+		function showdtnorti(message){
 			$.ajax({
                     type: "post",
-                    url: "ajax_nortificationstext.jsp", //this is my servlet
+                    url: "ajax_nortificationsdt.jsp", //this is my servlet
                     data: {noNorti:message},
                     async:true,
                     success: function(result){ 
-                    	$('#showtext').html(result);	
+                    	$('#showdt').html(result);	
+//								alert(result);
+                    }
+                });			
+		}
+		function shownamenorti(message){
+			$.ajax({
+                    type: "post",
+                    url: "ajax_nortificationsname.jsp", //this is my servlet
+                    data: {noNorti:message},
+                    async:true,
+                    success: function(result){ 
+                    	$('#showname').html(result);	
+//								alert(result);
+                    }
+                });			
+		}
+		function showemailnorti(message){
+			$.ajax({
+                    type: "post",
+                    url: "ajax_nortificationsemail.jsp", //this is my servlet
+                    data: {noNorti:message},
+                    async:true,
+                    success: function(result){ 
+                    	$('#showemail').html(result);	
+//								alert(result);
+                    }
+                });			
+		}
+		function showdatetimenorti(message){
+			$.ajax({
+                    type: "post",
+                    url: "ajax_nortificationsdatetime.jsp", //this is my servlet
+                    data: {noNorti:message},
+                    async:true,
+                    success: function(result){ 
+                    	$('#showdatetime').html(result);	
 //								alert(result);
                     }
                 });			
@@ -226,11 +265,23 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
         </div>
         <div name="email-detail" class="container col-md-7 box-detail padding10" style="margin-left: 1%; width: 65%;">
         	<div class="input-control text">
-        		<span id="showemail"></span>
+        		<span id="showhd"></span>
 			</div>
 			<br/>
 		    <div  class="input-control textarea">
-		        <span id="showtext"></span>
+		        <span id="showdt"></span>
+		    </div>
+		    <br/>
+		    <div  class="input-control textarea">
+		        <span id="showname"></span>
+		    </div>
+		    <br/>
+		    <div  class="input-control textarea">
+		        <span id="showemail"></span>
+		    </div>
+		    <br/>
+		    <div  class="input-control textarea">
+		        <span id="showdatetime"></span>
 		    </div>
 		</div>
             </div>

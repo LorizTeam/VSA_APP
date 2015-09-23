@@ -36,7 +36,10 @@ public class GalleryAction extends Action {
 		GalleryDB galleryDB = new GalleryDB();
 		String galleryCode 	= galleryForm.getGalleryCode();
 		String galleryName 	= new String(galleryForm.getGalleryName().getBytes("ISO8859_1"), "utf-8");
-		 
+		String description 	= new String(galleryForm.getDescription().getBytes("ISO8859_1"), "utf-8");
+		String amount	 	= galleryForm.getAmount();
+		String timeUse	 	= galleryForm.getTimeUse();
+		
 		String fileName = "", filePath = "", usePath = ""; FormFile file = null;
 		
 		String add 					= galleryForm.getAdd();
@@ -71,7 +74,7 @@ public class GalleryAction extends Action {
 			        File newFile = new File(filePath, imageName);
 		              
 			        if(!newFile.exists()){
-			        	galleryDB.AddGallery(galleryName);
+			        	galleryDB.AddGallery(galleryName, description, amount, timeUse);
 			        	galleryDB.AddImage(imageName, usePath+fileName, "hd");
 			        	
 			          FileOutputStream fos = new FileOutputStream(newFile);
@@ -92,7 +95,7 @@ public class GalleryAction extends Action {
 		if(update!=null){
 			if(!galleryCode.equals("")&&!galleryName.equals("")){
 		 
-				galleryDB.UpdateGallery(galleryCode, galleryName);
+				galleryDB.UpdateGallery(galleryCode, galleryName, description, amount, timeUse);
 			
 				List galleryList = galleryDB.GetGallery();
 				request.setAttribute("galleryList", galleryList);

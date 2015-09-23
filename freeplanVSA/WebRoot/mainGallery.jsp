@@ -114,10 +114,13 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
             })
         })
         
-        function getGallery(tgaCode, tgaName) {
+        function getGallery(tgaCode, tgaName, tgadescription, tgaAmount, tgaTimeUse) {
 				document.galleryForm.galleryCode.value 	= tgaCode; 
 				document.galleryForm.galleryName.value 	= tgaName; 
 				document.galleryForm.chkUP.value 	= tgaCode;
+				document.galleryForm.description.value 	= tgadescription; 
+				document.galleryForm.amount.value 	= tgaAmount; 
+				document.galleryForm.timeUse.value 	= tgaTimeUse;
 	}
     </script>
 	</head>
@@ -142,14 +145,26 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 		<div class="row" style="padding-left: 2.5%; margin-top: 1%;">
 		<input type="hidden" id="materialCode" name="materialCode" />
 		
-        <label style="font-size: 160%; font-weight: bold;"> ชื่อ Gallery</label>  &nbsp;
+        <label style="font-size: 160%; font-weight: bold;">ชื่อ Gallery&nbsp;:</label>&nbsp;
         <input type="hidden" id="galleryCode" name="galleryCode" /> 
-        <input type="text" id="galleryName" name="galleryName" size="25" maxlength="50"/>
-        <label style="font-size: 160%; font-weight: bold;">Upload&nbsp;Image</label>&nbsp;
-		<div class="input-control file" data-role="input">
-			<input type="file" id="file" name="file" >
-			<button class="button"><span class="mif-folder"></span></button>
-		</div>
+        <input type="text" id="galleryName" name="galleryName" size="25" maxlength="50"/>&nbsp;&nbsp;
+        <label style="font-size: 160%; font-weight: bold;">รายละเอียด&nbsp;:</label>&nbsp;
+        <input type="text" id="description" name="description" size="50" maxlength="100"/>
+        </div>
+        <div class="row" style="padding-left: 2.5%; margin-top: 1%;">
+        <label style="font-size: 160%; font-weight: bold;">จำนวนเงินที่ใช้ก่อสร้าง โดยประมาณ&nbsp;:</label>&nbsp;
+        <input type="text" id="amount" name="amount" size="10" maxlength="16"/>&nbsp;
+        <label style="font-size: 160%; font-weight: bold;">บาท</label>&nbsp;&nbsp;
+        <label style="font-size: 160%; font-weight: bold;">เวลาในการก่อสร้าง โดยประมาณ&nbsp;:</label>&nbsp;
+        <input type="text" id="time" name="time" size="2" maxlength="4"/>&nbsp;
+        <label style="font-size: 160%; font-weight: bold;">เดือน</label>
+        </div>
+        <div class="row" style="padding-left: 2.5%; margin-top: 1%;">
+        		<label style="font-size: 160%; font-weight: bold;">Upload&nbsp;Image&nbsp;:</label>&nbsp;
+			<div class="input-control file" data-role="input">
+				<input type="file" id="file" name="file" >
+				<button class="button"><span class="mif-folder"></span></button>
+			</div>
         </div>
         <div class="row" style="padding-left: 2.5%; margin-top: 1%;">
         <input class="button mini-button" type="submit" id="add" name="add" value="เพิ่ม"/>
@@ -164,6 +179,9 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 									<tr>
 										<th><center>ลำดับ</center></th>
 										<th><center>ชื่อ Gallery</center></th> 
+										<th><center>รายละเอียด</center></th>
+										<th><center>จำนวนเงินที่ใช้ก่อสร้าง โดยประมาณ</center></th>
+										<th><center>เวลาในการก่อสร้าง โดยประมาณ</center></th>
 									</tr>
 									</thead>
 									<tbody>
@@ -176,8 +194,12 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 									%>
                 					<tr>
                 						<td align="center"><%=x%></td>
-                						<td align="center"><a href="javascript:getGallery('<%=gary.getGalleryCode()%>','<%=gary.getGalleryName()%>');">
+                						<td align="center"><a href="javascript:getGallery('<%=gary.getGalleryCode()%>','<%=gary.getGalleryName()%>',
+                						'<%=gary.getDescription()%>','<%=gary.getAmount()%>','<%=gary.getTimeUse()%>');">
                 						<%=gary.getGalleryName()%></a></td> 
+                						<td align="center"><%=gary.getDescription()%></td>
+                						<td align="center"><%=gary.getAmount()%></td>
+                						<td align="center"><%=gary.getTimeUse()%></td>
                 					</tr>
                 					<% 	}
                 						} else {
@@ -210,7 +232,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 		} );
         $('#gallery').DataTable({
         	 "scrollX":true,
-        	 "scrollY":350,
+        	 "scrollY":300,
                "language": {
             "lengthMenu": "Display _MENU_ records per page",
             "zeroRecords": "Nothing found - sorry",
