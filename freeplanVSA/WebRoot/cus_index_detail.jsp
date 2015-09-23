@@ -211,13 +211,13 @@
 		 <h3>ติดต่อเรา</h3>
 		 <div class="touch-top">
 			 <div class="col-md-8 touch-left">
-				 <form>
-					<input type="text" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" />
-					<input type="text" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" />
-					<input type="text" value="Subject" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Subject';}" />
-					<textarea onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message';}"></textarea>
+				 <html:form action="/notification">
+					<input type="text" id="name" name="name" required placeholder="Name" />
+					<input type="email" id="email" name="email" required placeholder="Email" />
+					<input type="text" id="messageHD" name="messageHD" required placeholder="Subject" />
+					<textarea  id="messageDT" name="messageDT" required placeholder="Message"></textarea>
 					<input type="submit" value="SUBMIT">				
-				 </form>	
+				 </html:form>	
 			 </div>
 			 <div class="col-md-4 touch-right">
 					<div class="touch-right-top">

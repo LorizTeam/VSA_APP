@@ -60,16 +60,12 @@ public class NotificationDB {
 		}
 		return notificationList; 
 	}
-	public void UpdateCustomer(String customerID, String customerName, String customerSurName, String customerTel, String customerEmail, 
-			String customerDOB, String customerHouseNo, String customerVillageNo, String customerVillage, String customerLane, 
-			String customerSubDistrict, String customerDistrict, String customerProvince, String customerPostCode)  throws Exception{
+	public void insertNotification(String name, String email, String messageHD, String messageDT, String dateTime)  
+	throws Exception{
 		conn = agent.getConnectMYSql();
 		
-		String sqlStmt = "UPDATE customer_master set customer_name = '"+customerName+"', customer_surname = '"+customerSurName+"', " +
-				"customer_tel = '"+customerTel+"', customer_email = '"+customerEmail+"', customer_dob = '"+customerDOB+"', customer_houseno = '"+customerHouseNo+"', " +
-				"customer_villageno = '"+customerVillageNo+"', customer_village = '"+customerVillage+"', customer_lane = '"+customerLane+"', customer_subdistrict = '"+customerSubDistrict+"', " +
-				"customer_district = '"+customerDistrict+"', customer_province = '"+customerProvince+"', customer_postcode = '"+customerPostCode+"' " +
-				"WHERE customer_id = '"+customerID+"'";
+		String sqlStmt = "INSERT IGNORE INTO notifications(name, email, messagehd, messagedt, datetime) " +
+				"VALUES ('"+name+"', '"+email+"', '"+messageHD+"', '"+messageDT+"', '"+dateTime+"')";
 		//System.out.println(sqlStmt);
 		pStmt = conn.createStatement();
 		pStmt.executeUpdate(sqlStmt);

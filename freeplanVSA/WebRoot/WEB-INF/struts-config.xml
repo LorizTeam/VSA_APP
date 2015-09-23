@@ -233,8 +233,8 @@
       scope="request"
       type="com.cus.vsa.action.NotificationAction" >
       
-      <forward name="error" path="/cus_index_detail.jsp" />
-      <forward name="success" path="/cus_index_detail.jsp" /> 
+      <forward name="login" path="/cus_index_login.jsp" />
+      <forward name="nologin" path="/cus_index.jsp" /> 
     </action>
   <!--################################    Contact (Notification)    #################################-->
   
