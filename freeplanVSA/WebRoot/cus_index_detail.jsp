@@ -156,10 +156,11 @@
 				       		<img src="<%=pathImage%>"  > 
 				       	<% } %>	
 				       </div>
+				       <hr/>
 				       <h4>รายละเอียด</h4>
 				       <p><%=galleryName%></p>
 				       <hr/>
-				       <input class="btn btn-info" type="submit" value="แจ้งขอแบบบ้าน"/>
+				       <a class="btn btn-info" href="cus_request_plan.jsp" >แจ้งขอแบบบ้าน</a>
 				       <a class="uk-modal-close btn btn-danger" href="#" >ปิด</a>
 				       
 				    </div>
