@@ -156,7 +156,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
         <input type="text" id="amount" name="amount" size="10" maxlength="16"/>&nbsp;
         <label style="font-size: 160%; font-weight: bold;">บาท</label>&nbsp;&nbsp;
         <label style="font-size: 160%; font-weight: bold;">เวลาในการก่อสร้าง โดยประมาณ&nbsp;:</label>&nbsp;
-        <input type="text" id="time" name="time" size="2" maxlength="4"/>&nbsp;
+        <input type="text" id="timeUse" name="timeUse" size="2" maxlength="4"/>&nbsp;
         <label style="font-size: 160%; font-weight: bold;">เดือน</label>
         </div>
         <div class="row" style="padding-left: 2.5%; margin-top: 1%;">
