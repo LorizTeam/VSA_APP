@@ -200,7 +200,7 @@ public class ProjectDB {
 	try {
 		conn = agent.getConnectMYSql();
 		
-		String sqlStmt = "SELECT project_id FROM projecthd where employee_id = '"+name+"' ";
+		String sqlStmt = "SELECT project_id FROM projecthd ";
 		pStmt = conn.createStatement();
 		rs = pStmt.executeQuery(sqlStmt);		
 		while (rs.next()) {
