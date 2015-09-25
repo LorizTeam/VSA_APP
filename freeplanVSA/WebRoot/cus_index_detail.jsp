@@ -213,11 +213,12 @@
 			 <div class="col-md-8 touch-left">
 				 <html:form action="/notification">
 					<input type="text" id="name" name="name" required placeholder="Name" />
-					<input type="email" id="email" name="email" required placeholder="Email" />
+					<input type="email" id="email" name="email" required placeholder="Email" style="border: 1px solid #999; background: none; margin-top: 7px; border-radius: 5px; font-size: inherit; padding: 10px;"/>
 					<input type="text" id="messageHD" name="messageHD" required placeholder="Subject" />
 					<textarea  id="messageDT" name="messageDT" required placeholder="Message"></textarea>
 					<input type="submit" value="SUBMIT">				
-				 </html:form>	
+				 </html:form>
+				 <br/>
 			 </div>
 			 <div class="col-md-4 touch-right">
 					<div class="touch-right-top">
