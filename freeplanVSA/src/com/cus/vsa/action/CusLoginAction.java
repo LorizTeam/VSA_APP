@@ -46,7 +46,8 @@ public class CusLoginAction extends Action {
 					session.setAttribute("passWord", passWord);
 					session.setAttribute("name", cusLoginForm.getName());
 					session.setAttribute("type", cusLoginForm.getType());
-					  
+					session.setAttribute("custID", cusLoginForm.getCustID());
+					
 					String login = "1";
 					session.setAttribute("login", login); 
 					String type = cusLoginForm.getType();

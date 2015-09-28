@@ -238,6 +238,20 @@
     </action>
   <!--################################    Contact (Notification)    #################################-->
   
+  <!--################################   Login Contact (Notification)    #################################-->
+   <action
+      attribute="notificationForm"
+      input="/home/contact.jsp"
+      name="notificationForm"
+      path="/notificationLogin"
+      scope="request"
+      type="com.cus.vsa.action.NotificationLoginAction" >
+      
+      <forward name="success" path="/home/contact.jsp" />
+      <forward name="error" path="/cus_index.jsp" /> 
+    </action>
+  <!--################################  Login  Contact (Notification)    #################################-->
+  
   <!--********************************     Customer    	********************************-->
   
   </action-mappings>

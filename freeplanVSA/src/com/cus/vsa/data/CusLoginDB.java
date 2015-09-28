@@ -47,8 +47,9 @@ public class CusLoginDB {
 			cusLoginForm.setTrue(true);
 			cusLoginForm.setUserName(rs.getString("username"));
 			cusLoginForm.setPassWord(rs.getString("password"));
-			cusLoginForm.setName(rs.getString("customer_id"));
+			cusLoginForm.setCustID(rs.getString("customer_id"));
 			cusLoginForm.setType(rs.getString("type"));
+			cusLoginForm.setName(rs.getString("name"));
 		}
 		
 		if(connDB != null) {

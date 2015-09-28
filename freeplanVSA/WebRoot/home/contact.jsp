@@ -1,4 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%> 
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
 <!--
 Au<!--
 Author: W3layouts
@@ -48,11 +50,11 @@ function hideURLbar() {
 		  
 			 <div class="col-md-12 touch-left">
 			
-				 <form>
-					<input type="text" placeholder="ระบุปัญหา"/>
-					<textarea placeholder="รายละเอียดของปัญหา"></textarea>
+				<html:form action="/notificationLogin">
+					<input type="text" id="messageHD" name="messageHD" required placeholder="ระบุปัญหา"/>
+					<textarea id="messageDT" name="messageDT" required placeholder="รายละเอียดของปัญหา"></textarea>
 					<input type="submit" value="SUBMIT">				
-				 </form>	
+				</html:form>	
 			 </div>
 			
 				<div class="clearfix"></div>

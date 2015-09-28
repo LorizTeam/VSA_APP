@@ -9,28 +9,28 @@
 <%@ page import="com.vsa.util.DBConnect" %>
 <%@ page import="java.sql.*" %>
 <% 	List matList = null;
-	int count = 0; String grp[] = null;  String grpName = "", name = "";
+	int count = 0; String grp[] = null;  String grpName = "", custID = "";
 	List list = new ArrayList();
 	
-	if(session.getAttribute("name") != null){
-	name = session.getAttribute("name").toString();
+	if(session.getAttribute("custID") != null){
+	custID = session.getAttribute("custID").toString();
 	}
 	
 	Cust_ProjectDB cust_projectDB = new Cust_ProjectDB();
 	
-	count = cust_projectDB.GetGrp(name);
-	grp = cust_projectDB.GetGrpList(count, name);
+	count = cust_projectDB.GetGrp(custID);
+	grp = cust_projectDB.GetGrpList(count, custID);
 	
 	for(int f=0; f<count; f++){
 	
-		matList = cust_projectDB.GetProjectList(grp[f], name);
+		matList = cust_projectDB.GetProjectList(grp[f], custID);
 		
 		list.add(matList); 
 	} 
 	
 	List projectHistoryList1 = null;
 	if (request.getAttribute("projectHistoryList") == null) {
-	projectHistoryList1 = cust_projectDB.GetProjectHistoryList(name);
+	projectHistoryList1 = cust_projectDB.GetProjectHistoryList(custID);
 	}else{
 	projectHistoryList1 = (List) request.getAttribute("projectHistoryList");
 	} 

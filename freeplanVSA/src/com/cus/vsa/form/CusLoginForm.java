@@ -33,6 +33,9 @@ public class CusLoginForm extends ActionForm {
 	private boolean isTrue;
 	private String hdUserName;
 	
+	private String custID;
+	private String email;
+	
 	public CusLoginForm(){};
 	public CusLoginForm (String userName, String passWord, String name, String type){
 		super();
@@ -138,6 +141,18 @@ public class CusLoginForm extends ActionForm {
 	}
 	public void setHdUserName(String hdUserName) {
 		this.hdUserName = hdUserName;
+	}
+	public String getCustID() {
+		return custID;
+	}
+	public void setCustID(String custID) {
+		this.custID = custID;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 }
