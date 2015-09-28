@@ -50,7 +50,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 		<style>
         html, body {
             height: 100%;
-            overflow: auto;
+            overflow: hidden;
         }
         .page-content {
             padding-top: 0;

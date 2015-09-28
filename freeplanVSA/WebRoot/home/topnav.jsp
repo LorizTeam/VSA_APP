@@ -47,7 +47,7 @@
 <!--navigation customer-->
 <div class="container-fluid nav-bg">
 	<nav class="cus_nav  blog-grids">
-	<a href="../cus_index_login.jsp">
+	<a href="http://localhost:8080/freeplanVSA/cus_index_login.jsp">
 			<div class="col-md-2 col-sm-2 thumbnail" style="padding: 20px; ">
 				<h4>
 					<i class=" glyphicon glyphicon-chevron-left"></i> กลับ
@@ -65,7 +65,7 @@
 				<h4>
 					<i class="glyphicon glyphicon-pencil"></i> บันทึกค่าใช้จ่าย
 				</h4>
-			</div> <a href="http://localhost:8080/freeplanVSA/home/contact.jsp"><div class="col-md-4 col-sm-4 thumbnail ">
+			</div> <a href="http://localhost:8080/freeplanVSA/contact.jsp"><div class="col-md-4 col-sm-4 thumbnail ">
 					<h4>
 						<i class=" glyphicon glyphicon-comment"></i> ติดต่อ
 					</h4>

@@ -247,7 +247,7 @@
       scope="request"
       type="com.cus.vsa.action.NotificationLoginAction" >
       
-      <forward name="success" path="/home/contact.jsp" />
+      <forward name="success" path="/contact.jsp" />
       <forward name="error" path="/cus_index.jsp" /> 
     </action>
   <!--################################  Login  Contact (Notification)    #################################-->
