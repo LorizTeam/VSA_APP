@@ -35,6 +35,7 @@ public class CusLoginForm extends ActionForm {
 	
 	private String custID;
 	private String email;
+	private String statusProj;
 	
 	public CusLoginForm(){};
 	public CusLoginForm (String userName, String passWord, String name, String type){
@@ -153,6 +154,12 @@ public class CusLoginForm extends ActionForm {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public String getStatusProj() {
+		return statusProj;
+	}
+	public void setStatusProj(String statusProj) {
+		this.statusProj = statusProj;
 	}
 
 }

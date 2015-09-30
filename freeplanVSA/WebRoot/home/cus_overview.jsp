@@ -7,14 +7,14 @@
 <%@ page import="com.vsa.form.CustomerProjectForm" %>
 <%@ page import="com.vsa.data.Cust_ProjectDB" %> 
 <%	
-	String name = "";
-	if(session.getAttribute("name") != null){
-	name = session.getAttribute("name").toString();
+	String custID = "";
+	if(session.getAttribute("custID") != null){
+	custID = session.getAttribute("custID").toString();
 	}
 	Cust_ProjectDB cust_projectDB = new Cust_ProjectDB();
 	List projectHistoryList1 = null;
 	if (request.getAttribute("projectHistoryList") == null) {
-	projectHistoryList1 = cust_projectDB.GetProjectHistoryList(name);
+	projectHistoryList1 = cust_projectDB.GetProjectHistoryList(custID);
 	}else{
 	projectHistoryList1 = (List) request.getAttribute("projectHistoryList");
 	} 

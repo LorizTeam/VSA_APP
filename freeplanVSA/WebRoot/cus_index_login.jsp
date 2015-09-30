@@ -1,6 +1,11 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%> 
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+<%	String statusProj = "";
+	if(session.getAttribute("statusProj") != null){
+	statusProj = session.getAttribute("statusProj").toString();
+	}
+ %>
 <!--
 Au<!--
 Author: W3layouts
@@ -105,11 +110,28 @@ $("span.menu").click(function() {
 						<h2>
 							Name Customer
 						</h2>
+						<%if(statusProj.equals("01")){ %>
 						<h3>
 							แบบบ้าน :
-							<small>บ้านเดี่ยว 2 ชั้น <a href="http://localhost:8080/freeplanVSA/home/cus_overview.jsp">ดู</a>
+							<small>บ้านเดี่ยว 2 ชั้น 
+							 <a href="http://localhost:8080/freeplanVSA/home/cus_overview.jsp">ดู</a>
 							</small>
 						</h3>
+						<%} else if (statusProj.equals("02")) {%>
+						<h3>
+							แบบบ้าน :
+							<small>รอการอนุมัติ
+							</small>
+						</h3>
+						<%} else {%>
+						<h3>
+							แบบบ้าน :
+							<small>
+							 <a href="http://localhost:8080/freeplanVSA/home/cus_overview.jsp">ขอแบบบ้าน</a>
+							</small>
+						</h3>
+						<%}%>
+						
 						<a class="btn-login" href="http://localhost:8080/freeplanVSA/home/cus_profile.jsp">แก้ไขข้อมูลสมาชิก</a>
 						<a class="btn-out" href="http://localhost:8080/freeplanVSA/cus_index.jsp">ออกจากระบบ</a>
 					</div>

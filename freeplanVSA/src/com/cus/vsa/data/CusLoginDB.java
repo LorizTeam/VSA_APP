@@ -39,7 +39,7 @@ public class CusLoginDB {
 		String sql = "SELECT a.username, a.password, a.name, a.type, b.customer_id " +
 				     "FROM login_master a inner join customer_master b on(b.customer_email = a.username) " +
 				     "WHERE username = '"+userName+"' " +
-				     "AND password ='"+encrypPass+"' " ;
+				     "AND password = '"+encrypPass+"' " ;
 		PreparedStatement pstmt = connDB.prepareStatement(sql);
 
 		rs = pstmt.executeQuery();
@@ -51,6 +51,25 @@ public class CusLoginDB {
 			cusLoginForm.setType(rs.getString("type"));
 			cusLoginForm.setName(rs.getString("name"));
 		}
+		// rs.close();
+		
+		String statusProj = "";
+		
+		sql = "SELECT c.project_status " +
+	     "FROM login_master a inner join customer_master b on(b.customer_email = a.username) " +
+	     "inner join projecthd c on (c.customer_id = b.customer_id) " +
+	     "WHERE username = '"+userName+"' " +
+	     "AND password = '"+encrypPass+"' " ;
+		
+		pstmt = connDB.prepareStatement(sql);
+		rs = pstmt.executeQuery();
+		if(rs.next()) { 
+			statusProj = rs.getString("project_status");
+		if(statusProj==null) statusProj = "";
+		cusLoginForm.setStatusProj(statusProj);  
+		}
+		rs.close();
+		pstmt.close();
 		
 		if(connDB != null) {
 			connDB.close();
