@@ -15,7 +15,7 @@ public Connection getConnectMYSql()  throws Exception, IOException {
 			Class.forName ("com.mysql.jdbc.Driver");
 			//Class.forName ("org.gjt.mm.mysql.Driver");
 			String dbUserName = "root";
-			String dbPassword = "1234";
+			String dbPassword = "";
 			String url = "jdbc:mysql://localhost/vsadb?useUnicode=true&characterEncoding=UTF-8";
 
 			conn = DriverManager.getConnection (url, dbUserName, dbPassword);

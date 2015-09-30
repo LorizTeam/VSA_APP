@@ -90,6 +90,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</blockquote>
 		<hr/>
 		<form class="text-center" action="">
+			<h4>ที่อยู่</h4>
+			<textarea class="form-control" style="max-width:100%;min-width:100%; max-height:150px;min-height:150px;"></textarea>
 			<label> 
 				<input type="checkbox" required>
 				ยอมรับเงื่อนไข และยืนยันการขอแบบบ้าน ฟรี 

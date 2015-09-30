@@ -26,7 +26,7 @@
 						 </div>
 				  </div>
 				 <div class="icon-info">
-						 <h4><a href="#">การขอแบบบ้าน ง่าย</a></h4>							
+						 <h4><a href="#">การขอแบบบ้านทำได้ง่าย</a></h4>							
 						 <p>ขั้นตอนการขอแบบบ้านง่ายมาก ใครก็สามารถขอได้ แค่ไม่กี่ขั้นก็ท่านก็สามารถได้รับแบบบ้านไปใช้สร้างบ้านของท่าน ที่สำคัญคือ "ฟรี"</p>
 				 </div>
 				 <div class="clearfix"></div>
@@ -49,7 +49,7 @@
 			 <div class="col-md-6 futr-grid futr1">
 				 <div class="icon-pic">
 						<div class="icon text-center">
-						 <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
+						 <span class="glyphicon  glyphicon-thumbs-up" aria-hidden="true"></span>
 						 </div>
 				  </div>
 				 <div class="icon-info">
@@ -181,20 +181,20 @@
 				 <a href="#"><img src="home/images/b2.jpg" class="img-responsive" alt=""/></a> 
 				 <h4><a href="#">วิธีการการขอแบบบ้านฟรี</a></h4>
 					<span>Mar 12 | 2015</span>
-				 <p>- สมัครสมาชิกกับเว็บของเรา หรือ<a href="cus_register.jsp">คลิ๊กที่นี่</a> เพื่อสมัครสมาชิก</p>
+				 <p>- สมัครสมาชิกกับเว็บของเรา หรือ<a href="cus_register.jsp">คลิกที่นี่</a> เพื่อสมัครสมาชิก</p>
 				 <p>- จากแบบบ้านทั้งหมดที่เรามีให้เลือกแบบบ้านที่ถูกใจ แล้วคลิ๊กขอแบบบ้าน</p>
 				 <p>- นำเอกสารที่แจ้ง ส่งอีเมลมาที่ <a href="mailto:FreePlan@Home-me.co.th">FreePlan@Home-me.co.th</a> แล้วรอห้เจ้าหน้าที่ตรวจสอบเอกสาร</p>
-				 <p>- รอรับแบบบ้านฟรี "ไม่มีค่าใช้จ่ายเพิ่มเติม"</p>			 
+				 <p>- รอรับแบบบ้านฟรี "ไม่มีค่าใช้จ่ายเพิ่มเติม"</p>
 			 </div>
 			 <div class="col-md-6 blog-grid">
 				 <a href="#"><img src="home/images/b1.jpg" class="img-responsive" alt=""/> </a> 
 				 <h4><a href="#">วิธีใช้งานระบบ Home-Me Cost Control</a></h4>
 					<span>Mar 12 | 2015</span>
-				 <p>- วิธีเข้าใช้งานระบบ <a href="#">คลิ๊ก<i class="glyphicon glyphicon-chevron-right"></i></a></p>
-				 <p>- วิธีเพิ่มค่าใช้จ่าย เมื่อซื้อวัสดุ <a href="#">คลิ๊ก<i class="glyphicon glyphicon-chevron-right"></i></a></p>
-				 <p>- วิธีใช้งานภาพรวมการสร้าง <a href="#">คลิ๊ก<i class="glyphicon glyphicon-chevron-right"></i></a></p>
-				 <p>- วิธีเช็คประวัติการเพิ่มค่าใช้จ่าย <a href="#">คลิ๊ก<i class="glyphicon glyphicon-chevron-right"></i></a></p>
-				 <p>- ช่องทางการติดต่อเจ้าหน้าที่เมื่อเกิดปัญหา <a href="#">คลิ๊ก<i class="glyphicon glyphicon-chevron-right"></i></a></p>
+				 <p>- วิธีเข้าใช้งานระบบ <a href="#">คลิก<i class="glyphicon glyphicon-chevron-right"></i></a></p>
+				 <p>- วิธีเพิ่มค่าใช้จ่าย เมื่อซื้อวัสดุ <a href="#">คลิก<i class="glyphicon glyphicon-chevron-right"></i></a></p>
+				 <p>- วิธีใช้งานภาพรวมการสร้าง <a href="#">คลิก<i class="glyphicon glyphicon-chevron-right"></i></a></p>
+				 <p>- วิธีเช็คประวัติการเพิ่มค่าใช้จ่าย <a href="#">คลิก<i class="glyphicon glyphicon-chevron-right"></i></a></p>
+				 <p>- ช่องทางการติดต่อเจ้าหน้าที่เมื่อเกิดปัญหา <a href="#">คลิก<i class="glyphicon glyphicon-chevron-right"></i></a></p>
 				 
 			 </div>
 			<div class="clearfix"></div>
