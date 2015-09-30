@@ -149,17 +149,18 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
             })
         })
         
-        function getProject(tprojID, tprojName, tprojEmpID, tprojCusID, tprojCusName, tprojCreateDate, tprojType, tprojStatus, tprojAddr) {
+        function getProject(tprojID, tprojName, tprojEmpID, tprojCusID, tprojCusName, tprojCreateDate, tprojType, tprojStatus, tprojAddr, tprojEmail) {
 				
 				document.projectForm.projectID.value 			= tprojID;
 				document.projectForm.projectName.value 			= tprojName;	
-				document.projectForm.employeeID.value 			= tprojEmpID;
+			//	document.projectForm.employeeID.value 			= tprojEmpID;
 				document.projectForm.customerID.value 			= tprojCusID;
 				document.projectForm.customerName.value 		= tprojCusName;
 				document.projectForm.createDate.value 			= tprojCreateDate;	
 				document.projectForm.projectType.value 			= tprojType;
 				document.projectForm.projectStatus.value 		= tprojStatus;
 				document.projectForm.projectAddress.value 		= tprojAddr;
+				document.projectForm.customerEmail.value 		= tprojEmail;
 	}
 	function submitView(projectID) {        
         document.projectForm.action="/freeplanVSA/mainProjectDT.jsp?projectID="+projectID+" ";
@@ -210,8 +211,9 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 		
 		</div> &nbsp;
 		<div class="input-control modern text">
-		    <input type="text" id="projectName" name="projectName" size="15" maxlength="35" style="height: 2em;" required/>
-		    <span class="label">ชื่อโครงการ</span>
+		    <input type="hidden" id="projectName" name="projectName" size="15" maxlength="35" style="height: 2em;" required/>
+		    <input type="text" id="customerEmail" name="customerEmail" size="15" maxlength="35" style="height: 2em;" required/>
+		    <span class="label">อีเมลล์</span>
 		
 		</div> &nbsp;
         <div class="input-control modern text">
@@ -275,7 +277,8 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 									<thead>
 									<tr>
 										<th><center>ลำดับ</center></th>
-										<th><center>รหัส ชื่อ (โครงการ)</center></th>
+										<th><center>รหัส(โครงการ)</center></th>
+										<th><center>อีเมลล์</center></th>
 										<th><center>รหัสพนักงาน</center></th>
 										<th><center>ชื่อลูกค้า</center></th>
 										<th><center>วันที่เริ่มโครงการ</center></th>
@@ -297,8 +300,10 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
                 						onclick="submitView('<%=proj.getProjectID()%>');" /> <%=x%></td>
                 						<td align="center"><a href="javascript:getProject('<%=proj.getProjectID()%>','<%=proj.getProjectName()%>',
                 						'<%=proj.getEmployeeID()%>','<%=proj.getCustomerID()%>','<%=proj.getCustomerName()%>',
-                						'<%=proj.getCreateDate()%>','<%=proj.getProjectType()%>','<%=proj.getProjectStatus()%>','<%=proj.getProjectAddress()%>');">
-                						<%=proj.getProjectID()%> <%=proj.getProjectName()%></a></td>
+                						'<%=proj.getCreateDate()%>','<%=proj.getProjectType()%>','<%=proj.getProjectStatus()%>',
+                						'<%=proj.getProjectAddress()%>','<%=proj.getCustomerEmail()%>');">
+                						<%=proj.getProjectID()%> </a></td>
+                						<td align="center"><%=proj.getCustomerEmail()%></td>
                 						<td align="center"><%=proj.getEmployeeID()%></td>
                 						<td align="center"><%=proj.getCustomerName()%></td>
                 						<td align="center"><%=proj.getCreateDate()%></td> 

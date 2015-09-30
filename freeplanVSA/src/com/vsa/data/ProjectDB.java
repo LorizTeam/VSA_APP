@@ -23,16 +23,17 @@ public class ProjectDB {
 	public List GetProjectHDList(String projectID, String projectName) 
 	throws Exception { //02-07-2015
 		List projectHDList = new ArrayList();
-		String employeeID = "", employeeName = "", customerID = "", customerName = "", projectType = "", galleryName = "", projectStatus = "", projectAddress = "", createDate = "";
+		String employeeID = "", employeeName = "", customerID = "", customerName = "", customerEmail = "",
+		projectType = "", galleryName = "", projectStatus = "", projectAddress = "", createDate = "";
 
 		try {
 		
 			conn = agent.getConnectMYSql();
 			
 			String sqlStmt = "SELECT project_id, project_name, a.employee_id, a.customer_id, create_date, project_type, project_status, project_address, " +
-					"b.employee_name, c.customer_name, d.galleryname " +
+					"b.employee_name, c.customer_name, c.customer_email, d.galleryname " +
 			"FROM projecthd a " +
-			"INNER JOIN employee_master b on(b.employee_id = a.employee_id) " +
+			"LEFT JOIN employee_master b on(b.employee_id = a.employee_id) " +
 			"INNER JOIN customer_master c on(c.customer_id = a.customer_id) " +
 			"INNER JOIN gallery_master d on(d.galleryid = a.project_type) " +
 			"WHERE "; 
@@ -47,7 +48,7 @@ public class ProjectDB {
 			while (rs.next()) {
 				projectID 			= rs.getString("project_id");
 				if (rs.getString("project_name") != null) 	projectName = rs.getString("project_name"); else projectName = "";
-				employeeID 			= rs.getString("employee_id");
+				employeeID 			= rs.getString("employee_id"); if(employeeID.equals("0")) employeeID = "";
 				if (rs.getString("employee_name") != null) 	employeeName = rs.getString("employee_name"); else employeeName = "";
 				customerID 			= rs.getString("customer_id");
 				if (rs.getString("customer_name") != null) 	customerName = rs.getString("customer_name"); else customerName = "";
@@ -56,12 +57,13 @@ public class ProjectDB {
 				galleryName			= rs.getString("galleryname");
 				projectStatus 		= rs.getString("project_status"); 
 				projectAddress 		= rs.getString("project_address");
+				customerEmail		= rs.getString("customer_email");
 				
 			//	createDate = dateUtil.CnvToDDMMYYYY1(createDate);
 				if(createDate!=null) createDate = dateUtil.CnvToDDMMYYYY(createDate);
 				
 				projectHDList.add(new ProjectForm(projectID, projectName, employeeID, employeeName, customerID, customerName, createDate, 
-						projectType, galleryName, projectStatus, projectAddress));
+						projectType, galleryName, projectStatus, projectAddress, customerEmail));
 			}
 			rs.close();
 			pStmt.close();

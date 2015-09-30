@@ -11,7 +11,7 @@ import java.util.List;
 import com.cus.vsa.form.CusLoginForm;
 import com.vsa.util.DBConnect;
 
-public class CusLoginDB {
+public class CusLoginDB { 
 	
 	public String encrypt(String x) throws Exception {		
 		String storepass = "";		
@@ -77,6 +77,7 @@ public class CusLoginDB {
 		
 		return cusLoginForm;
 	}
+	 
 	public void registerNew(String username, String password, String name, String type, String date, String tel) throws Exception {
 		String encrypPass = encrypt(password);
 

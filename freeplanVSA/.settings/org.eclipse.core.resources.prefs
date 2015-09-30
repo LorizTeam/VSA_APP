@@ -1,4 +1,4 @@
-#Mon Sep 28 13:06:14 ICT 2015
+#Wed Sep 30 13:56:40 ICT 2015
 eclipse.preferences.version=1
 encoding//WebRoot/cus_main.jsp=UTF-8
 encoding//src/com/cus/vsa/action/CusLoginAction.java=UTF-8
@@ -6,8 +6,10 @@ encoding//src/com/cus/vsa/action/CusRegisterAction.java=UTF-8
 encoding//src/com/cus/vsa/action/EditProfileAction.java=UTF-8
 encoding//src/com/cus/vsa/action/NotificationAction.java=UTF-8
 encoding//src/com/cus/vsa/action/NotificationLoginAction.java=UTF-8
+encoding//src/com/cus/vsa/action/RequestPlanAction.java=UTF-8
 encoding//src/com/cus/vsa/form/CusLoginForm.java=UTF-8
 encoding//src/com/cus/vsa/form/NotificationForm.java=UTF-8
+encoding//src/com/cus/vsa/form/RequestPlanForm.java=UTF-8
 encoding//src/com/vsa/action/CustomerAction.java=UTF-8
 encoding//src/com/vsa/action/CustomerProjectAction.java=UTF-8
 encoding//src/com/vsa/action/CustomerStartAction.java=UTF-8

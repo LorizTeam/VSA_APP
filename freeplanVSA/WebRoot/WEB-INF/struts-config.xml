@@ -15,6 +15,7 @@
   	<!-- customer begin -->
   	<form-bean name="cusLoginForm" type="com.cus.vsa.form.CusLoginForm" />
   	<form-bean name="notificationForm" type="com.cus.vsa.form.NotificationForm" />
+  	<form-bean name="requestPlanForm" type="com.cus.vsa.form.RequestPlanForm" />
   	
   </form-beans>
   <global-exceptions />
@@ -251,6 +252,20 @@
       <forward name="error" path="/cus_index.jsp" /> 
     </action>
   <!--################################  Login  Contact (Notification)    #################################-->
+  
+  <!--################################   Request Plan (Project & Notification)    #################################-->
+   <action
+      attribute="requestPlanForm"
+      input="/cus_request_plan.jsp"
+      name="requestPlanForm"
+      path="/requestPlan"
+      scope="request"
+      type="com.cus.vsa.action.RequestPlanAction" >
+      
+      <forward name="success" path="/cus_index_login.jsp" /> 
+      <forward name="nologin" path="/cus_register.jsp" />
+    </action>
+  <!--################################  Request Plan (Project & Notification)    #################################-->
   
   <!--********************************     Customer    	********************************-->
   

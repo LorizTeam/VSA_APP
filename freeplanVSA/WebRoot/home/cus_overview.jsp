@@ -107,8 +107,8 @@ function hideURLbar() {
 				
 				<%  for(int a=0; a<count; a++){
 				    grpName = cust_projectDB.GetGrpName(grp[a]);
-				    String amount = cust_projectDB.GetProgress(grp[a]);
-				    String amountCust = cust_projectDB.GetProgressCust(grp[a]);
+				    String amount = cust_projectDB.GetProgress(grp[a],custID);
+				    String amountCust = cust_projectDB.GetProgressCust(grp[a],custID);
 				    String progress = Float.toString((Float.parseFloat(amountCust)*100)/Float.parseFloat(amount));
 				%>
 				<h4>
@@ -120,8 +120,8 @@ function hideURLbar() {
 				</h4>
 				<%} %>
 				<%
-					String amountSum = cust_projectDB.GetProgressSum();
-				    String amountCustSum = cust_projectDB.GetProgressCustSum();
+					String amountSum = cust_projectDB.GetProgressSum(custID);
+				    String amountCustSum = cust_projectDB.GetProgressCustSum(custID);
 				    String progressSum = Float.toString((Float.parseFloat(amountCustSum)*100)/Float.parseFloat(amountSum));
 				%> 
 				<h4>

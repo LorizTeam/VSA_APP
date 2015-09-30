@@ -30,6 +30,7 @@ public class ProjectForm extends ActionForm {
 	private String amountTotal;
 	private String unit;
 	private String structure;
+	private String customerEmail;
 	
 	private String add;
 	private String update;
@@ -39,7 +40,7 @@ public class ProjectForm extends ActionForm {
 	public ProjectForm(){};
 	public ProjectForm (String projectID, String projectName, String employeeID, String employeeName,
 			String customerID, String customerName, String createDate, String projectType, String galleryName, 
-			String projectStatus, String projectAddress){
+			String projectStatus, String projectAddress, String customerEmail){
 		super();
 		this.projectID 				= projectID;
 		this.projectName			= projectName;
@@ -52,6 +53,7 @@ public class ProjectForm extends ActionForm {
 		this.galleryName			= galleryName;
 		this.projectStatus 			= projectStatus;
 		this.projectAddress			= projectAddress;
+		this.customerEmail			= customerEmail;
 }
 	public ProjectForm(String projectID, String projectName, String structure, String materialCode, String materialName,
 			String weight, String amount, String amountTotal, String unit){
@@ -210,5 +212,11 @@ public class ProjectForm extends ActionForm {
 	}
 	public void setGalleryName(String galleryName) {
 		this.galleryName = galleryName;
+	}
+	public String getCustomerEmail() {
+		return customerEmail;
+	}
+	public void setCustomerEmail(String customerEmail) {
+		this.customerEmail = customerEmail;
 	}
 }

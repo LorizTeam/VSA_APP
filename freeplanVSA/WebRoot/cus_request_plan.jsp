@@ -1,6 +1,15 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%> 
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+<%@ page import="com.vsa.form.CustomerProjectForm" %>
+<%@ page import="com.vsa.data.Cust_ProjectDB" %> 
+<%
+	String galleryID = request.getParameter("galleryid").toString();
+	Cust_ProjectDB cust_projectDB = new Cust_ProjectDB();
+	List galleryHDList = null;
+	galleryHDList = cust_projectDB.GetGalleryUseList(galleryID);
+	
+ %>
 <!--
 Author: W3layouts
 Author URL: http://w3layouts.com
@@ -50,20 +59,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="col-md-5">
 				<img class="img-responsive" src="home/images/b2.jpg">
 			</div>
+			<% for (Iterator iter = galleryHDList.iterator(); iter.hasNext();) {
+			CustomerProjectForm custp = (CustomerProjectForm) iter.next();
+			String galleryName = custp.getGalleryName();
+			String galleryAmount = custp.getGalleryAmount();
+			String galleryWork = custp.getGalleryWork();
+			%>
 			<div  class="col-md-7">
 				<h4 class="text-primary">รายละเอียด</h4>
 				<blockquote >			
 						<h5 class="text-primary">ประเภท</h5>
-						<h5>- บ้านเดี่ยว 2 ชั้น</h5>						
+						<h5>- <%=galleryName%></h5>						
 					
 						<h5 class="text-primary">ราคาก่อสร้าง โดยประมาณ</h5>
-						<h5>- 1,200,000 บาท</h5>		
+						<h5>- <%=galleryAmount%> บาท</h5>		
 					
 						<h5 class="text-primary">เวลาก่อสร้างโดยประมาณ</h5>
-						<h5>- 6 เดือน</h5>				
+						<h5>- <%=galleryWork%> เดือน</h5>				
 				</blockquote>
 			</div>
-			
+			<%} %>
 		</div>
 		<h4 id="document" class="text-primary">เอกสารที่ต้องใช้ประกอบการขอ</h4>
 		<blockquote >			
@@ -89,9 +104,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<h5>- เมื่อได้รับแบบบ้านที่ Home me ส่งให้ ลูกค้าสามารถใช้งานระบบ Home-Me Cost Control ได้ทันที</h5>				
 		</blockquote>
 		<hr/>
-		<form class="text-center" action="">
+		<html:form action="/requestPlan" styleClass="text-center">
 			<h4>ที่อยู่</h4>
-			<textarea class="form-control" style="max-width:100%;min-width:100%; max-height:150px;min-height:150px;"></textarea>
+			<input type="hidden" id="galleryID" name="galleryID" value="<%=galleryID%>" />
+			<textarea id="address" name="address" class="form-control" style="max-width:100%;min-width:100%; max-height:150px;min-height:150px;" required></textarea>
 			<label> 
 				<input type="checkbox" required>
 				ยอมรับเงื่อนไข และยืนยันการขอแบบบ้าน ฟรี 
@@ -100,7 +116,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<br/>
 			<input type="submit" class="btn btn-info" value="ขอแบบบ้านนี้"aria-hidden="true">
 			<a href="cus_index_login.jsp"class="btn btn-danger">ยกเลิก</a>
-		</form>
+		</html:form>
 		</div>
 		
 		</div>

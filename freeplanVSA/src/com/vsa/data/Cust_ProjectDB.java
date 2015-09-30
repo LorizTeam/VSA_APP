@@ -99,6 +99,43 @@ public class Cust_ProjectDB {
 		}
 		return galleryHDList;
 	 }
+	public List GetGalleryUseList(String galleryID) 
+	throws Exception { //30-05-2014
+		List galleryHDList = new ArrayList();
+		String galleryName = "", galleryAmount = "", galleryWork = "";
+		DecimalFormat df1 = new DecimalFormat("#,###,##0.##");
+		DecimalFormat df2 = new DecimalFormat("#,###,##0.00");
+		try {
+		
+			conn = agent.getConnectMYSql();
+			
+			String sqlStmt = "SELECT galleryname, description, amount, timeuse " +
+				"From gallery_master " +
+			"WHERE "; 
+			if(!galleryID.equals("")) sqlStmt = sqlStmt+ "galleryid = '"+galleryID+"' AND "; 
+			sqlStmt = sqlStmt + "galleryid <> '' group by galleryid";
+			
+			//System.out.println(sqlStmt);				
+			pStmt = conn.createStatement();
+			rs = pStmt.executeQuery(sqlStmt);	
+			while (rs.next()) {  
+				if (rs.getString("galleryname") != null) 		galleryName = rs.getString("galleryname"); else galleryName = "";
+				galleryAmount	= rs.getString("amount"); 
+				galleryWork 	= rs.getString("timeuse");
+				
+				galleryAmount 	= df2.format(Float.parseFloat(galleryAmount));
+				galleryWork 	= df1.format(Float.parseFloat(galleryWork));
+				
+				galleryHDList.add(new CustomerProjectForm(galleryName, galleryAmount, galleryWork));
+			}
+			rs.close();
+			pStmt.close();
+			conn.close();
+		} catch (SQLException e) {
+		    throw new Exception(e.getMessage());
+		}
+		return galleryHDList;
+	 }
 	public String[] GetGrpList(int count, String customerID) 
 	throws Exception { //30-05-2014
 		String getList[] = new String[count];
@@ -186,7 +223,7 @@ public class Cust_ProjectDB {
 		}
 		return grpName;
 	 }
-	public String GetProgress(String grpName) 
+	public String GetProgress(String grpName, String custID) 
 	throws Exception { //30-05-2014
 		 String amount = "0"; 
 		try {
@@ -197,7 +234,7 @@ public class Cust_ProjectDB {
 			"FROM projecthd a INNER JOIN projectdt b on(b.project_id = a.project_id) " +
 			"WHERE ";  
 			if(!grpName.equals("")) sqlStmt = sqlStmt+ "b.structure = '"+grpName+"' AND "; 
-			
+			if(!custID.equals("")) sqlStmt = sqlStmt+ "a.customer_id = '"+custID+"' AND ";
 			sqlStmt = sqlStmt + "a.project_id <> '' group by a.project_id, b.structure";
 			
 			//System.out.println(sqlStmt);				
@@ -215,7 +252,7 @@ public class Cust_ProjectDB {
 		}
 		return amount;
 	 }
-	public String GetProgressCust(String grpName) 
+	public String GetProgressCust(String grpName, String custID) 
 	throws Exception { //30-05-2014
 		 String amountCust = "0"; 
 		try {
@@ -226,6 +263,7 @@ public class Cust_ProjectDB {
 			"FROM projecthd a INNER JOIN projectdt b on(b.project_id = a.project_id) " +
 			"WHERE ";  
 			if(!grpName.equals("")) sqlStmt = sqlStmt+ "b.structure = '"+grpName+"' AND "; 
+			if(!custID.equals("")) sqlStmt = sqlStmt+ "a.customer_id = '"+custID+"' AND "; 
 			
 			sqlStmt = sqlStmt + "a.project_id <> '' group by a.project_id, b.structure";
 			
@@ -244,7 +282,7 @@ public class Cust_ProjectDB {
 		}
 		return amountCust;
 	 }
-	public String GetProgressSum() 
+	public String GetProgressSum(String custID) 
 	throws Exception { //30-05-2014
 		 String amount = "0"; 
 		try {
@@ -254,6 +292,7 @@ public class Cust_ProjectDB {
 			String sqlStmt = "SELECT sum(b.amounttotal) as sumgrp " +
 			"FROM projecthd a INNER JOIN projectdt b on(b.project_id = a.project_id) " +
 			"WHERE ";     
+			if(!custID.equals("")) sqlStmt = sqlStmt+ "a.customer_id = '"+custID+"' AND ";
 			sqlStmt = sqlStmt + "a.project_id <> '' group by a.project_id";
 			
 			//System.out.println(sqlStmt);				
@@ -271,7 +310,7 @@ public class Cust_ProjectDB {
 		}
 		return amount;
 	 }
-	public String GetProgressCustSum() 
+	public String GetProgressCustSum(String custID) 
 	throws Exception { //30-05-2014
 		 String amountCust = "0"; 
 		try {
@@ -281,6 +320,7 @@ public class Cust_ProjectDB {
 			String sqlStmt = "SELECT sum(b.amounttotal_cust) as sumgrp " +
 			"FROM projecthd a INNER JOIN projectdt b on(b.project_id = a.project_id) " +
 			"WHERE ";  
+			if(!custID.equals("")) sqlStmt = sqlStmt+ "a.customer_id = '"+custID+"' AND ";
 			sqlStmt = sqlStmt + "a.project_id <> '' group by a.project_id";
 			
 			//System.out.println(sqlStmt);				

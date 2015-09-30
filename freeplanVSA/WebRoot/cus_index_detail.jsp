@@ -159,7 +159,7 @@
 				       <h4>รายละเอียด</h4><br/>
 				       <p><%=galleryName%></p>			      
 				       <hr/>				
-				       <a class="btn btn-info" href="cus_request_plan.jsp">แจ้งขอแบบบ้าน</a>				     
+				       <a class="btn btn-info" href="cus_request_plan.jsp?galleryid=<%=galleryID%>">แจ้งขอแบบบ้าน</a>				     
 				       <a class="uk-modal-close btn btn-danger" href="#" >ปิด</a>
 				       
 				    </div>
