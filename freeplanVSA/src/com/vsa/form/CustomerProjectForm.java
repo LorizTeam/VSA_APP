@@ -27,6 +27,10 @@ public class CustomerProjectForm extends ActionForm {
 	private String dateTime;
 	private String qtyUse;
 	
+	private String galleryName;
+	private String galleryAmount;
+	private String galleryWork;
+	
 	private String add;
 	private String update;
 	private String delete;
@@ -54,6 +58,12 @@ public class CustomerProjectForm extends ActionForm {
 		this.amountTotal 	= amountTotal;
 		this.dateTime		= dateTime;
 		this.qtyUse			= qtyUse;
+	}
+	public CustomerProjectForm (String galleryName, String galleryAmount, String galleryWork){
+		super();
+		this.galleryName 	= galleryName;
+		this.galleryAmount 	= galleryAmount;
+		this.galleryWork 	= galleryWork; 
 	}
 	public void reset() {
 		this.custID = "";
@@ -173,6 +183,24 @@ public class CustomerProjectForm extends ActionForm {
 	}
 	public void setQtyUse(String qtyUse) {
 		this.qtyUse = qtyUse;
+	}
+	public String getGalleryName() {
+		return galleryName;
+	}
+	public void setGalleryName(String galleryName) {
+		this.galleryName = galleryName;
+	}
+	public String getGalleryAmount() {
+		return galleryAmount;
+	}
+	public void setGalleryAmount(String galleryAmount) {
+		this.galleryAmount = galleryAmount;
+	}
+	public String getGalleryWork() {
+		return galleryWork;
+	}
+	public void setGalleryWork(String galleryWork) {
+		this.galleryWork = galleryWork;
 	}
 	 
 }

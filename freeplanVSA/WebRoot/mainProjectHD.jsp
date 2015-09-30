@@ -32,6 +32,9 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 	customerList1 = (List) request.getAttribute("customerList");
 	}
 	
+	GalleryDB galleryDB = new GalleryDB();
+	List galleryList = galleryDB.GetGallery();
+	
 	String menu = "project";
 	request.setAttribute("menu", menu);
 %>	
@@ -235,10 +238,15 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
         <label style="font-size: 105%; font-weight: bold; margin-top: 1.7em;"> ชนิดโครงการ</label>  &nbsp;
 
         <div class="input-control select" style="margin-top: 0.7em;">
-		<select id="projectType" name="projectType" class="input-control text small-input" > 
-        	 <option value="01">บ้านเดี่ยว </option>
-        	 <option value="02">ทาวน์เฮ้าส์ </option>
-        	 <option value="03">อาคารพาณิชย์ </option>
+		<select id="projectType" name="projectType" class="input-control text small-input" required> 
+        	 <% for (Iterator iterItem = galleryList.iterator(); iterItem.hasNext();) {
+	   					GalleryForm galleryInfo = (GalleryForm) iterItem.next();
+	       	%>
+        		<option value="<%=galleryInfo.getGalleryCode()%>">
+        			<%=galleryInfo.getGalleryName()%>
+        		</option>
+			<% 		}  
+			%>
         </select>
         </div>&nbsp;
         <label style="font-size: 105%; font-weight: bold; margin-top: 1.7em;"> สถานะโครงการ</label>  &nbsp;
@@ -293,14 +301,9 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
                 						<%=proj.getProjectID()%> <%=proj.getProjectName()%></a></td>
                 						<td align="center"><%=proj.getEmployeeID()%></td>
                 						<td align="center"><%=proj.getCustomerName()%></td>
-                						<td align="center"><%=proj.getCreateDate()%></td>
-                						<%if(proj.getProjectType().equals("01")){ %>
-                							<td align="center">บ้านเดียว</td>
-                						<%}else if(proj.getProjectType().equals("02")) {%>
-                							<td align="center">ทาวน์เฮ้าส์</td>
-                						<%}else if(proj.getProjectType().equals("03")) {%>
-                							<td align="center">อาคารพาณิชย์</td>
-                						<%} %>
+                						<td align="center"><%=proj.getCreateDate()%></td> 
+                						<td align="center"><%=proj.getGalleryName()%></td>
+                						 
                 						<%if(proj.getProjectStatus().equals("01")){ %>
                 							<td align="center">Active</td>
                 						<%}else if(proj.getProjectStatus().equals("02")) {%>

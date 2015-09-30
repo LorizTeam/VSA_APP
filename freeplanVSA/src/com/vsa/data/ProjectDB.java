@@ -23,17 +23,18 @@ public class ProjectDB {
 	public List GetProjectHDList(String projectID, String projectName) 
 	throws Exception { //02-07-2015
 		List projectHDList = new ArrayList();
-		String employeeID = "", employeeName = "", customerID = "", customerName = "", projectType = "", projectStatus = "", projectAddress = "", createDate = "";
+		String employeeID = "", employeeName = "", customerID = "", customerName = "", projectType = "", galleryName = "", projectStatus = "", projectAddress = "", createDate = "";
 
 		try {
 		
 			conn = agent.getConnectMYSql();
 			
 			String sqlStmt = "SELECT project_id, project_name, a.employee_id, a.customer_id, create_date, project_type, project_status, project_address, " +
-					"b.employee_name, c.customer_name " +
+					"b.employee_name, c.customer_name, d.galleryname " +
 			"FROM projecthd a " +
 			"INNER JOIN employee_master b on(b.employee_id = a.employee_id) " +
 			"INNER JOIN customer_master c on(c.customer_id = a.customer_id) " +
+			"INNER JOIN gallery_master d on(d.galleryid = a.project_type) " +
 			"WHERE "; 
 			if(!projectID.equals("")) sqlStmt = sqlStmt+ "project_id like '"+projectID+"%' AND ";
 			if(!projectName.equals("")) sqlStmt = sqlStmt+ "project_name like '"+projectName+"%' AND ";
@@ -52,6 +53,7 @@ public class ProjectDB {
 				if (rs.getString("customer_name") != null) 	customerName = rs.getString("customer_name"); else customerName = "";
 				createDate			= rs.getString("create_date");
 				projectType 		= rs.getString("project_type"); 
+				galleryName			= rs.getString("galleryname");
 				projectStatus 		= rs.getString("project_status"); 
 				projectAddress 		= rs.getString("project_address");
 				
@@ -59,7 +61,7 @@ public class ProjectDB {
 				if(createDate!=null) createDate = dateUtil.CnvToDDMMYYYY(createDate);
 				
 				projectHDList.add(new ProjectForm(projectID, projectName, employeeID, employeeName, customerID, customerName, createDate, 
-						projectType, projectStatus, projectAddress));
+						projectType, galleryName, projectStatus, projectAddress));
 			}
 			rs.close();
 			pStmt.close();

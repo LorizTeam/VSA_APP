@@ -8,7 +8,7 @@
 <%@ page import="com.vsa.data.Cust_ProjectDB" %>
 <%@ page import="com.vsa.util.DBConnect" %>
 <%@ page import="java.sql.*" %>
-<% 	List matList = null;
+<% 	List matList = null, galleryHDList = null;
 	int count = 0; String grp[] = null;  String grpName = "", custID = "";
 	List list = new ArrayList();
 	
@@ -17,6 +17,7 @@
 	}
 	
 	Cust_ProjectDB cust_projectDB = new Cust_ProjectDB();
+	galleryHDList = cust_projectDB.GetGalleryList(custID);
 	
 	count = cust_projectDB.GetGrp(custID);
 	grp = cust_projectDB.GetGrpList(count, custID);
@@ -163,13 +164,19 @@ function hideURLbar() {
 			<h3>
 				รายละเอียด
 			</h3>
+			<% for (Iterator iter = galleryHDList.iterator(); iter.hasNext();) {
+				CustomerProjectForm custp = (CustomerProjectForm) iter.next();
+				String galleryName = custp.getGalleryName();
+				String galleryAmount = custp.getGalleryAmount();
+				String galleryWork = custp.getGalleryWork();
+			%>
 			<blockquote class="row">
 				<div class="col-md-4">
 					<h4>
 						ประเภท
 					</h4>
 					<h4>
-						<small> บ้านเดี่ยว 2 ชั้น</small>
+						<small> <%=galleryName%></small>
 					</h4>
 				</div>
 				<div class="col-md-4">
@@ -177,7 +184,7 @@ function hideURLbar() {
 						ราคาก่อสร้าง โดยประมาณ
 					</h4>
 					<h4>
-						<small> 1,200,000 บาท</small>
+						<small> <%=galleryAmount%> บาท</small>
 					</h4>
 				</div>
 				<div class="col-md-4">
@@ -185,10 +192,11 @@ function hideURLbar() {
 						เวลาก่อสร้างโดยประมาณ
 					</h4>
 					<h4>
-						<small> 6 เดือน</small>
+						<small> <%=galleryWork%> เดือน</small>
 					</h4>
 				</div>
 			</blockquote>
+			<%} %>
 			<!-- Accorion -->
 			<blockquote class="row ">
 				<h3>

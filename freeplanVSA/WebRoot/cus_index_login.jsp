@@ -119,15 +119,15 @@ $("span.menu").click(function() {
 						</h3>
 						<%} else if (statusProj.equals("02")) {%>
 						<h3>
-							แบบบ้าน :
+							สถานะ :
 							<small>รอการอนุมัติ
 							</small>
 						</h3>
 						<%} else {%>
 						<h3>
-							แบบบ้าน :
+							สถานะ :
 							<small>
-							 <a href="http://localhost:8080/freeplanVSA/home/cus_overview.jsp">ขอแบบบ้าน</a>
+							 ยังไม่มีการขอแบบบ้าน
 							</small>
 						</h3>
 						<%}%>

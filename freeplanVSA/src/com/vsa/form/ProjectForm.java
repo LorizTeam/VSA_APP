@@ -22,6 +22,7 @@ public class ProjectForm extends ActionForm {
 	private String materialName;
 	private String createDate;
 	private String projectType;
+	private String galleryName;
 	private String projectStatus;
 	private String projectAddress;
 	private String weight;
@@ -37,7 +38,7 @@ public class ProjectForm extends ActionForm {
 	
 	public ProjectForm(){};
 	public ProjectForm (String projectID, String projectName, String employeeID, String employeeName,
-			String customerID, String customerName, String createDate, String projectType, 
+			String customerID, String customerName, String createDate, String projectType, String galleryName, 
 			String projectStatus, String projectAddress){
 		super();
 		this.projectID 				= projectID;
@@ -48,6 +49,7 @@ public class ProjectForm extends ActionForm {
 		this.customerName			= customerName;
 		this.createDate 			= createDate;
 		this.projectType			= projectType;
+		this.galleryName			= galleryName;
 		this.projectStatus 			= projectStatus;
 		this.projectAddress			= projectAddress;
 }
@@ -202,5 +204,11 @@ public class ProjectForm extends ActionForm {
 	}
 	public void setStructure(String structure) {
 		this.structure = structure;
+	}
+	public String getGalleryName() {
+		return galleryName;
+	}
+	public void setGalleryName(String galleryName) {
+		this.galleryName = galleryName;
 	}
 }

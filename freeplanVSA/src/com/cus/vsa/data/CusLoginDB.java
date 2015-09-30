@@ -110,7 +110,7 @@ public class CusLoginDB {
 		String sqlStmt = "INSERT INTO customer_master(customer_name, customer_surname, customer_tel, customer_email, " +
 				"customer_dob, customer_houseno, customer_villageno, customer_village, customer_lane, customer_subdistrict, customer_district, " +
 				"customer_province, customer_postcode) " +
-		"VALUES ('"+customerName+"', '"+customerSurName+"', '"+customerTel+"', '"+customerEmail+"', '0000-00-00', " +
+		"VALUES ('"+customerName+"', '"+customerSurName+"', '"+customerTel+"', '"+customerEmail+"', '"+customerDOB+"', " +
 				"'"+customerHouseNo+"', '"+customerVillageNo+"', '"+customerVillage+"', '"+customerLane+"', '"+customerSubDistrict+"', " +
 				"'"+customerDistrict+"', '"+customerProvince+"', '"+customerPostCode+"')";
 		//System.out.println(sqlStmt);

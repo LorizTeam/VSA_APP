@@ -61,6 +61,44 @@ public class Cust_ProjectDB {
 		}
 		return materialList;
 	 }
+	public List GetGalleryList(String customerID) 
+	throws Exception { //30-05-2014
+		List galleryHDList = new ArrayList();
+		String galleryName = "", galleryAmount = "", galleryWork = "";
+		DecimalFormat df1 = new DecimalFormat("#,###,##0.##");
+		DecimalFormat df2 = new DecimalFormat("#,###,##0.00");
+		try {
+		
+			conn = agent.getConnectMYSql();
+			
+			String sqlStmt = "SELECT d.galleryname, d.description, d.amount, d.timeuse " +
+			"FROM projecthd a INNER JOIN projectdt b on(b.project_id = a.project_id) INNER JOIN material_master c on(c.material_code = b.material_code) " +
+			"INNER JOIN gallery_master d on(d.galleryid = a.project_type) " +
+			"WHERE "; 
+			if(!customerID.equals("")) sqlStmt = sqlStmt+ "a.customer_id = '"+customerID+"' AND "; 
+			sqlStmt = sqlStmt + "d.galleryname <> '' group by d.galleryname";
+			
+			//System.out.println(sqlStmt);				
+			pStmt = conn.createStatement();
+			rs = pStmt.executeQuery(sqlStmt);	
+			while (rs.next()) {  
+				if (rs.getString("galleryname") != null) 		galleryName = rs.getString("galleryname"); else galleryName = "";
+				galleryAmount	= rs.getString("amount"); 
+				galleryWork 	= rs.getString("timeuse");
+				
+				galleryAmount 	= df2.format(Float.parseFloat(galleryAmount));
+				galleryWork 	= df1.format(Float.parseFloat(galleryWork));
+				
+				galleryHDList.add(new CustomerProjectForm(galleryName, galleryAmount, galleryWork));
+			}
+			rs.close();
+			pStmt.close();
+			conn.close();
+		} catch (SQLException e) {
+		    throw new Exception(e.getMessage());
+		}
+		return galleryHDList;
+	 }
 	public String[] GetGrpList(int count, String customerID) 
 	throws Exception { //30-05-2014
 		String getList[] = new String[count];
@@ -147,6 +185,118 @@ public class Cust_ProjectDB {
 		    throw new Exception(e.getMessage());
 		}
 		return grpName;
+	 }
+	public String GetProgress(String grpName) 
+	throws Exception { //30-05-2014
+		 String amount = "0"; 
+		try {
+		
+			conn = agent.getConnectMYSql();
+			
+			String sqlStmt = "SELECT sum(b.amounttotal) as sumgrp " +
+			"FROM projecthd a INNER JOIN projectdt b on(b.project_id = a.project_id) " +
+			"WHERE ";  
+			if(!grpName.equals("")) sqlStmt = sqlStmt+ "b.structure = '"+grpName+"' AND "; 
+			
+			sqlStmt = sqlStmt + "a.project_id <> '' group by a.project_id, b.structure";
+			
+			//System.out.println(sqlStmt);				
+			pStmt = conn.createStatement();
+			rs = pStmt.executeQuery(sqlStmt);	
+			while (rs.next()) {
+				amount = rs.getString("sumgrp");  
+			} 
+			
+			rs.close();
+			pStmt.close();
+			conn.close();
+		} catch (SQLException e) {
+		    throw new Exception(e.getMessage());
+		}
+		return amount;
+	 }
+	public String GetProgressCust(String grpName) 
+	throws Exception { //30-05-2014
+		 String amountCust = "0"; 
+		try {
+		
+			conn = agent.getConnectMYSql();
+			
+			String sqlStmt = "SELECT sum(b.amounttotal_cust) as sumgrp " +
+			"FROM projecthd a INNER JOIN projectdt b on(b.project_id = a.project_id) " +
+			"WHERE ";  
+			if(!grpName.equals("")) sqlStmt = sqlStmt+ "b.structure = '"+grpName+"' AND "; 
+			
+			sqlStmt = sqlStmt + "a.project_id <> '' group by a.project_id, b.structure";
+			
+			//System.out.println(sqlStmt);				
+			pStmt = conn.createStatement();
+			rs = pStmt.executeQuery(sqlStmt);	
+			while (rs.next()) {
+				amountCust = rs.getString("sumgrp");  
+			} 
+			
+			rs.close();
+			pStmt.close();
+			conn.close();
+		} catch (SQLException e) {
+		    throw new Exception(e.getMessage());
+		}
+		return amountCust;
+	 }
+	public String GetProgressSum() 
+	throws Exception { //30-05-2014
+		 String amount = "0"; 
+		try {
+		
+			conn = agent.getConnectMYSql();
+			
+			String sqlStmt = "SELECT sum(b.amounttotal) as sumgrp " +
+			"FROM projecthd a INNER JOIN projectdt b on(b.project_id = a.project_id) " +
+			"WHERE ";     
+			sqlStmt = sqlStmt + "a.project_id <> '' group by a.project_id";
+			
+			//System.out.println(sqlStmt);				
+			pStmt = conn.createStatement();
+			rs = pStmt.executeQuery(sqlStmt);	
+			while (rs.next()) {
+				amount = rs.getString("sumgrp");  
+			} 
+			
+			rs.close();
+			pStmt.close();
+			conn.close();
+		} catch (SQLException e) {
+		    throw new Exception(e.getMessage());
+		}
+		return amount;
+	 }
+	public String GetProgressCustSum() 
+	throws Exception { //30-05-2014
+		 String amountCust = "0"; 
+		try {
+		
+			conn = agent.getConnectMYSql();
+			
+			String sqlStmt = "SELECT sum(b.amounttotal_cust) as sumgrp " +
+			"FROM projecthd a INNER JOIN projectdt b on(b.project_id = a.project_id) " +
+			"WHERE ";  
+			sqlStmt = sqlStmt + "a.project_id <> '' group by a.project_id";
+			
+			//System.out.println(sqlStmt);				
+			pStmt = conn.createStatement();
+			rs = pStmt.executeQuery(sqlStmt);	
+			while (rs.next()) {
+				amountCust = rs.getString("sumgrp");  
+			} 
+			
+			rs.close();
+			pStmt.close();
+			conn.close();
+		} catch (SQLException e) {
+		    throw new Exception(e.getMessage());
+		}
+		return amountCust;
 	 }
 	public void AddMaterial(String materialName, String amount, String unit)  throws Exception{
 		conn = agent.getConnectMYSql();
