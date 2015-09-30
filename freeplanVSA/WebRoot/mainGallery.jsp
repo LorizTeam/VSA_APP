@@ -145,26 +145,43 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 		<div class="row" style="padding-left: 2.5%; margin-top: 1%;">
 		<input type="hidden" id="materialCode" name="materialCode" />
 		
-        <label style="font-size: 160%; font-weight: bold;">ชื่อ Gallery&nbsp;:</label>&nbsp;
+		
+		<div class="input-control modern text" style="width:19%;">
+		    <input type="text" id="galleryName" name="galleryName" size="25" maxlength="50" style="height: 2em;" required/>
+		    <span class="label"> ชื่อ Gallery</span>
+		   
+		</div>&nbsp;
+		<div class="input-control modern text" style="width:19%;">
+		    <input type="text" id="description" name="description" size="50" maxlength="100" style="height: 2em;" required/>
+		    <span class="label">รายละเอียด</span>
+		   
+		</div>&nbsp;
+		<div class="input-control modern text" style="width:19%;">
+		    <input type="text" id="materialName" name="materialName" size="25" maxlength="50" style="height: 2em;" required/>
+		    <span class="label"> ชื่อ Gallery</span>
+		   
+		</div>&nbsp;
         <input type="hidden" id="galleryCode" name="galleryCode" /> 
-        <input type="text" id="galleryName" name="galleryName" size="25" maxlength="50" required/>&nbsp;&nbsp;
-        <label style="font-size: 160%; font-weight: bold;">รายละเอียด&nbsp;:</label>&nbsp;
-        <input type="text" id="description" name="description" size="50" maxlength="100" required/>
         </div>
         <div class="row" style="padding-left: 2.5%; margin-top: 1%;">
-        <label style="font-size: 160%; font-weight: bold;">จำนวนเงินที่ใช้ก่อสร้าง โดยประมาณ&nbsp;:</label>&nbsp;
-        <input type="text" id="amount" name="amount" size="10" maxlength="16" required/>&nbsp;
-        <label style="font-size: 160%; font-weight: bold;">บาท</label>&nbsp;&nbsp;
-        <label style="font-size: 160%; font-weight: bold;">เวลาในการก่อสร้าง โดยประมาณ&nbsp;:</label>&nbsp;
-        <input type="text" id="timeUse" name="timeUse" size="2" maxlength="4" required/>&nbsp;
-        <label style="font-size: 160%; font-weight: bold;">เดือน</label>
-        </div>
-        <div class="row" style="padding-left: 2.5%; margin-top: 1%;">
-        		<label style="font-size: 160%; font-weight: bold;">Upload&nbsp;Image&nbsp;:</label>&nbsp;
+        <div class="input-control modern text" style="width:30%;">
+		    <input type="text" id="amount" name="amount" size="10" maxlength="16" style="height: 2em;" required/>
+		    <span class="label">จำนวนเงินที่ใช้ก่อสร้าง โดยประมาณ(บาท)</span>
+		   
+		</div>&nbsp;
+		<div class="input-control modern text" style="width:30%;">
+		    <input type="text" id="timeUse" name="timeUse" size="2" maxlength="4" style="height: 2em;" required/>
+		    <span class="label">เวลาในการก่อสร้าง โดยประมาณ(เดือน)</span>
+		   
+		</div>&nbsp;
+		<label style="font-size: 160%; font-weight: normal;">Upload&nbsp;Image&nbsp;:</label>&nbsp;
 			<div class="input-control file" data-role="input">
 				<input type="file" id="file" name="file" >
 				<button class="button"><span class="mif-folder"></span></button>
 			</div>
+        </div>
+        <div class="row" style="padding-left: 2.5%; margin-top: 1%;">
+        		
         </div>
         <div class="row" style="padding-left: 2.5%; margin-top: 1%;">
         <input class="button mini-button" type="submit" id="add" name="add" value="เพิ่ม"/>
@@ -232,7 +249,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 		} );
         $('#gallery').DataTable({
         	 "scrollX":true,
-        	 "scrollY":300,
+        	 "scrollY":200,
                "language": {
             "lengthMenu": "Display _MENU_ records per page",
             "zeroRecords": "Nothing found - sorry",
