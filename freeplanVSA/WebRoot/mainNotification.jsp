@@ -100,6 +100,9 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 	  overflow-y: auto;
 	  overflow-x: hidden;
 	}
+	.text-right{
+  text-align: right;
+}
     </style>
 
     <script type="text/javascript">
@@ -264,25 +267,37 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
         		</table>
         </div>
         <div name="email-detail" class="container col-md-7 box-detail padding10" style="margin-left: 1%; width: 65%;">
-        	<div class="input-control text">
-        		<span id="showhd"></span>
-			</div>
-			<br/>
-		    <div  class="input-control textarea">
-		        <span id="showdt"></span>
+        <br/><br/>
+        	<div class="row">
+        		<div class="col-md-6">
+	        		<b style="color:#959595;">หัวเรื่อง : </b><span id="showhd"></span>
+				</div>
+				<div  class="col-md-6 text-right">
+			       <span id="showdatetime"></span>
+			    </div>
+        	</div><br/><br/><br/>
+			<div class="row">
+				<div class="col-md-4">				
+				    <b style="color:#959595;">ผู้ส่ง : </b><span id="showname"></span>		   
+				</div>
+				
+			</div><br/><br/><br/>
+
+			<div class="row">
+				<div class="col-md-8">
+					<b style="color:#959595;">Email : </b><span id="showemail"></span>
+				</div>
+			</div><br/><br/><br/>
+		    <div  class="row">
+		    	<div class="col-md-12" >
+		        <b style="color:#959595;">รายละเอียด </b><br/><br/>
+			        <div style="border: 1px solid #CECECE;padding:10px;border-radius:4px; line-height: 200%;">
+			        	<span  id="showdt"></span>
+			        </div>
+		        </div>
 		    </div>
-		    <br/>
-		    <div  class="input-control textarea">
-		        <span id="showname"></span>
-		    </div>
-		    <br/>
-		    <div  class="input-control textarea">
-		        <span id="showemail"></span>
-		    </div>
-		    <br/>
-		    <div  class="input-control textarea">
-		        <span id="showdatetime"></span>
-		    </div>
+
+		   
 		</div>
             </div>
        		</div>
