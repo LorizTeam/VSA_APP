@@ -20,8 +20,8 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 
 <html lang="en">
   <head>
-    <meta charset"UTF-8">
-     
+    <meta charset="UTF-8">
+          
     <title>Notification</title>
     
 	<meta http-equiv="pragma" content="no-cache">
