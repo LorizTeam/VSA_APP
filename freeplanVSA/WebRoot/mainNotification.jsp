@@ -32,6 +32,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+	<link rel="stylesheet" href="uikit/uikit.min.css"/>
 	<script src="uikit/js/jquery.js" type="text/javascript"></script>
 	<script src="uikit/js/uikit.min.js" type="text/javascript"></script>
 	<script src="uikit/js/components/grid.min.js" type="text/javascript"></script>
@@ -227,9 +228,8 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
                     <jsp:include page="/menu_left.jsp"></jsp:include>
                     <!-- /.menu left -->
 			<div class="cell auto-size padding20 bg-white">
-			<h3 class="align-center">Notification</h3>
-        	<div class="col-md-4 email-list1 box padding10">
-        	<ul id="fillnoti" class="uk-subnav uk-subnav-pill ">
+			<h3 class="align-center">Notification</h3><br/>
+			<ul id="fillnoti" class="uk-subnav uk-subnav-pill ">
 					<li class="uk-active" data-uk-filter=""><a href="">ทั้งหมด</a></li>
 					<li data-uk-filter="rd"><a href="">อ่านแล้ว</a></li>
 					<li data-uk-filter="ur"><a href="">ยังไม่ได้อ่าน</a></li>
@@ -246,7 +246,9 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 						</select>
 					</form>
 				</ul>
-        		<table class="table hovered" width="100%" class="uk-grid"
+        	<div class="col-md-4 email-list1 box padding10" >
+        	
+        		<table class="table hovered" width="100%"  class="uk-grid"
 					data-uk-grid="{controls: '#fillnoti',gutter:0.1}">
         		
         		
