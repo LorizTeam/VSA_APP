@@ -124,6 +124,9 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
                 }
             });
         });
+        function chkno(message){
+		 	 document.notificationForm.no.value = message;	
+		}
 		function shownorti(message){
 		 	$('#showehd').val("");
 			$('#showdt').val("");
@@ -232,23 +235,26 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
                     <!-- /.menu left -->	
                     <jsp:include page="/menu_left.jsp"></jsp:include>
                     <!-- /.menu left -->
+                   
 			<div class="cell auto-size padding20 bg-white">
 			<h3 class="align-center">Notification</h3><br/>
+			
 			<ul id="fillnoti" class="uk-subnav uk-subnav-pill ">
 					<li class="uk-active" data-uk-filter=""><a href="">ทั้งหมด</a></li>
 					<li data-uk-filter="rdb"><a href="">ขอแบบบ้าน อ่านแล้ว</a></li>
 					<li data-uk-filter="urb"><a href="">ขอแบบบ้าน ยังไม่ได้อ่าน</a></li>
 					<li data-uk-filter="rda"><a href="">ทั่วไป อ่านแล้ว</a></li>
 					<li data-uk-filter="ura"><a href="">ทั่วไป ยังไม่ได้อ่าน</a></li>
-					<form class="uk-form">
-
+					 
+					<html:form action="/notificationMain" styleClass="uk-form">
 						<select>
 							<option selected>เรียงจาก</option>
 							<option data-uk-sort="my-category:desc">ใหม่สุด</option>
 							<option data-uk-sort="my-category">เก่าสุด</option>
 						</select>
-					</form>
-					<li><button class="button primary right-frame rounded">ทำเครื่องหมายว่าอ่านแล้ว</button></li>
+					<input type="hidden" id="no" name="no" />
+					<li><button type="submit" class="button primary right-frame rounded">ทำเครื่องหมายว่าอ่านแล้ว</button></li>  
+					</html:form>
 				</ul>
         	<div class="col-md-4 email-list1 box padding10" style="padding: 0 0 0 0.625rem;">
         	
@@ -277,7 +283,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 					String all = statusRead+statusType;
 				%>
         		<tr data-uk-filter="<%=all%>" data-my-category="<%=dateTime%>" width="100%">
-        			<td data-href='#' onclick="shownorti('<%=no%>')" class="collection-item avatar email-unread clickable-row" width="100%"  >
+        			<td data-href='#' onclick="shownorti('<%=no%>'),chkno('<%=no%>')" class="collection-item avatar email-unread clickable-row" width="100%"  >
         			  <hr/>
         				<i class="icon_4">G</i>
                       <div class="avatar_left">
@@ -334,6 +340,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 		   
 		</div>
             </div>
+            
        		</div>
 			</div>
 			</div>

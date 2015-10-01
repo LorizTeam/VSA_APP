@@ -17,6 +17,7 @@
   <StrutsActivity path="/cusEditProfile.do" location="650,1450" dimension="232,96" />
   <StrutsActivity path="/notification.do" location="1850,650" dimension="241,96" />
   <StrutsActivity path="/notificationLogin.do" location="1850,850" dimension="241,96" />
+  <StrutsActivity path="/requestPlan.do" location="950,1650" dimension="271,96" />
   <StrutsActivity path="/mainAdmin.jsp" location="650,250" dimension="116,51" />
   <StrutsActivity path="/Login.jsp" location="350,250" dimension="83,51" />
   <StrutsActivity path="/mainAgent1.jsp" location="950,50" dimension="118,51" />
@@ -38,6 +39,7 @@
   <StrutsActivity path="/cus_index_detail.jsp" location="650,1650" dimension="138,51" />
   <StrutsActivity path="/contact.jsp" location="1850,1250" dimension="93,51" />
   <StrutsActivity path="/home/contact.jsp" location="1850,1050" dimension="129,51" />
+  <StrutsActivity path="/cus_request_plan.jsp" location="1850,1450" dimension="143,51" />
   <StrutsActivity path="/home/cus_index_login.jsp" location="1550,1150" dimension="172,51" />
   <StrutsActivity path="/cus_main.jsp" location="1250,850" dimension="103,51" />
   <StrutsActivity path="/a_mainMaterial.jsp" location="950,850" dimension="134,51" />
@@ -53,12 +55,20 @@
   <StrutsActivity path="/cus_profile.jsp" location="1550,1350" dimension="110,51" />
   <StrutsActivity path="/home/cus_detail.jsp" location="1250,1450" dimension="141,51" />
   <StrutsActivity path="localhost:8080/freeplanVSA/home/cus_detail.jsp" location="50,1650" dimension="285,51" />
-  <StrutsActivity path="/cus_request_plan.jsp" location="1850,1450" dimension="143,51" />
-  <StrutsActivity path="/requestPlan.do" location="950,1650" dimension="271,96" />
+  <StrutsActivity path="/mainNotification.jsp" location="1850,1650" dimension="143,51" />
+  <StrutsActivity path="/notificationMain.do" location="1550,1750" dimension="220,96" />
   <StrutsTransition id="/projectHD.do,view,/mainProjectHD.jsp,1" routingType="0">
     <AutomaticBendpoints>
       <AbsolutePoint location="117,746" />
       <AbsolutePoint location="117,850" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/mainNotification.jsp,null,/notificationLogin.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1850,1675" />
+      <AbsolutePoint location="1805,1675" />
+      <AbsolutePoint location="1805,886" />
+      <AbsolutePoint location="1850,886" />
     </AutomaticBendpoints>
   </StrutsTransition>
   <StrutsTransition id="/mainGallery.jsp,null,/gallery.do,2" routingType="0">
@@ -68,10 +78,24 @@
       <AbsolutePoint location="543,1316" />
     </AutomaticBendpoints>
   </StrutsTransition>
+  <StrutsTransition id="/mainNotification.jsp,null,/notification.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1850,1675" />
+      <AbsolutePoint location="1805,1675" />
+      <AbsolutePoint location="1805,686" />
+      <AbsolutePoint location="1850,686" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
   <StrutsTransition id="/notification.do,login,/cus_index_login.jsp,1" routingType="0">
     <AutomaticBendpoints>
       <AbsolutePoint location="1970,698" />
       <AbsolutePoint location="1618,775" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/notificationMain.do,error,/mainNotification.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1660,1798" />
+      <AbsolutePoint location="1921,1675" />
     </AutomaticBendpoints>
   </StrutsTransition>
   <StrutsTransition id="/importExcel.jsp,null,/importExcel.do,2" routingType="0">
@@ -178,24 +202,17 @@
       <AbsolutePoint location="708,250" />
     </AutomaticBendpoints>
   </StrutsTransition>
-  <StrutsTransition id="/requestPlan.do,nologin,/cus_register.jsp,1" routingType="0">
-    <AutomaticBendpoints>
-      <AbsolutePoint location="950,1716" />
-      <AbsolutePoint location="407,1716" />
-      <AbsolutePoint location="407,1501" />
-    </AutomaticBendpoints>
-  </StrutsTransition>
   <StrutsTransition id="/cusRegister.do,success,/cus_login.jsp,1" routingType="0">
     <AutomaticBendpoints>
       <AbsolutePoint location="0,0" />
       <AbsolutePoint location="101,1475" />
     </AutomaticBendpoints>
   </StrutsTransition>
-  <StrutsTransition id="/cus_request_plan.jsp,null,/notificationLogin.do,2" routingType="0">
+  <StrutsTransition id="/requestPlan.do,nologin,/cus_register.jsp,1" routingType="0">
     <AutomaticBendpoints>
-      <AbsolutePoint location="1993,1475" />
-      <AbsolutePoint location="2008,1475" />
-      <AbsolutePoint location="2008,946" />
+      <AbsolutePoint location="950,1716" />
+      <AbsolutePoint location="407,1716" />
+      <AbsolutePoint location="407,1501" />
     </AutomaticBendpoints>
   </StrutsTransition>
   <StrutsTransition id="/custMain.do,success,/cus_detail.jsp,1" routingType="0">
@@ -212,11 +229,12 @@
       <AbsolutePoint location="882,1516" />
     </AutomaticBendpoints>
   </StrutsTransition>
-  <StrutsTransition id="/requestPlan.do,success,/cus_request_plan.jsp,1" routingType="0">
+  <StrutsTransition id="/notification.do,success,/mainNotification.jsp,1" routingType="0">
     <AutomaticBendpoints>
-      <AbsolutePoint location="1221,1698" />
-      <AbsolutePoint location="1921,1698" />
-      <AbsolutePoint location="1921,1501" />
+      <AbsolutePoint location="2091,698" />
+      <AbsolutePoint location="2166,698" />
+      <AbsolutePoint location="2166,1675" />
+      <AbsolutePoint location="1993,1675" />
     </AutomaticBendpoints>
   </StrutsTransition>
   <StrutsTransition id="/cus_register.jsp,null,/cusRegister.do,2" routingType="0">
@@ -303,6 +321,13 @@
       <AbsolutePoint location="0,0" />
     </AutomaticBendpoints>
   </StrutsTransition>
+  <StrutsTransition id="/mainNotification.jsp,null,/notificationMain.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1921,1701" />
+      <AbsolutePoint location="1921,1798" />
+      <AbsolutePoint location="1770,1798" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
   <StrutsTransition id="/cusEditProfile.do,error,/home/cus_profile.jsp,1" routingType="0">
     <AutomaticBendpoints>
       <AbsolutePoint location="882,1475" />
@@ -319,6 +344,13 @@
     <AutomaticBendpoints>
       <AbsolutePoint location="0,0" />
       <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/notificationLogin.do,success,/mainNotification.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2008,946" />
+      <AbsolutePoint location="2008,1675" />
+      <AbsolutePoint location="1993,1675" />
     </AutomaticBendpoints>
   </StrutsTransition>
   <StrutsTransition id="/cusRegister.do,error,/cus_register.jsp,1" routingType="0">
@@ -338,6 +370,13 @@
     <AutomaticBendpoints>
       <AbsolutePoint location="250,1075" />
       <AbsolutePoint location="350,1075" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/notificationMain.do,success,/mainNotification.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1675,1750" />
+      <AbsolutePoint location="1675,1675" />
+      <AbsolutePoint location="1850,1675" />
     </AutomaticBendpoints>
   </StrutsTransition>
   <StrutsTransition id="/mainProjectDT.jsp,null,/projectDT.do,2" routingType="0">
@@ -370,9 +409,10 @@
   </StrutsTransition>
   <StrutsTransition id="/cus_request_plan.jsp,null,/requestPlan.do,2" routingType="0">
     <AutomaticBendpoints>
-      <AbsolutePoint location="1951,1501" />
-      <AbsolutePoint location="1951,1728" />
-      <AbsolutePoint location="1221,1728" />
+      <AbsolutePoint location="1921,1501" />
+      <AbsolutePoint location="1921,1616" />
+      <AbsolutePoint location="1081,1616" />
+      <AbsolutePoint location="1081,1650" />
     </AutomaticBendpoints>
   </StrutsTransition>
   <StrutsTransition id="/Login.jsp,null,/register.do,2" routingType="0">
@@ -387,14 +427,6 @@
     <AutomaticBendpoints>
       <AbsolutePoint location="766,1498" />
       <AbsolutePoint location="101,1475" />
-    </AutomaticBendpoints>
-  </StrutsTransition>
-  <StrutsTransition id="/notificationLogin.do,success,/cus_request_plan.jsp,1" routingType="0">
-    <AutomaticBendpoints>
-      <AbsolutePoint location="1850,886" />
-      <AbsolutePoint location="1805,886" />
-      <AbsolutePoint location="1805,1475" />
-      <AbsolutePoint location="1850,1475" />
     </AutomaticBendpoints>
   </StrutsTransition>
 </FlowViewLayout>

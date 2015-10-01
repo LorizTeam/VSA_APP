@@ -10,9 +10,23 @@
 	Connection conn = dbcon.getConnectMYSql();
 	Statement stmt = conn.createStatement();
 	rs = stmt.executeQuery(sql);
+	
+	String date = "";
+	String day = "", month = "", year = "", time = "";
+	
 	while(rs.next()){
 %>
-<%=rs.getString("datetime") %>
+<%  date = rs.getString("datetime");
+	date = date.replace(".0", "");
+	
+	year = date.substring(0,4);
+	month = date.substring(5, 7);
+	day = date.substring(8, 10);
+	time = date.substring(11);
+	date = day+"/"+month+"/"+year+" "+time;
+ %>
+ <%=date%>
+
 <%
 	}
 %>

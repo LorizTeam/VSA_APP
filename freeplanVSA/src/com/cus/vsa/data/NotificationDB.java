@@ -26,6 +26,7 @@ public class NotificationDB {
 	throws Exception {
 		List notificationList = new ArrayList();
 		String no = "", name = "", email = "", messageHD = "", messageDT = "", dateTime = "", statusRead = "", statusType = "";
+		String day = "", month = "", year = "", time = "";
 		try {
 		conn = agent.getConnectMYSql();
 	 
@@ -45,6 +46,11 @@ public class NotificationDB {
 			statusType = rs.getString("status_type");
 			
 			dateTime = dateTime.replace(".0", "");
+			year = dateTime.substring(0,4);
+			month = dateTime.substring(5, 7);
+			day = dateTime.substring(8, 10);
+			time = dateTime.substring(11);
+			dateTime = day+"/"+month+"/"+year+" "+time;
 			
 			notificationList.add(new NotificationForm(no, name, email, messageHD, messageDT, dateTime, statusRead, statusType));
 		}
@@ -177,6 +183,16 @@ public class NotificationDB {
 		return provinceList;
 	}
 	
-	
+	public void UpdateNotification(String no)  throws Exception{
+		conn = agent.getConnectMYSql();
+		
+		String sqlStmt = "UPDATE notifications set status_read = 'rd' "+
+				"WHERE no = '"+no+"'";
+		//System.out.println(sqlStmt);
+		pStmt = conn.createStatement();
+		pStmt.executeUpdate(sqlStmt);
+		pStmt.close();
+		conn.close();
+	}
 	
 }

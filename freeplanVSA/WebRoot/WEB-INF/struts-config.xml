@@ -63,6 +63,20 @@
     </action>
   <!--################################     Register     #################################-->
   
+  <!--################################    (Notification)    #################################-->
+   <action
+      attribute="notificationForm"
+      input="/mainNotification.jsp"
+      name="notificationForm"
+      path="/notificationMain"
+      scope="request"
+      type="com.vsa.action.NotificationAction" >
+      
+      <forward name="success" path="/mainNotification.jsp" /> 
+      <forward name="error" path="/mainNotification.jsp" /> 
+    </action>
+  <!--################################     (Notification)    #################################-->
+  
   <!--################################     Customer     #################################-->
    <action
       attribute="customerForm"
