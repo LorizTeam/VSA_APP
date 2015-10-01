@@ -246,9 +246,9 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 				</ul>
         	<div class="col-md-4 email-list1 box padding10" >
         	
-        		<div class="table hovered" width="100%"  class="uk-grid"
+        		<table class="table hovered" width="100%">
+        		<tbody class="uk-grid"
 					data-uk-grid="{controls: '#fillnoti',gutter:0.1}">
-        		
         		<% List notificationList1 = null;
         		   if (request.getAttribute("notificationList") == null) {
 						NotificationDB notificationDB = new NotificationDB();
@@ -270,8 +270,8 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 					String statusType 	= notification.getStatusType(); 
 					String all = statusRead+statusType;
 				%>
-        		<div data-href='#' onclick="shownorti('<%=no%>')" data-uk-filter="<%=all%>" data-my-category="<%=dateTime%>">
-        			<td class="collection-item avatar email-unread clickable-row" width="100%"  >
+        		<tr data-uk-filter="<%=all%>" data-my-category="<%=dateTime%>">
+        			<td data-href='#' onclick="shownorti('<%=no%>')" class="collection-item avatar email-unread clickable-row" width="100%"  >
         			  <hr/>
         				<i class="icon_4">G</i>
                       <div class="avatar_left">
@@ -283,12 +283,12 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
                       <div class="clearfix"></div>
                       <hr/>
         			</td>
-        		</div>
+        		</tr>
         		<% }
         		
         		} %>
-        		
-        		</div>
+        		</tbody>
+        		</table>
         </div>
         <div name="email-detail" class="container col-md-7 box-detail padding10" style="margin-left: 1%; width: 65%;">
         <br/><br/>
