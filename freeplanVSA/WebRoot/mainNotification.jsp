@@ -111,6 +111,10 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 		left: 320;
 		bottom: 5;
 	}
+	.little{
+		position: absolute;
+		bottom: 10;
+	}
     </style>
 
     <script type="text/javascript">
@@ -247,7 +251,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 					<li data-uk-filter="ura"><a href="">ทั่วไป ยังไม่ได้อ่าน</a></li>
 					 
 					<html:form action="/notificationMain" styleClass="uk-form">
-						<select>
+						<select class="little">
 							<option selected>เรียงจาก</option>
 							<option data-uk-sort="my-category:desc">ใหม่สุด</option>
 							<option data-uk-sort="my-category">เก่าสุด</option>
