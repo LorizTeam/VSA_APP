@@ -90,22 +90,27 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
     	padding:0px!important;
     }
     .box {
-	  border: 1px solid #222;
+	  border: 1px solid rgba(0, 0, 0, 0.4);
 	  border-radius: 10px;
-	  height: 300px;
+	  height: 460px;
 	  overflow-y: auto;
 	  overflow-x: hidden;
 	}
 	.box-detail {
-	  border: 1px solid #222;
+	  border: 1px solid rgba(0, 0, 0, 0.4);
 	  border-radius: 10px;
-	  height: 500px;
+	  height: 460px;
 	  overflow-y: auto;
 	  overflow-x: hidden;
 	}
 	.text-right{
   text-align: right;
 }
+	.right-frame{
+		position: absolute;
+		left: 320;
+		bottom: 5;
+	}
     </style>
 
     <script type="text/javascript">
@@ -243,8 +248,9 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 							<option data-uk-sort="my-category">เก่าสุด</option>
 						</select>
 					</form>
+					<li><button class="button primary right-frame rounded">ทำเครื่องหมายว่าอ่านแล้ว</button></li>
 				</ul>
-        	<div class="col-md-4 email-list1 box padding10" >
+        	<div class="col-md-4 email-list1 box padding10" style="padding: 0 0 0 0.625rem;">
         	
         		<table class="table hovered" width="100%">
         		<tbody class="uk-grid"
@@ -270,7 +276,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 					String statusType 	= notification.getStatusType(); 
 					String all = statusRead+statusType;
 				%>
-        		<tr data-uk-filter="<%=all%>" data-my-category="<%=dateTime%>">
+        		<tr data-uk-filter="<%=all%>" data-my-category="<%=dateTime%>" width="100%">
         			<td data-href='#' onclick="shownorti('<%=no%>')" class="collection-item avatar email-unread clickable-row" width="100%"  >
         			  <hr/>
         				<i class="icon_4">G</i>
@@ -320,7 +326,11 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 			        </div>
 		        </div>
 		    </div>
+			<div  class="row">
+		    	<div class="col-md-5" >
 
+		        </div>
+		    </div>
 		   
 		</div>
             </div>
