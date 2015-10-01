@@ -246,7 +246,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 				</ul>
         	<div class="col-md-4 email-list1 box padding10" >
         	
-        		<table class="table hovered" width="100%"  class="uk-grid"
+        		<div class="table hovered" width="100%"  class="uk-grid"
 					data-uk-grid="{controls: '#fillnoti',gutter:0.1}">
         		
         		<% List notificationList1 = null;
@@ -270,8 +270,8 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 					String statusType 	= notification.getStatusType(); 
 					String all = statusRead+statusType;
 				%>
-        		<tr data-uk-filter="<%=all%>" data-my-category="<%=dateTime%>">
-        			<td onclick="shownorti('<%=no%>')" class="collection-item avatar email-unread clickable-row" width="100%"  data-href='#'>
+        		<div data-href='#' onclick="shownorti('<%=no%>')" data-uk-filter="<%=all%>" data-my-category="<%=dateTime%>">
+        			<td class="collection-item avatar email-unread clickable-row" width="100%"  >
         			  <hr/>
         				<i class="icon_4">G</i>
                       <div class="avatar_left">
@@ -283,12 +283,12 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
                       <div class="clearfix"></div>
                       <hr/>
         			</td>
-        		</tr>
+        		</div>
         		<% }
         		
         		} %>
         		
-        		</table>
+        		</div>
         </div>
         <div name="email-detail" class="container col-md-7 box-detail padding10" style="margin-left: 1%; width: 65%;">
         <br/><br/>
