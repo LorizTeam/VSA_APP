@@ -32,7 +32,9 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
+	<script src="uikit/js/jquery.js" type="text/javascript"></script>
+	<script src="uikit/js/uikit.min.js" type="text/javascript"></script>
+	<script src="uikit/js/components/grid.min.js" type="text/javascript"></script>
 
 	<!--Loading CSS Core-->
 		<link rel="stylesheet" href="metro-ui/build/css/metro.css" />
@@ -227,7 +229,28 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 			<div class="cell auto-size padding20 bg-white">
 			<h3 class="align-center">Notification</h3>
         	<div class="col-md-4 email-list1 box padding10">
-        		<table class="table hovered" width="100%">
+        	<ul id="fillnoti" class="uk-subnav uk-subnav-pill ">
+					<li class="uk-active" data-uk-filter=""><a href="">ทั้งหมด</a></li>
+					<li data-uk-filter="rd"><a href="">อ่านแล้ว</a></li>
+					<li data-uk-filter="ur"><a href="">ยังไม่ได้อ่าน</a></li>
+					<li data-uk-filter="rdb"><a href="">ขอแบบบ้าน อ่านแล้ว</a></li>
+					<li data-uk-filter="urb"><a href="">ขอแบบบ้าน ยังไม่ได้อ่าน</a></li>
+					<li data-uk-filter="rda"><a href="">ทั่วไป อ่านแล้ว</a></li>
+					<li data-uk-filter="ura"><a href="">ทั่วไป ยังไม่ได้อ่าน</a></li>
+					<form class="uk-form">
+
+						<select>
+							<option selected>เรียงจาก</option>
+							<option data-uk-sort="my-category:desc">ใหม่สุด</option>
+							<option data-uk-sort="my-category:asc">เก่าสุด</option>
+						</select>
+					</form>
+				</ul>
+        		<table class="table hovered" width="100%" class="uk-grid"
+					data-uk-grid="{controls: '#fillnoti',gutter:0.1}">
+        		
+        		
+        		
         		<% List notificationList1 = null;
         		   if (request.getAttribute("notificationList") == null) {
 						NotificationDB notificationDB = new NotificationDB();
@@ -246,7 +269,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 					String messageHD 	= notification.getMessageHD();
 					String dateTime 	= notification.getDateTime();
 				%>
-        		<tr>
+        		<tr data-uk-filter="corporate" data-my-category="2012-05-02">
         			<td onclick="shownorti('<%=no%>')" class="collection-item avatar email-unread clickable-row" width="100%"  data-href='#'>
         			  <hr/>
         				<i class="icon_4">G</i>
