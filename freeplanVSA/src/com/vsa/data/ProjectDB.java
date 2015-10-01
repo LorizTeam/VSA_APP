@@ -20,6 +20,35 @@ public class ProjectDB {
 	ResultSet rs		= null;
 	DateUtil dateUtil = new DateUtil();
 	
+	public String CountProject() 
+	throws Exception {
+		 
+		String no = "";
+		try {
+		conn = agent.getConnectMYSql();
+	 
+		 String sqlStmt = "SELECT count(project_id) as countno " +
+				     "FROM projecthd " +
+				     "WHERE project_id <> '' ";
+		pStmt = conn.createStatement();
+		rs = pStmt.executeQuery(sqlStmt);
+		while (rs.next()) { 
+			if (rs.getString("countno") != null) no = rs.getString("countno"); else no = "-";
+		}
+		
+		} catch (SQLException e) {
+		    throw new Exception(e.getMessage());
+		} finally {
+			try {
+				if (rs != null) 	  rs.close();
+				if (pStmt != null) pStmt.close();
+				if (conn != null)  conn.close();
+			} catch (SQLException e) {
+				throw new Exception(e.getMessage());
+			}
+		}
+		return no; 
+	}
 	public List GetProjectHDList(String projectID, String projectName) 
 	throws Exception { //02-07-2015
 		List projectHDList = new ArrayList();

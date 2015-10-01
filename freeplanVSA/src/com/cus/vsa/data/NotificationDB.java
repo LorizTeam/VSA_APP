@@ -60,12 +60,42 @@ public class NotificationDB {
 		}
 		return notificationList; 
 	}
-	public void insertNotification(String name, String email, String messageHD, String messageDT, String dateTime)  
+	public String CountNotification() 
+	throws Exception {
+		 
+		String no = "";
+		try {
+		conn = agent.getConnectMYSql();
+	 
+		 String sqlStmt = "SELECT count(status_read) as countno " +
+				     "FROM notifications " +
+				     "WHERE status_read = 'rn' Group by status_read ORDER BY no desc ";
+		pStmt = conn.createStatement();
+		rs = pStmt.executeQuery(sqlStmt);
+		while (rs.next()) { 
+			if (rs.getString("countno") != null) no = rs.getString("countno"); else no = "-";
+		}
+		
+		} catch (SQLException e) {
+		    throw new Exception(e.getMessage());
+		} finally {
+			try {
+				if (rs != null) 	  rs.close();
+				if (pStmt != null) pStmt.close();
+				if (conn != null)  conn.close();
+			} catch (SQLException e) {
+				throw new Exception(e.getMessage());
+			}
+		}
+		return no; 
+	}
+	public void insertNotification(String name, String email, String messageHD, String messageDT, String dateTime,
+			String statusRead, String statusType)  
 	throws Exception{
 		conn = agent.getConnectMYSql();
 		
-		String sqlStmt = "INSERT IGNORE INTO notifications(name, email, messagehd, messagedt, datetime) " +
-				"VALUES ('"+name+"', '"+email+"', '"+messageHD+"', '"+messageDT+"', '"+dateTime+"')";
+		String sqlStmt = "INSERT IGNORE INTO notifications(name, email, messagehd, messagedt, datetime, status_read, status_type) " +
+				"VALUES ('"+name+"', '"+email+"', '"+messageHD+"', '"+messageDT+"', '"+dateTime+"', '"+statusRead+"', '"+statusType+"')";
 		//System.out.println(sqlStmt);
 		pStmt = conn.createStatement();
 		pStmt.executeUpdate(sqlStmt);

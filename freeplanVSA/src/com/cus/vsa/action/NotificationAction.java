@@ -39,7 +39,7 @@ public class NotificationAction extends Action {
 		String alertMassage = "กรุณากรอกข้อมูลให้ครบ";
 		
 		if(name != "" && email != "" && messageHD != "" && messageDT != ""){
-			notificationDB.insertNotification(name, email, messageHD, messageDT, dateTime);
+			notificationDB.insertNotification(name, email, messageHD, messageDT, dateTime, "rn", "a");
 		}
 		
 		if(session.getAttribute("name") != null){

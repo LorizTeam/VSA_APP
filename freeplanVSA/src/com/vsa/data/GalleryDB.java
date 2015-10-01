@@ -20,6 +20,35 @@ public class GalleryDB {
 	ResultSet rs		= null;
 	DateUtil dateUtil = new DateUtil();
 	
+	public String CountGallery() 
+	throws Exception {
+		 
+		String no = "";
+		try {
+		conn = agent.getConnectMYSql();
+	 
+		 String sqlStmt = "SELECT count(galleryid) as countno " +
+				     "FROM gallery_master " +
+				     "WHERE galleryid <> '' ";
+		pStmt = conn.createStatement();
+		rs = pStmt.executeQuery(sqlStmt);
+		while (rs.next()) { 
+			if (rs.getString("countno") != null) no = rs.getString("countno"); else no = "-";
+		}
+		
+		} catch (SQLException e) {
+		    throw new Exception(e.getMessage());
+		} finally {
+			try {
+				if (rs != null) 	  rs.close();
+				if (pStmt != null) pStmt.close();
+				if (conn != null)  conn.close();
+			} catch (SQLException e) {
+				throw new Exception(e.getMessage());
+			}
+		}
+		return no; 
+	}
 	public List GetGalleryImage() 
 	throws Exception { //30-05-2014
 		List galleryList = new ArrayList();

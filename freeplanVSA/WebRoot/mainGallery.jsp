@@ -143,26 +143,17 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 		<html:form action="/gallery" styleClass="bg-white" method="post" enctype="multipart/form-data" style="width:100%;">
 		
 		<div class="row" style="padding-left: 2.5%; margin-top: 1%;">
-		<input type="hidden" id="materialCode" name="materialCode" />
-		
-		
 		<div class="input-control modern text" style="width:19%;">
+		    <input type="hidden" id="galleryCode" name="galleryCode" /> 
 		    <input type="text" id="galleryName" name="galleryName" size="25" maxlength="50" style="height: 2em;" required/>
 		    <span class="label"> ชื่อ Gallery</span>
-		   
 		</div>&nbsp;
 		<div class="input-control modern text" style="width:19%;">
 		    <input type="text" id="description" name="description" size="50" maxlength="100" style="height: 2em;" required/>
 		    <span class="label">รายละเอียด</span>
-		   
 		</div>&nbsp;
-		<div class="input-control modern text" style="width:19%;">
-		    <input type="text" id="materialName" name="materialName" size="25" maxlength="50" style="height: 2em;" required/>
-		    <span class="label"> ชื่อ Gallery</span>
-		   
-		</div>&nbsp;
-        <input type="hidden" id="galleryCode" name="galleryCode" /> 
-        </div>
+		</div>
+		
         <div class="row" style="padding-left: 2.5%; margin-top: 1%;">
         <div class="input-control modern text" style="width:30%;">
 		    <input type="text" id="amount" name="amount" size="10" maxlength="16" style="height: 2em;" required/>
@@ -215,8 +206,8 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
                 						'<%=gary.getDescription()%>','<%=gary.getAmount()%>','<%=gary.getTimeUse()%>');">
                 						<%=gary.getGalleryName()%></a></td> 
                 						<td align="center"><%=gary.getDescription()%></td>
-                						<td align="center"><%=gary.getAmount()%></td>
-                						<td align="center"><%=gary.getTimeUse()%></td>
+                						<td align="center"><%=gary.getAmount()%> บาท</td>
+                						<td align="center"><%=gary.getTimeUse()%> เดือน</td>
                 					</tr>
                 					<% 	}
                 						} else {
