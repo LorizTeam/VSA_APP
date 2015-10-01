@@ -231,8 +231,6 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 			<h3 class="align-center">Notification</h3><br/>
 			<ul id="fillnoti" class="uk-subnav uk-subnav-pill ">
 					<li class="uk-active" data-uk-filter=""><a href="">ทั้งหมด</a></li>
-					<li data-uk-filter="rd"><a href="">อ่านแล้ว</a></li>
-					<li data-uk-filter="ur"><a href="">ยังไม่ได้อ่าน</a></li>
 					<li data-uk-filter="rdb"><a href="">ขอแบบบ้าน อ่านแล้ว</a></li>
 					<li data-uk-filter="urb"><a href="">ขอแบบบ้าน ยังไม่ได้อ่าน</a></li>
 					<li data-uk-filter="rda"><a href="">ทั่วไป อ่านแล้ว</a></li>
@@ -242,7 +240,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 						<select>
 							<option selected>เรียงจาก</option>
 							<option data-uk-sort="my-category:desc">ใหม่สุด</option>
-							<option data-uk-sort="my-category:asc">เก่าสุด</option>
+							<option data-uk-sort="my-category">เก่าสุด</option>
 						</select>
 					</form>
 				</ul>
@@ -250,8 +248,6 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
         	
         		<table class="table hovered" width="100%"  class="uk-grid"
 					data-uk-grid="{controls: '#fillnoti',gutter:0.1}">
-        		
-        		
         		
         		<% List notificationList1 = null;
         		   if (request.getAttribute("notificationList") == null) {
@@ -270,8 +266,11 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 					String email 		= notification.getEmail();
 					String messageHD 	= notification.getMessageHD();
 					String dateTime 	= notification.getDateTime();
+					String statusRead 	= notification.getStatusRead();
+					String statusType 	= notification.getStatusType(); 
+					String all = statusRead+statusType;
 				%>
-        		<tr data-uk-filter="corporate" data-my-category="2012-05-02">
+        		<tr data-uk-filter="<%=all%>" data-my-category="<%=dateTime%>">
         			<td onclick="shownorti('<%=no%>')" class="collection-item avatar email-unread clickable-row" width="100%"  data-href='#'>
         			  <hr/>
         				<i class="icon_4">G</i>

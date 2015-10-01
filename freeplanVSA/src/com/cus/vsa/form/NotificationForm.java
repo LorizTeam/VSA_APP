@@ -26,9 +26,12 @@ public class NotificationForm extends ActionForm {
 	private String dateTime;
 	private String messageHD;
 	private String messageDT;
+	private String statusRead;
+	private String statusType;
 	 
 	public NotificationForm(){};
-	public NotificationForm(String no, String name, String email, String messageHD, String messageDT, String dateTime){
+	public NotificationForm(String no, String name, String email, String messageHD, String messageDT, String dateTime
+			, String statusRead, String statusType){
 		super();
 		this.no 			= no;
 		this.name 			= name;
@@ -36,6 +39,8 @@ public class NotificationForm extends ActionForm {
 		this.messageHD 		= messageHD;
 		this.messageDT 		= messageDT;
 		this.dateTime		= dateTime;
+		this.statusRead 	= statusRead;
+		this.statusType		= statusType;
 	}
 	 
 	public void reset() {
@@ -92,6 +97,18 @@ public class NotificationForm extends ActionForm {
 	}
 	public void setMessageDT(String messageDT) {
 		this.messageDT = messageDT;
+	}
+	public String getStatusRead() {
+		return statusRead;
+	}
+	public void setStatusRead(String statusRead) {
+		this.statusRead = statusRead;
+	}
+	public String getStatusType() {
+		return statusType;
+	}
+	public void setStatusType(String statusType) {
+		this.statusType = statusType;
 	}
 	
  

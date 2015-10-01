@@ -25,11 +25,11 @@ public class NotificationDB {
 	public List Notification() 
 	throws Exception {
 		List notificationList = new ArrayList();
-		String no = "", name = "", email = "", messageHD = "", messageDT = "", dateTime = "";
+		String no = "", name = "", email = "", messageHD = "", messageDT = "", dateTime = "", statusRead = "", statusType = "";
 		try {
 		conn = agent.getConnectMYSql();
 	 
-		 String sqlStmt = "SELECT no, name, email, messagehd, messagedt, datetime " +
+		 String sqlStmt = "SELECT no, name, email, messagehd, messagedt, datetime, status_read, status_type " +
 				     "FROM notifications " +
 				     "ORDER BY no desc ";
 		pStmt = conn.createStatement();
@@ -41,10 +41,12 @@ public class NotificationDB {
 			messageHD = rs.getString("messagehd");
 			messageDT = rs.getString("messagedt");
 			dateTime = rs.getString("datetime");
+			statusRead = rs.getString("status_read");
+			statusType = rs.getString("status_type");
 			
 			dateTime = dateTime.replace(".0", "");
 			
-			notificationList.add(new NotificationForm(no, name, email, messageHD, messageDT, dateTime));
+			notificationList.add(new NotificationForm(no, name, email, messageHD, messageDT, dateTime, statusRead, statusType));
 		}
 		
 		} catch (SQLException e) {
@@ -69,7 +71,7 @@ public class NotificationDB {
 	 
 		 String sqlStmt = "SELECT count(status_read) as countno " +
 				     "FROM notifications " +
-				     "WHERE status_read = 'rn' Group by status_read ORDER BY no desc ";
+				     "WHERE status_read = 'ur' Group by status_read ORDER BY no desc ";
 		pStmt = conn.createStatement();
 		rs = pStmt.executeQuery(sqlStmt);
 		while (rs.next()) { 
