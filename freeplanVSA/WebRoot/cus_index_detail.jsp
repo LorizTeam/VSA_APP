@@ -76,7 +76,7 @@
 	 </div>
 </div>
 <!--about-->
-<div id="about" class="about">	 
+<div id="about" class="about" class="container">	 
 	 <div class="about-left"></div>
 	 <div class="about-right">
 		<h3>เกี่ยวกับเรา</h3>
@@ -98,7 +98,7 @@
 		});
 		</script> 
 <!--gallery js-->
-<div id="gallery" class="gallery">
+<div id="gallery" class="gallery" >
 	 <div class="container">
 		 <h3>แกลอรี่ <small>แบบบ้านฟรี</small></h3>
          <div class="gallery-info">
@@ -115,7 +115,7 @@
           %>
          		<!--gallery-->	
          		<a href="#<%=galleryID%>"data-uk-modal >	
-				<figure  class="col-sm-6 col-md-4  uk-overlay uk-overlay-hover" style="margin-bottom:30px;">
+				<figure  class="col-sm-6 col-md-4  uk-overlay uk-overlay-hover" style="margin-bottom:30px;padding:0;">
 					
 					<% List imageHDList = null;
 			         	ImportImageDB importImageDB = new ImportImageDB();

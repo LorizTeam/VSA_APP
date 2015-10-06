@@ -169,22 +169,22 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 	</div>
 	<br/>
 	<div class="row" style="padding-left: 2.5%; width:100%;">
-		<label style="font-size: 160%; font-weight: bold;">Image : 1</label>&nbsp;
+		<label style="font-size: 130%; font-weight: bold;">Image : 1</label>&nbsp;
 		<div class="input-control file" data-role="input">
 			<input type="file" id="file" name="file" >
 			<button class="button"><span class="mif-folder"></span></button>
 		</div>
-		<label style="font-size: 160%; font-weight: bold;">Image : 2</label>&nbsp;
+		<label style="font-size: 130%; font-weight: bold;">Image : 2</label>&nbsp;
 		<div class="input-control file" data-role="input">
 			<input type="file" id="file1" name="file1" >
 			<button class="button"><span class="mif-folder"></span></button>
 		</div>
-		<label style="font-size: 160%; font-weight: bold;">Image : 3</label>&nbsp;
+		<label style="font-size: 130%; font-weight: bold;">Image : 3</label>&nbsp;
 		<div class="input-control file" data-role="input">
 			<input type="file" id="file2" name="file2" >
 			<button class="button"><span class="mif-folder"></span></button>
 		</div>
-		<label style="font-size: 160%; font-weight: bold;">Image : 4</label>&nbsp;
+		<label style="font-size: 130%; font-weight: bold;">Image : 4</label>&nbsp;
 		<div class="input-control file" data-role="input">
 			<input type="file" id="file3" name="file3" >
 			<button class="button"><span class="mif-folder"></span></button>
