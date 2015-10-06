@@ -132,7 +132,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <li <%if(menu == "upload"){ %> class="active" <%}%> ><a href="uploadImage.jsp">
                             <span class="mif-cloud icon"></span>
                             <span class="title">Upload Image</span>
-                            <span class="counter">-</span>
+                            
                         </a></li>
                         <li <%if(menu == "gallery"){ %> class="active" <%}%> ><a href="mainGallery.jsp">
                             <span class="mif-database icon"></span>
@@ -151,6 +151,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							%>
                             <span class="counter"><%=countMaterial%></span>
                         </a></li>
+                        <br/><br/>
+                        <li>
+                        	<a href="login.do" <%session.setAttribute("userName", "logout");%> >
+                        	<span class="mif-exit icon"></span>
+                            <span class="title">LOGOUT</span>
+                            </a>
+                        </li>
 
                     </ul>
                 </div>
