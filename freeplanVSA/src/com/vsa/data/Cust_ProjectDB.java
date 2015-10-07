@@ -496,6 +496,51 @@ public class Cust_ProjectDB {
 		}
 		return project_runno; 
 	 }
+	public List GetProjectHistoryListLimit(String custID) 
+	throws Exception { //30-05-2014
+		List projectHistoryList = new ArrayList();
+		String projectID = "", materialCode = "", structure = "", materialName = "", amount_old = "", amount_new = "", amountTotal = "", dateTime = "", qtyUse = "";
+		DecimalFormat df1 = new DecimalFormat("#,###,##0.##");
+		DecimalFormat df2 = new DecimalFormat("#,###,##0.00");
+		try {
+		
+			conn = agent.getConnectMYSql();
+			
+			String sqlStmt = "SELECT a.project_id, a.customer_id, a.material_code, a.structure, a.datetime, a.qtyuse, a.amount_old, a.amount_new, a.amounttotal, b.material_name, a.project_runno " +
+			"FROM project_history a Left JOIN material_master b on(b.material_code = a.material_code) " + 
+			"WHERE a.customer_id = '"+custID+"' group by a.project_id, a.customer_id, a.project_runno order by a.project_runno desc limit 5";  
+			//System.out.println(sqlStmt);				
+			pStmt = conn.createStatement();
+			rs = pStmt.executeQuery(sqlStmt);	
+			while (rs.next()) { 
+				custID 			= rs.getString("customer_id"); 
+				projectID 		= rs.getString("project_id"); 
+				materialCode	= rs.getString("material_code"); 
+				if (rs.getString("material_name") != null) 		materialName = rs.getString("material_name"); else materialName = "";
+				structure		= rs.getString("structure"); 
+				dateTime		= rs.getString("datetime"); 
+				qtyUse		= rs.getString("qtyuse");
+				amount_old 		= rs.getString("amount_old");
+				amount_new 		= rs.getString("amount_new"); 
+				amountTotal 	= rs.getString("amounttotal"); 
+				
+				amount_old 		= df2.format(Float.parseFloat(amount_old));
+				amount_new 		= df2.format(Float.parseFloat(amount_new));
+				amountTotal 	= df2.format(Float.parseFloat(amountTotal));
+				
+				dateTime = dateTime.replace(".0", "");
+				
+				projectHistoryList.add(new CustomerProjectForm(custID, projectID, materialCode, materialName, structure, 
+						amount_old, amount_new, amountTotal, dateTime, qtyUse));
+			}
+			rs.close();
+			pStmt.close();
+			conn.close();
+		} catch (SQLException e) {
+		    throw new Exception(e.getMessage());
+		}
+		return projectHistoryList;
+	 }
 	public List GetProjectHistoryList(String custID) 
 	throws Exception { //30-05-2014
 		List projectHistoryList = new ArrayList();

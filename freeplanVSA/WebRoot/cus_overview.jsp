@@ -14,7 +14,7 @@
 	Cust_ProjectDB cust_projectDB = new Cust_ProjectDB();
 	List projectHistoryList1 = null;
 	if (request.getAttribute("projectHistoryList") == null) {
-	projectHistoryList1 = cust_projectDB.GetProjectHistoryList(custID);
+	projectHistoryList1 = cust_projectDB.GetProjectHistoryListLimit(custID);
 	}else{
 	projectHistoryList1 = (List) request.getAttribute("projectHistoryList");
 	} 

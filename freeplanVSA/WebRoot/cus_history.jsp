@@ -65,7 +65,7 @@ function hideURLbar() {
 			<h3 class="text-center">ประวัติการบันทึกค่าใช้จ่าย</h3>
 		</div>
 		
-		<table class="display" cellspacing="0"   id="customer">
+		<table class="display" cellspacing="0"height="100%"   id="customer">
 			<thead>
 				<tr>
 					<th>ลำดับที่</th>
@@ -115,16 +115,16 @@ function hideURLbar() {
 				    "ordering": false
 				} );
 		        $('#customer').DataTable({
-		        	 "scrollX":true,
-		        	 "scrollY":250,
+		        	 "scrollX":true,		        	 
 		               "language": {
-		            "lengthMenu": "Display _MENU_ records per page",
-		            "zeroRecords": "Nothing found - sorry",
-		            "info": "Showing page _PAGE_ of _PAGES_",
-		            "infoEmpty": "No records available",
-		            "infoFiltered": "(filtered from _MAX_ total records)"
+		            "lengthMenu": "แสดงผล _MENU_ รายการ ต่อหนึ่งหน้า",
+		            "zeroRecords": "ขออภัย! ไม่พบผลลัพธ์ตามที่ค้นหา",
+		            "info": "แสดงผลจากหน้า _PAGE_ ถึง หน้า _PAGES_",
+		            "infoEmpty": "ไม่มีผลลัพธ์ที่ตรงกัน ",
+		            "infoFiltered": "(จากทั้งหมด _MAX_ ที่บันทึกอยู่)",
+		           	"search":"ค้นหา :"
 		        },
-		        "lengthMenu": [[10, 25, 50, 100,-1], [10, 25, 50, 100, "All"]]
+		        "lengthMenu": [[5, 10, 50, 100,-1], [5, 10, 50, 100, "All"]]
 		        
 		        });
 		    });
