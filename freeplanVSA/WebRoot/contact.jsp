@@ -42,7 +42,7 @@ function hideURLbar() {
 
 	</head>
 	<body class="bg-c">
-<%@include file="home/topnav.jsp" %>
+<%@include file="topnav.jsp" %>
 	<div id="contact" class="contact">
 	 <div class="container">
 	 		<h3 class="text-center">ติดต่อสอบถาม/แจ้งปัญหาการใช้งาน</h3>

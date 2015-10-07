@@ -60,7 +60,7 @@ function hideURLbar() {
 
 	</head>
 	<body class="bg-c">
-	<%@include file="home/topnav.jsp" %>
+	<%@include file="topnav.jsp" %>
 		<div id="contact" class="contact">
 			<h3 class="text-center">ประวัติการบันทึกค่าใช้จ่าย</h3>
 		</div>

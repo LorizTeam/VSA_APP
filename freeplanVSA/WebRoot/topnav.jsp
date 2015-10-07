@@ -47,7 +47,7 @@
 <!--navigation customer-->
 <div class="container-fluid nav-bg">
 	<nav class="cus_nav  blog-grids">
-	<a href="http://192.168.1.24:8080/freeplanVSA/cus_index_login.jsp">
+	<a href="cus_index_login.jsp">
 			<div class="col-md-2 col-sm-2 thumbnail" style="padding: 20px; ">
 				<h4>
 					<i class=" glyphicon glyphicon-chevron-left"></i> กลับ
@@ -55,17 +55,17 @@
 			</div> </a>
 	<div class=" row middleblog-grid">
 		
-		<a href="http://192.168.1.24:8080/freeplanVSA/home/cus_overview.jsp">
+		<a href="cus_overview.jsp">
 			<div class="col-md-4 col-sm-4 thumbnail">
 				<h4>
 					<i class="glyphicon glyphicon-th-large"></i> ภาพรวม
 				</h4>
 			</div> </a>
-		<a href="http://192.168.1.24:8080/freeplanVSA/cus_detail.jsp"><div class="col-md-4 col-sm-4 thumbnail ">
+		<a href="cus_detail.jsp"><div class="col-md-4 col-sm-4 thumbnail ">
 				<h4>
 					<i class="glyphicon glyphicon-pencil"></i> บันทึกค่าใช้จ่าย
 				</h4>
-			</div> <a href="http://192.168.1.24:8080/freeplanVSA/contact.jsp"><div class="col-md-4 col-sm-4 thumbnail ">
+			</div> <a href="contact.jsp"><div class="col-md-4 col-sm-4 thumbnail ">
 					<h4>
 						<i class=" glyphicon glyphicon-comment"></i> ติดต่อ
 					</h4>

@@ -37,15 +37,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <html>
 	<head>
 		<title>VSA GROUP FREE PLAN :: HOME</title>
-		<link href="css/bootstrap.css" rel="stylesheet" type="text/css"
+		<link href="home/css/bootstrap.css" rel="stylesheet" type="text/css"
 			media="all">
-		<link href="css/bootstrap-theme.min.css" rel="stylesheet"
+		<link href="home/css/bootstrap-theme.min.css" rel="stylesheet"
 			type="text/css" media="all">
-		<link href="css/style.css" rel="stylesheet" type="text/css"
+		<link href="home/css/style.css" rel="stylesheet" type="text/css"
 			media="all" />
-		<link rel="stylesheet" href="css/chocolat.css" type="text/css"
+		<link rel="home/stylesheet" href="css/chocolat.css" type="text/css"
 			media="screen" />
-		<link href="css/uikit-accordion/progress.min.css" rel="stylesheet"
+		<link href="home/css/uikit-accordion/progress.min.css" rel="stylesheet"
 			type="text/css">
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -56,13 +56,13 @@ addEventListener("load", function() {
 function hideURLbar() {
 	window.scrollTo(0, 1);
 }</script>
-		<script src="js/jquery-1.11.1.min.js">
+		<script src="home/js/jquery-1.11.1.min.js">
 </script>
 
-		<script src="js/uikit.min.js">
+		<script src="home/js/uikit.min.js">
 </script>
 
-		<link rel="stylesheet" href="css/flexslider.css" type="text/css"
+		<link rel="stylesheet" href="home/css/flexslider.css" type="text/css"
 			media="screen" />
 
 	</head>
@@ -137,7 +137,7 @@ function hideURLbar() {
 		<div class="col-md-4 ">
 			<div class="thumbnail">
 			<!-- Project info-->
-			<img alt="บ้านเดี่ยว 2 ชั้น" src="../images/1-1.jpg"
+			<img alt="บ้านเดี่ยว 2 ชั้น" src="images/1-1.jpg"
 				class="img-responsive ">
 			<hr />
 			<h3>
@@ -176,7 +176,7 @@ function hideURLbar() {
 		<!-- History project -->
 		<h3>
 			รายการซื้อวัสดุล่าสุด
-			<small><a href="http://192.168.1.24:8080/freeplanVSA/cus_history.jsp"> - ดูทั้งหมด</a>
+			<small><a href="cus_history.jsp"> - ดูทั้งหมด</a>
 			</small>
 		</h3>
 		<hr />
@@ -240,7 +240,7 @@ function hideURLbar() {
 
 
 
-		<script src="js/accordion.js">
+		<script src="home/js/accordion.js">
 </script>
 
 	</body>
