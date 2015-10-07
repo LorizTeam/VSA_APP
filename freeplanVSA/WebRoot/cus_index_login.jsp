@@ -114,7 +114,7 @@ $("span.menu").click(function() {
 						<h3>
 							แบบบ้าน :
 							<small>บ้านเดี่ยว 2 ชั้น 
-							 <a href="http://localhost:8080/freeplanVSA/home/cus_overview.jsp">ดู</a>
+							 <a href="http://192.168.1.24:8080/freeplanVSA/home/cus_overview.jsp">ดู</a>
 							</small>
 						</h3>
 						<%} else if (statusProj.equals("02")) {%>
@@ -132,8 +132,8 @@ $("span.menu").click(function() {
 						</h3>
 						<%}%>
 						
-						<a class="btn-login" href="http://localhost:8080/freeplanVSA/home/cus_profile.jsp">แก้ไขข้อมูลสมาชิก</a>
-						<a class="btn-out" href="http://localhost:8080/freeplanVSA/cus_index.jsp">ออกจากระบบ</a>
+						<a class="btn-login" href="http://192.168.1.24:8080/freeplanVSA/home/cus_profile.jsp">แก้ไขข้อมูลสมาชิก</a>
+						<a class="btn-out" href="http://192.168.1.24:8080/freeplanVSA/cus_index.jsp">ออกจากระบบ</a>
 					</div>
 					<div class="clearfix"></div>
 				</div>

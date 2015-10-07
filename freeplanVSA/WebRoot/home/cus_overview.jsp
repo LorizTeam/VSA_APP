@@ -176,7 +176,7 @@ function hideURLbar() {
 		<!-- History project -->
 		<h3>
 			รายการซื้อวัสดุล่าสุด
-			<small><a href="#"> - ดูทั้งหมด</a>
+			<small><a href="http://192.168.1.24:8080/freeplanVSA/cus_history.jsp"> - ดูทั้งหมด</a>
 			</small>
 		</h3>
 		<hr />
