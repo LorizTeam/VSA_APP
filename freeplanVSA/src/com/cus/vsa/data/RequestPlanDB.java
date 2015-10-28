@@ -74,12 +74,12 @@ public class RequestPlanDB {
 		pStmt.close();
 		conn.close();
 	}
-	public void insertNotification(String name, String email, String messageHD, String messageDT, String dateTime)  
+	public void insertNotification(String name, String email, String messageHD, String messageDT, String dateTime, String statusRead, String statusType)  
 	throws Exception{
 		conn = agent.getConnectMYSql();
 		
-		String sqlStmt = "INSERT IGNORE INTO notifications(name, email, messagehd, messagedt, datetime) " +
-				"VALUES ('"+name+"', '"+email+"', '"+messageHD+"', '"+messageDT+"', '"+dateTime+"')";
+		String sqlStmt = "INSERT IGNORE INTO notifications(name, email, messagehd, messagedt, datetime, status_read, status_type) " +
+				"VALUES ('"+name+"', '"+email+"', '"+messageHD+"', '"+messageDT+"', '"+dateTime+"', '"+statusRead+"', '"+statusType+"')";
 		//System.out.println(sqlStmt);
 		pStmt = conn.createStatement();
 		pStmt.executeUpdate(sqlStmt);

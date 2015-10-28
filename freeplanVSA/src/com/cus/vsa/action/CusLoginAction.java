@@ -42,7 +42,7 @@ public class CusLoginAction extends Action {
 			cusLoginForm = cusLoginDB.checkLogin(userName, passWord);
 			if(cusLoginForm.isTrue()) {
 					
-					session.setAttribute("userName", userName);
+					session.setAttribute("userName", cusLoginForm.getUserName());
 					session.setAttribute("passWord", passWord);
 					session.setAttribute("name", cusLoginForm.getName());
 					session.setAttribute("type", cusLoginForm.getType());

@@ -31,7 +31,7 @@ public class RequestPlanAction extends Action {
 		String forwardText = "";
 		String alertMassage = "กรุณากรอกข้อมูลให้ครบ";
 		
-		if(session.getAttribute("custID") != null){
+		if(session.getAttribute("custID").toString() != null){
 		
 		String custID		= session.getAttribute("custID").toString();
 		String passWord		= session.getAttribute("passWord").toString();
@@ -50,7 +50,7 @@ public class RequestPlanAction extends Action {
 		boolean chkProject = false;
 		chkProject = requestPlanDB.CheckProject(custID);
 		if(chkProject!=true){
-			requestPlanDB.insertNotification(name, email, messageHD, messageDT, dateTime);
+			requestPlanDB.insertNotification(name, email, messageHD, messageDT, dateTime, "ur", "b");
 			requestPlanDB.AddProjectHD("", "", custID, dateTime, galleryID, statusProj, address);
 		}
 		session.setAttribute("statusProj", statusProj);
