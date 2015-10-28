@@ -27,9 +27,12 @@ public class UploadImageAction extends Action {
 		UploadImageForm uploadImageForm = (UploadImageForm) form;
 		ImportImageDB importImageDB = new ImportImageDB();
 		
+		String galleryCodeG = request.getParameter("galleryCode");
+		String imageNameG = request.getParameter("imageName");
+		
 		String galleryID = uploadImageForm.getGalleryCode();
 		
-		if(!"".equals(galleryID)){
+		if(!"".equals(galleryID)&&"".equals(imageNameG)){
 		
 		String fileName = "", filePath = "", usePath = ""; FormFile file = null;
 		filePath =  getServlet().getServletContext().getRealPath("//") +"\\upload";
@@ -216,9 +219,16 @@ public class UploadImageAction extends Action {
 	        }  
 	     }   
 	  }
-	}else{
+	}else{ 
+		if(!"".equals(galleryCodeG)&&!"".equals(!"".equals(imageNameG))) {
+		String filePath1 =  getServlet().getServletContext().getRealPath("//") +"\\upload\\"+imageNameG+" ";
+		File file1 = new File(filePath1);
+		file1.delete();
+		importImageDB.DeleteImage(imageNameG, galleryCodeG);
+		}
 		System.out.println("Select Gallery");
 	}
 		return mapping.findForward(forwardText);
 	}
+	
 }

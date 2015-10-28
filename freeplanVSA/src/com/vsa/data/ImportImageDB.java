@@ -169,6 +169,16 @@ public class ImportImageDB {
 		pStmt.close();
 		conn.close();
 	}
+	public void DeleteImage(String imageName, String galleryID)  throws Exception{
+		conn = agent.getConnectMYSql();
+		
+		String sqlStmt = "Delete from fileimage WHERE galleryid = '"+galleryID+"' and imagename = '"+imageName+"'" ;
+		//System.out.println(sqlStmt);
+		pStmt = conn.createStatement();
+		pStmt.executeUpdate(sqlStmt);
+		pStmt.close();
+		conn.close();
+	}
 	
 	public String SelectDocno(String name) throws Exception {
 		String docno = "";

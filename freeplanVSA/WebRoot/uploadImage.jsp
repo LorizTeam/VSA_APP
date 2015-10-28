@@ -51,11 +51,12 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 		<link rel="stylesheet" href="metro-ui/build/css/metro.css" />
 		<link rel="stylesheet" href="metro-ui/build/css/metro-icons.css" /> 
 		<link rel="stylesheet" href="css/jquery.dataTables.css" /> 
+		<link rel="stylesheet" href="sweetalert/sweetalert.css" />
 	<!--Loading JS-->
 	<!--Use Custom Style-->
-   <script src="metro-ui/build/js/metro.js"></script>
-   <!-- DataTables JavaScript -->
-   
+   	<script src="metro-ui/build/js/metro.js"></script>
+  	<!-- DataTables JavaScript -->
+   	
 		<style>
         html, body {
             height: 100%;
@@ -136,6 +137,35 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 				document.uploadImageForm.galleryName.value 	= tgaName;
 				document.uploadImageForm.imageName.value 	= timage; 
 		}
+		
+		function deleteImage(tgaCode, timage){
+		swal({  title: "Are you sure?",   
+				text: "You will not be able to recover this imaginary file!",   
+				type: "warning",   
+				showCancelButton: true,   
+				confirmButtonColor: "#DD6B55",   
+				confirmButtonText: "Yes, delete it!",   
+				cancelButtonText: "No, cancel plx!",   
+				closeOnConfirm: false,   
+				closeOnCancel: false,
+				showLoaderOnConfirm: true
+			},
+				 
+		function (isConfirm){
+		  	if (isConfirm) {
+			setTimeout(function(){
+			document.uploadImageForm.action="/freeplanVSA/uploadImage.do?galleryCode="+tgaCode+"&imageName="+timage+" "
+			document.uploadImageForm.submit();
+		//	swal("Deleted!", "Your imaginary file has been deleted.", "success");
+			} 
+			 , 3000);
+ 
+			}else {    
+			 swal("Cancelled", "Your imaginary file is safe :)", "error");   
+			}
+		});
+		
+		}
     </script>
 	</head>
 <body class="bg-steels">
@@ -157,7 +187,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 		 <input type="hidden" id="galleryCode" name="galleryCode" />
         <input type="text" id="galleryName" name="galleryName" size="25" maxlength="50" required/>&nbsp;
         <button type="button" class="button mini-button rounded" onclick="showDialog('#dialog')">Get</button> &nbsp;
-		<input type="hidden" id="imageName" name="imageName" />
+		<input type="hidden" id="imageName" name="imageName" /> 
 	</div>
 	 
 	<div class="row" style="padding-left: 2.5%; margin-top: 2%; width:100%;">
@@ -206,6 +236,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 										<th><center>ชื่อ รูปภาพ</center></th>
 										<th><center>ชื่อ Gallery</center></th> 
 										<th><center>สถานะรูปภาพ</center></th>
+										<th><center>ลบรูปภาพ</center></th>
 									</tr>
 									</thead>
 									<tbody>
@@ -228,11 +259,14 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
                 						<%}else if(ui.getGrStatus().equals("dt")) {%>
                 						<td align="center">รูปกลุ่ม Gallery</td>
                 						<%} %>
+                						<td align="center">
+                						<button type="button" class="button mini-button"  onclick="deleteImage('<%=ui.getGalleryCode()%>','<%=ui.getImageName()%>')" >Delete</button> 
+                						</td>
                 					</tr>
                 					<% 	}
                 						} else {
                 					 %>
-                					<tr><td align="center" colspan="3">No Data Found</td></tr>
+                					<tr><td align="center" colspan="5">No Data Found</td></tr>
                 					
 									<%	} %>
                 					</tbody>
@@ -285,9 +319,10 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 			</div>
 		 <!-- /.page-content -->
 		 
-<!-- DataTables JavaScript -->
+	<script src="sweetalert/sweetalert.min.js"></script>
+<!-- DataTables JavaScript --> 
 	<script src="metro-ui/js/jquery-2.1.4.min.js"></script>
-   <script src="js/jquery.dataTables.min.js"></script>
+    <script src="js/jquery.dataTables.min.js"></script>
    
    <!-- DataTables JavaScript -->
   	<!--Loading Dialog-->
