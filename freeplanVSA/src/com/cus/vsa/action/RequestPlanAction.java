@@ -25,18 +25,18 @@ public class RequestPlanAction extends Action {
 	
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
-		HttpSession session = request.getSession();
+		HttpSession sessionCus = request.getSession();
 		RequestPlanDB requestPlanDB = new RequestPlanDB(); 
 		RequestPlanForm requestPlanForm = (RequestPlanForm) form; 
 		String forwardText = "";
 		String alertMassage = "กรุณากรอกข้อมูลให้ครบ";
 		
-		if(session.getAttribute("custID").toString() != null){
+		if(sessionCus.getAttribute("custID").toString() != null){
 		
-		String custID		= session.getAttribute("custID").toString();
-		String passWord		= session.getAttribute("passWord").toString();
-		String name			= session.getAttribute("name").toString().toLowerCase();
-		String email 		= session.getAttribute("userName").toString().toLowerCase();
+		String custID		= sessionCus.getAttribute("custIDCus").toString();
+		String passWord		= sessionCus.getAttribute("passWordCus").toString();
+		String name			= sessionCus.getAttribute("nameCus").toString().toLowerCase();
+		String email 		= sessionCus.getAttribute("userNameCus").toString().toLowerCase();
 		String galleryID	= requestPlanForm.getGalleryID(); // project type
 		String statusProj	= "02"; // non activate
 		String address		= new String(requestPlanForm.getAddress().getBytes("ISO8859_1"), "utf-8");
@@ -53,7 +53,7 @@ public class RequestPlanAction extends Action {
 			requestPlanDB.insertNotification(name, email, messageHD, messageDT, dateTime, "ur", "b");
 			requestPlanDB.AddProjectHD("", "", custID, dateTime, galleryID, statusProj, address);
 		}
-		session.setAttribute("statusProj", statusProj);
+		sessionCus.setAttribute("statusProjCus", statusProj);
 		
 		  forwardText = "success";
 		}else{

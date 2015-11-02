@@ -1,9 +1,9 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%> 
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
-<%	String statusProj = "";
-	if(session.getAttribute("statusProj") != null){
-	statusProj = session.getAttribute("statusProj").toString();
+<%	String statusProjCus = "";
+	if(session.getAttribute("statusProjCus") != null){
+	statusProjCus = session.getAttribute("statusProjCus").toString();
 	}
  %>
 <!--
@@ -110,14 +110,14 @@ $("span.menu").click(function() {
 						<h2>
 							Name Customer
 						</h2>
-						<%if(statusProj.equals("01")){ %>
+						<%if(statusProjCus.equals("01")){ %>
 						<h3>
 							แบบบ้าน :
 							<small>บ้านเดี่ยว 2 ชั้น 
 							 <a href="cus_overview.jsp">ดู</a>
 							</small>
 						</h3>
-						<%} else if (statusProj.equals("02")) {%>
+						<%} else if (statusProjCus.equals("02")) {%>
 						<h3>
 							สถานะ :
 							<small>รอการอนุมัติ

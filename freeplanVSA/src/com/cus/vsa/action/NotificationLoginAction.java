@@ -6,6 +6,7 @@ package com.cus.vsa.action;
 
 import java.util.List;
 
+import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -23,13 +24,13 @@ public class NotificationLoginAction extends Action {
 	
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
-		HttpSession session = request.getSession();
+		HttpSession sessionCus = request.getSession();
 		NotificationDB notificationDB = new NotificationDB(); 
 		NotificationForm notificationForm = (NotificationForm) form; 
 		
-		String name			= session.getAttribute("name").toString();
-		String email		= session.getAttribute("userName").toString();
-		
+		String name			= sessionCus.getAttribute("nameCus").toString();
+		String email		= sessionCus.getAttribute("userNameCus").toString();
+		String statusProjCus = sessionCus.getAttribute("statusProjCus").toString();
 	//	String name			= new String(notificationForm.getName().getBytes("ISO8859_1"), "utf-8");
 	//	String email 		= notificationForm.getEmail().toLowerCase();
 		String messageHD 	= new String(notificationForm.getMessageHD().getBytes("ISO8859_1"), "utf-8");
@@ -45,8 +46,9 @@ public class NotificationLoginAction extends Action {
 			notificationDB.insertNotification(name, email, messageHD, messageDT, dateTime, "ur", "a");
 		}
 		
-		if(session.getAttribute("userName") != null){
+		if(sessionCus.getAttribute("userNameCus") != null){
 		  forwardText = "success";
+		  sessionCus.setAttribute("statusProjCus", statusProjCus);
 		}else{
 		  forwardText = "error";
 		}

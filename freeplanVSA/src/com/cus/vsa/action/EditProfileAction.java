@@ -62,8 +62,8 @@ public class EditProfileAction extends Action {
 		
 		if(userName != "" && name != "" && surName != "" && tel != "" && oldPassWord == "" && passWord == "" && conFirmPassword == ""){
 			cusLoginDB.updateCustomer(name, surName, userName, tel, hdUserName);
-			HttpSession session = request.getSession();
-			session.setAttribute("userName", userName);
+			HttpSession sessionCus = request.getSession();
+			sessionCus.setAttribute("userNameCus", userName);
 			forwardText = "success";
 		}
 		

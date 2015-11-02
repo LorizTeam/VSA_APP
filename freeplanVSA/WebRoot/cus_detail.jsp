@@ -9,29 +9,29 @@
 <%@ page import="com.vsa.util.DBConnect" %>
 <%@ page import="java.sql.*" %>
 <% 	List matList = null, galleryHDList = null;
-	int count = 0; String grp[] = null;  String grpName = "", custID = "";
+	int count = 0; String grp[] = null;  String grpName = "", custIDCus = "";
 	List list = new ArrayList();
 	
-	if(session.getAttribute("custID") != null){
-	custID = session.getAttribute("custID").toString();
+	if(session.getAttribute("custIDCus") != null){
+	custIDCus = session.getAttribute("custIDCus").toString();
 	}
 	
 	Cust_ProjectDB cust_projectDB = new Cust_ProjectDB();
-	galleryHDList = cust_projectDB.GetGalleryList(custID);
+	galleryHDList = cust_projectDB.GetGalleryList(custIDCus);
 	
-	count = cust_projectDB.GetGrp(custID);
-	grp = cust_projectDB.GetGrpList(count, custID);
+	count = cust_projectDB.GetGrp(custIDCus);
+	grp = cust_projectDB.GetGrpList(count, custIDCus);
 	
 	for(int f=0; f<count; f++){
 	
-		matList = cust_projectDB.GetProjectList(grp[f], custID);
+		matList = cust_projectDB.GetProjectList(grp[f], custIDCus);
 		
 		list.add(matList); 
 	} 
 	
 	List projectHistoryList1 = null;
 	if (request.getAttribute("projectHistoryList") == null) {
-	projectHistoryList1 = cust_projectDB.GetProjectHistoryListLimit(custID);
+	projectHistoryList1 = cust_projectDB.GetProjectHistoryListLimit(custIDCus);
 	}else{
 	projectHistoryList1 = (List) request.getAttribute("projectHistoryList");
 	} 

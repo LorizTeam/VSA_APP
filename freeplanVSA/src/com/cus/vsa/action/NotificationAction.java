@@ -23,7 +23,7 @@ public class NotificationAction extends Action {
 	
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
-		HttpSession session = request.getSession();
+		HttpSession sessionCus = request.getSession();
 		NotificationDB notificationDB = new NotificationDB(); 
 		NotificationForm notificationForm = (NotificationForm) form; 
 		
@@ -42,7 +42,7 @@ public class NotificationAction extends Action {
 			notificationDB.insertNotification(name, email, messageHD, messageDT, dateTime, "ur", "a");
 		}
 		
-		if(session.getAttribute("name") != null){
+		if(sessionCus.getAttribute("nameCus") != null){
 		  forwardText = "login";
 		}else{
 		  forwardText = "nologin";

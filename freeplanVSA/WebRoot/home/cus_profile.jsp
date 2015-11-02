@@ -8,13 +8,13 @@
 <%@ page import="com.cus.vsa.data.*" %>
 <%@ page import="com.vsa.util.DBConnect" %>
 <%
-	String userName = "";
-	if(session.getAttribute("userName") != null) userName = session.getAttribute("userName").toString();
+	String userNameCus = "";
+	if(session.getAttribute("userNameCus") != null) userNameCus = session.getAttribute("userNameCus").toString();
 	
 	List customerList = null;
 	String name = "", surName = "", tel = "";
 	CusLoginDB cusLoginDB = new CusLoginDB();
-	customerList = cusLoginDB.CustomerList(userName);
+	customerList = cusLoginDB.CustomerList(userNameCus);
 	if (customerList.size() == 1) {
 		request.setAttribute("customerList", customerList);
 		CusLoginForm custInfo = (CusLoginForm) customerList.get(0);
@@ -101,10 +101,10 @@ $("span.menu").click(function() {
 			  <html:form action="/cusEditProfile" styleClass="form-signin app-cam" >
 			  <h2 class="form-heading">แก้ไขข้อมูลส่วนตัว</h2>
 			      <p>แก้ไขรายละเอียดบุคคล</p>
-			      <input type="hidden" id="hdUserName" name="hdUserName" value="<%=userName%>" >
+			      <input type="hidden" id="hdUserName" name="hdUserName" value="<%=userNameCus%>" >
 			      <input type="text" id="name" name="name" value="<%=name%>" class="form-control1" placeholder="ชื่อ" >
 			      <input type="text" id="surName" name="surName" value="<%=surName%>" class="form-control1" placeholder="นามสกุล">
-			      <input type="email" id="userName" name="userName" value="<%=userName%>" class="form-control1" placeholder="อีเมลล์" >
+			      <input type="email" id="userName" name="userName" value="<%=userNameCus%>" class="form-control1" placeholder="อีเมลล์" >
 			      <input type="text" id="tel" name="tel" value="<%=tel%>" class="form-control1" placeholder="เบอร์โทรศัพท์" >
 			      <select class="form-control" style="background-color: rgb(34, 34, 36); color: rgb(153, 153, 153); height: 45px;">
 			      	<option>1</option>
