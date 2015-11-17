@@ -1,0 +1,61 @@
+@font-face{
+	font-family: 'Waffle';
+	src:url('../fonts/Waffle Regular.otf');
+}
+.no-selection{
+	-webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    overflow: hidden ;
+}
+.head-text{
+	font-family: 'Waffle';
+	font-size:90px;
+	color: #6B6B6B;
+}
+.home-me-so-good{
+	position:absolute;width:100%; z-index: 1; height: 100%;background-color: rgba(255,255,255,0.6);
+}
+.logo{	 
+	border-radius: 50%;
+	border: #0077dd solid 2px;
+	height:200px;
+	width: 200px;
+    background: white;
+    z-index: 1;
+}
+.link-logo,.link-logo:hover,.logo h3{
+	text-decoration: none;
+	color: #0077dd;
+}
+.logo h3{
+	padding-top:37%;
+	 line-height: 45px;
+}
+.speech{
+	color: white;
+}
+.bg-no-re{
+	background-repeat: no-repeat; 
+}
+.s1{
+	background-image: url('../img/speez1.svg');padding: 50px 10px;
+}
+.s2{
+	background-image: url('../img/speez2.svg');padding: 50px 10px;
+}
+.s3{
+	background-image: url('../img/speez3.svg');padding: 50px 10px 50px 50px;
+}
+.s4{
+	background-image: url('../img/speez4.svg');padding:80px 5px 50px 40px ;background-size: 100%;
+}
+.div-anime-footer{
+	position: relative;width: 100%; top: 390px;
+}
+footer{
+	position: fixed;width: 100%;bottom: -5px;z-index:1;margin:5px 45.5%;
+}
