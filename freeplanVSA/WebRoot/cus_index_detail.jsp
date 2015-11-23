@@ -16,7 +16,7 @@
 <script src="js/modal.min.js"></script>
 <div id="service" class="service">
 	 <div class="container">
-		 <h3>การบริการ</h3>	
+		 <h3>ทำไมต้องของแบบบ้านที่ Home-Me?</h3>	
 		 <div class="service-grids">
 		 <div class="icon-grids">
 			 <div class="col-md-6 futr-grid futr1">
@@ -26,8 +26,8 @@
 						 </div>
 				  </div>
 				 <div class="icon-info">
-						 <h4><a href="#">Vestibulum sagittis</a></h4>							
-						 <p>Aliquam erat volutpat. Nam egestas dapibus pellentesque. Nunc non luctus neque, non aliquet tortor. Suspendisse in faucibus dolor, commodo malesuada ipsum. Cras vel facilisis mi. In malesuada felis eu volutpat consequat.</p>
+						 <h4><a href="#">การขอแบบบ้านทำได้ง่าย</a></h4>							
+						 <p>ขั้นตอนการขอแบบบ้านง่ายมาก ใครก็สามารถขอได้ แค่ไม่กี่ขั้นก็ท่านก็สามารถได้รับแบบบ้านไปใช้สร้างบ้านของท่าน ที่สำคัญคือ "ฟรี"</p>
 				 </div>
 				 <div class="clearfix"></div>
 			 </div>
@@ -38,9 +38,8 @@
 						 </div>
 				  </div>
 				  <div class="icon-info">
-						<h4><a href="#">Enter Text Here...</a></h4>						 
-						<p>Mauris vestibulum pulvinar urna id ultricies. Etiam volutpat interdum mi in aliquet. Pellentesque vel tincidunt sapien.
-		 Suspendisse potenti. Nam sed </p>
+						<h4><a href="#">ไม่มีค่าใช้จ่ายเพิ่มเติมหลังจากการขอแบบบ้าน</a></h4>						 
+						<p>เราแจกแบบบ้าน ให้ท่านฟรี 100% ไม่มีค่าใช้จ่ายภายหลังเพื่อจะขอแบบบ้าน </p>
 				  </div>
 				  <div class="clearfix"></div>
 			 </div>
@@ -50,12 +49,12 @@
 			 <div class="col-md-6 futr-grid futr1">
 				 <div class="icon-pic">
 						<div class="icon text-center">
-						 <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
+						 <span class="glyphicon  glyphicon-thumbs-up" aria-hidden="true"></span>
 						 </div>
 				  </div>
 				 <div class="icon-info">
-						 <h4><a href="#">Vestibulum sagittis</a></h4>							
-						 <p>Aliquam erat volutpat. Nam egestas dapibus pellentesque. Nunc non luctus neque, non aliquet tortor. Suspendisse in faucibus dolor, commodo malesuada ipsum. Cras vel facilisis mi. In malesuada felis eu volutpat consequat.</p>
+						 <h4><a href="#">เป็นแบบบ้านที่ใช้ได้จริงได้มาตราฐาน</a></h4>							
+						 <p>แบบบ้านที่ท่านเลือก ทางเราจะมีทีมงาน เขียนแบบให้ท่านโดยอ้างอิง ที่ดินของท่าน จึงมั่นใจได้ว่า นำไปใช้ได้จริง</p>
 				 </div>
 				 <div class="clearfix"></div>
 			 </div>
@@ -66,8 +65,8 @@
 						 </div>
 				  </div>
 				  <div class="icon-info">
-						<h4><a href="#">ระบบสมาชิกที่ใช้งานง่าย</a></h4>						 
-						<p>ด้วยระบบควบคุมต้นทุน ที่ใช้งานง่าย ช่วยให้ทำงานง่ายขึ้น</p>
+						<h4><a href="#">มีระบบควบคุมต้นทุนที่ใช้งานง่ายให้</a></h4>						 
+						<p>ด้วยระบบควบคุมต้นทุน ของเรา ลูกค้าจะสามารถใช้งบประมาณที่มีอยู่ สร้างบ้านได้คุ้มค่าที่สุด อีกทั้งยังควบคุมต้นทุนในการสร้างให้อยู่ภายในขอบเขตที่กำหนดไว้ สามารถตรวจสอบได้</p>
 				  </div>
 				  <div class="clearfix"></div>
 			 </div>
@@ -77,10 +76,10 @@
 	 </div>
 </div>
 <!--about-->
-<div id="about" class="about">	 
+<div id="about" class="about" class="container">	 
 	 <div class="about-left"></div>
 	 <div class="about-right">
-		<h3>เกี่ยวกับ</h3>
+		<h3>เกี่ยวกับเรา</h3>
 		<h4>Vivamus ac mi ut tortor elementum venenatis.</h4>
 		<p>Mauris vestibulum pulvinar urna id ultricies. Etiam volutpat interdum mi in aliquet. Pellentesque vel tincidunt sapien.
 		 Suspendisse potenti. Nam sed scelerisque est. Vestibulum non leo ligula. Donec aliquet viverra semper. Donec sed est ac sem suscipit vehicula.
@@ -99,7 +98,7 @@
 		});
 		</script> 
 <!--gallery js-->
-<div id="gallery" class="gallery">
+<div id="gallery" class="gallery" >
 	 <div class="container">
 		 <h3>แกลอรี่ <small>แบบบ้านฟรี</small></h3>
          <div class="gallery-info">
@@ -116,7 +115,7 @@
           %>
          		<!--gallery-->	
          		<a href="#<%=galleryID%>"data-uk-modal >	
-				<figure  class="col-sm-6 col-md-4  uk-overlay uk-overlay-hover" style="margin-bottom:30px;">
+				<figure  class="col-sm-6 col-md-4  uk-overlay uk-overlay-hover" style="margin-bottom:30px;padding:0;">
 					
 					<% List imageHDList = null;
 			         	ImportImageDB importImageDB = new ImportImageDB();
@@ -156,15 +155,16 @@
 				       		<img src="<%=pathImage%>"  > 
 				       	<% } %>	
 				       </div>
-				       <h4>รายละเอียด</h4>
-				       <p><%=galleryName%></p>
 				       <hr/>
-				       <input class="btn btn-info" type="submit" value="แจ้งขอแบบบ้าน"/>
+				       <h4>รายละเอียด</h4><br/>
+				       <p><%=galleryName%></p>			      
+				       <hr/>				
+				       <a class="btn btn-info" href="cus_request_plan.jsp?galleryid=<%=galleryID%>">แจ้งขอแบบบ้าน</a>				     
 				       <a class="uk-modal-close btn btn-danger" href="#" >ปิด</a>
 				       
 				    </div>
 				    	
-				</div>
+				</div> 
 				
 				<!--gallery-->	
 			<% } %>	
@@ -175,28 +175,29 @@
 <!---->
 <div id="blog" class="blog">
 	 <div class="container">
-		 <h3>ข่าวสาร</h3>
+		 <h3>ช่วยเหลือ</h3>
 		 <div class="blog-grids">
 			 <div class="col-md-6 blog-grid">
-				 <a href="#"><img src="home/images/b1.jpg" class="img-responsive" alt=""/></a> 
-				 <h4><a href="#">Etiam luctus velit ac cursus lobortis.</a></h4>
+				 <a href="#"><img src="home/images/b2.jpg" class="img-responsive" alt=""/></a> 
+				 <h4><a href="#">วิธีการการขอแบบบ้านฟรี</a></h4>
 					<span>Mar 12 | 2015</span>
-				 <p>Aenean eget eleifend nulla. Nunc vel nisi mi. Ut faucibus ornare tempus. Donec non mi et sem convallis tincidunt ac in purus. Nullam tincidunt orci elit, vitae vulputate sapien ullamcorper et. Sed ut est purus. Duis consectetur suscipit ullamcorper. Nam dictum nisl odio, eget maximus ante interdum iaculis urna sapien.</p>				 
+				 <p>- สมัครสมาชิกกับเว็บของเรา หรือ<a href="cus_register.jsp">คลิกที่นี่</a> เพื่อสมัครสมาชิก</p>
+				 <p>- จากแบบบ้านทั้งหมดที่เรามีให้เลือกแบบบ้านที่ถูกใจ แล้วคลิ๊กขอแบบบ้าน</p>
+				 <p>- นำเอกสารที่แจ้ง ส่งอีเมลมาที่ <a href="mailto:FreePlan@Home-me.co.th">FreePlan@Home-me.co.th</a> แล้วรอห้เจ้าหน้าที่ตรวจสอบเอกสาร</p>
+				 <p>- รอรับแบบบ้านฟรี "ไม่มีค่าใช้จ่ายเพิ่มเติม"</p>
 			 </div>
 			 <div class="col-md-6 blog-grid">
-				 <a href="#"><img src="home/images/b2.jpg" class="img-responsive" alt=""/> </a> 
-				 <h4><a href="#">Etiam luctus velit ac cursus lobortis.</a></h4>
+				 <a href="#"><img src="home/images/b1.jpg" class="img-responsive" alt=""/> </a> 
+				 <h4><a href="#">วิธีใช้งานระบบ Home-Me Cost Control</a></h4>
 					<span>Mar 12 | 2015</span>
-				 <p>Aenean eget eleifend nulla. Nunc vel nisi mi. Ut faucibus ornare tempus. Donec non mi et sem convallis tincidunt ac in purus. Nullam tincidunt orci elit, vitae vulputate sapien ullamcorper et. Sed ut est purus. Duis consectetur suscipit ullamcorper. Nam dictum nisl odio, eget maximus ante interdum iaculis urna sapien.</p>
+				 <p>- วิธีเข้าใช้งานระบบ <a href="#">คลิก<i class="glyphicon glyphicon-chevron-right"></i></a></p>
+				 <p>- วิธีเพิ่มค่าใช้จ่าย เมื่อซื้อวัสดุ <a href="#">คลิก<i class="glyphicon glyphicon-chevron-right"></i></a></p>
+				 <p>- วิธีใช้งานภาพรวมการสร้าง <a href="#">คลิก<i class="glyphicon glyphicon-chevron-right"></i></a></p>
+				 <p>- วิธีเช็คประวัติการเพิ่มค่าใช้จ่าย <a href="#">คลิก<i class="glyphicon glyphicon-chevron-right"></i></a></p>
+				 <p>- ช่องทางการติดต่อเจ้าหน้าที่เมื่อเกิดปัญหา <a href="#">คลิก<i class="glyphicon glyphicon-chevron-right"></i></a></p>
+				 
 			 </div>
-			 <div class="clearfix"></div>
-			 <div class="middleblog-grid blog-grid">
-				 <a href="#"><img src="home/images/b3.jpg" class="img-responsive" alt=""/> </a> 
-				 <h4><a href="#">Etiam luctus velit ac cursus lobortis.</a></h4>
-					<span>Mar 12 | 2015</span>
-				 <p>Aenean eget eleifend nulla. Nunc vel nisi mi. Ut faucibus ornare tempus. Donec non mi et sem convallis tincidunt ac in purus. Nullam tincidunt orci elit, vitae vulputate sapien ullamcorper et. Sed ut est purus. Duis consectetur suscipit ullamcorper. Nam dictum nisl odio, eget maximus ante interdum iaculis urna sapien.</p>
-				
-			 </div>
+			<div class="clearfix"></div>
 		 </div>
 	 </div>
 </div>
@@ -210,12 +211,14 @@
 		 <h3>ติดต่อเรา</h3>
 		 <div class="touch-top">
 			 <div class="col-md-8 touch-left">
-				 <form>
-					<input type="text" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" />
-					<input type="text" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" />
-					<textarea onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message';}"></textarea>
+				 <html:form action="/notification">
+					<input type="text" id="name" name="name" required placeholder="Name" />
+					<input type="email" id="email" name="email" required placeholder="Email" style="border: 1px solid #999; background: none; margin-top: 7px; border-radius: 5px; font-size: inherit; padding: 10px;"/>
+					<input type="text" id="messageHD" name="messageHD" required placeholder="Subject" />
+					<textarea  id="messageDT" name="messageDT" required placeholder="Message"></textarea>
 					<input type="submit" value="SUBMIT">				
-				 </form>	
+				 </html:form>
+				 <br/>
 			 </div>
 			 <div class="col-md-4 touch-right">
 					<div class="touch-right-top">

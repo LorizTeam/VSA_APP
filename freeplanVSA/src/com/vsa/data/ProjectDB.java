@@ -20,20 +20,51 @@ public class ProjectDB {
 	ResultSet rs		= null;
 	DateUtil dateUtil = new DateUtil();
 	
+	public String CountProject() 
+	throws Exception {
+		 
+		String no = "";
+		try {
+		conn = agent.getConnectMYSql();
+	 
+		 String sqlStmt = "SELECT count(project_id) as countno " +
+				     "FROM projecthd " +
+				     "WHERE project_id <> '' ";
+		pStmt = conn.createStatement();
+		rs = pStmt.executeQuery(sqlStmt);
+		while (rs.next()) { 
+			if (rs.getString("countno") != null) no = rs.getString("countno"); else no = "-";
+		}
+		
+		} catch (SQLException e) {
+		    throw new Exception(e.getMessage());
+		} finally {
+			try {
+				if (rs != null) 	  rs.close();
+				if (pStmt != null) pStmt.close();
+				if (conn != null)  conn.close();
+			} catch (SQLException e) {
+				throw new Exception(e.getMessage());
+			}
+		}
+		return no; 
+	}
 	public List GetProjectHDList(String projectID, String projectName) 
 	throws Exception { //02-07-2015
 		List projectHDList = new ArrayList();
-		String employeeID = "", employeeName = "", customerID = "", customerName = "", projectType = "", projectStatus = "", projectAddress = "", createDate = "";
+		String employeeID = "", employeeName = "", customerID = "", customerName = "", customerEmail = "",
+		projectType = "", galleryName = "", projectStatus = "", projectAddress = "", createDate = "";
 
 		try {
 		
 			conn = agent.getConnectMYSql();
 			
 			String sqlStmt = "SELECT project_id, project_name, a.employee_id, a.customer_id, create_date, project_type, project_status, project_address, " +
-					"b.employee_name, c.customer_name " +
+					"b.employee_name, c.customer_name, c.customer_email, d.galleryname " +
 			"FROM projecthd a " +
-			"INNER JOIN employee_master b on(b.employee_id = a.employee_id) " +
+			"LEFT JOIN employee_master b on(b.employee_id = a.employee_id) " +
 			"INNER JOIN customer_master c on(c.customer_id = a.customer_id) " +
+			"INNER JOIN gallery_master d on(d.galleryid = a.project_type) " +
 			"WHERE "; 
 			if(!projectID.equals("")) sqlStmt = sqlStmt+ "project_id like '"+projectID+"%' AND ";
 			if(!projectName.equals("")) sqlStmt = sqlStmt+ "project_name like '"+projectName+"%' AND ";
@@ -46,20 +77,22 @@ public class ProjectDB {
 			while (rs.next()) {
 				projectID 			= rs.getString("project_id");
 				if (rs.getString("project_name") != null) 	projectName = rs.getString("project_name"); else projectName = "";
-				employeeID 			= rs.getString("employee_id");
+				employeeID 			= rs.getString("employee_id"); if(employeeID.equals("0")) employeeID = "";
 				if (rs.getString("employee_name") != null) 	employeeName = rs.getString("employee_name"); else employeeName = "";
 				customerID 			= rs.getString("customer_id");
 				if (rs.getString("customer_name") != null) 	customerName = rs.getString("customer_name"); else customerName = "";
 				createDate			= rs.getString("create_date");
 				projectType 		= rs.getString("project_type"); 
+				galleryName			= rs.getString("galleryname");
 				projectStatus 		= rs.getString("project_status"); 
 				projectAddress 		= rs.getString("project_address");
+				customerEmail		= rs.getString("customer_email");
 				
 			//	createDate = dateUtil.CnvToDDMMYYYY1(createDate);
 				if(createDate!=null) createDate = dateUtil.CnvToDDMMYYYY(createDate);
 				
 				projectHDList.add(new ProjectForm(projectID, projectName, employeeID, employeeName, customerID, customerName, createDate, 
-						projectType, projectStatus, projectAddress));
+						projectType, galleryName, projectStatus, projectAddress, customerEmail));
 			}
 			rs.close();
 			pStmt.close();
@@ -132,8 +165,8 @@ public class ProjectDB {
 	public void AddProjectDT(String projectID, String structure, String materialCode, String weight, String amount, String amountTotal)  throws Exception{
 		conn = agent.getConnectMYSql();
 		
-		String sqlStmt = "INSERT IGNORE INTO projectdt(project_id, structure, material_code, weight, amount, amounttotal) " +
-		"VALUES ('"+projectID+"', '"+structure+"', '"+materialCode+"', '"+weight+"', '"+amount+"', '"+amountTotal+"')";
+		String sqlStmt = "INSERT IGNORE INTO projectdt(project_id, structure, material_code, weight, amount, amounttotal, amounttotal_cust) " +
+		"VALUES ('"+projectID+"', '"+structure+"', '"+materialCode+"', '"+weight+"', '"+amount+"', '"+amountTotal+"', '0.00')";
 		//System.out.println(sqlStmt);
 		pStmt = conn.createStatement();
 		pStmt.executeUpdate(sqlStmt);
@@ -195,12 +228,12 @@ public class ProjectDB {
 		pStmt.close();
 		conn.close();
 	}
-	public String SelectDocno(String name) throws Exception {
-		String docno = "";
+	public String SelectDocno() throws Exception {
+		String docno = "0";
 	try {
 		conn = agent.getConnectMYSql();
 		
-		String sqlStmt = "SELECT project_id FROM projecthd where employee_id = '"+name+"' ";
+		String sqlStmt = "SELECT project_id FROM projecthd ";
 		pStmt = conn.createStatement();
 		rs = pStmt.executeQuery(sqlStmt);		
 		while (rs.next()) {

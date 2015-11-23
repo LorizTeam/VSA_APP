@@ -4,8 +4,8 @@
 <%@ page import ="javax.servlet.http.HttpServletRequest.*"%>
 <%@ page import ="javax.servlet.http.HttpServletResponse.*"%>
 <%@ page import ="javax.servlet.http.HttpSession.*"%>
-<%@ page import="com.vsa.form.CustomerForm" %>
-<%@ page import="com.vsa.data.CustomerDB" %>
+<%@ page import="com.cus.vsa.form.NotificationForm" %>
+<%@ page import="com.cus.vsa.data.NotificationDB" %>
 <%@ page import="com.vsa.util.DBConnect" %>
 <%@ page import="java.sql.*" %>
 <% 
@@ -20,8 +20,8 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 
 <html lang="en">
   <head>
-    <meta charset"UTF-8">
-     
+    <meta charset="UTF-8">
+          
     <title>Notification</title>
     
 	<meta http-equiv="pragma" content="no-cache">
@@ -32,7 +32,10 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
+	<link rel="stylesheet" href="uikit/uikit.min.css"/>
+	<script src="uikit/js/jquery.js" type="text/javascript"></script>
+	<script src="uikit/js/uikit.min.js" type="text/javascript"></script>
+	<script src="uikit/js/components/grid.min.js" type="text/javascript"></script>
 
 	<!--Loading CSS Core-->
 		<link rel="stylesheet" href="metro-ui/build/css/metro.css" />
@@ -50,7 +53,7 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 		<style>
         html, body {
             height: 100%;
-            overflow: auto;
+            overflow: hidden;
         }
         .page-content {
             padding-top: 0;
@@ -87,18 +90,30 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
     	padding:0px!important;
     }
     .box {
-	  border: 1px solid #222;
+	  border: 1px solid rgba(0, 0, 0, 0.4);
 	  border-radius: 10px;
-	  height: 300px;
+	  height: 460px;
 	  overflow-y: auto;
 	  overflow-x: hidden;
 	}
 	.box-detail {
-	  border: 1px solid #222;
+	  border: 1px solid rgba(0, 0, 0, 0.4);
 	  border-radius: 10px;
-	  height: 500px;
+	  height: 460px;
 	  overflow-y: auto;
 	  overflow-x: hidden;
+	}
+	.text-right{
+  text-align: right;
+}
+	.right-frame{
+		position: absolute;
+		left: 320;
+		bottom: 5;
+	}
+	.little{
+		position: absolute;
+		bottom: 10;
 	}
     </style>
 
@@ -113,36 +128,79 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
                 }
             });
         });
+        function chkno(message){
+		 	 document.notificationForm.no.value = message;	
+		}
 		function shownorti(message){
+		 	$('#showehd').val("");
+			$('#showdt').val("");
 			$('#showemail').val("");
-			$('#showtext').val("");
 			
-			showtextnorti(message);
-			showemailnorti(message);		
+			showhdnorti(message);
+			showdtnorti(message);
+			shownamenorti(message);
+			showemailnorti(message);
+			showdatetimenorti(message);		
 		}
 		
-		function showemailnorti(message){
+		function showhdnorti(message){
 			$.ajax({
                     type: "post",
-                    url: "ajax_nortifications.jsp", //this is my servlet
+                    url: "ajax_nortificationshd.jsp", //this is my servlet
                     data: {noNorti:message},
                     async:true,
                     success: function(result){
-                    	$('#showemail').html(result);
+                    	$('#showhd').html(result);
 //                            $('#showemail').append(123456);
 //                            $('input[name="showemail1"]').val(123456);
 //								alert(result);
                     }
                 });
 		}
-		function showtextnorti(message){
+		function showdtnorti(message){
 			$.ajax({
                     type: "post",
-                    url: "ajax_nortificationstext.jsp", //this is my servlet
+                    url: "ajax_nortificationsdt.jsp", //this is my servlet
                     data: {noNorti:message},
                     async:true,
                     success: function(result){ 
-                    	$('#showtext').html(result);	
+                    	$('#showdt').html(result);	
+//								alert(result);
+                    }
+                });			
+		}
+		function shownamenorti(message){
+			$.ajax({
+                    type: "post",
+                    url: "ajax_nortificationsname.jsp", //this is my servlet
+                    data: {noNorti:message},
+                    async:true,
+                    success: function(result){ 
+                    	$('#showname').html(result);	
+//								alert(result);
+                    }
+                });			
+		}
+		function showemailnorti(message){
+			$.ajax({
+                    type: "post",
+                    url: "ajax_nortificationsemail.jsp", //this is my servlet
+                    data: {noNorti:message},
+                    async:true,
+                    success: function(result){ 
+                    	$('#showemail').html(result);	
+//								alert(result);
+                    }
+                });			
+		}
+		function showdatetimenorti(message){
+			$.ajax({
+                    type: "post",
+                    url: "ajax_nortificationsdatetime.jsp", //this is my servlet
+                    data: {noNorti:message},
+                    async:true,
+                    success: function(result){ 
+                    	$('#showdatetime').html(result);	
 //								alert(result);
                     }
                 });			
@@ -181,114 +239,112 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
                     <!-- /.menu left -->	
                     <jsp:include page="/menu_left.jsp"></jsp:include>
                     <!-- /.menu left -->
+                   
 			<div class="cell auto-size padding20 bg-white">
-			<h3 class="align-center">Notification</h3>
-        	<div class="col-md-4 email-list1 box padding10">
+			<h3 class="align-center">Notification</h3><br/>
+			
+			<ul id="fillnoti" class="uk-subnav uk-subnav-pill ">
+					<li class="uk-active" data-uk-filter=""><a href="">ทั้งหมด</a></li>
+					<li data-uk-filter="rdb"><a href="">ขอแบบบ้าน อ่านแล้ว</a></li>
+					<li data-uk-filter="urb"><a href="">ขอแบบบ้าน ยังไม่ได้อ่าน</a></li>
+					<li data-uk-filter="rda"><a href="">ทั่วไป อ่านแล้ว</a></li>
+					<li data-uk-filter="ura"><a href="">ทั่วไป ยังไม่ได้อ่าน</a></li>
+					 
+					<html:form action="/notificationMain" styleClass="uk-form">
+						<select class="little">
+							<option selected>เรียงจาก</option>
+							<option data-uk-sort="my-category:desc">ใหม่สุด</option>
+							<option data-uk-sort="my-category">เก่าสุด</option>
+						</select>
+					<input type="hidden" id="no" name="no" />
+					<li><button type="submit" class="button primary right-frame rounded">ทำเครื่องหมายว่าอ่านแล้ว</button></li>  
+					</html:form>
+				</ul>
+        	<div class="col-md-4 email-list1 box padding10" style="padding: 0 0 0 0.625rem;">
+        	
         		<table class="table hovered" width="100%">
-        		<tr>
-        			<td onclick="shownorti(2)" class="collection-item avatar email-unread clickable-row" width="100%"  data-href='#'>
+        		<tbody class="uk-grid"
+					data-uk-grid="{controls: '#fillnoti',gutter:0.1}">
+        		<% List notificationList1 = null;
+        		   if (request.getAttribute("notificationList") == null) {
+						NotificationDB notificationDB = new NotificationDB();
+						notificationList1 = notificationDB.Notification();
+						}else{
+						notificationList1 = (List) request.getAttribute("notificationList");
+						}
+	   			if (notificationList1 != null) {
+					List notificationList = notificationList1;
+					int x = 0;
+					for (Iterator iter = notificationList.iterator(); iter.hasNext();) {
+					x++;
+					NotificationForm notification = (NotificationForm) iter.next(); 
+					String no 			= notification.getNo();
+					String email 		= notification.getEmail();
+					String messageHD 	= notification.getMessageHD();
+					String dateTime 	= notification.getDateTime();
+					String statusRead 	= notification.getStatusRead();
+					String statusType 	= notification.getStatusType(); 
+					String all = statusRead+statusType;
+				%>
+        		<tr data-uk-filter="<%=all%>" data-my-category="<%=dateTime%>" width="100%">
+        			<td data-href='#' onclick="shownorti('<%=no%>'),chkno('<%=no%>')" class="collection-item avatar email-unread clickable-row" width="100%"  >
         			  <hr/>
         				<i class="icon_4">G</i>
                       <div class="avatar_left">
-                      	<span class="email-title">nontawatch@windowslive.com</span>
-                        <p class="truncate grey-text ultra-small">คำร้องขอแบบแปลนบ้าน(บ้านเดี่ยว)</p>
+                      	<span class="email-title"><%=email%></span>
+                        <p class="truncate grey-text ultra-small"><%=messageHD%></p>
                       </div>
-                      <a href="#" class="secondary-content"><span class="blue-text ultra-small">2:15 pm</span></a>
+                      <a href="#" class="secondary-content"><span class="blue-text ultra-small"><%=dateTime%></span></a>
                       
                       <div class="clearfix"></div>
                       <hr/>
         			</td>
         		</tr>
-        		<tr>
-        			<td onclick="shownorti(1)" class="collection-item avatar email-unread clickable-row" width="100%" data-href='#'>
-        			  <hr/>
-        				<i class="icon_4">G</i>
-                      <div class="avatar_left">
-                      	<span class="email-title">nontawatch@windowslive.com</span>
-                        <p class="truncate grey-text ultra-small">คำร้องขอแบบแปลนบ้าน(บ้านเดี่ยว)</p>
-                      </div>
-                      <a href="#" class="secondary-content"><span class="blue-text ultra-small">2:15 pm</span></a>
-                      <div class="clearfix"></div>
-                      <hr/>
-                      
-        			</td>
-        		</tr>
+        		<% }
         		
+        		} %>
+        		</tbody>
         		</table>
-               <!--  <ul class="collection">
-               		<hr/>
-                    <li class="collection-item avatar email-unread">
-                      <i class="icon_4">G</i>
-                      <div class="avatar_left">
-                      	<span class="email-title">Gmail</span>
-                        <p class="truncate grey-text ultra-small">Sed ut perspiciatis</p>
-                      </div>
-                      <a href="#!" class="secondary-content"><span class="blue-text ultra-small">2:15 pm</span></a>
-                      <div class="clearfix"></div>
-                    </li>
-                    <hr/>
-                    <li class="collection-item avatar email-unread">
-                      <i class="icon_4">G</i>
-                      <div class="avatar_left">
-                      	<span class="email-title">Gmail</span>
-                        <p class="truncate grey-text ultra-small">Sed ut perspiciatis</p>
-                      </div>
-                      <a href="#!" class="secondary-content"><span class="blue-text ultra-small">2:15 pm</span></a>
-                      <div class="clearfix"></div>
-                    </li>
-                    <hr/>
-                    <li class="collection-item avatar email-unread">
-                      <i class="icon_4">G</i>
-                      <div class="avatar_left">
-                      	<span class="email-title">Gmail</span>
-                        <p class="truncate grey-text ultra-small">Sed ut perspiciatis</p>
-                      </div>
-                      <a href="#!" class="secondary-content"><span class="blue-text ultra-small">2:15 pm</span></a>
-                      <div class="clearfix"></div>
-                    </li>
-                    <hr/>
-                    <li class="collection-item avatar email-unread">
-                      <i class="icon_4">G</i>
-                      <div class="avatar_left">
-                      	<span class="email-title">Gmail</span>
-                        <p class="truncate grey-text ultra-small">Sed ut perspiciatis</p>
-                      </div>
-                      <a href="#!" class="secondary-content"><span class="blue-text ultra-small">2:15 pm</span></a>
-                      <div class="clearfix"></div>
-                    </li>
-                    <hr/>
-                    <li class="collection-item avatar email-unread">
-                      <a><i class="icon_4">G</i>
-                      <div class="avatar_left">
-                      	<span class="email-title">Gmail</span>
-                        <p class="truncate grey-text ultra-small">Sed ut perspiciatis</p>
-                      </div>
-                      <a href="#!" class="secondary-content"><span class="blue-text ultra-small">2:15 pm</span></a>
-                      <div class="clearfix"></div></a>
-                    </li>
-                    <hr/>
-                    <li class="collection-item avatar email-unread">
-                      <i class="icon_4">G</i>
-                      <div class="avatar_left">
-                      	<span class="email-title">Gmail</span>
-                        <p class="truncate grey-text ultra-small">Sed ut perspiciatis</p>
-                      </div>
-                      <a href="#!" class="secondary-content"><span class="blue-text ultra-small">2:15 pm</span></a>
-                      <div class="clearfix"></div>
-                    </li>
-                    <hr/>
-              </ul>-->
         </div>
         <div name="email-detail" class="container col-md-7 box-detail padding10" style="margin-left: 1%; width: 65%;">
-        	<div class="input-control text">
-        		<span id="showemail"></span>
-			</div>
-			<br/>
-		    <div  class="input-control textarea">
-		        <span id="showtext"></span>
+        <br/><br/>
+        	<div class="row">
+        		<div class="col-md-6">
+	        		<b style="color:#959595;">หัวเรื่อง : </b><span id="showhd"></span>
+				</div>
+				<div  class="col-md-6 text-right">
+			       <span id="showdatetime"></span>
+			    </div>
+        	</div><br/><br/><br/>
+			<div class="row">
+				<div class="col-md-4">				
+				    <b style="color:#959595;">ผู้ส่ง : </b><span id="showname"></span>		   
+				</div>
+				
+			</div><br/><br/><br/>
+
+			<div class="row">
+				<div class="col-md-8">
+					<b style="color:#959595;">Email : </b><span id="showemail"></span>
+				</div>
+			</div><br/><br/><br/>
+		    <div  class="row">
+		    	<div class="col-md-12" >
+		        <b style="color:#959595;">รายละเอียด </b><br/><br/>
+			        <div style="border: 1px solid #CECECE;padding:10px;border-radius:4px; line-height: 200%;">
+			        	<span  id="showdt"></span>
+			        </div>
+		        </div>
 		    </div>
+			<div  class="row">
+		    	<div class="col-md-5" >
+
+		        </div>
+		    </div>
+		   
 		</div>
             </div>
+            
        		</div>
 			</div>
 			</div>

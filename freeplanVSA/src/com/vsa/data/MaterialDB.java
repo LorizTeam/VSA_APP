@@ -20,6 +20,35 @@ public class MaterialDB {
 	ResultSet rs		= null;
 	DateUtil dateUtil = new DateUtil();
 	
+	public String CountMaterial() 
+	throws Exception {
+		 
+		String no = "";
+		try {
+		conn = agent.getConnectMYSql();
+	 
+		 String sqlStmt = "SELECT count(material_code) as countno " +
+				     "FROM material_master " +
+				     "WHERE material_code <> '' ";
+		pStmt = conn.createStatement();
+		rs = pStmt.executeQuery(sqlStmt);
+		while (rs.next()) { 
+			if (rs.getString("countno") != null) no = rs.getString("countno"); else no = "-";
+		}
+		
+		} catch (SQLException e) {
+		    throw new Exception(e.getMessage());
+		} finally {
+			try {
+				if (rs != null) 	  rs.close();
+				if (pStmt != null) pStmt.close();
+				if (conn != null)  conn.close();
+			} catch (SQLException e) {
+				throw new Exception(e.getMessage());
+			}
+		}
+		return no; 
+	}
 	public List GetMaterialList(String materialCode, String materialName) 
 	throws Exception { //30-05-2014
 		List materialList = new ArrayList();
@@ -97,7 +126,7 @@ public class MaterialDB {
 		}
 		return materialList;
 	 }
-	public String[] GetGrpList(int count) 
+	public String[] GetGrpList1(int count) 
 	throws Exception { //30-05-2014
 		String getList[] = new String[count];
 		try {
@@ -126,7 +155,7 @@ public class MaterialDB {
 		}
 		return getList;
 	 }
-	public int GetGrp() 
+	public int GetGrp1() 
 	throws Exception { //30-05-2014
 		int count = 0;
 		 

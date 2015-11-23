@@ -1,16 +1,22 @@
-#Fri Sep 04 11:47:34 ICT 2015
+#Thu Oct 01 15:52:06 ICT 2015
 eclipse.preferences.version=1
 encoding//WebRoot/cus_main.jsp=UTF-8
 encoding//src/com/cus/vsa/action/CusLoginAction.java=UTF-8
 encoding//src/com/cus/vsa/action/CusRegisterAction.java=UTF-8
 encoding//src/com/cus/vsa/action/EditProfileAction.java=UTF-8
+encoding//src/com/cus/vsa/action/NotificationAction.java=UTF-8
+encoding//src/com/cus/vsa/action/NotificationLoginAction.java=UTF-8
+encoding//src/com/cus/vsa/action/RequestPlanAction.java=UTF-8
 encoding//src/com/cus/vsa/form/CusLoginForm.java=UTF-8
+encoding//src/com/cus/vsa/form/NotificationForm.java=UTF-8
+encoding//src/com/cus/vsa/form/RequestPlanForm.java=UTF-8
 encoding//src/com/vsa/action/CustomerAction.java=UTF-8
 encoding//src/com/vsa/action/CustomerProjectAction.java=UTF-8
 encoding//src/com/vsa/action/CustomerStartAction.java=UTF-8
 encoding//src/com/vsa/action/GalleryAction.java=UTF-8
 encoding//src/com/vsa/action/LoginAction.java=UTF-8
 encoding//src/com/vsa/action/MaterialAction.java=UTF-8
+encoding//src/com/vsa/action/NotificationAction.java=UTF-8
 encoding//src/com/vsa/action/ProjectDTAction.java=UTF-8
 encoding//src/com/vsa/action/ProjectHDAction.java=UTF-8
 encoding//src/com/vsa/action/RegisterAction.java=UTF-8

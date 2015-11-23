@@ -35,8 +35,8 @@ public class CustomerProjectAction extends Action {
 		
 		String update 				= customerProjectForm.getUpdate();   
 		
-		HttpSession session = request.getSession();
-		String custID = session.getAttribute("name").toString();
+		HttpSession sessionCus = request.getSession();
+		String custIDCus = sessionCus.getAttribute("custIDCus").toString();
 		
 		String forwardText = "success";
 		
@@ -56,10 +56,10 @@ public class CustomerProjectAction extends Action {
 				cust_ProjectDB.UpdateAR(projectID[x], structure[x], materialCode[x], amountTotalCust[x], calCost[x]);
 				
 				if(amountTotalCust[x].equals("")||amountTotalCust[x] == null) amountTotalCust[x] = "0";
-				if(Float.parseFloat(amountTotalCust[x])>0){
+				if(Float.parseFloat(amountTotalCust[x])!=0){
 					String dateTime = dateUtil.curDateTime();
-					String project_runno = cust_ProjectDB.ProjectRunno(custID);
-					cust_ProjectDB.AddProjectHistory(custID, projectID[x], project_runno, structure[x], materialCode[x], amountTotalCust[x], calCost[x], dateTime);
+					String project_runno = cust_ProjectDB.ProjectRunno(custIDCus);
+					cust_ProjectDB.AddProjectHistory(custIDCus, projectID[x], project_runno, structure[x], materialCode[x], amountTotalCust[x], calCost[x], dateTime);
 				}
 			}
 		}
@@ -67,7 +67,7 @@ public class CustomerProjectAction extends Action {
 	}
 		
 		
-		List projectHistoryList = cust_ProjectDB.GetProjectHistoryList(custID);
+		List projectHistoryList = cust_ProjectDB.GetProjectHistoryList(custIDCus);
 		request.setAttribute("projectHistoryList", projectHistoryList);
 		  
 		return mapping.findForward(forwardText);

@@ -14,6 +14,8 @@
   	<form-bean name="galleryForm" type="com.vsa.form.GalleryForm" />
   	<!-- customer begin -->
   	<form-bean name="cusLoginForm" type="com.cus.vsa.form.CusLoginForm" />
+  	<form-bean name="notificationForm" type="com.cus.vsa.form.NotificationForm" />
+  	<form-bean name="requestPlanForm" type="com.cus.vsa.form.RequestPlanForm" />
   	
   </form-beans>
   <global-exceptions />
@@ -60,6 +62,20 @@
       <forward name="success" path="/Login.jsp" />
     </action>
   <!--################################     Register     #################################-->
+  
+  <!--################################    (Notification)    #################################-->
+   <action
+      attribute="notificationForm"
+      input="/mainNotification.jsp"
+      name="notificationForm"
+      path="/notificationMain"
+      scope="request"
+      type="com.vsa.action.NotificationAction" >
+      
+      <forward name="success" path="/mainNotification.jsp" /> 
+      <forward name="error" path="/mainNotification.jsp" /> 
+    </action>
+  <!--################################     (Notification)    #################################-->
   
   <!--################################     Customer     #################################-->
    <action
@@ -222,6 +238,48 @@
       <forward name="login" path="/cus_login.jsp" />
     </action>
   <!--################################    Customer Edit Profile     #################################-->
+  
+  <!--################################    Contact (Notification)    #################################-->
+   <action
+      attribute="notificationForm"
+      input="/cus_index_detail.jsp"
+      name="notificationForm"
+      path="/notification"
+      scope="request"
+      type="com.cus.vsa.action.NotificationAction" >
+      
+      <forward name="login" path="/cus_index_login.jsp" />
+      <forward name="nologin" path="/cus_index.jsp" /> 
+    </action>
+  <!--################################    Contact (Notification)    #################################-->
+  
+  <!--################################   Login Contact (Notification)    #################################-->
+   <action
+      attribute="notificationForm"
+      input="/home/contact.jsp"
+      name="notificationForm"
+      path="/notificationLogin"
+      scope="request"
+      type="com.cus.vsa.action.NotificationLoginAction" >
+      
+      <forward name="success" path="/contact.jsp" />
+      <forward name="error" path="/cus_index.jsp" /> 
+    </action>
+  <!--################################  Login  Contact (Notification)    #################################-->
+  
+  <!--################################   Request Plan (Project & Notification)    #################################-->
+   <action
+      attribute="requestPlanForm"
+      input="/cus_request_plan.jsp"
+      name="requestPlanForm"
+      path="/requestPlan"
+      scope="request"
+      type="com.cus.vsa.action.RequestPlanAction" >
+      
+      <forward name="success" path="/cus_index_login.jsp" /> 
+      <forward name="nologin" path="/cus_register.jsp" />
+    </action>
+  <!--################################  Request Plan (Project & Notification)    #################################-->
   
   <!--********************************     Customer    	********************************-->
   

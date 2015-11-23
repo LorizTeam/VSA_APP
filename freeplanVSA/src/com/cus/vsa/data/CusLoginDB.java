@@ -11,7 +11,7 @@ import java.util.List;
 import com.cus.vsa.form.CusLoginForm;
 import com.vsa.util.DBConnect;
 
-public class CusLoginDB {
+public class CusLoginDB { 
 	
 	public String encrypt(String x) throws Exception {		
 		String storepass = "";		
@@ -39,7 +39,7 @@ public class CusLoginDB {
 		String sql = "SELECT a.username, a.password, a.name, a.type, b.customer_id " +
 				     "FROM login_master a inner join customer_master b on(b.customer_email = a.username) " +
 				     "WHERE username = '"+userName+"' " +
-				     "AND password ='"+encrypPass+"' " ;
+				     "AND password = '"+encrypPass+"' " ;
 		PreparedStatement pstmt = connDB.prepareStatement(sql);
 
 		rs = pstmt.executeQuery();
@@ -47,9 +47,29 @@ public class CusLoginDB {
 			cusLoginForm.setTrue(true);
 			cusLoginForm.setUserName(rs.getString("username"));
 			cusLoginForm.setPassWord(rs.getString("password"));
-			cusLoginForm.setName(rs.getString("customer_id"));
+			cusLoginForm.setCustID(rs.getString("customer_id"));
 			cusLoginForm.setType(rs.getString("type"));
+			cusLoginForm.setName(rs.getString("name"));
 		}
+		// rs.close();
+		
+		String statusProj = "";
+		
+		sql = "SELECT c.project_status " +
+	     "FROM login_master a inner join customer_master b on(b.customer_email = a.username) " +
+	     "inner join projecthd c on (c.customer_id = b.customer_id) " +
+	     "WHERE username = '"+userName+"' " +
+	     "AND password = '"+encrypPass+"' " ;
+		
+		pstmt = connDB.prepareStatement(sql);
+		rs = pstmt.executeQuery();
+		if(rs.next()) { 
+			statusProj = rs.getString("project_status");
+		if(statusProj==null) statusProj = "";
+		cusLoginForm.setStatusProj(statusProj);  
+		}
+		rs.close();
+		pstmt.close();
 		
 		if(connDB != null) {
 			connDB.close();
@@ -57,6 +77,7 @@ public class CusLoginDB {
 		
 		return cusLoginForm;
 	}
+	 
 	public void registerNew(String username, String password, String name, String type, String date, String tel) throws Exception {
 		String encrypPass = encrypt(password);
 
@@ -90,7 +111,7 @@ public class CusLoginDB {
 		String sqlStmt = "INSERT INTO customer_master(customer_name, customer_surname, customer_tel, customer_email, " +
 				"customer_dob, customer_houseno, customer_villageno, customer_village, customer_lane, customer_subdistrict, customer_district, " +
 				"customer_province, customer_postcode) " +
-		"VALUES ('"+customerName+"', '"+customerSurName+"', '"+customerTel+"', '"+customerEmail+"', '0000-00-00', " +
+		"VALUES ('"+customerName+"', '"+customerSurName+"', '"+customerTel+"', '"+customerEmail+"', '"+customerDOB+"', " +
 				"'"+customerHouseNo+"', '"+customerVillageNo+"', '"+customerVillage+"', '"+customerLane+"', '"+customerSubDistrict+"', " +
 				"'"+customerDistrict+"', '"+customerProvince+"', '"+customerPostCode+"')";
 		//System.out.println(sqlStmt);

@@ -145,17 +145,17 @@ String basePath = request.getScheme () + ":/ /" + request.getServerName () + ":"
 		<input type="hidden" id="materialCode" name="materialCode" />
 		
 		<div class="input-control modern text" style="width:19%;">
-		    <input type="text" id="materialName" name="materialName" size="25" maxlength="50" style="height: 2em;"/>
+		    <input type="text" id="materialName" name="materialName" size="25" maxlength="50" style="height: 2em;" required/>
 		    <span class="label"> ชื่อ วัสดุ</span>
 		   
 		</div> &nbsp;
 		<div class="input-control modern text" style="width:19%;">
-		    <input type="text" id="amount" name="amount" size="15" maxlength="15" style="height: 2em;"/>
+		    <input type="text" id="amount" name="amount" size="15" maxlength="15" style="height: 2em;" required/>
 		    <span class="label"> ราคา</span>
 		  
 		</div> &nbsp;
 		<div class="input-control modern text" style="width:19%;">
-		    <input type="text" id="unit" name="unit" size="8" maxlength="10" style="height: 2em;"/>
+		    <input type="text" id="unit" name="unit" size="8" maxlength="10" style="height: 2em;" required/>
 		    <span class="label"> หน่วย</span>
 		
 		</div> &nbsp;

@@ -9,3 +9,5 @@
 *.class
 *.class
 *.class
+freeplanVSA/src/com/vsa/util/DBConnect.java
+freeplanVSA/WebRoot/WEB-INF/classes/com/vsa/util/DBConnect.class

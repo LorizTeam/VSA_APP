@@ -21,6 +21,7 @@ public class UploadImageForm extends ActionForm{
 	private String imageName;
 	private String pathfile;
 	private String grStatus;
+	private String delete;
 	
 	public FormFile getFile() {
 		return file;
@@ -126,6 +127,14 @@ public class UploadImageForm extends ActionForm{
 
 	public void setFileHD(FormFile fileHD) {
 		this.fileHD = fileHD;
+	}
+
+	public String getDelete() {
+		return delete;
+	}
+
+	public void setDelete(String delete) {
+		this.delete = delete;
 	}
 
 }

@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
+  
 import com.vsa.form.LoginForm;
 import com.vsa.util.DBConnect;
 
@@ -21,7 +21,7 @@ public class LoginDB {
 			java.security.MessageDigest lMessageDigest = java.security.MessageDigest.getInstance("SHA", "SUN");
 			byte[] _result = lMessageDigest.digest(x.getBytes());
 			storepass = new sun.misc.BASE64Encoder().encode(_result);
-			
+	 	
 		} catch (java.security.NoSuchProviderException nspe) {
 			
 		}

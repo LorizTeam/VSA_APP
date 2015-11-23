@@ -1,6 +1,11 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%> 
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+<%	String statusProjCus = "";
+	if(session.getAttribute("statusProjCus") != null){
+	statusProjCus = session.getAttribute("statusProjCus").toString();
+	}
+ %>
 <!--
 Au<!--
 Author: W3layouts
@@ -22,13 +27,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<script type="application/x-javascript">
-addEventListener("load", function() {
-	setTimeout(hideURLbar, 0);
-}, false);
-function hideURLbar() {
-	window.scrollTo(0, 1);
-}
-</script>
+			addEventListener("load", function() {
+			setTimeout(hideURLbar, 0);
+			}, false);
+			function hideURLbar() {
+			window.scrollTo(0, 1);
+			}
+	</script>
 <style>
 
 .header {
@@ -40,7 +45,18 @@ function hideURLbar() {
 </script>
 		<link rel="stylesheet" href="home/css/flexslider.css" type="text/css"
 			media="screen" />
-
+	<!--scrolling-->
+<script type="text/javascript" src="home/js/move-top.js"></script>
+<script type="text/javascript" src="home/js/easing.js"></script>
+ <script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$(".scroll").click(function(event){		
+				event.preventDefault();
+				$('html,body').animate({scrollTop:$(this.hash).offset().top},1200);
+			});
+		});
+	</script>
+<!--scrolling-->
 	</head>
 	<body>
 		<!--top-header-->
@@ -68,7 +84,7 @@ function hideURLbar() {
 							<a class="scroll font-menu" href="#gallery">แกลอรี่</a>
 						</li>
 						<li>
-							<a class="scroll font-menu" href="#blog">ข่าวสาร</a>
+							<a class="scroll font-menu" href="#blog">ช่วยเหลือ</a>
 						</li>
 						<li>
 							<a class="scroll font-menu" href="#contact">ติดต่อ</a>
@@ -94,13 +110,30 @@ $("span.menu").click(function() {
 						<h2>
 							Name Customer
 						</h2>
+						<%if(statusProjCus.equals("01")){ %>
 						<h3>
 							แบบบ้าน :
-							<small>บ้านเดี่ยว 2 ชั้น <a href="http://localhost:8080/freeplanVSA/home/cus_overview.jsp">ดู</a>
+							<small>บ้านเดี่ยว 2 ชั้น 
+							 <a href="cus_overview.jsp">ดู</a>
 							</small>
 						</h3>
-						<a class="btn-login" href="http://localhost:8080/freeplanVSA/home/cus_profile.jsp">แก้ไขข้อมูลสมาชิก</a>
-						<a class="btn-out" href="http://localhost:8080/freeplanVSA/cus_index.jsp">ออกจากระบบ</a>
+						<%} else if (statusProjCus.equals("02")) {%>
+						<h3>
+							สถานะ :
+							<small>รอการอนุมัติ
+							</small>
+						</h3>
+						<%} else {%>
+						<h3>
+							สถานะ :
+							<small>
+							 ยังไม่มีการขอแบบบ้าน
+							</small>
+						</h3>
+						<%}%>
+						
+						<a class="btn-login" href="cus_profile.jsp">แก้ไขข้อมูลสมาชิก</a>
+						<a class="btn-out" href="cus_index.jsp">ออกจากระบบ</a>
 					</div>
 					<div class="clearfix"></div>
 				</div>
@@ -108,7 +141,7 @@ $("span.menu").click(function() {
 		</div>
 		
 
-		<%@include file="../cus_index_detail.jsp" %>
+		<%@include file="cus_index_detail.jsp" %>
 <div class="footer">
 	 <div class="container">
 		 <p>Copyrights © 2015 Seven All rights reserved | Template by <a href="http://w3layouts.com/">W3layouts</a></p>

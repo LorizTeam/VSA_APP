@@ -16,6 +16,9 @@ public class GalleryForm extends ActionForm {
 	private static final long serialVersionUID = 1L;
 	private String galleryCode;
 	private String galleryName;
+	private String description;
+	private String amount;
+	private String timeUse;
 	 
 	private String add;
 	private String update;
@@ -28,6 +31,14 @@ public class GalleryForm extends ActionForm {
 		super();
 		this.galleryCode 	= galleryCode;
 		this.galleryName 	= galleryName;
+}
+	public GalleryForm (String galleryCode, String galleryName, String description, String amount, String timeUse){
+		super();
+		this.galleryCode 	= galleryCode;
+		this.galleryName 	= galleryName;
+		this.description 	= description;
+		this.amount 		= amount;
+		this.timeUse	 	= timeUse;
 }
 	public void reset() {
 	
@@ -89,6 +100,24 @@ public class GalleryForm extends ActionForm {
 	}
 	public void setFile(FormFile file) {
 		this.file = file;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public String getAmount() {
+		return amount;
+	}
+	public void setAmount(String amount) {
+		this.amount = amount;
+	}
+	public String getTimeUse() {
+		return timeUse;
+	}
+	public void setTimeUse(String timeUse) {
+		this.timeUse = timeUse;
 	}
 	 
 }

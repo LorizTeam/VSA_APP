@@ -20,6 +20,35 @@ public class CustomerDB {
 	ResultSet rs		= null;
 	DateUtil dateUtil = new DateUtil();
 	
+	public String CountCustomer() 
+	throws Exception {
+		 
+		String no = "";
+		try {
+		conn = agent.getConnectMYSql();
+	 
+		 String sqlStmt = "SELECT count(customer_id) as countno " +
+				     "FROM customer_master " +
+				     "WHERE customer_id <> '' ";
+		pStmt = conn.createStatement();
+		rs = pStmt.executeQuery(sqlStmt);
+		while (rs.next()) { 
+			if (rs.getString("countno") != null) no = rs.getString("countno"); else no = "-";
+		}
+		
+		} catch (SQLException e) {
+		    throw new Exception(e.getMessage());
+		} finally {
+			try {
+				if (rs != null) 	  rs.close();
+				if (pStmt != null) pStmt.close();
+				if (conn != null)  conn.close();
+			} catch (SQLException e) {
+				throw new Exception(e.getMessage());
+			}
+		}
+		return no; 
+	}
 	public List GetCustomerList(String customerID, String customerName) 
 	throws Exception { //30-05-2014
 		List customerList = new ArrayList();

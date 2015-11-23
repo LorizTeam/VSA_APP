@@ -84,7 +84,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         })
     </script>
 	</head>
-	<body class="bg-steel">
+	<body class="bg-steel"><!-- เอาออกเพื่อเปิดเมนู ด้านบน
 	<div>
 		<ul class="m-menu fixed-top" >
     <li><a href="mainAdmin.jsp">หน้าแรก</a></li>
@@ -167,6 +167,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </ul>
 	</div>
     </html:form>
-		<!---------------------Menu-------------------------------------------->		
+	 เอาออกเพื่อเปิดเมนู ด้านบน	-------------------Menu-------------------------------------------->		
   </body>
 </html>

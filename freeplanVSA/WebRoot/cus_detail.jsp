@@ -8,29 +8,30 @@
 <%@ page import="com.vsa.data.Cust_ProjectDB" %>
 <%@ page import="com.vsa.util.DBConnect" %>
 <%@ page import="java.sql.*" %>
-<% 	List matList = null;
-	int count = 0; String grp[] = null;  String grpName = "", name = "";
+<% 	List matList = null, galleryHDList = null;
+	int count = 0; String grp[] = null;  String grpName = "", custIDCus = "";
 	List list = new ArrayList();
 	
-	if(session.getAttribute("name") != null){
-	name = session.getAttribute("name").toString();
+	if(session.getAttribute("custIDCus") != null){
+	custIDCus = session.getAttribute("custIDCus").toString();
 	}
 	
 	Cust_ProjectDB cust_projectDB = new Cust_ProjectDB();
+	galleryHDList = cust_projectDB.GetGalleryList(custIDCus);
 	
-	count = cust_projectDB.GetGrp(name);
-	grp = cust_projectDB.GetGrpList(count, name);
+	count = cust_projectDB.GetGrp(custIDCus);
+	grp = cust_projectDB.GetGrpList(count, custIDCus);
 	
 	for(int f=0; f<count; f++){
 	
-		matList = cust_projectDB.GetProjectList(grp[f], name);
+		matList = cust_projectDB.GetProjectList(grp[f], custIDCus);
 		
 		list.add(matList); 
 	} 
 	
 	List projectHistoryList1 = null;
 	if (request.getAttribute("projectHistoryList") == null) {
-	projectHistoryList1 = cust_projectDB.GetProjectHistoryList(name);
+	projectHistoryList1 = cust_projectDB.GetProjectHistoryListLimit(custIDCus);
 	}else{
 	projectHistoryList1 = (List) request.getAttribute("projectHistoryList");
 	} 
@@ -75,79 +76,9 @@ function hideURLbar() {
 
 	</head>
 	<body class="bg-c">
-		<!--top-header
-		<div id="home" class="top-header">
-			<div class="container">
-				<div class="logo">
-					<h1>
-						<a href="index.jsp">Home Me</a>
-					</h1>
-				</div>
-				<div class="top-menu">
-					<span class="menu"><img src="images/nav-icon.png" alt="" />
-					</span>
-					<ul>
-						<li>
-							<a class="scroll font-menu" href="../cus_index.jsp">หน้าแรก</a>
-						</li>
-						<li>
-							<a class="scroll font-menu" href="#service">บริการ</a>
-						</li>
-						<li>
-							<a class="scroll font-menu" href="#about">เกี่ยวกับ</a>
-						</li>
-						<li>
-							<a class="scroll font-menu" href="#gallery">แกลอรี่</a>
-						</li>
-						<li>
-							<a class="scroll font-menu" href="#blog">ข่าวสาร</a>
-						</li>
-						<li>
-							<a class="scroll font-menu" href="#contact">ติดต่อ</a>
-						</li>
-					</ul>
-					
-					<script>
-					$("span.menu").click(function() {
-						$(".top-menu ul").slideToggle("slow", function() {
-						});
-					});
-					</script>
-					
-				</div>
-			</div>
-		</div>
-		<!--header-->
-
-<!--navigation customer-->
-<div class="container-fluid nav-bg">
-	<nav class="cus_nav  blog-grids">
-	<a href="cus_index_login.jsp">
-			<div class="col-md-2 col-sm-2 thumbnail" style="padding: 20px; ">
-				<h4>
-					<i class=" glyphicon glyphicon-chevron-left"></i> กลับ
-				</h4>
-			</div> </a>
-	<div class=" row middleblog-grid">
 		
-		<a href="http://localhost:8080/freeplanVSA/home/cus_overview.jsp">
-			<div class="col-md-4 col-sm-4 thumbnail">
-				<h4>
-					<i class="glyphicon glyphicon-th-large"></i> ภาพรวม
-				</h4>
-			</div> </a>
-		<a href="http://localhost:8080/freeplanVSA/cus_detail.jsp"><div class="col-md-4 col-sm-4 thumbnail ">
-				<h4>
-					<i class="glyphicon glyphicon-pencil"></i> บันทึกค่าใช้จ่าย
-				</h4>
-			</div> <a href="http://localhost:8080/freeplanVSA/home/contact.jsp"><div class="col-md-4 col-sm-4 thumbnail ">
-					<h4>
-						<i class=" glyphicon glyphicon-comment"></i> ติดต่อ
-					</h4>
-				</div> </a>
-	</div>
-	</nav>
-</div>
+
+<%@include file="topnav.jsp" %>
 		<div id="contact" class="contact">
 			<h3 class="text-center">บันทึกค่าใช้จ่าย</h3>
 		</div>
@@ -163,13 +94,19 @@ function hideURLbar() {
 			<h3>
 				รายละเอียด
 			</h3>
+			<% for (Iterator iter = galleryHDList.iterator(); iter.hasNext();) {
+				CustomerProjectForm custp = (CustomerProjectForm) iter.next();
+				String galleryName = custp.getGalleryName();
+				String galleryAmount = custp.getGalleryAmount();
+				String galleryWork = custp.getGalleryWork();
+			%>
 			<blockquote class="row">
 				<div class="col-md-4">
 					<h4>
 						ประเภท
 					</h4>
 					<h4>
-						<small> บ้านเดี่ยว 2 ชั้น</small>
+						<small> <%=galleryName%></small>
 					</h4>
 				</div>
 				<div class="col-md-4">
@@ -177,7 +114,7 @@ function hideURLbar() {
 						ราคาก่อสร้าง โดยประมาณ
 					</h4>
 					<h4>
-						<small> 1,200,000 บาท</small>
+						<small> <%=galleryAmount%> บาท</small>
 					</h4>
 				</div>
 				<div class="col-md-4">
@@ -185,10 +122,11 @@ function hideURLbar() {
 						เวลาก่อสร้างโดยประมาณ
 					</h4>
 					<h4>
-						<small> 6 เดือน</small>
+						<small> <%=galleryWork%> เดือน</small>
 					</h4>
 				</div>
 			</blockquote>
+			<%} %>
 			<!-- Accorion -->
 			<blockquote class="row ">
 				<h3>
@@ -302,7 +240,7 @@ function hideURLbar() {
 		<!-- History project -->
 		<h3>
 			รายการซื้อวัสดุล่าสุด
-			<small><a href="#"> - ดูทั้งหมด</a> </small>
+			<small><a href="cus_history.jsp"> - ดูทั้งหมด</a> </small>
 		</h3>
 		<hr />
 		<div class="row ">

@@ -25,13 +25,13 @@ public class CusLoginAction extends Action {
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		CusLoginForm cusLoginForm = (CusLoginForm) form; 
 		CusLoginDB cusLoginDB = new CusLoginDB();
-		HttpSession session = request.getSession();
+		HttpSession sessionCus = request.getSession();
 		String forwardText = null;
 		String chkLogout = "";
-		if(session.getAttribute("userName") != null) chkLogout = (String) session.getAttribute("userName");
+		if(sessionCus.getAttribute("userNameCus") != null) chkLogout = (String) sessionCus.getAttribute("userNameCus");
 		if(chkLogout.equals("logout")){
-			session.removeAttribute("userName");
-			session.invalidate();
+			sessionCus.removeAttribute("userNameCus");
+			sessionCus.invalidate();
 			forwardText = "error";
 		}else{
 			
@@ -42,13 +42,15 @@ public class CusLoginAction extends Action {
 			cusLoginForm = cusLoginDB.checkLogin(userName, passWord);
 			if(cusLoginForm.isTrue()) {
 					
-					session.setAttribute("userName", userName);
-					session.setAttribute("passWord", passWord);
-					session.setAttribute("name", cusLoginForm.getName());
-					session.setAttribute("type", cusLoginForm.getType());
-					  
-					String login = "1";
-					session.setAttribute("login", login); 
+				sessionCus.setAttribute("userNameCus", cusLoginForm.getUserName());
+				sessionCus.setAttribute("passWordCus", passWord);
+				sessionCus.setAttribute("nameCus", cusLoginForm.getName());
+				sessionCus.setAttribute("typeCus", cusLoginForm.getType());
+				sessionCus.setAttribute("custIDCus", cusLoginForm.getCustID());
+				sessionCus.setAttribute("statusProjCus", cusLoginForm.getStatusProj());
+					
+					String loginCus = "1";
+					sessionCus.setAttribute("loginCus", loginCus); 
 					String type = cusLoginForm.getType();
 					
 					if(type.equals("cus")){
@@ -63,14 +65,14 @@ public class CusLoginAction extends Action {
 					
 			} else {
 				request.setAttribute("error", "Username หรือ Password ไม่ถู�?ต้อง ");
-				String login = "0";
-				session.setAttribute("login", login);
+				String loginCus = "0";
+				sessionCus.setAttribute("loginCus", loginCus);
 				forwardText = "error";
 			}
 		} else {
 			request.setAttribute("error", "โปรดระบุ Username �?ละ Password");
-			String login = "0";
-			session.setAttribute("login", login);
+			String loginCus = "0";
+			sessionCus.setAttribute("loginCus", loginCus);
 			forwardText = "error";
 		}
 	}

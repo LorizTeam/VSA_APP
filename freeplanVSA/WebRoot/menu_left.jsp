@@ -1,31 +1,12 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@ page import="com.vsa.form.*" %>
 <%@ page import="com.vsa.data.*" %>
-
+<%@ page import="com.cus.vsa.data.*" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
-<% 	List customerList1 = null, materialList1 = null, galleryList1 = null, projectHDList1 = null; 
-	int x = 0, f = 0, d = 0;
-
-	if (request.getAttribute("customerList") == null) {
-	CustomerDB customerDB = new CustomerDB();
-	customerList1 = customerDB.GetCustomerList("", "");
-	}
-	if (request.getAttribute("materialList") == null) {
-	MaterialDB materialDB = new MaterialDB();
-	materialList1 = materialDB.GetMaterialList("","");
-	}
-	if (request.getAttribute("galleryList") == null) {
-	GalleryDB galleryDB = new GalleryDB();
-	galleryList1 = galleryDB.GetGallery();
-	}
-	if (request.getAttribute("projectHDList") == null) {
-	ProjectDB projectDB = new ProjectDB();
-	projectHDList1 = projectDB.GetProjectHDList("", "");
-	}
+<% 	
 	String menu = "";
 	if(request.getAttribute("menu") != ""){ 
 		menu = (String)request.getAttribute("menu");
@@ -120,22 +101,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <li <%if(menu == "notification"){ %> class="active" <%}%> ><a href="mainNotification.jsp">
                             <span class="mif-notification icon"></span>
                             <span class="title">Notification</span>
-
-                            <span class="counter">-</span>
+							<% NotificationDB notificationDB = new NotificationDB();
+							String countNotification = notificationDB.CountNotification();
+							%>
+                            <span class="counter"><%=countNotification%></span>
                             
                         </a></li>
                         <li  <%if(menu == "project"){ %> class="active" <%}%> ><a href="mainProjectHD.jsp">
                             <span class="mif-apps icon"></span>
                             <span class="title">Project</span>
-                            <%	if (projectHDList1 != null) {
-									List projectHDList = projectHDList1;
-									for (Iterator iter = projectHDList.iterator(); iter.hasNext();) {
-							  			d++;
-							  			ProjectForm proj = (ProjectForm) iter.next();
-							%>
-							<% }
-                            } %>
-                            <span class="counter"><%=d %></span>
+                            <%	ProjectDB projectDB = new ProjectDB();
+                            String countProject = projectDB.CountProject();
+							%> 
+                            <span class="counter"><%=countProject%></span>
                         </a></li>
                         <li <%if(menu == "importexcel"){ %> class="active" <%}%> ><a href="importExcel.jsp">
                             <span class="mif-vpn-publ icon"></span>
@@ -145,48 +123,41 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <li <%if(menu == "customer"){ %> class="active" <%}%> ><a href="mainCustomer.jsp">
                             <span class="mif-drive-eta icon"></span>
                             <span class="title">Customer</span>
-                            <%	if (customerList1 != null) {
-									List customerList = customerList1;
-									for (Iterator iter = customerList.iterator(); iter.hasNext();) {
-							  			x++;
-							  			CustomerForm cust = (CustomerForm) iter.next();
-							%>
-							<% }
-                            } %>
-                            <span class="counter"><%=x %></span>
+                            <%	CustomerDB customerDB = new CustomerDB();
+                            String countCustomer = customerDB.CountCustomer();
+							%> 
+                            <span class="counter"><%=countCustomer%></span>
                             
                         </a></li>
                         <li <%if(menu == "upload"){ %> class="active" <%}%> ><a href="uploadImage.jsp">
                             <span class="mif-cloud icon"></span>
                             <span class="title">Upload Image</span>
-                            <span class="counter">-</span>
+                            
                         </a></li>
                         <li <%if(menu == "gallery"){ %> class="active" <%}%> ><a href="mainGallery.jsp">
                             <span class="mif-database icon"></span>
                             <span class="title">Gallery</span>
-                            <%	if (galleryList1 != null) {
-									List galleryList = galleryList1;
-									for (Iterator iter = galleryList.iterator(); iter.hasNext();) {
-							  			f++;
-							  			GalleryForm gary = (GalleryForm) iter.next();
+                            <%	GalleryDB galleryDB = new GalleryDB();
+                           	 String countGallery = galleryDB.CountGallery();
 							%>
-							<% }
-                            } %>
-                            <span class="counter"><%=f %></span>
+							 
+                            <span class="counter"><%=countGallery%></span>
                         </a></li>
                         <li <%if(menu == "material"){ %> class="active" <%}%> ><a href="mainMaterial.jsp">
                             <span class="mif-cogs icon"></span>
                             <span class="title">Material</span>
-                            <%	if (materialList1 != null) {
-									List materialList = materialList1;
-									for (Iterator iter = materialList.iterator(); iter.hasNext();) {
-							  			f++;
-							  			MaterialForm mat = (MaterialForm) iter.next();
+                            <% MaterialDB materialDB = new MaterialDB();
+							String countMaterial = materialDB.CountMaterial();
 							%>
-							<% }
-                            } %>
-                            <span class="counter"><%=f %></span>
+                            <span class="counter"><%=countMaterial%></span>
                         </a></li>
+                        <br/><br/>
+                        <li>
+                        	<a href="login.do" <%session.setAttribute("userName", "logout");%> >
+                        	<span class="mif-exit icon"></span>
+                            <span class="title">LOGOUT</span>
+                            </a>
+                        </li>
 
                     </ul>
                 </div>

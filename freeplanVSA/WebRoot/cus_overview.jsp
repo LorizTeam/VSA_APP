@@ -7,17 +7,24 @@
 <%@ page import="com.vsa.form.CustomerProjectForm" %>
 <%@ page import="com.vsa.data.Cust_ProjectDB" %> 
 <%	
-	String name = "";
-	if(session.getAttribute("name") != null){
-	name = session.getAttribute("name").toString();
+	String custID = "", grpName = "";
+	if(session.getAttribute("custID") != null){
+	custID = session.getAttribute("custID").toString();
 	}
 	Cust_ProjectDB cust_projectDB = new Cust_ProjectDB();
 	List projectHistoryList1 = null;
 	if (request.getAttribute("projectHistoryList") == null) {
-	projectHistoryList1 = cust_projectDB.GetProjectHistoryList(name);
+	projectHistoryList1 = cust_projectDB.GetProjectHistoryListLimit(custID);
 	}else{
 	projectHistoryList1 = (List) request.getAttribute("projectHistoryList");
 	} 
+	
+	int count = 0; String grp[] = null;
+	count = cust_projectDB.GetGrp(custID);
+	grp = cust_projectDB.GetGrpList(count, custID);
+	
+	List galleryHDList = null;
+	galleryHDList = cust_projectDB.GetGalleryList(custID);
 %> 
 <!--
 Au<!--
@@ -30,15 +37,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <html>
 	<head>
 		<title>VSA GROUP FREE PLAN :: HOME</title>
-		<link href="css/bootstrap.css" rel="stylesheet" type="text/css"
+		<link href="home/css/bootstrap.css" rel="stylesheet" type="text/css"
 			media="all">
-		<link href="css/bootstrap-theme.min.css" rel="stylesheet"
+		<link href="home/css/bootstrap-theme.min.css" rel="stylesheet"
 			type="text/css" media="all">
-		<link href="css/style.css" rel="stylesheet" type="text/css"
+		<link href="home/css/style.css" rel="stylesheet" type="text/css"
 			media="all" />
-		<link rel="stylesheet" href="css/chocolat.css" type="text/css"
+		<link rel="home/stylesheet" href="css/chocolat.css" type="text/css"
 			media="screen" />
-		<link href="css/uikit-accordion/progress.min.css" rel="stylesheet"
+		<link href="home/css/uikit-accordion/progress.min.css" rel="stylesheet"
 			type="text/css">
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -49,13 +56,13 @@ addEventListener("load", function() {
 function hideURLbar() {
 	window.scrollTo(0, 1);
 }</script>
-		<script src="js/jquery-1.11.1.min.js">
+		<script src="home/js/jquery-1.11.1.min.js">
 </script>
 
-		<script src="js/uikit.min.js">
+		<script src="home/js/uikit.min.js">
 </script>
 
-		<link rel="stylesheet" href="css/flexslider.css" type="text/css"
+		<link rel="stylesheet" href="home/css/flexslider.css" type="text/css"
 			media="screen" />
 
 	</head>
@@ -74,11 +81,18 @@ function hideURLbar() {
 			<h4  class="text-right"><small>อัพเดทล่าสุด <span class="glyphicon glyphicon-time"></span> 20-11-2015</small></h4>
 			
 			<hr />
+			<% for (Iterator iter = galleryHDList.iterator(); iter.hasNext();) {
+				CustomerProjectForm custp = (CustomerProjectForm) iter.next();
+				String galleryName = custp.getGalleryName();
+				String galleryAmount = custp.getGalleryAmount();
+				String galleryWork = custp.getGalleryWork();
+			%>
 			<h4>
-				<small>ประเภท</small> บ้านเดี่ยว 2 ชั้น
-				<small>ราคาก่อสร้าง โดยประมาณ </small> 1,200,000 บาท
-				<small>เวลาก่อสร้างโดยประมาณ</small> 6 เดือน
+				<small>ประเภท</small> <%=galleryName%>
+				<small>ราคาก่อสร้าง โดยประมาณ </small> <%=galleryAmount%> บาท
+				<small>เวลาก่อสร้างโดยประมาณ</small> <%=galleryWork%> เดือน
 			</h4>
+			<%} %>
 			<hr />
 			<blockquote>
 				<h4>
@@ -90,81 +104,79 @@ function hideURLbar() {
 					<small>ยอดเงินที่ใช้ไป </small> 402,211 บาท
 				</h4>
 			</blockquote>
-			
+				
+				<%  for(int a=0; a<count; a++){
+				    grpName = cust_projectDB.GetGrpName(grp[a]);
+				    String amount = cust_projectDB.GetProgress(grp[a],custID);
+				    String amountCust = cust_projectDB.GetProgressCust(grp[a],custID);
+				    String progress = Float.toString((Float.parseFloat(amountCust)*100)/Float.parseFloat(amount));
+				%>
 				<h4>
-					<small>ความคืบหน้าของรากฐาน</small> <div class="uk-progress">
-						<div class="uk-progress-bar " style="width: 70%;">
-							70%
+					<small>ความคืบหน้าของ<% if(grpName.equals("A")){%>หลังคา<%} if(grpName.equals("B")){%>ตัวบ้าน<%} if(grpName.equals("C")){%>ฐานบ้าน<%} %></small> <div class="uk-progress">
+						<div class="uk-progress-bar " style="width: <%=progress%>%;">
+							<%=progress%>%
 						</div>
 					</div>
 				</h4>
-
-				<h4>
-					<small>ความคืบหน้าของโครงสร้าง/ตัวบ้าน</small> <div class="uk-progress">
-						<div class="uk-progress-bar " style="width: 20%;">
-							20%
-						</div>
-					</div>
-				</h4>
-
-				<h4>
-					<small>ความคืบหน้าของหลังคา </small>
-					<div class="uk-progress">
-						<div class="uk-progress-bar " style="width: 0%;">
-							0%
-						</div>
-					</div>
-				</h4>
-
+				<%} %>
+				<%
+					String amountSum = cust_projectDB.GetProgressSum(custID);
+				    String amountCustSum = cust_projectDB.GetProgressCustSum(custID);
+				    String progressSum = Float.toString((Float.parseFloat(amountCustSum)*100)/Float.parseFloat(amountSum));
+				%> 
 				<h4>
 					<small>ความคืบหน้าของโครงการรวม</small>
 					<div class="uk-progress">
-						<div class="uk-progress-bar" style="width: 40%;">
-							40%
+						<div class="uk-progress-bar" style="width: <%=progressSum%>%;">
+							<%=progressSum%>%
 						</div>
 					</div>
 				</h4>
-	
-
-
 
 		</div>
 		<div class="col-md-4 ">
 			<div class="thumbnail">
 			<!-- Project info-->
-			<img alt="บ้านเดี่ยว 2 ชั้น" src="../images/1-1.jpg"
+			<img alt="บ้านเดี่ยว 2 ชั้น" src="images/1-1.jpg"
 				class="img-responsive ">
 			<hr />
 			<h3>
 				รายละเอียด
 			</h3>
+			<% for (Iterator iter = galleryHDList.iterator(); iter.hasNext();) {
+				CustomerProjectForm custp = (CustomerProjectForm) iter.next();
+				String galleryName = custp.getGalleryName();
+				String galleryAmount = custp.getGalleryAmount();
+				String galleryWork = custp.getGalleryWork();
+			%>
 			<blockquote class="row">
 				<div class="col-md-12">
 					<h4>
 						ประเภท
-						<small> บ้านเดี่ยว 2 ชั้น</small>
+						<small> <%=galleryName%></small>
 					</h4>
 				</div>
 				<div class="col-md-12">
 					<h4>
 						ราคาก่อสร้าง โดยประมาณ
-						<small> 1,200,000 บาท</small>
+						<small> <%=galleryAmount%> บาท</small>
 					</h4>
 				</div>
 				<div class="col-md-12">
 					<h4>
 						เวลาก่อสร้างโดยประมาณ
-						<small> 6 เดือน</small>
+						<small> <%=galleryWork%> เดือน</small>
 					</h4>
 				</div>
 			</blockquote>
+			<%} %>
 			</div>
 		</div>
 		</article>
 		<!-- History project -->
 		<h3>
 			รายการซื้อวัสดุล่าสุด
-			<small><a href="#"> - ดูทั้งหมด</a>
+			<small><a href="cus_history.jsp"> - ดูทั้งหมด</a>
 			</small>
 		</h3>
 		<hr />
@@ -228,7 +240,7 @@ function hideURLbar() {
 
 
 
-		<script src="js/accordion.js">
+		<script src="home/js/accordion.js">
 </script>
 
 	</body>
