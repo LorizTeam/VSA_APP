@@ -2,6 +2,35 @@
 	font-family: 'Waffle';
 	src:url('../fonts/Waffle Regular.otf');
 }
+.left-arrow-a{
+	position: fixed;
+	left: 10px;
+	top:46%;
+}
+.right-arrow-a{
+	position: fixed;
+	right: 10px;
+	top:46%;
+}
+.left-arrow {
+	background: url('../img/arrow.png') no-repeat 0 100%;
+	background-size: 69px 49px;
+	width: 31px;
+	height: 48px;
+}
+.right-arrow {
+	background: url('../img/arrow.png') no-repeat 100% 0;
+	background-size: 69px 49px;
+	width: 31px;
+	height: 48px;
+}
+.container{
+	width: 70%;
+	margin: 0 auto;
+}
+.no-active,.no-active:hover{
+	text-decoration: none;
+}
 .no-selection{
 	-webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -12,16 +41,22 @@
     overflow: hidden ;
 }
 .head-text{
-	font-family: 'Waffle';
-	font-size:90px;
+	font-family:'Waffle';	
 	color: #6B6B6B;
+	font-size:86px;
+}
+.menu-step h1{
+	font-size:60px;
+}
+.menu-step h3{
+	font-size:36px;
 }
 .home-me-so-good{
 	position:absolute;width:100%; z-index: 1; height: 100%;
 }
 .logo{	 
 	border-radius: 50%;
-	border: #0077dd solid 2px;
+	border: #0077dd solid 1px;
 	height:200px;
 	width: 200px;
     background: white;
@@ -35,23 +70,36 @@
 	padding-top:37%;
 	 line-height: 45px;
 }
+.btn-receive{
+	border-radius: 50%;
+	border: #0099ff solid 1px;
+	height:100px;
+	width: 100px;
+    background: #66c1ff;
+    color:white;
+    font-family: 'Waffle';
+    font-size:28px
+}
 .speech{
 	color: white;
 }
+
+.bg-home{
+	background-image: url('../img/bg-home.svg');
+	background-size:50%;
+	background-repeat: no-repeat;
+	background-position: 0 300px;
+	background-color:#6BC9C0; 
+	padding: 20px; 
+}
+.container-bg{
+	background-color:rgba(255,255,255,0.9);
+	width: 100%;
+	height: 100%; 
+	padding: 30px;  
+}
 .bg-no-re{
 	background-repeat: no-repeat; 
-}
-.s1{
-	background-image: url('../img/speez1.svg');padding: 50px 10px;
-}
-.s2{
-	background-image: url('../img/speez2.svg');padding: 50px 10px;
-}
-.s3{
-	background-image: url('../img/speez3.svg');padding: 50px 10px 50px 50px;
-}
-.s4{
-	background-image: url('../img/speez4.svg');padding:80px 5px 50px 40px ;background-size: 100%;
 }
 .div-anime-footer{
 	position: relative;width: 100%; top:360px ; left:0; righ:0;
