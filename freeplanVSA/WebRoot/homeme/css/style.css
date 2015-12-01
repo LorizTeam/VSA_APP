@@ -92,13 +92,15 @@
 .lg-sub-html p{
 	font-size: 22px !important;
 }
-.bg-home{
+.bg-home{	
+	background-color:#6BC9C0; 
+	padding: 20px 0; 
+}
+.bg-home-img{
 	background-image: url('../img/bg-home.svg');
 	background-size:50%;
 	background-repeat: no-repeat;
 	background-position: 0 300px;
-	background-color:#6BC9C0; 
-	padding: 20px; 
 }
 .container-bg{
 	background-color:rgba(255,255,255,0.9);
@@ -107,7 +109,7 @@
 	padding: 30px;  
 }
 .c-white{
-	color: white;
+	color: white !important;
 }
 .bg-no-re{
 	background-repeat: no-repeat; 
