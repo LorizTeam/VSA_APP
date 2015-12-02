@@ -94,7 +94,11 @@
 }
 .bg-home{	
 	background-color:#6BC9C0; 
-	padding: 20px 0; 
+	padding: 20px 0!important; 
+}
+.bg,.bg h1,.bg h2,.bg h3,.bg h4,.bg h5,.bg h6{
+	background-color:#6BC9C0;
+	color:white; 
 }
 .bg-home-img{
 	background-image: url('../img/bg-home.svg');
@@ -127,8 +131,8 @@ footer{
 	border-right: 1px solid white;
 	padding-right:35px;
 }
-.why_homeme{
-	
+.login_form{
+	height: 450px;
 }
 @media screen and (max-width: 1920px) {
     .div-anime-footer{

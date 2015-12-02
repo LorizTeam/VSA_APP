@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="utf-8">
-	    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />		 
+
+	    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' charset="utf-8" name='viewport' />		 
 		<title>Home Me : แบบบ้านฟรี</title>				
 		<link rel="stylesheet" href="css/uikit.css" />
 		<link rel="stylesheet" href="css/components/progress.min.css" />
 		<link rel="stylesheet" href="css/style.css" />
 		<link rel="stylesheet" href="css/anime-step.css" />
 		<link rel="stylesheet" href="css/lightgallery.min.css" /> 
+		<link rel="stylesheet" href="fotorama/fotorama.css" />
 		<script src="includehtml.js"></script>
 	</head>
 	<body class="bg-home bg-home-img  container">
@@ -24,45 +25,76 @@
 			</div>
 			
 			<form action="step-2.html">
-				<div class="uk-grid ">				
-					<div class="uk-width-1-3  no-active uk-animation-hover uk-animation-scale uk-animation-reverse">
+				<br><br>
+				<div class="uk-grid ">	
+								
+					<a data-uk-modal href="#gall1"  class="uk-width-1-3  no-active uk-animation-hover uk-animation-scale uk-animation-reverse">
 						<!-- รูปโชว์ -->			
 						<img src="img/proj/1.jpg" class="uk-thumbnail " style="width:100%;height: 300px ;">
-						<!-- /รูปโชว์ -->
-						<div  class="uk-thumbnail-caption">
-							<label><input name="cb" type="radio" required> เลือก</label>
-							<a id="gall1" >ดูรายละเอียด</a>
-						</div>											
-					</div>
-					
-					<div class="uk-width-1-3  no-active uk-animation-hover uk-animation-scale uk-animation-reverse">
-						<!-- รูปโชว์ -->			
-						<img src="img/proj/2.jpg" class="uk-thumbnail " style="width:100%;height: 300px ;">
-						<!-- /รูปโชว์ -->
-						<div  class="uk-thumbnail-caption">
-							<label><input name="cb" type="radio" required> เลือก</label>
-							<a id="gall2">ดูรายละเอียด</a>
-						</div>											
-					</div>
-					
-					<div class="uk-width-1-3  no-active uk-animation-hover uk-animation-scale uk-animation-reverse">
+						<!-- /รูปโชว์ -->								
+					</a>
+					<a data-uk-modal href="#gall1"  class="uk-width-1-3  no-active uk-animation-hover uk-animation-scale uk-animation-reverse">
 						<!-- รูปโชว์ -->			
 						<img src="img/proj/1.jpg" class="uk-thumbnail " style="width:100%;height: 300px ;">
-						<!-- /รูปโชว์ -->
-						<div  class="uk-thumbnail-caption">
-							<label><input name="cb" type="radio" required> เลือก</label>
-							<a id="gall3">ดูรายละเอียด</a>
-						</div>											
-					</div>
+						<!-- /รูปโชว์ -->								
+					</a>
+					<a data-uk-modal href="#gall1"  class="uk-width-1-3  no-active uk-animation-hover uk-animation-scale uk-animation-reverse">
+						<!-- รูปโชว์ -->			
+						<img src="img/proj/1.jpg" class="uk-thumbnail " style="width:100%;height: 300px ;">
+						<!-- /รูปโชว์ -->								
+					</a>
+					
+					
 				</div>
 				<div class="uk-grid ">
 					<div class="uk-container-center">
+						<br>
 						<a href="index.html ">กลับหน้าแรก </a> 
-						<input class="btn-receive  receive-ani" type="submit" value="ขอรับแบบบ้าน" />
+						<br>
 					</div>
 				</div>							
 			</form>	
 		</div>	
+		 
+		<!--modal gallery-->
+		<form id="gall1" class="uk-modal" action="step-2.html">
+		    <div class="uk-modal-dialog uk-modal-dialog-blank uk-height-viewport">
+		        <button class="uk-modal-close uk-close" type="button"></button>
+		       	<br><br><br>
+		        <div class="uk-grid " >
+		        	<div class="uk-width-medium-1-2 ">
+		            	<div class="fotorama" data-nav="thumbs"data-fit="cover"  data-width="100%"
+     					data-ratio="800/600">
+		            		<img src="img/proj/1.jpg" />
+		            		<img src="img/proj/2.jpg" />
+		            		<img src="img/proj/3.jpg" />
+		            		<img src="img/proj/4.jpg" />
+		            	</div>
+		            </div>
+		            <div class="uk-width-medium-1-2">
+		            	<div class=" uk-panel uk-panel-box bg"style="padding:20px;">
+			                <h1 style="padding-top:20px;"><span class="uk-icon-home"></span> บ้านแฝด 2 ชั้น</h1>
+				            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		                    <h5>ประเภทบ้าน : <small>บ้านแฝด</small></h5>
+		                    <h5>ระยะเวลา : <small>4 เดือน</small></h5>
+		                    <h5>ราคาประมาณ : <small>1,000,000 บาท</small></h5>
+		                    <br><br><br>
+		                    <div class="uk-grid">
+			                    <div class="uk-container-center">
+									<input class="btn-receive  receive-ani" type="submit" value="ขอรับแบบบ้าน" />
+								</div>
+							</div>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		</form>
+		<!--modal gallery-->
+		
+		
+		
+		
+		
 	<!-- live reload -->
 		<script>
 			var ws;
@@ -86,10 +118,12 @@
 			}, 1000);
 		</script> 
 	<!-- live reload -->
-		<script src="js/jquery.min.js"></script>		
+		<script src="js/jquery.min.js"></script>
 		<script src="js/uikit.min.js"></script>
+		<script src="js/core/modal.min.js"></script>		
 		<script src="js/lightgallery-all.min.js"></script>
-	<!-- Data light Gallery -->
+		<script src="fotorama/fotorama.js"></script>
+	<!-- Data light Gallery 
 		<script>
 			$('#gall1').on('click', function() {
 			    $(this).lightGallery({
@@ -151,6 +185,9 @@
 			    });	 
 			});	
 		</script>
-	<!-- /Data light Gallery -->		
+	<!-- /Data light Gallery -->	
+	
+	
+		
 	</body>
 </html>
