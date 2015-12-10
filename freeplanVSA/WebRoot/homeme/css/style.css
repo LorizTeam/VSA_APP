@@ -2,6 +2,35 @@
 	font-family: 'Waffle';
 	src:url('../fonts/Waffle Regular.otf');
 }
+.left-arrow-a{
+	position: fixed;
+	left: 10px;
+	top:46%;
+}
+.right-arrow-a{
+	position: fixed;
+	right: 10px;
+	top:46%;
+}
+.left-arrow {
+	background: url('../img/arrow.png') no-repeat 0 100%;
+	background-size: 69px 49px;
+	width: 31px;
+	height: 48px;
+}
+.right-arrow {
+	background: url('../img/arrow.png') no-repeat 100% 0;
+	background-size: 69px 49px;
+	width: 31px;
+	height: 48px;
+}
+.container{
+	width: 70%;
+	margin: 0 auto;
+}
+.no-active,.no-active:hover{
+	text-decoration: none;
+}
 .no-selection{
 	-webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -12,16 +41,22 @@
     overflow: hidden ;
 }
 .head-text{
-	font-family: 'Waffle';
-	font-size:90px;
+	font-family:'Waffle';	
 	color: #6B6B6B;
+	font-size:86px;
+}
+.menu-step h1{
+	font-size:60px;
+}
+.menu-step h3{
+	font-size:36px;
 }
 .home-me-so-good{
-	position:absolute;width:100%; z-index: 1; height: 100%;background-color: rgba(255,255,255,0.6);
+	position:absolute;width:100%; z-index: 1; height: 100%;
 }
 .logo{	 
 	border-radius: 50%;
-	border: #0077dd solid 2px;
+	border: #0077dd solid 1px;
 	height:200px;
 	width: 200px;
     background: white;
@@ -35,27 +70,179 @@
 	padding-top:37%;
 	 line-height: 45px;
 }
+.btn-receive{
+	border-radius: 50% !important;
+	border: #0099ff solid 1px;
+	height:100px;
+	width: 100px;
+    background: #66c1ff;
+    color:white;
+    font-family: 'Waffle';
+    font-size:28px
+}
 .speech{
 	color: white;
+}
+.lg-sub-html h1,.lg-sub-html p{
+	color: white;
+}
+.lg-sub-html h1{
+	font-size: 36px;
+}
+.lg-sub-html p{
+	font-size: 22px !important;
+}
+.bg-home{	
+	background-color:#6BC9C0; 
+	padding: 20px 0!important; 
+}
+.bg,.bg h1,.bg h2,.bg h3,.bg h4,.bg h5,.bg h6{
+	background-color:#6BC9C0;
+	color:white; 
+}
+.bg-home-img{
+	background-image: url('../img/bg-home.svg');
+	background-size:50%;
+	background-repeat: no-repeat;
+	background-position: 0 300px;
+}
+.container-bg{
+	background-color:rgba(255,255,255,0.9);
+	width: 100%;
+	height: 100%; 
+	padding: 30px;  
+}
+.c-white{
+	color: white !important;
 }
 .bg-no-re{
 	background-repeat: no-repeat; 
 }
-.s1{
-	background-image: url('../img/speez1.svg');padding: 50px 10px;
-}
-.s2{
-	background-image: url('../img/speez2.svg');padding: 50px 10px;
-}
-.s3{
-	background-image: url('../img/speez3.svg');padding: 50px 10px 50px 50px;
-}
-.s4{
-	background-image: url('../img/speez4.svg');padding:80px 5px 50px 40px ;background-size: 100%;
-}
 .div-anime-footer{
-	position: relative;width: 100%; top: 390px;
+	position: relative;width: 100%; top:360px ; left:0; righ:0;
 }
 footer{
-	position: fixed;width: 100%;bottom: -5px;z-index:1;margin:5px 45.5%;
+	position: fixed;bottom: -2.5px;left:0;right:0;
+}
+.word h1,.word h3{
+	margin-bottom:60px;
+}
+.line-right{
+	border-right: 1px solid white;
+	padding-right:35px;
+}
+.login_form{
+	height: 450px;
+}
+@media screen and (max-width: 1920px) {
+    .div-anime-footer{
+		position: fixed; bottom:-700px ; left:0; righ:0;top:auto;
+	}
+}
+@media screen and (max-width: 1366px) {
+    .div-anime-footer{
+		position: fixed; bottom:-800px ; left:0; righ:0;top:auto;
+	}
+}
+@media screen and (max-width: 1280px) {
+    .div-anime-footer{
+		position: fixed; bottom:-700px ; left:0; righ:0;top:auto;
+	}
+}
+@media screen and (max-width: 1024px) {
+   	.div-anime-footer{
+		position: fixed; bottom:-550px ; left:0; righ:0;top:auto;
+	}
+}
+@media screen and (max-width: 980px) {
+    .word h1,.word h3{
+		margin-bottom:40px;
+		margin-top:45px;
+	}
+	.head-text{
+		font-size: 3em
+	}
+	.word h3{
+		font-size: 2em
+	}
+	.logo{	 
+		border: #0077dd solid 1px;
+		height:200px; 
+		width: 200px;
+		margin-top:40px; 
+	}
+	.logo h3{
+		padding-top:20%;
+		line-height: 40px;
+		margin-top:40px;
+	}
+	.div-anime-footer{
+		position: fixed; bottom:-550px ; left:0; righ:0;top:auto;
+	}
+}
+@media screen and (max-width: 800px) {
+	.div-anime-footer{
+		position: fixed; bottom:-400px ; left:0; righ:0;top:auto;
+	}
+}
+@media screen and (max-width: 768px) {
+    
+}
+@media screen and (max-width: 640px) {
+    .word h1,.word h3{
+		margin-bottom:12px;
+		margin-top:0px;
+	}
+	.head-text{
+		font-size: 2.3em
+	}
+	.word h3{
+		font-size: 1.3em
+	}
+	.logo{	 
+		height:130px; 
+		width: 130px;
+	}
+	.logo h3{
+		padding-top:26%;
+	}
+}
+@media screen and (max-width: 480px) {
+	.div-anime-footer{
+		position: relative;width: 100%; top:360px ; left:0; righ:0;
+	}
+} 
+@media screen and (max-width: 360px) {
+    .word h1,.word h3{
+		margin-bottom:35px;
+		margin-top:30px;
+	}
+	.head-text{
+		font-size: 2.5em
+	}
+	.word h3{
+		font-size: 1.5em
+	}
+	.logo{
+		height:150px; 
+		width: 150px;
+	}
+	.logo h3{
+		padding-top:10%;
+	}
+	.div-anime-footer{
+		bottom:-150px ;
+	}
+}
+@media screen and (max-width: 320px) {
+     .word h1,.word h3{
+		margin-bottom:20px;
+		margin-top:0;
+	}
+	.logo h3{
+		padding-top:28%;
+	}
+	.div-anime-footer{
+		bottom:-120px ;
+	}
 }

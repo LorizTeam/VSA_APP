@@ -244,22 +244,22 @@ h2,
 }
 h3,
 .uk-h3 {
-  font-size: 41px;
+  font-size: 39px;
   line-height: 24px;
 }
 h4,
 .uk-h4 {
-  font-size: 38px;
+  font-size: 36px;
   line-height: 22px;
 }
 h5,
 .uk-h5 {
-  font-size: 32px;
+  font-size: 33px;
   line-height: 20px;
 }
 h6,
 .uk-h6 {
-  font-size: 28px;
+  font-size: 25px;
   line-height: 18px;
 }
 /* Lists
@@ -6733,6 +6733,12 @@ a.uk-thumbnail:focus {
   -webkit-transition: opacity 0.3s linear, -webkit-transform 0.3s ease-out;
   transition: opacity 0.3s linear, transform 0.3s ease-out;
 }
+.uk-modal-dialog-blank {
+    margin: 0px;
+    width: 100%;
+    max-width: 100%;
+    transition: opacity 0.3s linear 0s;
+}
 /* Phone landscape and smaller */
 @media (max-width: 767px) {
   /*
@@ -6761,7 +6767,7 @@ a.uk-thumbnail:focus {
 /* Close in modal
  ========================================================================== */
 .uk-modal-dialog > .uk-close:first-child {
-  margin: -10px -10px 0 0;
+  margin: -10px 0 0 0;
   float: right;
 }
 /*
@@ -7247,8 +7253,7 @@ a.uk-thumbnail:focus {
  * Useful to create image teasers
  */
 .uk-height-viewport {
-  height: 100vh;
-  min-height: 600px;
+  min-height: 100vh;
 }
 /* Responsive objects
  * Note: Images are already responsive by default, see Base component
