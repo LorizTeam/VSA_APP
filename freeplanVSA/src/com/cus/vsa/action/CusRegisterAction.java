@@ -49,7 +49,7 @@ public class CusRegisterAction extends Action {
 					request.setAttribute("lockScreen", "register");
 				}else{
 					cusLoginDB.registerNew(userName, passWord, nameV, "cus", date, tel);
-					cusLoginDB.AddCustomer(name, surName, tel, userName, "", "", "", "", "", "", "", "", "");
+					cusLoginDB.AddCustomer(name, surName, tel, userName, date, "", "", "", "", "", "", "", "");
 					request.setAttribute("lockScreen", "login");
 				}
 			}else{

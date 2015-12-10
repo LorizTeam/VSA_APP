@@ -8,29 +8,30 @@
 <%@ page import="com.vsa.data.Cust_ProjectDB" %>
 <%@ page import="com.vsa.util.DBConnect" %>
 <%@ page import="java.sql.*" %>
-<% 	List matList = null;
-	int count = 0; String grp[] = null;  String grpName = "", name = "";
+<% 	List matList = null, galleryHDList = null;
+	int count = 0; String grp[] = null;  String grpName = "", custIDCus = "";
 	List list = new ArrayList();
 	
-	if(session.getAttribute("name") != null){
-	name = session.getAttribute("name").toString();
+	if(session.getAttribute("custIDCus") != null){
+	custIDCus = session.getAttribute("custIDCus").toString();
 	}
 	
 	Cust_ProjectDB cust_projectDB = new Cust_ProjectDB();
+	galleryHDList = cust_projectDB.GetGalleryList(custIDCus);
 	
-	count = cust_projectDB.GetGrp(name);
-	grp = cust_projectDB.GetGrpList(count, name);
+	count = cust_projectDB.GetGrp(custIDCus);
+	grp = cust_projectDB.GetGrpList(count, custIDCus);
 	
 	for(int f=0; f<count; f++){
 	
-		matList = cust_projectDB.GetProjectList(grp[f], name);
+		matList = cust_projectDB.GetProjectList(grp[f], custIDCus);
 		
 		list.add(matList); 
 	} 
 	
 	List projectHistoryList1 = null;
 	if (request.getAttribute("projectHistoryList") == null) {
-	projectHistoryList1 = cust_projectDB.GetProjectHistoryList(name);
+	projectHistoryList1 = cust_projectDB.GetProjectHistoryListLimit(custIDCus);
 	}else{
 	projectHistoryList1 = (List) request.getAttribute("projectHistoryList");
 	} 
@@ -75,7 +76,9 @@ function hideURLbar() {
 
 	</head>
 	<body class="bg-c">
-		<%@include file="home/topnav.jsp"%>
+		
+
+<%@include file="topnav.jsp" %>
 		<div id="contact" class="contact">
 			<h3 class="text-center">บันทึกค่าใช้จ่าย</h3>
 		</div>
@@ -91,13 +94,19 @@ function hideURLbar() {
 			<h3>
 				รายละเอียด
 			</h3>
+			<% for (Iterator iter = galleryHDList.iterator(); iter.hasNext();) {
+				CustomerProjectForm custp = (CustomerProjectForm) iter.next();
+				String galleryName = custp.getGalleryName();
+				String galleryAmount = custp.getGalleryAmount();
+				String galleryWork = custp.getGalleryWork();
+			%>
 			<blockquote class="row">
 				<div class="col-md-4">
 					<h4>
 						ประเภท
 					</h4>
 					<h4>
-						<small> บ้านเดี่ยว 2 ชั้น</small>
+						<small> <%=galleryName%></small>
 					</h4>
 				</div>
 				<div class="col-md-4">
@@ -105,7 +114,7 @@ function hideURLbar() {
 						ราคาก่อสร้าง โดยประมาณ
 					</h4>
 					<h4>
-						<small> 1,200,000 บาท</small>
+						<small> <%=galleryAmount%> บาท</small>
 					</h4>
 				</div>
 				<div class="col-md-4">
@@ -113,10 +122,11 @@ function hideURLbar() {
 						เวลาก่อสร้างโดยประมาณ
 					</h4>
 					<h4>
-						<small> 6 เดือน</small>
+						<small> <%=galleryWork%> เดือน</small>
 					</h4>
 				</div>
 			</blockquote>
+			<%} %>
 			<!-- Accorion -->
 			<blockquote class="row ">
 				<h3>
@@ -230,7 +240,7 @@ function hideURLbar() {
 		<!-- History project -->
 		<h3>
 			รายการซื้อวัสดุล่าสุด
-			<small><a href="#"> - ดูทั้งหมด</a> </small>
+			<small><a href="cus_history.jsp"> - ดูทั้งหมด</a> </small>
 		</h3>
 		<hr />
 		<div class="row ">

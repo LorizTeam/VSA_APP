@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />		 
+		<title>Home Me : แบบบ้านฟรี</title>				
+		<link rel="stylesheet" href="css/uikit.css" />
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="css/anime-index.css" />
+	</head>
+	<body class="no-selection ">
+		<div class="home-me-so-good">
+			<div class="uk-container uk-margin-top uk-margin-bottom">		
+				<div class="uk-width-medium-2-5 uk-push-3-5 uk-text-right " >				
+					<a href="#">สมัครสมาชิก</a> หรือ <a href="#">เข้าสู่ระบบ</a>
+				</div>		
+			</div> 
+			<div class="uk-container-center word">
+				<h1 class="uk-text-center head-text">Home Me</h1>		
+				<h3 class="uk-text-center">แบบบ้านฟรีแค่ 4 ขั้นตอน ง่ายๆ</h3>
+				<div class="uk-grid">					
+					<div class=" uk-container-center ">
+						<a href="step-1.html" class="link-logo ">
+							<div class="logo uk-container-center speech_anime uk-text-center ">
+								<h3> อยากได้แบบบ้านฟรี <span class="uk-text-danger"> Click!! </span></h3>
+							</div>
+						</a>
+					</div>
+				</div>								
+			</div>
+		</div>
+		<div class="div-anime-footer">
+			<div class="uk-container uk-container-center ">
+				<div class="anime-footer"><img src="img/city.svg"/></div>
+			</div>
+			
+		</div>
+		<footer> 		
+				<p class="uk-text-center">www.Home-Me.co.th</p>
+		</footer>
+			
+		
+		<!-- live reload -->
+		<script>
+				var ws;
+				function socket() {
+				  ws = new WebSocket("ws://127.0.0.1:8080");
+				  ws.onmessage = function ( e ) {
+				    var data = JSON.parse(e.data);
+				    if ( data.r ) {
+				      location.reload();
+				    }
+				  };
+				}
+				setInterval(function () {
+				  if ( ws ) {
+				    if ( ws.readyState !== 1 ) {
+				      socket();
+				    }
+				  } else {
+				    socket();
+				  }
+				}, 1000);
+		</script>
+		<!-- live reload -->
+		<script src="js/jquery.min.js"></script>		
+		<script src="js/uikit.min.js"></script>	
+			
+	</body>
+</html>

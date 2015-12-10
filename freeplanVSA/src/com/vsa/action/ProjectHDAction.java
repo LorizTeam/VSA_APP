@@ -41,7 +41,8 @@ public class ProjectHDAction extends Action {
 		String projectType		= projectForm.getProjectType();
 		String projectStatus	= projectForm.getProjectStatus();
 		String projectAddress	= new String(projectForm.getProjectAddress().getBytes("ISO8859_1"), "utf-8");
-	 
+		String customerEmail	= projectForm.getCustomerEmail();
+		
 		String add 				= projectForm.getAdd();
 		String update 			= projectForm.getUpdate();
 		String delete 			= projectForm.getDelete();
@@ -53,7 +54,7 @@ public class ProjectHDAction extends Action {
 	  
 		if(add!=null){
 			
-		if(!projectID.equals("")&&!projectName.equals("")&&!employeeID.equals("")&&!customerID.equals("")&&!customerName.equals("")
+		if(!projectID.equals("")&&!employeeID.equals("")&&!customerID.equals("")&&!customerName.equals("")
 				&&!createDate.equals("")&&!projectType.equals("")&&!projectStatus.equals("")&&!projectAddress.equals("")){
 		
 			if(!createDate.equals("")) createDate	= dateUtil.CnvToYYYYMMDD(createDate, '-');	
@@ -69,7 +70,7 @@ public class ProjectHDAction extends Action {
 		}
 		}
 		if(update!=null){
-			if(!projectID.equals("")&&!projectName.equals("")&&!employeeID.equals("")&&!customerID.equals("")&&!customerName.equals("")
+			if(!projectID.equals("")&&!employeeID.equals("")&&!customerID.equals("")&&!customerName.equals("")
 					&&!createDate.equals("")&&!projectType.equals("")&&!projectStatus.equals("")&&!projectAddress.equals("")){
 		 
 				if(!createDate.equals("")) createDate	= dateUtil.CnvToYYYYMMDD(createDate, '-');	

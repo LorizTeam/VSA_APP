@@ -46,7 +46,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<li><a class="scroll font-menu" href="#service">บริการ</a></li>
 				<li><a class="scroll font-menu" href="#about">เกี่ยวกับ</a></li>
 				<li><a class="scroll font-menu" href="#gallery">แกลอรี่</a></li>
-				<li><a class="scroll font-menu" href="#blog">ข่าวสาร</a></li>
+				<li><a class="scroll font-menu" href="#blog">ช่วยเหลือ</a></li>
 				<li><a class="scroll font-menu" href="#contact">ติดต่อ</a></li>
 			 </ul>
 		     <!-- script-for-menu -->

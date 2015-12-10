@@ -39,15 +39,18 @@ body{
 }
 @font-face {
    font-family: 'Dosis-Regular';
-   src: url(../fonts/Dosis-Regular.ttf) format('truetype');
+  src: url('../fonts/bangna-new/bangna-new.eot');
+	src: local('☺'), url('../fonts/bangna-new/bangna-new.woff') format('woff'), url('../fonts/bangna-new/bangna-new.ttf') format('truetype'), url('../fonts/bangna-new/bangna-new.svg') format('svg');
 }
 @font-face {
    font-family: 'Dosis-Medium';
-   src: url(../fonts/Dosis-Medium.ttf) format('truetype');
+   src: url('../fonts/bangna-new/bangna-new.eot');
+	src: local('☺'), url('../fonts/bangna-new/bangna-new.woff') format('woff'), url('../fonts/bangna-new/bangna-new.ttf') format('truetype'), url('../fonts/bangna-new/bangna-new.svg') format('svg');
 }
 @font-face {
    font-family: 'Dosis-Bold';
-   src: url(../fonts/Dosis-Bold.ttf) format('truetype');
+   src: url('../fonts/bangna-new/bangna-new.eot');
+	src: local('☺'), url('../fonts/bangna-new/bangna-new.woff') format('woff'), url('../fonts/bangna-new/bangna-new.ttf') format('truetype'), url('../fonts/bangna-new/bangna-new.svg') format('svg');
 }
  .logo {
   position: absolute;

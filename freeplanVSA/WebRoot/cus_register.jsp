@@ -40,7 +40,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
       <p>Enter your personal details below</p>
       <input type="text" id="name" name="name" class="form-control1" placeholder="Name" autofocus="" required>
       <input type="text" id="surName" name="surName" class="form-control1" placeholder="Surname" autofocus=""required>
-      <input type="text" id="tel" name="tel" class="form-control1" placeholder="Telephone Number" autofocus=""> 
+      <input type="text" maxlength="10" id="tel" name="tel" class="form-control1" placeholder="Telephone Number" autofocus=""> 
       <div class="radios">
         <label for="radio-01" class="label_radio">
             <input type="radio" id="sex" name="sex" value="m" checked> Male
